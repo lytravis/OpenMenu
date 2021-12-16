@@ -1,0 +1,68 @@
+"use strict";
+module.exports = {
+  up: (queryInterface, Sequelize) => {
+    return queryInterface.createTable("Events", {
+      id: {
+        allowNull: false,
+        autoIncrement: true,
+        primaryKey: true,
+        type: Sequelize.INTEGER,
+      },
+      name: {
+        allowNull: false,
+        type: Sequelize.STRING(50),
+      },
+      description: {
+        allowNull: false,
+        type: Sequelize.STRING(255),
+      },
+      address: {
+        allowNull: false,
+        type: Sequelize.STRING(50),
+      },
+      city: {
+        allowNull: false,
+        type: Sequelize.STRING(50),
+      },
+      state: {
+        allowNull: false,
+        type: Sequelize.STRING(50),
+      },
+      zipCode: {
+        allowNull: false,
+        type: Sequelize.INTEGER,
+      },
+      latitude: {
+        allowNull: false,
+        type: Sequelize.DECIMAL,
+      },
+      longtitude: {
+        allowNull: false,
+        type: Sequelize.DECIMAL,
+      },
+      userId: {
+        allowNull: false,
+        references: { model: "Users" },
+        type: Sequelize.INTEGER,
+      },
+      typeId: {
+        allowNull: false,
+        references: { model: "Types" },
+        type: Sequelize.INTEGER,
+      },
+      createdAt: {
+        allowNull: false,
+        type: Sequelize.DATE,
+        defaultValue: Sequelize.fn("now"),
+      },
+      updatedAt: {
+        allowNull: false,
+        type: Sequelize.DATE,
+        defaultValue: Sequelize.fn("now"),
+      },
+    });
+  },
+  down: (queryInterface, Sequelize) => {
+    return queryInterface.dropTable("Events");
+  },
+};
