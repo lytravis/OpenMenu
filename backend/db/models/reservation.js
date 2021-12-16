@@ -5,8 +5,8 @@ module.exports = (sequelize, DataTypes) => {
     {
       userId: { type: DataTypes.INTEGER, allowNull: false },
       eventId: { type: DataTypes.INTEGER, allowNull: false },
-      startDate: { type: DataTypes.DATE, allowNull: false },
-      endDate: { type: DataTypes.DATE, allowNull: false },
+      startDate: { type: DataTypes.STRING, allowNull: false },
+      endDate: { type: DataTypes.STRING, allowNull: false },
     },
     {}
   );

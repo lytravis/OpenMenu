@@ -158,26 +158,6 @@ module.exports = {
           updatedAt: new Date(),
         },
         {
-          email: "jono@gmail.com",
-          firstName: "Jiro",
-          lastName: "Ono",
-          profilePic:
-            "https://res.cloudinary.com/dsxwhuvin/image/upload/v1639606292/uejo4dukwpzy5rpcskji.jpg",
-          hashedPassword: bcrypt.hashSync("password"),
-          createdAt: new Date(),
-          updatedAt: new Date(),
-        },
-        {
-          email: "jono@gmail.com",
-          firstName: "Jiro",
-          lastName: "Ono",
-          profilePic:
-            "https://res.cloudinary.com/dsxwhuvin/image/upload/v1639606292/uejo4dukwpzy5rpcskji.jpg",
-          hashedPassword: bcrypt.hashSync("password"),
-          createdAt: new Date(),
-          updatedAt: new Date(),
-        },
-        {
           email: "masaharu@gmail.com",
           firstName: "Masaharu",
           lastName: "Morimoto",
@@ -274,12 +254,6 @@ module.exports = {
 
   down: async (queryInterface, Sequelize) => {
     const Op = Sequelize.Op;
-    return queryInterface.bulkDelete(
-      "Users",
-      {
-        username: { [Op.in]: ["Demo-lition", "FakeUser1", "FakeUser2"] },
-      },
-      {}
-    );
+    return queryInterface.bulkDelete("Users", null, {});
   },
 };
