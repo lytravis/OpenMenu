@@ -15,7 +15,6 @@ const {
 
 const router = express.Router();
 
-//? NEED TO FIX THIS ROUTE
 router.get(
   "/",
   asyncHandler(async (req, res) => {

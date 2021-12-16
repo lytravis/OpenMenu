@@ -35,7 +35,7 @@ module.exports = (sequelize, DataTypes) => {
     });
 
     Event.belongsTo(models.User, { foreignKey: "userId" });
-    Event.hasOne(models.Type, { foreignKey: "typeId" });
+    Event.belongsTo(models.Type, { foreignKey: "typeId" });
   };
   return Event;
 };

@@ -9,7 +9,7 @@ module.exports = (sequelize, DataTypes) => {
   );
   Type.associate = function (models) {
     // associations can be defined here
-    Type.belongsTo(models.Event, { foreignKey: "typeId" });
+    Type.hasMany(models.Event, { foreignKey: "typeId" });
   };
   return Type;
 };
