@@ -4,13 +4,139 @@ const asyncHandler = require("express-async-handler");
 
 const { handleValidationErrors } = require("../../utils/validation");
 const { setTokenCookie, requireAuth } = require("../../utils/auth");
-const { User, Event, Image, Reservation, Review, Type } = require("../../db/models");
+const {
+  User,
+  Event,
+  Image,
+  Reservation,
+  Review,
+  Type,
+} = require("../../db/models");
 
 const router = express.Router();
 
+const eventNotFoundError = (id) => {
+  const err = Error("Event not found");
+  err.errors = [`Event ${id} could not be found`];
+  err.title = "Event not found";
+  err.status = 404;
+  return err;
+};
 
+const validateEvent = [
+  check("name")
+    .exists({ checkFalsy: true })
+    .withMessage("Please provide an event name"),
+  check("description")
+    .exists({ checkFalsy: true })
+    .withMessage("Please provide an event description"),
+  check("address")
+    .exists({ checkFalsy: true })
+    .withMessage("Please provide an event address"),
+  check("city")
+    .exists({ checkFalsy: true })
+    .withMessage("Please provide an event city"),
+  check("state")
+    .exists({ checkFalsy: true })
+    .withMessage("Please provide an event state"),
+  check("zipCode")
+    .exists({ checkFalsy: true })
+    .withMessage("Please provide an event zip code"),
+  check("latitude")
+    .exists({ checkFalsy: true })
+    .withMessage("Please provide a valid latitude"),
+  check("longtitude")
+    .exists({ checkFalsy: true })
+    .withMessage("Please provide a valid longitude"),
+  handleValidationErrors,
+];
 
+//GET ALL EVENTS
+router.get(
+  "/",
+  asyncHandler(async (req, res) => {
+    const events = await Event.findAll();
+    return res.json(events);
+  })
+);
 
+//GET ONE EVENT
+router.get(
+  "/:id(\\d+)",
+  asyncHandler(async (req, res) => {
+    const event = await Event.findByPk(req.params.id);
+    return res.json(event);
+  })
+);
 
+router.post(
+  "/",
+  validateEvent,
+  asyncHandler(async (req, res) => {
+    const {
+      name,
+      description,
+      address,
+      city,
+      state,
+      zipCode,
+      latitude,
+      longtitude,
+      userId,
+      typeId,
+    } = req.body;
+
+    const event = await Event.create({
+      name,
+      description,
+      address,
+      city,
+      state,
+      zipCode,
+      latitude,
+      longtitude,
+      userId,
+      typeId,
+    });
+    return res.json(event);
+  })
+);
+
+router.put(
+  "/:id(\\d+)",
+  validateEvent,
+  asyncHandler(async (req, res, next) => {
+    const event = await Event.findByPk(req.params.id);
+    // console.log("TEST 1 =====>", event);
+    if (event) {
+      event.name = req.body.name;
+      event.description = req.body.description;
+      event.address = req.body.address;
+      event.city = req.body.city;
+      event.state = req.body.state;
+      event.zipCode = req.body.zipCode;
+      event.latitude = req.body.latitude;
+      event.longitude = req.body.longitude;
+      // console.log("TEST 2 =====>", event);
+      await event.save();
+      res.json({ event });
+    } else {
+      next(eventNotFoundError(req.params.id));
+    }
+  })
+);
+
+router.delete(
+  "/:id(\\d+)",
+  asyncHandler(async (req, res, next) => {
+    const event = await Event.findByPk(req.params.id);
+    if (event) {
+      await event.destroy();
+      res.status(204).end();
+    } else {
+      next(eventNotFoundError(req.params.id));
+    }
+  })
+);
 
 module.exports = router;
