@@ -118,7 +118,7 @@ router.put(
       communication,
     } = req.body;
     const oldReview = await Review.findByPk(req.params.id);
-    console.log("---------> oldreview", oldReview);
+    // console.log("---------> oldreview", oldReview);
     const review = await oldReview.update({
       userId,
       eventId,

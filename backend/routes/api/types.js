@@ -19,7 +19,7 @@ router.get(
   "/",
   asyncHandler(async (req, res) => {
     const types = await Type.findAll();
-    console.log("---------> types", types);
+    // console.log("---------> types", types);
     return res.json(types);
   })
 );
