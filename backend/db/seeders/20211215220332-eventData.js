@@ -12,7 +12,7 @@ module.exports = {
       "Events",
       [
         {
-          name: "John Doe",
+          name: "Event 1",
           description: "lorem ipson",
           address: "911 Rodeo Hills",
           city: "Beverly Hills",
@@ -26,7 +26,7 @@ module.exports = {
           updatedAt: new Date(),
         },
         {
-          name: "John Doe",
+          name: "Event 2",
           description: "lorem ipson",
           address: "911 Rodeo Hills",
           city: "Beverly Hills",
@@ -40,7 +40,7 @@ module.exports = {
           updatedAt: new Date(),
         },
         {
-          name: "John Doe",
+          name: "Event 3",
           description: "lorem ipson",
           address: "911 Rodeo Hills",
           city: "Beverly Hills",
@@ -54,7 +54,7 @@ module.exports = {
           updatedAt: new Date(),
         },
         {
-          name: "John Doe",
+          name: "Event 4",
           description: "lorem ipson",
           address: "911 Rodeo Hills",
           city: "Beverly Hills",
@@ -68,7 +68,7 @@ module.exports = {
           updatedAt: new Date(),
         },
         {
-          name: "John Doe",
+          name: "Event 5",
           description: "lorem ipson",
           address: "911 Rodeo Hills",
           city: "Beverly Hills",
@@ -82,7 +82,7 @@ module.exports = {
           updatedAt: new Date(),
         },
         {
-          name: "John Doe",
+          name: "Event 6",
           description: "lorem ipson",
           address: "911 Rodeo Hills",
           city: "Beverly Hills",
@@ -96,7 +96,7 @@ module.exports = {
           updatedAt: new Date(),
         },
         {
-          name: "John Doe",
+          name: "Event 7",
           description: "lorem ipson",
           address: "911 Rodeo Hills",
           city: "Beverly Hills",
@@ -110,7 +110,7 @@ module.exports = {
           updatedAt: new Date(),
         },
         {
-          name: "John Doe",
+          name: "Event 8",
           description: "lorem ipson",
           address: "911 Rodeo Hills",
           city: "Beverly Hills",
@@ -124,7 +124,7 @@ module.exports = {
           updatedAt: new Date(),
         },
         {
-          name: "John Doe",
+          name: "Event 9",
           description: "lorem ipson",
           address: "911 Rodeo Hills",
           city: "Beverly Hills",
@@ -138,7 +138,7 @@ module.exports = {
           updatedAt: new Date(),
         },
         {
-          name: "John Doe",
+          name: "Event 10",
           description: "lorem ipson",
           address: "911 Rodeo Hills",
           city: "Beverly Hills",
