@@ -34,7 +34,7 @@ export const getReviews = () => async (dispatch) => {
   }
 };
 
-export const addEvent = (review) => async (dispatch) => {
+export const addReview = (review) => async (dispatch) => {
   const response = await csrfFetch("/api/reviews", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
@@ -49,7 +49,7 @@ export const addEvent = (review) => async (dispatch) => {
   }
 };
 
-export const removeEvent = (id) => async (dispatch) => {
+export const removeReview = (id) => async (dispatch) => {
   const response = await csrfFetch(`/api/reviews/${id}`, {
     method: "DELETE",
   });
@@ -58,7 +58,7 @@ export const removeEvent = (id) => async (dispatch) => {
   }
 };
 
-export const updateEvent = (data) => async (dispatch) => {
+export const updateReview = (data) => async (dispatch) => {
   const response = await csrfFetch(`/api/reviews/${data.id}`, {
     method: "PUT",
     headers: { "Content-Type": "application/json" },

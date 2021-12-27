@@ -11,6 +11,7 @@ import CreateEvent from "./components/CreateEvent";
 import UserProfile from "./components/UserProfile";
 import HostedEvents from "./components/HostedEvents";
 import SingleEvent from "./components/SingleEvent";
+import ReviewForm from "./components/Reviews/ReviewForm";
 
 function App() {
   const dispatch = useDispatch();
@@ -51,6 +52,9 @@ function App() {
           </Route>
           <Route exact path="/events/:eventId">
             <SingleEvent />
+          </Route>
+          <Route exact path="/reviews/new">
+            <ReviewForm />
           </Route>
         </Switch>
       )}
