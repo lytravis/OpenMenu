@@ -10,6 +10,7 @@ import Events from "./components/Events";
 import CreateEvent from "./components/CreateEvent";
 import UserProfile from "./components/UserProfile";
 import HostedEvents from "./components/HostedEvents";
+import SingleEvent from "./components/SingleEvent";
 
 function App() {
   const dispatch = useDispatch();
@@ -47,6 +48,9 @@ function App() {
           </Route>
           <Route exact path="/users/:userId">
             <UserProfile />
+          </Route>
+          <Route exact path="/events/:eventId">
+            <SingleEvent />
           </Route>
         </Switch>
       )}

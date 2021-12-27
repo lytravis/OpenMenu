@@ -5,9 +5,15 @@ const ADD_EVENT = "events/ADD_EVENT";
 const EDIT_EVENT = "events/EDIT_EVENT";
 const DELETE_EVENT = "events/DELETE_EVENT";
 const LOAD_TYPES = "events/LOAD_TYPES";
+const LOAD_EVENT = "events/LOAD_EVENT";
 
 const loadEvents = (data) => ({
   type: LOAD_EVENTS,
+  data,
+});
+
+const loadEvent = (data) => ({
+  type: LOAD_EVENT,
   data,
 });
 
@@ -30,6 +36,17 @@ const loadTypes = (data) => ({
   type: LOAD_TYPES,
   data,
 });
+
+export const getEvent = (eventId) => async (dispatch) => {
+  const response = await fetch(`/api/events/${eventId}`);
+  console.log("------> singleresponse", response);
+  if (response.ok) {
+    const event = await response.json();
+    console.log("----------> singleevent", event);
+    dispatch(loadEvent(event));
+    return event;
+  }
+};
 
 export const getEvents = () => async (dispatch) => {
   const response = await fetch("/api/events");
@@ -66,17 +83,17 @@ export const addEvent = (event) => async (dispatch) => {
   }
 };
 
-export const removeEvent = (id) => async (dispatch) => {
-  const response = await csrfFetch(`/api/events/${id}`, {
+export const removeEvent = (eventId) => async (dispatch) => {
+  const response = await csrfFetch(`/api/events/${eventId}`, {
     method: "DELETE",
   });
   if (response.ok) {
-    dispatch(deleteEvent(id));
+    dispatch(deleteEvent(eventId));
   }
 };
 
 export const updateEvent = (data) => async (dispatch) => {
-  const response = await csrfFetch(`/api/events/${data.id}`, {
+  const response = await csrfFetch(`/api/events/${data.eventId}`, {
     method: "PUT",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(data),
@@ -96,6 +113,9 @@ export default function reducer(state = {}, action) {
     case LOAD_EVENTS:
       newState = {};
       action.data.forEach((event) => (newState[event.id] = event));
+      return newState;
+    case LOAD_EVENT:
+      newState[action.data.id] = action.data;
       return newState;
     case ADD_EVENT:
       newState = { ...state };

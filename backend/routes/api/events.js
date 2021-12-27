@@ -15,9 +15,9 @@ const {
 
 const router = express.Router();
 
-const eventNotFoundError = (id) => {
+const eventNotFoundError = (eventId) => {
   const err = Error("Event not found");
-  err.errors = [`Event ${id} could not be found`];
+  err.errors = [`Event ${eventId} could not be found`];
   err.title = "Event not found";
   err.status = 404;
   return err;
@@ -64,7 +64,7 @@ router.get(
 router.get(
   "/:id(\\d+)",
   asyncHandler(async (req, res) => {
-    const event = await Event.findByPk(req.params.id);
+    const event = await Event.findByPk(req.params.eventId);
     return res.json(event);
   })
 );
@@ -103,10 +103,10 @@ router.post(
 );
 
 router.put(
-  "/:id(\\d+)",
+  "/:eventId(\\d+)",
   validateEvent,
   asyncHandler(async (req, res, next) => {
-    const event = await Event.findByPk(req.params.id);
+    const event = await Event.findByPk(req.params.eventId);
     // console.log("TEST 1 =====>", event);
     if (event) {
       event.name = req.body.name;
@@ -121,20 +121,20 @@ router.put(
       await event.save();
       res.json({ event });
     } else {
-      next(eventNotFoundError(req.params.id));
+      next(eventNotFoundError(req.params.eventId));
     }
   })
 );
 
 router.delete(
-  "/:id(\\d+)",
+  "/:eventId(\\d+)",
   asyncHandler(async (req, res, next) => {
-    const event = await Event.findByPk(req.params.id);
+    const event = await Event.findByPk(req.params.eventId);
     if (event) {
       await event.destroy();
       res.status(204).end();
     } else {
-      next(eventNotFoundError(req.params.id));
+      next(eventNotFoundError(req.params.eventId));
     }
   })
 );
