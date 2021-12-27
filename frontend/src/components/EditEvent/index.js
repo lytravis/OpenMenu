@@ -2,18 +2,24 @@ import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { useParams } from "react-router";
-import { updateEvent } from "../../store/event";
+import { updateEvent, getEvents } from "../../store/event";
 import { getTypes } from "../../store/type";
+import { getImages } from "../../store/image";
 
 function EditEvent() {
   const dispatch = useDispatch();
   const history = useHistory();
   const { eventId } = useParams();
-  const userId = useSelector((state) => state.session.user.id);
+  // const userId = useSelector((state) => state.session.user.id);
+  const hostId = useSelector((state) => state.session.user.id);
+  const images = useSelector((state) => Object.values(state.image));
   const events = useSelector((state) => Object.values(state.event));
   const eventTypes = useSelector((state) => Object.values(state.type));
-  const event = useSelector((state) => state.event[eventId]);
+  const event = useSelector((state) => state?.event[eventId]);
+  const eventImages = images.filter((image) => image.eventId == event.id);
 
+  console.log("&&&&&&&&&&&&&&&&&&&&> images", images);
+  console.log("%%%%%%%%%%%%%>> eventImages", eventImages);
   // console.log("---------> eventTypes", eventTypes);
   console.log("@@@@@@@@@@@@> event", event);
 
@@ -45,7 +51,12 @@ function EditEvent() {
   };
 
   useEffect(() => {
+    dispatch(getEvents());
+  }, [dispatch]);
+
+  useEffect(() => {
     dispatch(getTypes());
+    dispatch(getImages());
   }, [dispatch]);
 
   useEffect(() => {
@@ -67,8 +78,7 @@ function EditEvent() {
     if (errors.length > 0) return setValidationErrors(errors);
 
     const payload = {
-      // id,
-      userId: userId,
+      userId: hostId,
       name,
       description,
       address,
@@ -84,8 +94,6 @@ function EditEvent() {
     history.push("/host");
   };
 
-  // console.log("-----> ****events****", events);
-  //   console.log("-----> userId", userId);
 
   return (
     <div className="add-event-container">

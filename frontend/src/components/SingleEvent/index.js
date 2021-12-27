@@ -2,20 +2,15 @@ import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { useParams } from "react-router";
-import {
-  getEvent,
-  getEvents,
-  removeEvent,
-  //   updatedEvent,
-} from "../../store/event";
+import { getEvents } from "../../store/event";
 import { getImages } from "../../store/image";
 import { getReviews } from "../../store/review";
-import { getTypes } from "../../store/event";
+import { getTypes } from "../../store/type";
 import ReviewForm from "../Reviews/ReviewForm";
 
 function SingleEvent() {
   const dispatch = useDispatch();
-  const history = useHistory();
+
   const { eventId } = useParams();
   const [isLoaded, setIsLoaded] = useState(false);
   const userId = useSelector((state) => state.session.user.id);
@@ -46,12 +41,8 @@ function SingleEvent() {
     dispatch(getEvents()).then(() => setIsLoaded(true));
     dispatch(getImages());
     dispatch(getReviews());
-    // dispatch(getTypes());
+    dispatch(getTypes());
   }, [dispatch]);
-
-  //   useEffect(() => {
-  //     dispatch(getTypes());
-  //   });
 
   return (
     <>
