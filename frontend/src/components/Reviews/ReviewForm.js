@@ -7,6 +7,7 @@ import { addReview } from "../../store/review";
 const ReviewForm = ({ eventId }) => {
   const dispatch = useDispatch();
   const history = useHistory();
+
   const userId = useSelector((state) => state.session.user.id);
   const [foodRating, setFoodRating] = useState(0);
   const [experienceRating, setExperienceRating] = useState(0);
@@ -16,6 +17,8 @@ const ReviewForm = ({ eventId }) => {
   const [communicationRating, setCommunicationRating] = useState(0);
   const [comment, setComment] = useState("");
   const [validationErrors, setValidationErrors] = useState([]);
+
+  console.log("mmmmmmmmmmmm eventId", eventId);
 
   const validate = () => {
     const validationErrors = [];
@@ -67,12 +70,12 @@ const ReviewForm = ({ eventId }) => {
     };
 
     dispatch(addReview(payload));
-    history.push("/reviews");
+    history.push(`/events/:eventId`);
   };
 
   return (
     <div className="review-container">
-      <div>Review</div>
+      <div>Leave a Review</div>
       <div className="rating-container">
         <div>
           <div>Food</div>

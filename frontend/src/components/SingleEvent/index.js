@@ -11,6 +11,7 @@ import {
 import { getImages } from "../../store/image";
 import { getReviews } from "../../store/review";
 import { getTypes } from "../../store/event";
+import ReviewForm from "../Reviews/ReviewForm";
 
 function SingleEvent() {
   const dispatch = useDispatch();
@@ -30,6 +31,7 @@ function SingleEvent() {
   console.log("$$ EVENT REVIEWS", eventReviews);
   console.log("$$$$ EVENT IMAGES", eventImages);
   console.log("-----> ****events****", events);
+  console.log("mmmmmmmmm EVENTID", eventId);
   //   console.log("-----> userId", userId);
   //   console.log("&&&&&&&&&&&&&&&&&&&&> images", images);
 
@@ -97,6 +99,9 @@ function SingleEvent() {
                   <h3 key={id}>{comment}</h3>
                 )
               )}
+            </div>
+            <div>
+              <ReviewForm />
             </div>
           </div>
         </div>

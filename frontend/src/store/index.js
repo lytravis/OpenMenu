@@ -4,12 +4,14 @@ import session from "./session";
 import event from "./event";
 import image from "./image";
 import review from "./review";
+import type from "./type";
 
 const rootReducer = combineReducers({
   session,
   event,
   image,
   review,
+  type,
 });
 
 let enhancer;

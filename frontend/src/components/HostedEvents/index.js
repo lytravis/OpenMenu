@@ -22,6 +22,7 @@ function HostedEvents({
   const dispatch = useDispatch();
   // const [loaded, setLoaded] = useState(false);
   const [showModal, setShowModal] = useState(false);
+  const [isLoaded, setIsLoaded] = useState(false);
   const events = useSelector((state) => Object.values(state.event));
   const images = useSelector((state) => Object.values(state.image));
   const hostId = useSelector((state) => state.session.user.id);
@@ -29,7 +30,7 @@ function HostedEvents({
   const hostedEvents = events.filter((event) => event.userId == hostId);
 
   useEffect(() => {
-    dispatch(getEvents());
+    dispatch(getEvents()).then(() => setIsLoaded(true));
   }, [dispatch]);
 
   //   console.log("$$$$$$$$$>>> hostedEvents", hostedEvents);
@@ -41,40 +42,44 @@ function HostedEvents({
   //   console.log("&&&&&&&&&&&&&&&&&&&&> images", images);
 
   return (
-    <div>
-      {hostedEvents.map((hostedEvent) => (
-        <div key={hostedEvent.id}>
-          <EventsDetail key={hostedEvent.id} {...hostedEvent} />
-          <div>
-            <button
-              onClick={() => setShowModal(true)}
-              className="update-button"
-            >
-              Update
-            </button>
-            {showModal && (
-              <Modal onClose={() => setShowModal(false)}>
-                <EditEvent
-                  key={id}
-                  id={id}
-                  name={name}
-                  description={description}
-                  address={address}
-                  city={city}
-                  state={state}
-                  zipCode={zipCode}
-                  latitude={latitude}
-                  longitude={longitude}
-                  typeId={typeId}
-                />
-              </Modal>
-            )}
-          </div>
+    <>
+      {isLoaded && (
+        <div>
+          {hostedEvents.map((hostedEvent) => (
+            <div key={hostedEvent.id}>
+              <EventsDetail key={hostedEvent.id} {...hostedEvent} />
+              <div>
+                <button
+                  onClick={() => setShowModal(true)}
+                  className="update-button"
+                >
+                  Update
+                </button>
+                {showModal && (
+                  <Modal onClose={() => setShowModal(false)}>
+                    <EditEvent
+                      key={id}
+                      id={id}
+                      name={name}
+                      description={description}
+                      address={address}
+                      city={city}
+                      state={state}
+                      zipCode={zipCode}
+                      latitude={latitude}
+                      longitude={longitude}
+                      typeId={typeId}
+                    />
+                  </Modal>
+                )}
+              </div>
 
-          <hr />
+              <hr />
+            </div>
+          ))}
         </div>
-      ))}
-    </div>
+      )}
+    </>
   );
 }
 

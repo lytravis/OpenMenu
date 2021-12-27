@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { updateEvent } from "../../store/event";
-import { getTypes } from "../../store/event";
+import { getTypes } from "../../store/type";
 
 function EditEvent({
   id,
@@ -18,13 +18,12 @@ function EditEvent({
 }) {
   const dispatch = useDispatch();
   const history = useHistory();
-  const [loaded, setLoaded] = useState(false);
 
   const userId = useSelector((state) => state.session.user.id);
   const events = useSelector((state) => Object.values(state.event));
-  const eventTypes = useSelector((state) => Object.values(state.event));
+  const eventTypes = useSelector((state) => Object.values(state.type));
 
-  //   console.log("---------> eventTypes", eventTypes);
+  console.log("---------> eventTypes", eventTypes);
 
   const [newName, setNewName] = useState(name);
   const [newDescription, setNewDescription] = useState(description);
