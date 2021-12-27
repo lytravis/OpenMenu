@@ -7,6 +7,7 @@ import {
   //   updatedEvent,
 } from "../../store/event";
 // import EditEventForm from "../UpdateEvent";
+import { getImages } from "../../store/image";
 
 function Events() {
   const dispatch = useDispatch();
@@ -14,9 +15,11 @@ function Events() {
 
   const userId = useSelector((state) => state.session.user.id);
   const events = useSelector((state) => Object.values(state.event));
+  const images = useSelector((state) => Object.values(state.image));
 
   useEffect(() => {
     dispatch(getEvents());
+    dispatch(getImages());
   }, [dispatch]);
 
   // const handleDelete = (id) => {
@@ -25,6 +28,8 @@ function Events() {
 
   console.log("-----> ****events****", events);
   console.log("-----> userId", userId);
+  console.log("&&&&&&&&&&&&&&&&&&&&> images", images);
+
   return (
     <div>
       <div className="products">

@@ -45,7 +45,7 @@ const validateEvent = [
   check("latitude")
     .exists({ checkFalsy: true })
     .withMessage("Please provide a valid latitude"),
-  check("longtitude")
+  check("longitude")
     .exists({ checkFalsy: true })
     .withMessage("Please provide a valid longitude"),
   handleValidationErrors,
@@ -81,7 +81,7 @@ router.post(
       state,
       zipCode,
       latitude,
-      longtitude,
+      longitude,
       userId,
       typeId,
     } = req.body;
@@ -94,7 +94,7 @@ router.post(
       state,
       zipCode,
       latitude,
-      longtitude,
+      longitude,
       userId,
       typeId,
     });

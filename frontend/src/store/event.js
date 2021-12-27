@@ -4,6 +4,7 @@ const LOAD_EVENTS = "events/LOAD_EVENTS";
 const ADD_EVENT = "events/ADD_EVENT";
 const EDIT_EVENT = "events/EDIT_EVENT";
 const DELETE_EVENT = "events/DELETE_EVENT";
+const LOAD_TYPES = "events/LOAD_TYPES";
 
 const loadEvents = (data) => ({
   type: LOAD_EVENTS,
@@ -25,6 +26,11 @@ const deleteEvent = (id) => ({
   id,
 });
 
+const loadTypes = (data) => ({
+  type: LOAD_TYPES,
+  data,
+});
+
 export const getEvents = () => async (dispatch) => {
   const response = await fetch("/api/events");
   console.log("------> response", response);
@@ -36,15 +42,25 @@ export const getEvents = () => async (dispatch) => {
   }
 };
 
+export const getTypes = () => async (dispatch) => {
+  const response = await fetch("/api/types");
+  if (response.ok) {
+    const types = await response.json();
+    dispatch(loadTypes(types));
+    return types;
+  }
+};
+
 export const addEvent = (event) => async (dispatch) => {
   const response = await csrfFetch("/api/events", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(event),
   });
-console.log()
+  console.log("xxxxxxxxxx> response", response);
   if (response.ok) {
     const data = await response.json();
+    console.log("xxxxxxxxxxxxx> data", data);
     dispatch(newEvent(data));
     return data;
   }
@@ -95,6 +111,10 @@ export default function reducer(state = {}, action) {
       delete newState[action.id];
       return newState;
     }
+    case LOAD_TYPES:
+      newState = {};
+      action.data.forEach((type) => (newState[type.id] = type));
+      return newState;
     default:
       return state;
   }

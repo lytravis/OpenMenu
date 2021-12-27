@@ -7,6 +7,7 @@ import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
 import { Modal } from "./context/Modal";
 import Events from "./components/Events";
+import CreateEvent from "./components/CreateEvent";
 
 function App() {
   const dispatch = useDispatch();
@@ -33,9 +34,15 @@ function App() {
           <Route path="/signup">
             <SignupFormPage />
           </Route>
-          <Route path="/events">
+          <Route exact path="/events">
             <Events />
           </Route>
+          <Route exact path="/events/new">
+            <CreateEvent />
+          </Route>
+          {/* <Route exact path="/users/:userId">
+            <CreateEvent />
+          </Route> */}
         </Switch>
       )}
     </>
