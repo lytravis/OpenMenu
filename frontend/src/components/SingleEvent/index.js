@@ -10,11 +10,13 @@ import {
 } from "../../store/event";
 import { getImages } from "../../store/image";
 import { getReviews } from "../../store/review";
+import { getTypes } from "../../store/event";
 
 function SingleEvent() {
   const dispatch = useDispatch();
   const history = useHistory();
   const { eventId } = useParams();
+  const [isLoaded, setIsLoaded] = useState(false);
   const userId = useSelector((state) => state.session.user.id);
   const events = useSelector((state) => Object.values(state.event));
   const images = useSelector((state) => Object.values(state.image));
@@ -33,17 +35,73 @@ function SingleEvent() {
 
   console.log("oooooooooooo>>> event", event);
 
+  const eventTypes = useSelector((state) => Object.values(state.event));
+
+  console.log("---------> eventTypes", eventTypes);
+
   useEffect(() => {
     // dispatch(getEvent(eventId));
-    dispatch(getEvents());
+    dispatch(getEvents()).then(() => setIsLoaded(true));
     dispatch(getImages());
     dispatch(getReviews());
+    // dispatch(getTypes());
   }, [dispatch]);
 
+  //   useEffect(() => {
+  //     dispatch(getTypes());
+  //   });
+
   return (
-    <div>
-      <h1>Single Event</h1>
-    </div>
+    <>
+      {isLoaded && (
+        <div>
+          <div className="event-container">
+            <div>
+              <h1>{event.name}</h1>
+            </div>
+            <div>
+              <h2>{event.typeId}</h2>
+            </div>
+
+            <div className="event-images-container">
+              <div className="event-images">
+                {eventImages?.map(({ id, url }) => (
+                  <img key={id} src={url} alt="img[i]" />
+                ))}
+              </div>
+            </div>
+            <div>
+              <h3>{event.description}</h3>
+            </div>
+            <div>
+              {event.address} {event.city} {event.state} {event.zipCode}{" "}
+            </div>
+          </div>
+
+          <div className="reviews-container">
+            <div>
+              <h2>Reviews</h2>
+            </div>
+            <div>
+              {eventReviews?.map(
+                ({
+                  id,
+                  comment,
+                  food,
+                  experience,
+                  cleanliness,
+                  accuracy,
+                  value,
+                  communication,
+                }) => (
+                  <h3 key={id}>{comment}</h3>
+                )
+              )}
+            </div>
+          </div>
+        </div>
+      )}
+    </>
   );
 }
 
