@@ -16,6 +16,14 @@ const {
 const router = express.Router();
 
 router.get(
+  "/",
+  asyncHandler(async (req, res) => {
+    const images = await Image.findAll();
+    return res.json(images);
+  })
+);
+
+router.get(
   "/:id(\\d+)",
   asyncHandler(async (req, res) => {
     const { id } = req.params;

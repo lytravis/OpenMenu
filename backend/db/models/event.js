@@ -10,7 +10,7 @@ module.exports = (sequelize, DataTypes) => {
       state: { type: DataTypes.STRING(50), allowNull: false },
       zipCode: { type: DataTypes.INTEGER, allowNull: false },
       latitude: { type: DataTypes.DECIMAL, allowNull: false },
-      longtitude: { type: DataTypes.DECIMAL, allowNull: false },
+      longitude: { type: DataTypes.DECIMAL, allowNull: false },
       userId: { type: DataTypes.INTEGER, allowNull: false },
       typeId: { type: DataTypes.INTEGER, allowNull: false },
     },
