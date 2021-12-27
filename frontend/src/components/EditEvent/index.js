@@ -23,7 +23,7 @@ function EditEvent({
   const events = useSelector((state) => Object.values(state.event));
   const eventTypes = useSelector((state) => Object.values(state.type));
 
-  console.log("---------> eventTypes", eventTypes);
+  // console.log("---------> eventTypes", eventTypes);
 
   const [newName, setNewName] = useState(name);
   const [newDescription, setNewDescription] = useState(description);
@@ -87,7 +87,7 @@ function EditEvent({
   return (
     <div className="add-event-container">
       <div className="add-event">
-        <h2>Add an Event</h2>
+        <h2>Update an Event</h2>
         {validationErrors.length > 0 && (
           <div>
             The following errors were found:

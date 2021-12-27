@@ -84,3 +84,50 @@ function HostedEvents({
 }
 
 export default HostedEvents;
+
+
+
+
+
+
+// return (
+//   <>
+//     {isLoaded && (
+//       <div>
+//         {hostedEvents.map((hostedEvent) => (
+//           <div key={hostedEvent.id}>
+//             <EventsDetail key={hostedEvent.id} {...hostedEvent} />
+//             <div>
+//               <button
+//                 onClick={() => setShowModal(true)}
+//                 className="update-button"
+//               >
+//                 Update
+//               </button>
+//               {showModal && (
+//                 <Modal onClose={() => setShowModal(false)}>
+//                   <EditEvent
+//                     key={id}
+//                     id={id}
+//                     name={name}
+//                     description={description}
+//                     address={address}
+//                     city={city}
+//                     state={state}
+//                     zipCode={zipCode}
+//                     latitude={latitude}
+//                     longitude={longitude}
+//                     typeId={typeId}
+//                   />
+//                 </Modal>
+//               )}
+//             </div>
+
+//             <hr />
+//           </div>
+//         ))}
+//       </div>
+//     )}
+//   </>
+// );
+// }
