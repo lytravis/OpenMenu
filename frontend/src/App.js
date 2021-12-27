@@ -8,6 +8,8 @@ import Navigation from "./components/Navigation";
 import { Modal } from "./context/Modal";
 import Events from "./components/Events";
 import CreateEvent from "./components/CreateEvent";
+import UserProfile from "./components/UserProfile";
+import HostedEvents from "./components/HostedEvents";
 
 function App() {
   const dispatch = useDispatch();
@@ -37,12 +39,15 @@ function App() {
           <Route exact path="/events">
             <Events />
           </Route>
+          <Route exact path="/host">
+            <HostedEvents />
+          </Route>
           <Route exact path="/events/new">
             <CreateEvent />
           </Route>
-          {/* <Route exact path="/users/:userId">
-            <CreateEvent />
-          </Route> */}
+          <Route exact path="/users/:userId">
+            <UserProfile />
+          </Route>
         </Switch>
       )}
     </>
