@@ -30,9 +30,9 @@ function UserProfile({
   const events = useSelector((state) => Object.values(state.event));
   const images = useSelector((state) => Object.values(state.image));
 
-  console.log("-----> ****events****", events);
-  console.log("-----> userId", user);
-  console.log("&&&&&&&&&&&&&&&&&&&&> images", images);
+  // console.log("-----> ****events****", events);
+  // console.log("-----> userId", user);
+  // console.log("&&&&&&&&&&&&&&&&&&&&> images", images);
 
   return (
     <div>

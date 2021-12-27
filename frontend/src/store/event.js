@@ -33,10 +33,10 @@ const loadTypes = (data) => ({
 
 export const getEvents = () => async (dispatch) => {
   const response = await fetch("/api/events");
-  console.log("------> response", response);
+  // console.log("------> response", response);
   if (response.ok) {
     const events = await response.json();
-    console.log("---------->events", events);
+    // console.log("---------->events", events);
     dispatch(loadEvents(events));
     return events;
   }
@@ -57,10 +57,10 @@ export const addEvent = (event) => async (dispatch) => {
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(event),
   });
-  console.log("xxxxxxxxxx> response", response);
+  // console.log("xxxxxxxxxx> response", response);
   if (response.ok) {
     const data = await response.json();
-    console.log("xxxxxxxxxxxxx> data", data);
+    // console.log("xxxxxxxxxxxxx> data", data);
     dispatch(newEvent(data));
     return data;
   }
@@ -81,8 +81,10 @@ export const updateEvent = (data) => async (dispatch) => {
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(data),
   });
+  console.log("xxxxxxxxxxxxx> edit response", response);
   if (response.ok) {
     const event = await response.json();
+    console.log("yyyyyyyyyyyyyyy> edit event", event);
     dispatch(editEvent(event));
     return event;
   }

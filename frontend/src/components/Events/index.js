@@ -26,9 +26,9 @@ function Events() {
   //   dispatch(removeEvent(id));
   // };
 
-  console.log("-----> ****events****", events);
-  console.log("-----> userId", userId);
-  console.log("&&&&&&&&&&&&&&&&&&&&> images", images);
+  // console.log("-----> ****events****", events);
+  // console.log("-----> userId", userId);
+  // console.log("&&&&&&&&&&&&&&&&&&&&> images", images);
 
   return (
     <div>
