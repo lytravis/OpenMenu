@@ -22,9 +22,9 @@ const newEvent = (payload) => ({
   payload,
 });
 
-const editEvent = (event) => ({
+const editEvent = (data) => ({
   type: EDIT_EVENT,
-  event,
+  data,
 });
 
 const deleteEvent = (id) => ({
@@ -92,13 +92,14 @@ export const removeEvent = (eventId) => async (dispatch) => {
   }
 };
 
-export const updateEvent = (data) => async (dispatch) => {
-  const response = await csrfFetch(`/api/events/${data.eventId}`, {
+export const updateEvent = (data, eventId) => async (dispatch) => {
+  const response = await csrfFetch(`/api/events/${eventId}`, {
     method: "PUT",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(data),
   });
   console.log("xxxxxxxxxxxxx> edit response", response);
+  console.log("yyyyyyyyyy data", data);
   if (response.ok) {
     const event = await response.json();
     console.log("yyyyyyyyyyyyyyy> edit event", event);
@@ -122,11 +123,10 @@ export default function reducer(state = {}, action) {
       newState[action.payload.id] = action.payload;
       return newState;
     case EDIT_EVENT: {
-      // console.log(action.event);
-      return {
-        ...state,
-        [action.event.event.id]: action.event.event,
-      };
+      console.log("DDDAAAAADADA action.data", action.data);
+      newState = { ...state };
+      newState[action.data.eventId] = action.data;
+      return newState;
     }
     case DELETE_EVENT: {
       const newState = { ...state };
