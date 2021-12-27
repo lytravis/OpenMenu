@@ -4,10 +4,16 @@ const LOAD_EVENTS = "events/LOAD_EVENTS";
 const ADD_EVENT = "events/ADD_EVENT";
 const EDIT_EVENT = "events/EDIT_EVENT";
 const DELETE_EVENT = "events/DELETE_EVENT";
-const LOAD_TYPES = "events/LOAD_TYPES";
+// const LOAD_TYPES = "events/LOAD_TYPES";
+const LOAD_EVENT = "events/LOAD_EVENT";
 
 const loadEvents = (data) => ({
   type: LOAD_EVENTS,
+  data,
+});
+
+const loadEvent = (data) => ({
+  type: LOAD_EVENT,
   data,
 });
 
@@ -16,9 +22,9 @@ const newEvent = (payload) => ({
   payload,
 });
 
-const editEvent = (event) => ({
+const editEvent = (data) => ({
   type: EDIT_EVENT,
-  event,
+  data,
 });
 
 const deleteEvent = (id) => ({
@@ -26,10 +32,21 @@ const deleteEvent = (id) => ({
   id,
 });
 
-const loadTypes = (data) => ({
-  type: LOAD_TYPES,
-  data,
-});
+// const loadTypes = (data) => ({
+//   type: LOAD_TYPES,
+//   data,
+// });
+
+export const getEvent = (eventId) => async (dispatch) => {
+  const response = await fetch(`/api/events/${eventId}`);
+  console.log("------> singleresponse", response);
+  if (response.ok) {
+    const event = await response.json();
+    console.log("----------> singleevent", event);
+    dispatch(loadEvent(event));
+    return event;
+  }
+};
 
 export const getEvents = () => async (dispatch) => {
   const response = await fetch("/api/events");
@@ -42,14 +59,14 @@ export const getEvents = () => async (dispatch) => {
   }
 };
 
-export const getTypes = () => async (dispatch) => {
-  const response = await fetch("/api/types");
-  if (response.ok) {
-    const types = await response.json();
-    dispatch(loadTypes(types));
-    return types;
-  }
-};
+// export const getTypes = () => async (dispatch) => {
+//   const response = await fetch("/api/types");
+//   if (response.ok) {
+//     const types = await response.json();
+//     dispatch(loadTypes(types));
+//     return types;
+//   }
+// };
 
 export const addEvent = (event) => async (dispatch) => {
   const response = await csrfFetch("/api/events", {
@@ -66,22 +83,23 @@ export const addEvent = (event) => async (dispatch) => {
   }
 };
 
-export const removeEvent = (id) => async (dispatch) => {
-  const response = await csrfFetch(`/api/events/${id}`, {
+export const removeEvent = (eventId) => async (dispatch) => {
+  const response = await csrfFetch(`/api/events/${eventId}`, {
     method: "DELETE",
   });
   if (response.ok) {
-    dispatch(deleteEvent(id));
+    dispatch(deleteEvent(eventId));
   }
 };
 
-export const updateEvent = (data) => async (dispatch) => {
-  const response = await csrfFetch(`/api/events/${data.id}`, {
+export const updateEvent = (data, eventId) => async (dispatch) => {
+  const response = await csrfFetch(`/api/events/${eventId}`, {
     method: "PUT",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(data),
   });
   console.log("xxxxxxxxxxxxx> edit response", response);
+  console.log("yyyyyyyyyy data", data);
   if (response.ok) {
     const event = await response.json();
     console.log("yyyyyyyyyyyyyyy> edit event", event);
@@ -97,26 +115,28 @@ export default function reducer(state = {}, action) {
       newState = {};
       action.data.forEach((event) => (newState[event.id] = event));
       return newState;
+    case LOAD_EVENT:
+      newState[action.data.id] = action.data;
+      return newState;
     case ADD_EVENT:
       newState = { ...state };
       newState[action.payload.id] = action.payload;
       return newState;
     case EDIT_EVENT: {
-      // console.log(action.event);
-      return {
-        ...state,
-        [action.event.event.id]: action.event.event,
-      };
+      console.log("DDDAAAAADADA action.data", action.data);
+      newState = { ...state };
+      newState[action.data.eventId] = action.data;
+      return newState;
     }
     case DELETE_EVENT: {
       const newState = { ...state };
       delete newState[action.id];
       return newState;
     }
-    case LOAD_TYPES:
-      newState = {};
-      action.data.forEach((type) => (newState[type.id] = type));
-      return newState;
+    // case LOAD_TYPES:
+    //   newState = {};
+    //   action.data.forEach((type) => (newState[type.id] = type));
+    //   return newState;
     default:
       return state;
   }

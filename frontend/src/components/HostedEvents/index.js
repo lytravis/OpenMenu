@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { useHistory } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import "./HostedEvents.css";
-import { getEvents } from "../../store/event";
-import EventsDetail from "../EventsDetail";
-import { Modal } from "../../context/Modal";
+import { getEvents, removeEvent } from "../../store/event";
+import { useParams } from "react-router";
 import EditEvent from "../EditEvent";
 function HostedEvents({
   id,
@@ -20,8 +19,9 @@ function HostedEvents({
   typeId,
 }) {
   const dispatch = useDispatch();
-  // const [loaded, setLoaded] = useState(false);
+  const { eventId } = useParams();
   const [showModal, setShowModal] = useState(false);
+  const [isLoaded, setIsLoaded] = useState(false);
   const events = useSelector((state) => Object.values(state.event));
   const images = useSelector((state) => Object.values(state.image));
   const hostId = useSelector((state) => state.session.user.id);
@@ -29,9 +29,13 @@ function HostedEvents({
   const hostedEvents = events.filter((event) => event.userId == hostId);
 
   useEffect(() => {
-    dispatch(getEvents());
+    dispatch(getEvents()).then(() => setIsLoaded(true));
+    // return () => {
+    //   setIsLoaded();
+    // };
   }, [dispatch]);
 
+  // console.log("DADADADADADAADA eventId", eventId);
   //   console.log("$$$$$$$$$>>> hostedEvents", hostedEvents);
 
   //   console.log("xxxxxxxxx> hostId", hostId);
@@ -40,42 +44,87 @@ function HostedEvents({
 
   //   console.log("&&&&&&&&&&&&&&&&&&&&> images", images);
 
-  return (
-    <div>
-      {hostedEvents.map((hostedEvent) => (
-        <div key={hostedEvent.id}>
-          <EventsDetail key={hostedEvent.id} {...hostedEvent} />
-          <div>
-            <button
-              onClick={() => setShowModal(true)}
-              className="update-button"
-            >
-              Update
-            </button>
-            {showModal && (
-              <Modal onClose={() => setShowModal(false)}>
-                <EditEvent
-                  key={id}
-                  id={id}
-                  name={name}
-                  description={description}
-                  address={address}
-                  city={city}
-                  state={state}
-                  zipCode={zipCode}
-                  latitude={latitude}
-                  longitude={longitude}
-                  typeId={typeId}
-                />
-              </Modal>
-            )}
-          </div>
+  const handleDelete = (eventId) => {
+    dispatch(removeEvent(eventId));
+  };
 
-          <hr />
+  return (
+    <>
+      {isLoaded && (
+        <div>
+          {hostedEvents.map((hostedEvent) => (
+            <div className="host-container" key={hostedEvent.id}>
+              <div>{hostedEvent.name}</div>
+              <div>{hostedEvent.id}</div>
+              <div className="host-info">
+                {" "}
+                <div>{hostedEvent.description}</div>
+                <div>
+                  {hostedEvent.address} {hostedEvent.city} {hostedEvent.state} ,{" "}
+                  {hostedEvent.zipCode}{" "}
+                </div>
+                <div className="host-buttons">
+                  <button
+                    onClick={() => handleDelete(hostedEvent.id)}
+                    className="delete-button"
+                  >
+                    Delete
+                  </button>
+                  <Link to={`events/${hostedEvent.id}/edit`}>
+                    <button type="button" className="edit-button">
+                      Edit
+                    </button>
+                  </Link>
+                </div>
+              </div>
+            </div>
+          ))}
         </div>
-      ))}
-    </div>
+      )}
+    </>
   );
 }
 
 export default HostedEvents;
+
+// return (
+//   <>
+//     {isLoaded && (
+//       <div>
+//         {hostedEvents.map((hostedEvent) => (
+//           <div key={hostedEvent.id}>
+//             <EventsDetail key={hostedEvent.id} {...hostedEvent} />
+//             <div>
+//               <button
+//                 onClick={() => setShowModal(true)}
+//                 className="update-button"
+//               >
+//                 Update
+//               </button>
+//               {showModal && (
+//                 <Modal onClose={() => setShowModal(false)}>
+//                   <EditEvent
+//                     key={id}
+//                     id={id}
+//                     name={name}
+//                     description={description}
+//                     address={address}
+//                     city={city}
+//                     state={state}
+//                     zipCode={zipCode}
+//                     latitude={latitude}
+//                     longitude={longitude}
+//                     typeId={typeId}
+//                   />
+//                 </Modal>
+//               )}
+//             </div>
+
+//             <hr />
+//           </div>
+//         ))}
+//       </div>
+//     )}
+//   </>
+// );
+// }

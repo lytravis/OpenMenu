@@ -1,41 +1,37 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
-import { updateEvent } from "../../store/event";
-import { getTypes } from "../../store/event";
+import { useParams } from "react-router";
+import { updateEvent, getEvents } from "../../store/event";
+import { getTypes } from "../../store/type";
+import { getImages } from "../../store/image";
 
-function EditEvent({
-  id,
-  name,
-  description,
-  address,
-  city,
-  state,
-  zipCode,
-  latitude,
-  longitude,
-  typeId,
-}) {
+function EditEvent() {
   const dispatch = useDispatch();
   const history = useHistory();
-  const [loaded, setLoaded] = useState(false);
-
-  const userId = useSelector((state) => state.session.user.id);
+  const { eventId } = useParams();
+  // const userId = useSelector((state) => state.session.user.id);
+  const hostId = useSelector((state) => state.session.user.id);
+  const images = useSelector((state) => Object.values(state.image));
   const events = useSelector((state) => Object.values(state.event));
-  const eventTypes = useSelector((state) => Object.values(state.event));
+  const eventTypes = useSelector((state) => Object.values(state.type));
+  const event = useSelector((state) => state?.event[eventId]);
+  const eventImages = images.filter((image) => image.eventId == event.id);
 
-  //   console.log("---------> eventTypes", eventTypes);
+  console.log("&&&&&&&&&&&&&&&&&&&&> images", images);
+  console.log("%%%%%%%%%%%%%>> eventImages", eventImages);
+  // console.log("---------> eventTypes", eventTypes);
+  console.log("@@@@@@@@@@@@> event", event);
 
-  const [newName, setNewName] = useState(name);
-  const [newDescription, setNewDescription] = useState(description);
-  const [newAddress, setNewAddress] = useState(address);
-  const [newCity, setNewCity] = useState(city);
-  const [newState, setNewState] = useState(state);
-  const [newZipCode, setNewZipCode] = useState(zipCode);
-  const [newLatitude, setNewLatitude] = useState(latitude);
-  const [newLongitude, setNewLongitude] = useState(longitude);
-  const [newTypeId, setNewTypeId] = useState(typeId);
-
+  const [name, setName] = useState("");
+  const [description, setDescription] = useState("");
+  const [address, setAddress] = useState("");
+  const [city, setCity] = useState("");
+  const [state, setState] = useState("");
+  const [zipCode, setZipCode] = useState("");
+  const [latitude, setLatitude] = useState("");
+  const [longitude, setLongitude] = useState("");
+  const [typeId, setTypeId] = useState(1);
   const [validationErrors, setValidationErrors] = useState([]);
 
   const validate = () => {
@@ -55,8 +51,25 @@ function EditEvent({
   };
 
   useEffect(() => {
-    dispatch(getTypes());
+    dispatch(getEvents());
   }, [dispatch]);
+
+  useEffect(() => {
+    dispatch(getTypes());
+    dispatch(getImages());
+  }, [dispatch]);
+
+  useEffect(() => {
+    setName(event?.name);
+    setDescription(event?.description);
+    setAddress(event?.address);
+    setCity(event?.city);
+    setState(event?.state);
+    setZipCode(event?.zipCode);
+    setLatitude(event?.latitude);
+    setLongitude(event?.longitude);
+    setTypeId(event?.typeId);
+  }, [event]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -65,30 +78,27 @@ function EditEvent({
     if (errors.length > 0) return setValidationErrors(errors);
 
     const payload = {
-      id,
-      userId: userId,
-      name: newName,
-      description: newDescription,
-      address: newAddress,
-      city: newCity,
-      state: newState,
-      zipCode: newZipCode,
-      latitude: newLatitude,
-      longitude: newLongitude,
-      typeId: newTypeId,
+      userId: hostId,
+      name,
+      description,
+      address,
+      city,
+      state,
+      zipCode,
+      latitude,
+      longitude,
+      typeId,
     };
 
-    dispatch(updateEvent(payload));
+    dispatch(updateEvent(payload, eventId));
     history.push("/host");
   };
 
-  // console.log("-----> ****events****", events);
-  //   console.log("-----> userId", userId);
 
   return (
     <div className="add-event-container">
       <div className="add-event">
-        <h2>Add an Event</h2>
+        <h2>Update an Event</h2>
         {validationErrors.length > 0 && (
           <div>
             The following errors were found:
@@ -102,7 +112,7 @@ function EditEvent({
         <form onSubmit={handleSubmit} className="add-event">
           <div>
             <input
-              onChange={(e) => setNewName(e.target.value)}
+              onChange={(e) => setName(e.target.value)}
               value={name}
               type="text"
               placeholder="Event Name"
@@ -110,7 +120,7 @@ function EditEvent({
           </div>
           <div>
             <textarea
-              onChange={(e) => setNewDescription(e.target.value)}
+              onChange={(e) => setDescription(e.target.value)}
               value={description}
               type="text"
               placeholder="Event Description"
@@ -118,7 +128,7 @@ function EditEvent({
           </div>
           <div>
             <input
-              onChange={(e) => setNewAddress(e.target.value)}
+              onChange={(e) => setAddress(e.target.value)}
               value={address}
               type="text"
               placeholder="Event Address"
@@ -126,7 +136,7 @@ function EditEvent({
           </div>
           <div>
             <input
-              onChange={(e) => setNewCity(e.target.value)}
+              onChange={(e) => setCity(e.target.value)}
               value={city}
               type="text"
               placeholder="Event City"
@@ -134,7 +144,7 @@ function EditEvent({
           </div>
           <div>
             <input
-              onChange={(e) => setNewState(e.target.value)}
+              onChange={(e) => setState(e.target.value)}
               value={state}
               type="text"
               placeholder="Event State"
@@ -142,7 +152,7 @@ function EditEvent({
           </div>
           <div>
             <input
-              onChange={(e) => setNewZipCode(e.target.value)}
+              onChange={(e) => setZipCode(e.target.value)}
               value={zipCode}
               type="text"
               placeholder="Event Zip Code"
@@ -150,7 +160,7 @@ function EditEvent({
           </div>
           <div>
             <input
-              onChange={(e) => setNewLatitude(e.target.value)}
+              onChange={(e) => setLatitude(e.target.value)}
               value={latitude}
               type="text"
               placeholder="Event Latitude"
@@ -158,7 +168,7 @@ function EditEvent({
           </div>
           <div>
             <input
-              onChange={(e) => setNewLongitude(e.target.value)}
+              onChange={(e) => setLongitude(e.target.value)}
               value={longitude}
               type="text"
               placeholder="Event Longitude"
@@ -166,10 +176,7 @@ function EditEvent({
           </div>
           <div>
             <label>Type</label>
-            <select
-              value={typeId}
-              onChange={(e) => setNewTypeId(e.target.value)}
-            >
+            <select value={typeId} onChange={(e) => setTypeId(e.target.value)}>
               {eventTypes.map((type) => (
                 <option value={type.id} key={type.id}>
                   {type.name}

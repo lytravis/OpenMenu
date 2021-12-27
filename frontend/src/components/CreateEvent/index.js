@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import "./CreateEvent.css";
 import { addEvent } from "../../store/event";
-import { getTypes } from "../../store/event";
+import { getTypes } from "../../store/type";
 
 function CreateEvent() {
   const dispatch = useDispatch();
@@ -12,7 +12,7 @@ function CreateEvent() {
 
   const userId = useSelector((state) => state.session.user.id);
   const events = useSelector((state) => Object.values(state.event));
-  const eventTypes = useSelector((state) => Object.values(state.event));
+  const eventTypes = useSelector((state) => Object.values(state.type));
 
   console.log("---------> eventTypes", eventTypes);
 
@@ -67,7 +67,8 @@ function CreateEvent() {
     };
 
     dispatch(addEvent(payload));
-    history.push(`/users/${userId}`);
+    // history.push(`/users/${userId}`);
+    history.push("/host");
   };
 
   // console.log("-----> ****events****", events);

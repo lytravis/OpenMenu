@@ -22,10 +22,10 @@ const deleteImage = (id) => ({
 
 export const getImages = () => async (dispatch) => {
   const response = await fetch("/api/images");
-  console.log("%%%%%%%%%%%%%%------> response", response);
+  // console.log("%%%%%%%%%%%%%%------> response", response);
   if (response.ok) {
     const images = await response.json();
-    console.log("---------->images", images);
+    // console.log("---------->images", images);
     dispatch(loadImages(images));
     return images;
   }

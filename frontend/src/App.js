@@ -10,6 +10,9 @@ import Events from "./components/Events";
 import CreateEvent from "./components/CreateEvent";
 import UserProfile from "./components/UserProfile";
 import HostedEvents from "./components/HostedEvents";
+import SingleEvent from "./components/SingleEvent";
+import ReviewForm from "./components/Reviews/ReviewForm";
+import EditEvent from "./components/EditEvent";
 
 function App() {
   const dispatch = useDispatch();
@@ -47,6 +50,15 @@ function App() {
           </Route>
           <Route exact path="/users/:userId">
             <UserProfile />
+          </Route>
+          <Route exact path="/events/:eventId">
+            <SingleEvent />
+          </Route>
+          <Route exact path="/events/:eventId/edit">
+            <EditEvent />
+          </Route>
+          <Route exact path="/reviews/new">
+            <ReviewForm />
           </Route>
         </Switch>
       )}
