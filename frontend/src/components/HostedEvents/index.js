@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { Link, useHistory } from "react-router-dom";
+import { Link, useHistory, useParams } from "react-router-dom";
 import "./HostedEvents.css";
 import { getEvents, removeEvent } from "../../store/event";
-import { useParams } from "react-router";
+
 import EditEvent from "../EditEvent";
+
 function HostedEvents({
   id,
   name,

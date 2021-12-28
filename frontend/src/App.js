@@ -13,6 +13,7 @@ import HostedEvents from "./components/HostedEvents";
 import SingleEvent from "./components/SingleEvent";
 import ReviewForm from "./components/Reviews/ReviewForm";
 import EditEvent from "./components/EditEvent";
+import SplashPage from "./components/SplashPage";
 
 function App() {
   const dispatch = useDispatch();
@@ -36,6 +37,9 @@ function App() {
           {/* <Route path="/login" >
             <LoginFormPage />
           </Route> */}
+          <Route exact path="/">
+            <SplashPage />
+          </Route>
           <Route path="/signup">
             <SignupFormPage />
           </Route>

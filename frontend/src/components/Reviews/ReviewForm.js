@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { Rating } from "react-simple-star-rating";
-import { useHistory } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { addReview } from "../../store/review";
 
-const ReviewForm = ({ eventId }) => {
+const ReviewForm = () => {
   const dispatch = useDispatch();
   const history = useHistory();
+  const { eventId } = useParams();
 
   const userId = useSelector((state) => state.session.user.id);
   const [foodRating, setFoodRating] = useState(0);
@@ -18,7 +19,7 @@ const ReviewForm = ({ eventId }) => {
   const [comment, setComment] = useState("");
   const [validationErrors, setValidationErrors] = useState([]);
 
-  console.log("mmmmmmmmmmmm eventId", eventId);
+  console.log("mmmmmmmm***************mmmm eventId", eventId);
 
   const validate = () => {
     const validationErrors = [];

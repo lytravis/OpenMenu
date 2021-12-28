@@ -24,7 +24,7 @@ function Navigation({ isLoaded }) {
     <ul>
       <li>
         <NavLink exact to="/">
-          Home
+          OpenMenu
         </NavLink>
         <NavLink className="nav-nav" exact to={`/events/new`}>
           Host an event
