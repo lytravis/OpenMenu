@@ -1,3 +1,18 @@
-.profile-dropdown {
-  position: absolute;
+@import url("https://fonts.googleapis.com/css2?family=Montserrat&display=swap");
+
+.nav-container {
+  display: flex;
+}
+
+.nav-list {
+  display: flex;
+  flex-direction: row;
+  list-style: none;
+  background-color: rgba(212, 197, 197, 0);
+  font-family: "Montserrat", sans-serif;
+  color: blueviolet;
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  justify-content: space-between;
+  list-style-type: none;
 }
