@@ -21,6 +21,7 @@ function HostedEvents({
 }) {
   const dispatch = useDispatch();
   const { eventId } = useParams();
+  const history = useHistory();
   const [showModal, setShowModal] = useState(false);
   const [isLoaded, setIsLoaded] = useState(false);
   const events = useSelector((state) => Object.values(state.event));
@@ -49,12 +50,21 @@ function HostedEvents({
     dispatch(removeEvent(eventId));
   };
 
+  const goToEvent = (e, eventId) => {
+    e.preventDefault();
+    history.push(`/events/${eventId}`);
+  };
+
   return (
     <>
       {isLoaded && (
         <div>
           {hostedEvents.map((hostedEvent) => (
-            <div className="host-container" key={hostedEvent.id}>
+            <div
+              className="host-container"
+              key={hostedEvent.id}
+              onClick={(e) => goToEvent(e, hostedEvent.id)}
+            >
               <div>{hostedEvent.name}</div>
               <div>{hostedEvent.id}</div>
               <div className="host-info">
