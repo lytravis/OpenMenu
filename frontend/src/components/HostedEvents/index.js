@@ -60,33 +60,31 @@ function HostedEvents({
       {isLoaded && (
         <div>
           {hostedEvents.map((hostedEvent) => (
-            <div
-              className="host-container"
-              key={hostedEvent.id}
-              onClick={(e) => goToEvent(e, hostedEvent.id)}
-            >
-              <div>{hostedEvent.name}</div>
-              <div>{hostedEvent.id}</div>
-              <div className="host-info">
-                {" "}
-                <div>{hostedEvent.description}</div>
-                <div>
-                  {hostedEvent.address} {hostedEvent.city} {hostedEvent.state} ,{" "}
-                  {hostedEvent.zipCode}{" "}
+            <div className="host-container" key={hostedEvent.id}>
+              <div onClick={(e) => goToEvent(e, hostedEvent.id)}>
+                <div>{hostedEvent.name}</div>
+                <div>{hostedEvent.id}</div>
+                <div className="host-info">
+                  {" "}
+                  <div>{hostedEvent.description}</div>
+                  <div>
+                    {hostedEvent.address} {hostedEvent.city} {hostedEvent.state}{" "}
+                    , {hostedEvent.zipCode}{" "}
+                  </div>
                 </div>
-                <div className="host-buttons">
-                  <button
-                    onClick={() => handleDelete(hostedEvent.id)}
-                    className="delete-button"
-                  >
-                    Delete
+              </div>
+              <div className="host-buttons">
+                <button
+                  onClick={() => handleDelete(hostedEvent.id)}
+                  className="delete-button"
+                >
+                  Delete
+                </button>
+                <Link to={`events/${hostedEvent.id}/edit`}>
+                  <button type="button" className="edit-button">
+                    Edit
                   </button>
-                  <Link to={`events/${hostedEvent.id}/edit`}>
-                    <button type="button" className="edit-button">
-                      Edit
-                    </button>
-                  </Link>
-                </div>
+                </Link>
               </div>
             </div>
           ))}
