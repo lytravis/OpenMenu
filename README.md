@@ -21,7 +21,7 @@ OpenMenu is a Airbnb clone that aims to build community amongst food lovers, whe
 
 ## [Database Schema](https://github.com/lytravis/OpenMenu/wiki/Database-Schema)
 
-![Database schema image](https://drawsql.app/lytravis/diagrams/openmenu)
+![Database schema image](https://cdn.discordapp.com/attachments/920377762068447282/920421269063757824/drawSQL-export-2021-12-14_13_05.png)
 
 
 ## Contributors
