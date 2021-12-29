@@ -18,10 +18,10 @@ function EditEvent() {
   const event = useSelector((state) => state?.event[eventId]);
   const eventImages = images.filter((image) => image.eventId == event.id);
 
-  console.log("&&&&&&&&&&&&&&&&&&&&> images", images);
-  console.log("%%%%%%%%%%%%%>> eventImages", eventImages);
+  // console.log("&&&&&&&&&&&&&&&&&&&&> images", images);
+  // console.log("%%%%%%%%%%%%%>> eventImages", eventImages);
   // console.log("---------> eventTypes", eventTypes);
-  console.log("@@@@@@@@@@@@> event", event);
+  // console.log("@@@@@@@@@@@@> event", event);
 
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");

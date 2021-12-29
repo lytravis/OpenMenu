@@ -50,11 +50,11 @@ export const addReview = (review) => async (dispatch) => {
 };
 
 export const removeReview = (reviewId) => async (dispatch) => {
-  console.log("!!!! store reviewId", reviewId);
+  // console.log("!!!! store reviewId", reviewId);
   const response = await csrfFetch(`/api/reviews/${reviewId}`, {
     method: "DELETE",
   });
-  console.log("@@@@@@@@@@ STORE response for DELETE", response);
+  // console.log("@@@@@@@@@@ STORE response for DELETE", response);
   if (response.ok) {
     dispatch(deleteReview(reviewId));
   }
@@ -66,10 +66,10 @@ export const updateReview = (data, reviewId) => async (dispatch) => {
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(data),
   });
-  console.log("xxxxxxxxxxxxx> edit response", response);
+  // console.log("xxxxxxxxxxxxx> edit response", response);
   if (response.ok) {
     const review = await response.json();
-    console.log("yyyyyyyyyyyyyyy> edit review", review);
+    // console.log("yyyyyyyyyyyyyyy> edit review", review);
     dispatch(editReview(review));
     return review;
   }
@@ -94,7 +94,7 @@ export default function reducer(state = {}, action) {
     //   };
     // }
     case EDIT_REVIEW: {
-      console.log("DDDAAAAADADA action.data", action.data);
+      // console.log("DDDAAAAADADA action.data", action.data);
       newState = { ...state };
       newState[action.data.eventId] = action.data;
       return newState;

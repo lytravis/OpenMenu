@@ -32,9 +32,9 @@ function Navigation({ isLoaded }) {
         <NavLink className="nav-nav" exact to={`/events`}>
           EVENTS
         </NavLink>
-        <NavLink className="nav-nav" exact to={`/users/${sessionUser?.id}`}>
+        {/* <NavLink className="nav-nav" exact to={`/users/${sessionUser?.id}`}>
           Manage events
-        </NavLink>
+        </NavLink> */}
         <NavLink className="nav-nav" exact to={"/host"}>
           My Events
         </NavLink>

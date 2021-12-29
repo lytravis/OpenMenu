@@ -14,7 +14,7 @@ function CreateEvent() {
   const events = useSelector((state) => Object.values(state.event));
   const eventTypes = useSelector((state) => Object.values(state.type));
 
-  console.log("---------> eventTypes", eventTypes);
+  // console.log("---------> eventTypes", eventTypes);
 
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
