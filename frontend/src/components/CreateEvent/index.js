@@ -72,7 +72,7 @@ function CreateEvent() {
   };
 
   // console.log("-----> ****events****", events);
-  console.log("-----> userId", userId);
+  // console.log("-----> userId", userId);
 
   return (
     <div className="add-event-container">
