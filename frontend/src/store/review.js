@@ -21,7 +21,7 @@ const editReview = (data) => ({
 });
 
 const deleteReview = (reviewId) => ({
-  DELETE_REVIEW,
+  type: DELETE_REVIEW,
   reviewId,
 });
 
