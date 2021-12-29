@@ -71,7 +71,8 @@ const ReviewForm = () => {
     };
 
     dispatch(addReview(payload));
-    history.push(`/events/:eventId`);
+    // history.push(`/events/:eventId`);
+    history.push("/events");
   };
 
   return (
@@ -83,6 +84,7 @@ const ReviewForm = () => {
           <Rating
             onClick={(rating) => setFoodRating(rating)}
             ratingValue={foodRating}
+            showTooltip
           />
         </div>
 
@@ -91,6 +93,7 @@ const ReviewForm = () => {
           <Rating
             onClick={(rating) => setExperienceRating(rating)}
             ratingValue={experienceRating}
+            showTooltip
           />
         </div>
         <div>
@@ -98,6 +101,7 @@ const ReviewForm = () => {
           <Rating
             onClick={(rating) => setCleanlinessRating(rating)}
             ratingValue={cleanlinessRating}
+            showTooltip
           />
         </div>
         <div>
@@ -105,6 +109,7 @@ const ReviewForm = () => {
           <Rating
             onClick={(rating) => setAccuracyRating(rating)}
             ratingValue={accuracyRating}
+            showTooltip
           />
         </div>
         <div>
@@ -112,6 +117,7 @@ const ReviewForm = () => {
           <Rating
             onClick={(rating) => setValueRating(rating)}
             ratingValue={valueRating}
+            showTooltip
           />
         </div>
         <div>
@@ -119,6 +125,7 @@ const ReviewForm = () => {
           <Rating
             onClick={(rating) => setCommunicationRating(rating)}
             ratingValue={communicationRating}
+            showTooltip
           />
         </div>
       </div>

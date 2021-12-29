@@ -14,6 +14,7 @@ import SingleEvent from "./components/SingleEvent";
 import ReviewForm from "./components/Reviews/ReviewForm";
 import EditEvent from "./components/EditEvent";
 import SplashPage from "./components/SplashPage";
+import Reviews from "./components/Reviews/Reviews";
 
 function App() {
   const dispatch = useDispatch();
@@ -63,6 +64,9 @@ function App() {
           </Route>
           <Route exact path="/reviews/new">
             <ReviewForm />
+          </Route>
+          <Route exact path="/reviews">
+            <Reviews />
           </Route>
         </Switch>
       )}

@@ -6,6 +6,7 @@ import { getImages } from "../../store/image";
 import { getReviews } from "../../store/review";
 import { getTypes } from "../../store/type";
 import ReviewForm from "../Reviews/ReviewForm";
+import Reviews from "../Reviews/Reviews";
 
 function SingleEvent() {
   const dispatch = useDispatch();
@@ -21,26 +22,27 @@ function SingleEvent() {
   const reviews = useSelector((state) => Object.values(state.review));
   const eventReviews = reviews.filter((review) => review.eventId == event.id);
 
-  console.log("REVIEWS", reviews);
-  console.log("$$ EVENT REVIEWS", eventReviews);
-  console.log("$$$$ EVENT IMAGES", eventImages);
-  console.log("-----> ****events****", events);
-  console.log("mmmmmmmmm EVENTID", eventId);
-  //   console.log("-----> userId", userId);
-  //   console.log("&&&&&&&&&&&&&&&&&&&&> images", images);
+  
+  // console.log("REVIEWS", reviews);
+  // console.log("$$ EVENT REVIEWS", eventReviews);
+  // console.log("$$$$ EVENT IMAGES", eventImages);
+  // console.log("-----> ****events****", events);
+  // console.log("mmmmmmmmm EVENTID", eventId);
+  // //   console.log("-----> userId", userId);
+  // //   console.log("&&&&&&&&&&&&&&&&&&&&> images", images);
 
-  console.log("oooooooooooo>>> event", event);
+  // console.log("oooooooooooo>>> event", event);
 
   const eventTypes = useSelector((state) => Object.values(state.event));
 
-  console.log("---------> eventTypes", eventTypes);
+  // console.log("---------> eventTypes", eventTypes);
 
   useEffect(() => {
     // dispatch(getEvent(eventId));
-    dispatch(getEvents()).then(() => setIsLoaded(true));
+    dispatch(getEvents());
     dispatch(getImages());
     dispatch(getReviews());
-    dispatch(getTypes());
+    dispatch(getTypes()).then(() => setIsLoaded(true));
   }, [dispatch]);
 
   return (
@@ -79,6 +81,7 @@ function SingleEvent() {
                 ({
                   id,
                   comment,
+                  userId,
                   food,
                   experience,
                   cleanliness,
@@ -86,13 +89,22 @@ function SingleEvent() {
                   value,
                   communication,
                 }) => (
-                  <h3 key={id}>{comment}</h3>
+                  <>
+                    <h3 key={id}>{comment}</h3>
+                    {/* <span>{eventReviews.User.firstName}</span> */}
+                  </>
                 )
               )}
             </div>
             <div>
+              {/* {reviews.map((review) => (
+                <span>{review.User.firstName}</span>
+              ))} */}
+            </div>
+            <div>
               <ReviewForm />
             </div>
+            <Reviews />
           </div>
         </div>
       )}

@@ -52,7 +52,7 @@ router.get(
   "/",
   asyncHandler(async (req, res) => {
     const reviews = await Review.findAll({
-      //   include: [{ model: User }, { model: Event }],
+      include: [{ model: User }, { model: Event }],
     });
     return res.json(reviews);
   })

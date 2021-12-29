@@ -55,7 +55,9 @@ const validateEvent = [
 router.get(
   "/",
   asyncHandler(async (req, res) => {
-    const events = await Event.findAll();
+    const events = await Event.findAll({
+      include: [{ model: User }],
+    });
     return res.json(events);
   })
 );
