@@ -2,13 +2,14 @@
 
 .nav-container {
   display: flex;
+  background-color: rgba(129, 48, 48, 0);
 }
 
 .nav-list {
   display: flex;
   flex-direction: row;
   list-style: none;
-  background-color: rgba(212, 197, 197, 0);
+  background-color: rgba(129, 48, 48, 0);
   font-family: "Montserrat", sans-serif;
   color: blueviolet;
   text-decoration: none;

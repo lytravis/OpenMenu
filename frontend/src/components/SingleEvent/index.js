@@ -45,8 +45,8 @@ function SingleEvent() {
     // dispatch(getEvent(eventId));
     dispatch(getEvents());
     dispatch(getImages());
-    dispatch(getReviews());
-    dispatch(getTypes()).then(() => setIsLoaded(true));
+    dispatch(getTypes());
+    dispatch(getReviews()).then(() => setIsLoaded(true));
   }, [dispatch]);
 
   const handleDelete = (reviewId) => {
