@@ -1,0 +1,27 @@
+.signup {
+  display: grid;
+  place-items: center;
+  /* height: 100vh; */
+  /* background-color: black; */
+}
+
+.signup p {
+  display: grid;
+  place-items: center;
+}
+
+.signup label {
+  display: block;
+  margin-bottom: 4px;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.signup input {
+  padding: 5px 20px;
+  width: 300px;
+  height: 25px;
+  /* font-weight: 400;
+    line-height: 24px; */
+  margin-bottom: 10px;
+}

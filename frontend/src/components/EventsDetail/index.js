@@ -4,6 +4,7 @@ import { getEvents, removeEvent, updateEvent } from "../../store/event";
 import EditEvent from "../EditEvent";
 
 import { Modal } from "../../context/Modal";
+import { useHistory } from "react-router-dom";
 
 const EventsDetail = ({
   id,
@@ -19,11 +20,13 @@ const EventsDetail = ({
   typeId,
 }) => {
   const dispatch = useDispatch();
+  const history = useHistory();
+
   const [showModal, setShowModal] = useState(false);
   const events = useSelector((state) => Object.values(state.event));
   const hostId = useSelector((state) => state.session.user.id);
 
-  const hostedEvents = events.filter((event) => event.userId == hostId);
+  const hostedToEvent = events.filter((event) => event.userId == hostId);
 
   // console.log("$$$$$$$$$>>> hostedEvents", hostedEvents);
 
@@ -32,13 +35,21 @@ const EventsDetail = ({
   const handleDelete = (id) => {
     dispatch(removeEvent(id));
   };
+
+  const goToEvent = (e, eventId) => {
+    e.preventDefault();
+    history.push(`/events/${eventId}`);
+  };
+
   // const handleUpdate = (id) => {
   //   dispatch(updateEvent(id));
   // };
 
   return (
     <div className="event-detail">
-      <span className="event-title">{name}</span>
+      <span className="event-title" onClick={(e) => goToEvent(e, id)}>
+        {name}
+      </span>
       <div>{description}</div>
       <div>
         {address}
