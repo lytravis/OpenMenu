@@ -56,7 +56,7 @@ router.get(
   "/",
   asyncHandler(async (req, res) => {
     const events = await Event.findAll({
-      include: [{ model: User }],
+      include: [{ model: User }, { model: Type }],
     });
     return res.json(events);
   })
@@ -64,9 +64,12 @@ router.get(
 
 //GET ONE EVENT
 router.get(
-  "/:id(\\d+)",
+  "/:eventId(\\d+)",
   asyncHandler(async (req, res) => {
-    const event = await Event.findByPk(req.params.eventId);
+    const event = await Event.findByPk(req.params.eventId, {
+      include: [{ model: User }, { model: Type }],
+    });
+
     return res.json(event);
   })
 );
