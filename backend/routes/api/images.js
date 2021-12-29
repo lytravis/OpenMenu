@@ -18,7 +18,9 @@ const router = express.Router();
 router.get(
   "/",
   asyncHandler(async (req, res) => {
-    const images = await Image.findAll();
+    const images = await Image.findAll({
+      include: [{ model: Event }],
+    });
     return res.json(images);
   })
 );

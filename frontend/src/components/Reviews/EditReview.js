@@ -2,12 +2,12 @@ import React, { useEffect, useState } from "react";
 import { Rating } from "react-simple-star-rating";
 import { useHistory, useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { addReview } from "../../store/review";
+import { updateReview, removeReview } from "../../store/review";
 
-const ReviewForm = () => {
+function EditReview({ review }) {
   const dispatch = useDispatch();
   const history = useHistory();
-  const { eventId } = useParams();
+  const { eventId, reviewId } = useParams();
 
   const userId = useSelector((state) => state.session.user.id);
   const [foodRating, setFoodRating] = useState(0);
@@ -42,15 +42,15 @@ const ReviewForm = () => {
 
   useEffect(() => {
     return () => {
-      setFoodRating(0);
-      setExperienceRating(0);
-      setCleanlinessRating(0);
-      setAccuracyRating(0);
-      setValueRating(0);
-      setCommunicationRating(0);
-      setComment("");
+      setFoodRating(review?.food);
+      setExperienceRating(review?.experience);
+      setCleanlinessRating(review?.cleanliness);
+      setAccuracyRating(review?.accuracy);
+      setValueRating(review?.value);
+      setCommunicationRating(review?.communication);
+      setComment(review?.comment);
     };
-  }, []);
+  }, [review]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -70,13 +70,16 @@ const ReviewForm = () => {
       comment,
     };
 
-    dispatch(addReview(payload));
+    dispatch(updateReview(payload, reviewId));
     // history.push(`/events/:eventId`);
-    history.push("/events");
+    history.push("/events/1");
   };
 
   return (
     <div className="review-container">
+      <div>
+        <h1>TEST</h1>
+      </div>
       <div>Leave a Review</div>
       <div className="rating-container">
         <div>
@@ -145,8 +148,6 @@ const ReviewForm = () => {
       </div>
     </div>
   );
+}
 
-  //   <Rating onClick={handleRating} ratingValue={rating}
-};
-
-export default ReviewForm;
+export default EditReview;

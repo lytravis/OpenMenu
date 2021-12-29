@@ -2,8 +2,8 @@ import { csrfFetch } from "./csrf";
 
 const LOAD_REVIEWS = "reviews/LOAD_REVIEWS";
 const ADD_REVIEWS = "reviews/ADD_REVIEWS";
-const EDIT_REVIEWS = "reviews/EDIT_REVIEWS";
-const DELETE_REVIEWS = "reviews/DELETE_REVIEWS";
+const EDIT_REVIEW = "reviews/EDIT_REVIEW";
+const DELETE_REVIEW = "reviews/DELETE_REVIEW";
 
 const loadReviews = (data) => ({
   type: LOAD_REVIEWS,
@@ -15,14 +15,14 @@ const newReview = (payload) => ({
   payload,
 });
 
-const editReview = (review) => ({
-  type: EDIT_REVIEWS,
-  review,
+const editReview = (data) => ({
+  type: EDIT_REVIEW,
+  data,
 });
 
-const deleteReview = (id) => ({
-  DELETE_REVIEWS,
-  id,
+const deleteReview = (reviewId) => ({
+  DELETE_REVIEW,
+  reviewId,
 });
 
 export const getReviews = () => async (dispatch) => {
@@ -49,17 +49,19 @@ export const addReview = (review) => async (dispatch) => {
   }
 };
 
-export const removeReview = (id) => async (dispatch) => {
-  const response = await csrfFetch(`/api/reviews/${id}`, {
+export const removeReview = (reviewId) => async (dispatch) => {
+  console.log("!!!! store reviewId", reviewId);
+  const response = await csrfFetch(`/api/reviews/${reviewId}`, {
     method: "DELETE",
   });
+  console.log("@@@@@@@@@@ STORE response for DELETE", response);
   if (response.ok) {
-    dispatch(deleteReview(id));
+    dispatch(deleteReview(reviewId));
   }
 };
 
-export const updateReview = (data) => async (dispatch) => {
-  const response = await csrfFetch(`/api/reviews/${data.id}`, {
+export const updateReview = (data, reviewId) => async (dispatch) => {
+  const response = await csrfFetch(`/api/reviews/${reviewId}`, {
     method: "PUT",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(data),
@@ -84,16 +86,22 @@ export default function reducer(state = {}, action) {
       newState = { ...state };
       newState[action.payload.id] = action.payload;
       return newState;
-    case EDIT_REVIEWS: {
-      // console.log(action.event);
-      return {
-        ...state,
-        [action.review.event.id]: action.review.event,
-      };
+    // case EDIT_REVIEWS: {
+    //   // console.log(action.event);
+    //   return {
+    //     ...state,
+    //     [action.review.event.id]: action.review.event,
+    //   };
+    // }
+    case EDIT_REVIEW: {
+      console.log("DDDAAAAADADA action.data", action.data);
+      newState = { ...state };
+      newState[action.data.eventId] = action.data;
+      return newState;
     }
-    case DELETE_REVIEWS: {
+    case DELETE_REVIEW: {
       const newState = { ...state };
-      delete newState[action.id];
+      delete newState[action.reviewId];
       return newState;
     }
 

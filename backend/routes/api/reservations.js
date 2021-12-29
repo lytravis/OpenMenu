@@ -26,7 +26,9 @@ const rsvpNotFoundError = (id) => {
 router.get(
   "/",
   asyncHandler(async (req, res) => {
-    const reservations = await Reservation.findAll();
+    const reservations = await Reservation.findAll({
+      include: [{ model: User }, { model: Event }],
+    });
     return res.json(reservations);
   })
 );

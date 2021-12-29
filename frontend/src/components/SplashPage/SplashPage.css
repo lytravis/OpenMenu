@@ -1,0 +1,13 @@
+.splash-picture {
+  background-image: url("https://cdn.discordapp.com/attachments/920377762068447282/925140382650630235/pexels-photo-3298637.jpg");
+  background-size: cover;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: white;
+}
+
+.splash-h1 {
+  font-size: 100px;
+}

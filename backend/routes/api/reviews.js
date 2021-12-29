@@ -52,21 +52,31 @@ router.get(
   "/",
   asyncHandler(async (req, res) => {
     const reviews = await Review.findAll({
-      //   include: [{ model: User }, { model: Event }],
+      include: [{ model: User }, { model: Event }],
     });
     return res.json(reviews);
   })
 );
 
-router.delete(
+router.get(
   "/:id(\\d+)",
+  asyncHandler(async (req, res) => {
+    const review = await Review.findByPk(req.params.eventId, {
+      include: [{ model: User }, { model: Event }],
+    });
+    return res.json(review);
+  })
+);
+
+router.delete(
+  "/:reviewId(\\d+)",
   asyncHandler(async (req, res, next) => {
-    const review = await Review.findByPk(req.params.id);
+    const review = await Review.findByPk(req.params.reviewId);
     if (review) {
       await review.destroy();
       res.status(204).end();
     } else {
-      next(reviewNotFoundError(req.params.id));
+      next(reviewNotFoundError(req.params.reviewId));
     }
   })
 );
@@ -103,7 +113,7 @@ router.post(
 );
 
 router.put(
-  "/:id(\\d+)",
+  "/:reviewId(\\d+)",
   validateReview,
   asyncHandler(async (req, res) => {
     const {
@@ -117,7 +127,7 @@ router.put(
       value,
       communication,
     } = req.body;
-    const oldReview = await Review.findByPk(req.params.id);
+    const oldReview = await Review.findByPk(req.params.reviewId);
     // console.log("---------> oldreview", oldReview);
     const review = await oldReview.update({
       userId,
