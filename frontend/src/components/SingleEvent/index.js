@@ -27,7 +27,7 @@ function SingleEvent() {
   const [showModal, setShowModal] = useState(false);
 
   // console.log("REVIEWS", reviews);
-  console.log("$$ EVENT REVIEWS", eventReviews);
+  // console.log("$$ EVENT REVIEWS", eventReviews);
   // console.log("$$$$ EVENT IMAGES", eventImages);
   // console.log("-----> ****events****", events);
   // console.log("mmmmmmmmm EVENTID", eventId);
@@ -39,7 +39,7 @@ function SingleEvent() {
   const eventTypes = useSelector((state) => Object.values(state.event));
 
   // console.log("---------> eventTypes", eventTypes);
-  console.log("THIS IS THE REVIEW ID#####", reviewId);
+  // console.log("THIS IS THE REVIEW ID#####", reviewId);
 
   useEffect(() => {
     // dispatch(getEvent(eventId));
