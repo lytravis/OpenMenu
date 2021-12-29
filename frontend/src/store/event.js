@@ -39,10 +39,10 @@ const deleteEvent = (id) => ({
 
 export const getEvent = (eventId) => async (dispatch) => {
   const response = await fetch(`/api/events/${eventId}`);
-  console.log("------> singleresponse", response);
+  // console.log("------> singleresponse", response);
   if (response.ok) {
     const event = await response.json();
-    console.log("----------> singleevent", event);
+    // console.log("----------> singleevent", event);
     dispatch(loadEvent(event));
     return event;
   }
@@ -98,11 +98,11 @@ export const updateEvent = (data, eventId) => async (dispatch) => {
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(data),
   });
-  console.log("xxxxxxxxxxxxx> edit response", response);
-  console.log("yyyyyyyyyy data", data);
+  // console.log("xxxxxxxxxxxxx> edit response", response);
+  // console.log("yyyyyyyyyy data", data);
   if (response.ok) {
     const event = await response.json();
-    console.log("yyyyyyyyyyyyyyy> edit event", event);
+    // console.log("yyyyyyyyyyyyyyy> edit event", event);
     dispatch(editEvent(event));
     return event;
   }
@@ -123,7 +123,7 @@ export default function reducer(state = {}, action) {
       newState[action.payload.id] = action.payload;
       return newState;
     case EDIT_EVENT: {
-      console.log("DDDAAAAADADA action.data", action.data);
+      // console.log("DDDAAAAADADA action.data", action.data);
       newState = { ...state };
       newState[action.data.eventId] = action.data;
       return newState;

@@ -11,7 +11,7 @@ const SplashPage = () => {
     dispatch(getTypes());
   }, [dispatch]);
 
-  console.log("$$$$$$$$ eventTypes", eventTypes);
+  // console.log("$$$$$$$$ eventTypes", eventTypes);
 
   return (
     <>
