@@ -46,20 +46,18 @@ const EventsDetail = ({
   // };
 
   return (
-    <div className="event-detail">
-      <span className="event-title" onClick={(e) => goToEvent(e, id)}>
-        {name}
-      </span>
+    <div className="event-detail" onClick={(e) => goToEvent(e, id)}>
+      <span className="event-title">{name}</span>
       <div>{description}</div>
       <div>
         {address}
         {city} {state}, {zipCode}{" "}
       </div>
-      <div className="button">
+      {/* <div className="button">
         <button onClick={() => handleDelete(id)} className="delete-button">
           Delete
-        </button>
-        {/* <div>
+        </button> */}
+      {/* <div>
           <button onClick={() => setShowModal(true)} className="update-button">
             Update
           </button>
@@ -81,7 +79,7 @@ const EventsDetail = ({
             </Modal>
           )}
         </div> */}
-      </div>
+      {/* </div> */}
     </div>
   );
 };
