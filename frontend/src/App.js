@@ -16,6 +16,7 @@ import EditEvent from "./components/EditEvent";
 import SplashPage from "./components/SplashPage";
 import Reviews from "./components/Reviews/Reviews";
 import EditReview from "./components/Reviews/EditReview";
+import Footer from "./components/Footer";
 
 function App() {
   const dispatch = useDispatch();
@@ -41,33 +42,43 @@ function App() {
           </Route> */}
           <Route exact path="/">
             <SplashPage />
+            <Footer />
           </Route>
           <Route path="/signup">
             <SignupFormPage />
+            <Footer />
           </Route>
           <Route exact path="/events">
             <Events />
+            <Footer />
           </Route>
           <Route exact path="/host">
             <HostedEvents />
+            <Footer />
           </Route>
           <Route exact path="/events/new">
             <CreateEvent />
+            <Footer />
           </Route>
           <Route exact path="/users/:userId">
             <UserProfile />
+            <Footer />
           </Route>
           <Route exact path="/events/:eventId">
             <SingleEvent />
+            <Footer />
           </Route>
           <Route exact path="/events/:eventId/edit">
             <EditEvent />
+            <Footer />
           </Route>
           <Route exact path="/:reviewId/edit">
             <EditReview />
+            <Footer />
           </Route>
           <Route exact path="/reviews/new">
             <ReviewForm />
+            <Footer />
           </Route>
           {/* <Route exact path="/reviews">
             <Reviews />
