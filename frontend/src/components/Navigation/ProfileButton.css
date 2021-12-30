@@ -1,9 +1,33 @@
-.profile-dropdown {
-  position: absolute;
-  list-style-type: none;
-}
-
 .container-profile {
   display: flex;
   flex: flex;
+}
+
+.profile-dropdown {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  z-index: 0;
+  margin-left: -5em;
+  border-bottom-left-radius: 1rem;
+  border-bottom-right-radius: 1rem;
+  margin-top: 25px;
+  padding-right: 25px;
+  color: white;
+  background-color: #222831;
+  list-style-type: none;
+  text-decoration: none;
+}
+
+.profile-dropdown > li {
+  text-decoration: none;
+}
+
+.nav-btn {
+  position: relative;
+  background-color: black;
+  size: 120px;
+  color: white;
+  border: none;
+  cursor: pointer;
 }

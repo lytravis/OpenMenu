@@ -6,6 +6,7 @@ import { getImages } from "../../store/image";
 import { getReviews, removeReview } from "../../store/review";
 import { getTypes } from "../../store/type";
 import ReviewForm from "../Reviews/ReviewForm";
+import "./SingleEvent.css";
 import EditReview from "../Reviews/EditReview";
 import { Modal } from "../../context/Modal";
 
@@ -43,7 +44,7 @@ function SingleEvent() {
 
   useEffect(() => {
     // dispatch(getEvent(eventId));
-    dispatch(getEvents());
+    dispatch(getEvents()).then(() => setIsLoaded(true));
     dispatch(getImages());
     dispatch(getTypes());
     dispatch(getReviews()).then(() => setIsLoaded(true));

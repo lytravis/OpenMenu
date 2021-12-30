@@ -33,15 +33,17 @@ function ProfileButton({ user }) {
   return (
     <>
       <div className="container-profile">
-        <button onClick={openMenu}>
-          <i className="fas fa-utensils" />
+        <button className="nav-btn" onClick={openMenu}>
+          <i className="fas fa-utensils fa-2x" />
         </button>
         {showMenu && (
           <ul className="profile-dropdown">
             <li>
               {user.firstName} {user.lastName}
             </li>
-            <NavLink to="/host">My Events</NavLink>
+            <li>
+              <NavLink to="/host">My Events</NavLink>
+            </li>
             <li>
               <button onClick={logout}>Log Out</button>
             </li>
