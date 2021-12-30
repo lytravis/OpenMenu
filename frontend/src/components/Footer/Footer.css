@@ -3,11 +3,12 @@ footer {
   justify-content: center;
   align-items: center;
   background-color: gray;
-
-  position: fixed;
+  width: 100%;
+  margin-top: 100px;
+  /*
+  position: absolute; */
   left: 0px;
   bottom: 0px;
   z-index: 1;
   width: 100%;
-
 }
