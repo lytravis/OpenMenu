@@ -11,7 +11,7 @@
   margin-left: -5em;
   border-bottom-left-radius: 1rem;
   border-bottom-right-radius: 1rem;
-  margin-top: 25px;
+  margin-top: 45px;
   padding-right: 25px;
   color: white;
   background-color: #222831;
@@ -30,4 +30,9 @@
   color: white;
   border: none;
   cursor: pointer;
+}
+
+.nav-user-pic {
+  height: 2.5rem;
+  width: 2.5rem;
 }
