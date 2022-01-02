@@ -9,6 +9,8 @@ import ReviewForm from "../Reviews/ReviewForm";
 import "./SingleEvent.css";
 import EditReview from "../Reviews/EditReview";
 import { Modal } from "../../context/Modal";
+import { Slide } from "react-slideshow-image";
+import "react-slideshow-image/dist/styles.css";
 
 function SingleEvent() {
   const dispatch = useDispatch();
@@ -68,9 +70,14 @@ function SingleEvent() {
 
             <div className="event-images-container">
               <div className="event-images">
-                {eventImages?.map(({ id, url }) => (
-                  <img key={id} src={url} alt="img[i]" />
-                ))}
+                <Slide easing="ease" autoplay={false}>
+                  {eventImages?.map(({ id, url }) => (
+                    <div className="each-slide" key={id}>
+                      <img key={id} src={url} alt="img[i]" />
+                      <div style={{ backgroundImage: `url(${url})` }}></div>
+                    </div>
+                  ))}
+                </Slide>
               </div>
             </div>
             <div>
