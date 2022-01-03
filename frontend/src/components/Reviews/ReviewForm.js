@@ -3,12 +3,14 @@ import { Rating } from "react-simple-star-rating";
 import { useHistory, useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { addReview } from "../../store/review";
+import { getEvents } from "../../store/event";
 
 const ReviewForm = () => {
   const dispatch = useDispatch();
   const history = useHistory();
   const { eventId } = useParams();
 
+  const [isLoaded, setIsLoaded] = useState(false);
   const userId = useSelector((state) => state.session.user.id);
   const [foodRating, setFoodRating] = useState(0);
   const [experienceRating, setExperienceRating] = useState(0);
@@ -18,8 +20,9 @@ const ReviewForm = () => {
   const [communicationRating, setCommunicationRating] = useState(0);
   const [comment, setComment] = useState("");
   const [validationErrors, setValidationErrors] = useState([]);
-
-  // console.log("mmmmmmmm***************mmmm eventId", eventId);
+  const event = useSelector((state) => state?.event[eventId]);
+  console.log("**************** eventId", event);
+  console.log("mmmmmmmm***************mmmm eventId", eventId);
 
   const validate = () => {
     const validationErrors = [];
@@ -39,6 +42,11 @@ const ReviewForm = () => {
 
     return validationErrors;
   };
+
+  useEffect(() => {
+    // dispatch(getEvent(eventId));
+    dispatch(getEvents()).then(() => setIsLoaded(true));
+  }, [dispatch]);
 
   useEffect(() => {
     return () => {
@@ -71,82 +79,86 @@ const ReviewForm = () => {
     };
 
     dispatch(addReview(payload));
-    // history.push(`/events/:eventId`);
-    history.push("/events");
+    history.push(`/events/${event.id}`);
+    // history.push("/events");
   };
 
   return (
-    <div className="review-container">
-      <div>Leave a Review</div>
-      <div className="rating-container">
-        <div>
-          <div>Food</div>
-          <Rating
-            onClick={(rating) => setFoodRating(rating)}
-            ratingValue={foodRating}
-            showTooltip
-          />
-        </div>
+    <>
+      {isLoaded && (
+        <div className="review-container">
+          <div>Leave a Review</div>
+          <div className="rating-container">
+            <div>
+              <div>Food</div>
+              <Rating
+                onClick={(rating) => setFoodRating(rating)}
+                ratingValue={foodRating}
+                showTooltip
+              />
+            </div>
 
-        <div>
-          <div>Experience</div>
-          <Rating
-            onClick={(rating) => setExperienceRating(rating)}
-            ratingValue={experienceRating}
-            showTooltip
-          />
-        </div>
-        <div>
-          <div>Cleanliness</div>
-          <Rating
-            onClick={(rating) => setCleanlinessRating(rating)}
-            ratingValue={cleanlinessRating}
-            showTooltip
-          />
-        </div>
-        <div>
-          <div>Accuracy</div>
-          <Rating
-            onClick={(rating) => setAccuracyRating(rating)}
-            ratingValue={accuracyRating}
-            showTooltip
-          />
-        </div>
-        <div>
-          <div>Value</div>
-          <Rating
-            onClick={(rating) => setValueRating(rating)}
-            ratingValue={valueRating}
-            showTooltip
-          />
-        </div>
-        <div>
-          <div>Communication</div>
-          <Rating
-            onClick={(rating) => setCommunicationRating(rating)}
-            ratingValue={communicationRating}
-            showTooltip
-          />
-        </div>
-      </div>
-      <div>
-        <form onSubmit={handleSubmit}>
-          <label>Comment</label>
-          <textarea
-            onChange={(e) => setComment(e.target.value)}
-            value={comment}
-            type="text"
-            placeholder="Comment"
-          />
-          <div className="review-button">
-            <button type="submit">Submit Review</button>
+            <div>
+              <div>Experience</div>
+              <Rating
+                onClick={(rating) => setExperienceRating(rating)}
+                ratingValue={experienceRating}
+                showTooltip
+              />
+            </div>
+            <div>
+              <div>Cleanliness</div>
+              <Rating
+                onClick={(rating) => setCleanlinessRating(rating)}
+                ratingValue={cleanlinessRating}
+                showTooltip
+              />
+            </div>
+            <div>
+              <div>Accuracy</div>
+              <Rating
+                onClick={(rating) => setAccuracyRating(rating)}
+                ratingValue={accuracyRating}
+                showTooltip
+              />
+            </div>
+            <div>
+              <div>Value</div>
+              <Rating
+                onClick={(rating) => setValueRating(rating)}
+                ratingValue={valueRating}
+                showTooltip
+              />
+            </div>
+            <div>
+              <div>Communication</div>
+              <Rating
+                onClick={(rating) => setCommunicationRating(rating)}
+                ratingValue={communicationRating}
+                showTooltip
+              />
+            </div>
           </div>
-        </form>
-      </div>
-    </div>
+          <div>
+            <form onSubmit={handleSubmit}>
+              <label>Comment</label>
+              <textarea
+                onChange={(e) => setComment(e.target.value)}
+                value={comment}
+                type="text"
+                placeholder="Comment"
+              />
+              <div className="review-button">
+                <button type="submit">Submit Review</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      )}
+    </>
   );
-
-  //   <Rating onClick={handleRating} ratingValue={rating}
 };
+
+//   <Rating onClick={handleRating} ratingValue={rating}
 
 export default ReviewForm;

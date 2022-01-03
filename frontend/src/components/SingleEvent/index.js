@@ -43,6 +43,8 @@ function SingleEvent() {
     dispatch(removeReview(reviewId));
   };
 
+  console.log("$$$$$$$$$$$$$ THIS IS THE EVENT", event?.Type.name);
+
   useEffect(
     (eventImages) => {
       return eventImages;
@@ -83,7 +85,7 @@ function SingleEvent() {
     avgValue = (totalValue += review.value) / eventReviews.length;
     avgCommunication =
       (totalCommunication += review.communication) / eventReviews.length;
-    totalAvg =
+    totalAvg = (
       (avgFood +
         avgExperience +
         avgCleanliness +
@@ -91,7 +93,8 @@ function SingleEvent() {
         avgValue +
         avgCommunication) /
       6 /
-      20;
+      20
+    ).toFixed(1);
   });
 
   let totalSum =
@@ -129,7 +132,7 @@ function SingleEvent() {
             <div>
               <span className="total-review">
                 <i className="fas fa-star" />
-                {totalAvg} ({eventReviews.length} review)
+                {totalAvg} ({eventReviews.length} reviews)
               </span>
             </div>
             <div className="event-images-container">
@@ -149,6 +152,34 @@ function SingleEvent() {
             <div>
               {event.address} {event.city} {event.state} {event.zipCode}{" "}
             </div>
+            <div className="event-info-container">
+              <div className="owner-info">
+                <div className="host-img">
+                  <img
+                    className="nav-user-pic"
+                    src={event?.User.profilePic}
+                    alt="profilePic"
+                  />
+                </div>
+                <div>
+                  {`This event is hosted by ${event?.User.firstName} ${event?.User.lastName} `}
+                </div>
+              </div>
+              <div className="event-type">
+                <div>
+                  <i className="fa fa-list-alt fa-2x" />
+                  Type
+                </div>
+                <div>{event?.Type.name}</div>
+              </div>
+              <div className="event-type">
+                <div>
+                  <i className="fas fa-user fa-2x" />
+                  Member Since
+                </div>
+                <div>2021</div>
+              </div>
+            </div>
           </div>
           <div className="reviews-container">
             <div>
@@ -158,14 +189,18 @@ function SingleEvent() {
               <div>
                 {eventReviews?.map((review) => (
                   <>
-                    <div key={review.id}>
+                    <div key={review?.id}>
                       <div className="review-img">
-                        {/* <img src={review?.User.profilePic} alt="profilePic" /> */}
+                        <img
+                          className="nav-user-pic"
+                          src={review?.User?.profilePic}
+                          alt="profilePic"
+                        />
                       </div>
                       <div>
                         <div className="review-name"> </div>
-                        {review.User.firstName}
-                        {review.userId === userId && (
+                        {review?.User?.firstName}
+                        {review?.userId === userId && (
                           // console.log("TEST ===",review.userId === userId ),
                           <div className="review-btns">
                             <div>
@@ -176,7 +211,7 @@ function SingleEvent() {
                               </Link> */}
                               <Link to={`/${review.id}/edit`}>
                                 <button type="button" className="edit-button">
-                                  EditTTTTTTT
+                                  Edit
                                 </button>
                               </Link>
                             </div>
