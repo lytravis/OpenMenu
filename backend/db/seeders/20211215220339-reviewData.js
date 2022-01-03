@@ -80,9 +80,9 @@ module.exports = {
           userId: 2,
           eventId: 4,
           comment: "I was so thrilled for this",
-          food:  100,
-          experience:  100,
-          cleanliness:  100,
+          food: 100,
+          experience: 100,
+          cleanliness: 100,
           accuracy: 80,
           value: 80,
           communication: 80,
@@ -92,20 +92,22 @@ module.exports = {
         {
           userId: 3,
           eventId: 1,
-          comment: "He provided a magical and memorable experience. It was an incredible meal. He was also very respectful of or family. It was an amazing experience. I would recommend him for any event someone was thinking of hosting.",
+          comment:
+            "He provided a magical and memorable experience. It was an incredible meal. He was also very respectful of or family. It was an amazing experience. I would recommend him for any event someone was thinking of hosting.",
           food: 100,
           experience: 100,
           cleanliness: 100,
           accuracy: 100,
           value: 100,
-          communication: 4100,
+          communication: 100,
           createdAt: new Date(),
           updatedAt: new Date(),
         },
         {
           userId: 4,
           eventId: 1,
-          comment: "He cooked up a magical tri tip and chicken and rolled with the punches with the timing of our group. He was really easy going, food was delicious. 100% recommend!",
+          comment:
+            "He cooked up a magical tri tip and chicken and rolled with the punches with the timing of our group. He was really easy going, food was delicious. 100% recommend!",
           food: 100,
           experience: 100,
           cleanliness: 80,
@@ -118,7 +120,8 @@ module.exports = {
         {
           userId: 5,
           eventId: 1,
-          comment: "We really enjoyed this experience. It was a great time with friends and the food was outstanding. I highly recommend this for others the cost is reasonable.",
+          comment:
+            "We really enjoyed this experience. It was a great time with friends and the food was outstanding. I highly recommend this for others the cost is reasonable.",
           food: 100,
           experience: 80,
           cleanliness: 100,
@@ -131,7 +134,8 @@ module.exports = {
         {
           userId: 6,
           eventId: 1,
-          comment: "A special day that I’d love to share and take with me everywhere I go, I will definitely be booking again and seeing what other menus she’ll be making in the future",
+          comment:
+            "A special day that I’d love to share and take with me everywhere I go, I will definitely be booking again and seeing what other menus she’ll be making in the future",
           food: 100,
           experience: 100,
           cleanliness: 100,
@@ -144,7 +148,8 @@ module.exports = {
         {
           userId: 7,
           eventId: 1,
-          comment: " He is an A+ conversationalist and has the wildest stories. His food was expertly prepared, presented and was very delicious. Like brining a 5 star restaurant to your front steps! Thanks so much for the experience!",
+          comment:
+            " He is an A+ conversationalist and has the wildest stories. His food was expertly prepared, presented and was very delicious. Like brining a 5 star restaurant to your front steps! Thanks so much for the experience!",
           food: 100,
           experience: 80,
           cleanliness: 100,
