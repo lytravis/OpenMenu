@@ -42,12 +42,12 @@ const validateEvent = [
   check("zipCode")
     .exists({ checkFalsy: true })
     .withMessage("Please provide an event zip code"),
-  check("latitude")
-    .exists({ checkFalsy: true })
-    .withMessage("Please provide a valid latitude"),
-  check("longitude")
-    .exists({ checkFalsy: true })
-    .withMessage("Please provide a valid longitude"),
+  // check("latitude")
+  //   .exists({ checkFalsy: true })
+  //   .withMessage("Please provide a valid latitude"),
+  // check("longitude")
+  //   .exists({ checkFalsy: true })
+  //   .withMessage("Please provide a valid longitude"),
   handleValidationErrors,
 ];
 
@@ -85,8 +85,8 @@ router.post(
       city,
       state,
       zipCode,
-      latitude,
-      longitude,
+      // latitude,
+      // longitude,
       userId,
       typeId,
     } = req.body;
@@ -98,8 +98,8 @@ router.post(
       city,
       state,
       zipCode,
-      latitude,
-      longitude,
+      // latitude,
+      // longitude,
       userId,
       typeId,
     });
@@ -120,8 +120,8 @@ router.put(
       event.city = req.body.city;
       event.state = req.body.state;
       event.zipCode = req.body.zipCode;
-      event.latitude = req.body.latitude;
-      event.longitude = req.body.longitude;
+      // event.latitude = req.body.latitude;
+      // event.longitude = req.body.longitude;
       // console.log("TEST 2 =====>", event);
       await event.save();
       res.json({ event });
