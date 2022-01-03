@@ -28,6 +28,9 @@ function EditReview({ event }) {
 
   const reviews = useSelector((state) => Object.values(state.review));
   // const eventReviews = reviews.filter((review) => review.eventId == event.id);
+  const review = useSelector((state) => state.review[reviewId]);
+
+  console.log("THIS IS THE REVIEW", review);
 
   // console.log("THIS IS THE REVIEW", eventReviews);
 
@@ -56,15 +59,15 @@ function EditReview({ event }) {
     dispatch(getReviews()).then(() => setIsLoaded(true));
   }, [dispatch]);
 
-  // useEffect(() => {
-  //   setFoodRating(review?.food);
-  //   setExperienceRating(review?.experience);
-  //   setCleanlinessRating(review?.cleanliness);
-  //   setAccuracyRating(review?.accuracy);
-  //   setValueRating(review?.value);
-  //   setCommunicationRating(review?.communication);
-  //   setComment(review?.comment);
-  // }, [review]);
+  useEffect(() => {
+    setFoodRating(review?.food);
+    setExperienceRating(review?.experience);
+    setCleanlinessRating(review?.cleanliness);
+    setAccuracyRating(review?.accuracy);
+    setValueRating(review?.value);
+    setCommunicationRating(review?.communication);
+    setComment(review?.comment);
+  }, [review]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();

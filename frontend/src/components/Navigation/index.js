@@ -22,28 +22,21 @@ function Navigation({ isLoaded }) {
 
   return (
     <div className="nav-container">
-    <ul>
-      <div className="nav-list">
-        <li>
-          <NavLink exact to="/">
-            OpenMenu
-          </NavLink>
-          <NavLink className="nav-nav" exact to={`/events/new`}>
-            Host an event
-          </NavLink>
-          <NavLink className="nav-nav" exact to={`/events`}>
-            EVENTS
-          </NavLink>
-          {/* <NavLink className="nav-nav" exact to={`/users/${sessionUser?.id}`}>
+      <div className="nav-contents">
+        <NavLink exact to="/" id="nav-logo">
+          OpenMenu
+        </NavLink>
+        <NavLink className="nav-link" exact to={`/events`}>
+          Experiences
+        </NavLink>
+        <NavLink className="nav-link" exact to={`/events/new`}>
+          Host an event
+        </NavLink>
+        {/* <NavLink className="nav-nav" exact to={`/users/${sessionUser?.id}`}>
           Manage events
         </NavLink> */}
-          {/* <NavLink className="nav-nav" exact to={"/host"}>
-            My Events
-          </NavLink> */}
-          {isLoaded && sessionLinks}
-        </li>
+        <div className="nav-right">{isLoaded && sessionLinks}</div>
       </div>
-    </ul>
     </div>
   );
 }

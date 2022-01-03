@@ -42,6 +42,11 @@ function SignupFormPage() {
   return (
     <>
       <div className="signup">
+        <img
+          className="signup-logo"
+          src="https://cdn.discordapp.com/attachments/920377762068447282/925119238694375444/openMenu-logo1.png"
+          alt="logo"
+        />
         <h1>Sign Up</h1>
         <form onSubmit={handleSubmit}>
           <ul>
@@ -49,61 +54,65 @@ function SignupFormPage() {
               <li key={idx}>{error}</li>
             ))}
           </ul>
-          <label>
-            Email
+          <div>
+            <label>Email</label>
             <input
               type="text"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
             />
-          </label>
-          <label>
-            First Name
+          </div>
+          <div>
+            <label>First Name </label>
             <input
               type="text"
               value={firstName}
               onChange={(e) => setFirstName(e.target.value)}
               required
             />
-          </label>
-          <label>
-            Last Name
+          </div>
+          <div>
+            <label>Last Name </label>
             <input
               type="text"
               value={lastName}
               onChange={(e) => setLastName(e.target.value)}
               required
             />
-          </label>
-          <label>
-            Profile Picture
+          </div>
+          <div>
+            <label>Profile Picture </label>
             <input
               type="text"
               value={profilePic}
               onChange={(e) => setProfilePic(e.target.value)}
               required
             />
-          </label>
-          <label>
-            Password
+          </div>
+          <div>
+            <label>Password </label>
             <input
               type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               required
             />
-          </label>
-          <label>
-            Confirm Password
+          </div>
+          <div>
+            <label>Confirm Password </label>
             <input
               type="password"
               value={confirmPassword}
               onChange={(e) => setConfirmPassword(e.target.value)}
               required
             />
-          </label>
-          <button type="submit">Sign Up</button>
+          </div>
+          <div className="signup-btns">
+            <button className="signup-signup-btn" type="submit">
+              Sign Up
+            </button>
+          </div>
         </form>
       </div>
     </>

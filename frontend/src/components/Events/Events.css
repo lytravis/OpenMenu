@@ -1,0 +1,41 @@
+.events-container {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  margin: auto;
+}
+
+.event.holder {
+  display: flex;
+  width: 100%;
+  align-items: center;
+}
+
+.events-image {
+  display: flex;
+  align-items: center;
+  height: 250px;
+  width: 50%;
+  overflow: hidden;
+  justify-content: center;
+  border-radius: 12px;
+}
+
+.img1 {
+  object-fit: cover;
+  height: 100%;
+}
+
+.events-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  height: 300px;
+  width: 50%;
+  margin-left: 50px;
+}
+
+.events-words {
+  margin-bottom: 20px;
+}

@@ -5,6 +5,7 @@ import EditEvent from "../EditEvent";
 
 import { Modal } from "../../context/Modal";
 import { useHistory } from "react-router-dom";
+import { getImages } from "../../store/image";
 
 const EventsDetail = ({
   id,
@@ -18,6 +19,7 @@ const EventsDetail = ({
   longitude,
   userId,
   typeId,
+  image,
 }) => {
   const dispatch = useDispatch();
   const history = useHistory();
@@ -28,9 +30,16 @@ const EventsDetail = ({
 
   const hostedToEvent = events.filter((event) => event.userId == hostId);
 
+  useEffect(() => {
+    dispatch(getEvents());
+    dispatch(getImages());
+  }, [dispatch]);
+
   // console.log("$$$$$$$$$>>> hostedEvents", hostedEvents);
 
   // console.log("xxxxxxxxx> hostId", hostId);
+
+  console.log(">>>>>>>>>>>> IMAGES", image);
 
   const handleDelete = (id) => {
     dispatch(removeEvent(id));
@@ -53,6 +62,7 @@ const EventsDetail = ({
         {address}
         {city} {state}, {zipCode}{" "}
       </div>
+      <div></div>
       {/* <div className="button">
         <button onClick={() => handleDelete(id)} className="delete-button">
           Delete

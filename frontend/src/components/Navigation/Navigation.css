@@ -1,19 +1,37 @@
-@import url("https://fonts.googleapis.com/css2?family=Montserrat&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat&display=swap");
 
 .nav-container {
   display: flex;
-  background-color: rgba(129, 48, 48, 0);
+  position: fixed;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 2;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 50px;
+  background-color: #222831;
+
 }
 
-.nav-list {
+.nav-contents {
   display: flex;
-  flex-direction: row;
-  list-style: none;
-  background-color: rgba(129, 48, 48, 0);
-  font-family: "Montserrat", sans-serif;
-  color: blueviolet;
-  text-decoration: none;
-  padding: 0.5rem 1rem;
+  font-family: "Bebas Neue", cursive;
+  align-items: center;
   justify-content: space-between;
-  list-style-type: none;
+  padding-left: 30px;
+  padding-right: 30px;
+  position: fixed;
+  font-size: 21px;
+  width: 95%;
+}
+
+.nav-link {
+  text-decoration: none;
+}
+
+#nav-logo {
+  font-family: "Bebas Neue", cursive;
+  text-decoration: none;
+  font-size: 36px;
 }

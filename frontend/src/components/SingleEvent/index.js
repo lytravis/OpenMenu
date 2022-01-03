@@ -8,24 +8,19 @@ import { getTypes } from "../../store/type";
 import ReviewForm from "../Reviews/ReviewForm";
 import EditReview from "../Reviews/EditReview";
 import { Modal } from "../../context/Modal";
-
+import "./SingleEvent.css";
 function SingleEvent() {
   const dispatch = useDispatch();
-
   const { eventId, reviewId } = useParams();
   const [isLoaded, setIsLoaded] = useState(false);
-  const userId = useSelector((state) => state.session.user.id);
+  const userId = useSelector((state) => state.session.user?.id);
   const events = useSelector((state) => Object.values(state.event));
   const images = useSelector((state) => Object.values(state.image));
   const event = useSelector((state) => state?.event[eventId]);
-
-  const eventImages = images.filter((image) => image.eventId == event.id);
-
+  const eventImages = images.filter((image) => image?.eventId == event.id);
   const reviews = useSelector((state) => Object.values(state.review));
-  const eventReviews = reviews.filter((review) => review.eventId == event.id);
-
+  const eventReviews = reviews.filter((review) => review?.eventId == event.id);
   const [showModal, setShowModal] = useState(false);
-
   // console.log("REVIEWS", reviews);
   // console.log("$$ EVENT REVIEWS", eventReviews);
   // console.log("$$$$ EVENT IMAGES", eventImages);
@@ -33,14 +28,10 @@ function SingleEvent() {
   // console.log("mmmmmmmmm EVENTID", eventId);
   // //   console.log("-----> userId", userId);
   // //   console.log("&&&&&&&&&&&&&&&&&&&&> images", images);
-
   // console.log("oooooooooooo>>> event", event);
-
   const eventTypes = useSelector((state) => Object.values(state.event));
-
   // console.log("---------> eventTypes", eventTypes);
   // console.log("THIS IS THE REVIEW ID#####", reviewId);
-
   useEffect(() => {
     // dispatch(getEvent(eventId));
     dispatch(getEvents());
@@ -48,29 +39,112 @@ function SingleEvent() {
     dispatch(getTypes());
     dispatch(getReviews()).then(() => setIsLoaded(true));
   }, [dispatch]);
-
   const handleDelete = (reviewId) => {
     dispatch(removeReview(reviewId));
   };
 
+  console.log("$$$$$$$$$$$$$ THIS IS THE EVENT", event?.Type.name);
+
+  useEffect(
+    (eventImages) => {
+      return eventImages;
+    },
+    [dispatch, eventImages]
+  );
+
+  const img1 = eventImages[0];
+  const img2 = eventImages[1];
+  const img3 = eventImages[2];
+  const img4 = eventImages[3];
+  const img5 = eventImages[4];
+  // console.log("imgggggg 1", img1);
+
+  let totalFood = 0;
+  let totalExperience = 0;
+  let totalCleanliness = 0;
+  let totalAccuracy = 0;
+  let totalValue = 0;
+  let totalCommunication = 0;
+  let avgFood = 0;
+  let avgExperience = 0;
+  let avgCleanliness = 0;
+  let avgAccuracy = 0;
+  let avgValue = 0;
+  let avgCommunication = 0;
+  let totalAvg = 0;
+
+  console.log("THIS IS REVIEWS HERE", reviews);
+
+  eventReviews?.forEach((review) => {
+    avgFood = (totalFood += review.food) / eventReviews.length;
+    avgExperience =
+      (totalExperience += review.experience) / eventReviews.length;
+    avgCleanliness =
+      (totalCleanliness += review.cleanliness) / eventReviews.length;
+    avgAccuracy = (totalAccuracy += review.accuracy) / eventReviews.length;
+    avgValue = (totalValue += review.value) / eventReviews.length;
+    avgCommunication =
+      (totalCommunication += review.communication) / eventReviews.length;
+    totalAvg = (
+      (avgFood +
+        avgExperience +
+        avgCleanliness +
+        avgAccuracy +
+        avgValue +
+        avgCommunication) /
+      6 /
+      20
+    ).toFixed(1);
+  });
+
+  let totalSum =
+    avgFood +
+    avgExperience +
+    avgCleanliness +
+    avgAccuracy +
+    avgValue +
+    avgCommunication;
+
+  console.log("TOTAL SUM", totalSum);
+  console.log("THIS IS THE TOTAL AVG", totalAvg);
+
+  // console.log("***** TOTAL FOOD", totalFood);
+
+  // console.log("THIS IS EVENT REVEIWS", eventReviews);
+  // console.log(
+  //   "THIS IS THE AVG FOOD",
+  //   avgFood,
+  //   avgExperience,
+  //   avgCommunication,
+  //   avgCleanliness,
+  //   avgValue,
+  //   avgAccuracy
+  // );
+
   return (
     <>
       {isLoaded && (
-        <div>
+        <div className="container-single">
           <div className="event-container">
             <div>
               <h1>{event.name}</h1>
             </div>
             <div>
-              <h2>{event.typeId}</h2>
+              <span className="total-review">
+                <i className="fas fa-star" />
+                {totalAvg} ({eventReviews.length} reviews)
+              </span>
             </div>
-
             <div className="event-images-container">
-              <div className="event-images">
-                {eventImages?.map(({ id, url }) => (
-                  <img key={id} src={url} alt="img[i]" />
-                ))}
-              </div>
+              <img
+                className="event-images-first"
+                src={img1?.url}
+                alt={eventImages.id}
+              />
+              <img src={img2?.url} alt={eventImages.id} />
+              <img src={img3?.url} alt={eventImages.id} />
+              <img src={img4?.url} alt={eventImages.id} />
+              <img src={img5?.url} alt={eventImages.id} />
             </div>
             <div>
               <h3>{event.description}</h3>
@@ -78,8 +152,35 @@ function SingleEvent() {
             <div>
               {event.address} {event.city} {event.state} {event.zipCode}{" "}
             </div>
+            <div className="event-info-container">
+              <div className="owner-info">
+                <div className="host-img">
+                  <img
+                    className="nav-user-pic"
+                    src={event?.User.profilePic}
+                    alt="profilePic"
+                  />
+                </div>
+                <div>
+                  {`This event is hosted by ${event?.User.firstName} ${event?.User.lastName} `}
+                </div>
+              </div>
+              <div className="event-type">
+                <div>
+                  <i className="fa fa-list-alt fa-2x" />
+                  Type
+                </div>
+                <div>{event?.Type.name}</div>
+              </div>
+              <div className="event-type">
+                <div>
+                  <i className="fas fa-user fa-2x" />
+                  Member Since
+                </div>
+                <div>2021</div>
+              </div>
+            </div>
           </div>
-
           <div className="reviews-container">
             <div>
               <h2>Reviews</h2>
@@ -88,14 +189,18 @@ function SingleEvent() {
               <div>
                 {eventReviews?.map((review) => (
                   <>
-                    <div key={review.id}>
+                    <div key={review?.id}>
                       <div className="review-img">
-                        {/* <img src={review?.User.profilePic} alt="profilePic" /> */}
+                        <img
+                          className="nav-user-pic"
+                          src={review?.User?.profilePic}
+                          alt="profilePic"
+                        />
                       </div>
                       <div>
                         <div className="review-name"> </div>
-                        {review.User.firstName}
-                        {review.userId === userId && (
+                        {review?.User?.firstName}
+                        {review?.userId === userId && (
                           // console.log("TEST ===",review.userId === userId ),
                           <div className="review-btns">
                             <div>
@@ -106,7 +211,7 @@ function SingleEvent() {
                               </Link> */}
                               <Link to={`/${review.id}/edit`}>
                                 <button type="button" className="edit-button">
-                                  EditTTTTTTT
+                                  Edit
                                 </button>
                               </Link>
                             </div>
@@ -127,7 +232,6 @@ function SingleEvent() {
                 ))}
               </div>
             </div>
-
             <div>
               <ReviewForm />
             </div>
@@ -137,9 +241,7 @@ function SingleEvent() {
     </>
   );
 }
-
 export default SingleEvent;
-
 // {
 //   /* <div>
 //                               <button
@@ -167,3 +269,16 @@ export default SingleEvent;
 //                               )}
 //                             </div> */
 // }
+//MAPPED VER
+{
+  /* <div className="event-images">
+{eventImages?.map(({ id, url }) => (
+  <img
+    className="event-images-col-2  event-images-row-2"
+    key={id}
+    src={url}
+    alt="img[i]"
+  />
+))}
+</div> */
+}
