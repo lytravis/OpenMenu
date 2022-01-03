@@ -32,9 +32,9 @@ function Events() {
 
   // console.log("-----> ****events****", events);
   // console.log("-----> userId", userId);
-  console.log("&&&&&&&&&&&&&&&&&&&&> images", images);
-  console.log("$$$$ EVENT IMAGES", eventImg);
-  console.log("************** events", events[0]?.Images[0].url);
+  // console.log("&&&&&&&&&&&&&&&&&&&&> images", images);
+  // console.log("$$$$ EVENT IMAGES", eventImg);
+  // console.log("************** events", events[0]?.Images[0].url);
 
   const goToEvent = (e, eventId) => {
     e.preventDefault();

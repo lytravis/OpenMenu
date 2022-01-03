@@ -10,7 +10,7 @@ function ProfileButton({ user }) {
   const [showMenu, setShowMenu] = useState(false);
 
   // const user = useSelector((state) => state.session.user);
-  console.log("THIS BE THE USER", user);
+  // console.log("THIS BE THE USER", user);
 
   const openMenu = () => {
     if (showMenu) return;

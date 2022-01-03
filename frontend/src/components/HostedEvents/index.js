@@ -32,8 +32,8 @@ function HostedEvents({
 
   const hostedEvents = events.filter((event) => event.userId == hostId);
 
-  console.log("-----------> event", hostedEvents);
-  console.log("-----------> eventImg", eventId);
+  // console.log("-----------> event", hostedEvents);
+  // console.log("-----------> eventImg", eventId);
 
   useEffect(() => {
     dispatch(getEvents()).then(() => setIsLoaded(true));

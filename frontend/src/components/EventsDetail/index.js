@@ -39,7 +39,7 @@ const EventsDetail = ({
 
   // console.log("xxxxxxxxx> hostId", hostId);
 
-  console.log(">>>>>>>>>>>> IMAGES", image);
+  // console.log(">>>>>>>>>>>> IMAGES", image);
 
   const handleDelete = (id) => {
     dispatch(removeEvent(id));

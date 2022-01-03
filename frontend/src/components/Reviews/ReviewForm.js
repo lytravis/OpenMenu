@@ -21,8 +21,8 @@ const ReviewForm = () => {
   const [comment, setComment] = useState("");
   const [validationErrors, setValidationErrors] = useState([]);
   const event = useSelector((state) => state?.event[eventId]);
-  console.log("**************** eventId", event);
-  console.log("mmmmmmmm***************mmmm eventId", eventId);
+  // console.log("**************** eventId", event);
+  // console.log("mmmmmmmm***************mmmm eventId", eventId);
 
   const validate = () => {
     const validationErrors = [];

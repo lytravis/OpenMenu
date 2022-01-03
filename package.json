@@ -16,6 +16,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "react-slideshow-image": "^3.6.0"
+    "react-slideshow-image": "^3.6.0",
+    "sequelize": "^7.0.0-alpha.4"
   }
 }

@@ -43,7 +43,7 @@ function SingleEvent() {
     dispatch(removeReview(reviewId));
   };
 
-  console.log("$$$$$$$$$$$$$ THIS IS THE EVENT", event?.Type.name);
+  // console.log("$$$$$$$$$$$$$ THIS IS THE EVENT", event?.Type.name);
 
   useEffect(
     (eventImages) => {
@@ -73,7 +73,7 @@ function SingleEvent() {
   let avgCommunication = 0;
   let totalAvg = 0;
 
-  console.log("THIS IS REVIEWS HERE", reviews);
+  // console.log("THIS IS REVIEWS HERE", reviews);
 
   eventReviews?.forEach((review) => {
     avgFood = (totalFood += review.food) / eventReviews.length;
@@ -105,8 +105,8 @@ function SingleEvent() {
     avgValue +
     avgCommunication;
 
-  console.log("TOTAL SUM", totalSum);
-  console.log("THIS IS THE TOTAL AVG", totalAvg);
+  // console.log("TOTAL SUM", totalSum);
+  // console.log("THIS IS THE TOTAL AVG", totalAvg);
 
   // console.log("***** TOTAL FOOD", totalFood);
 
