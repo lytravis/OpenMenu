@@ -1,0 +1,30 @@
+.host-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.host-info {
+  display: flex;
+  overflow-x: auto;
+  width: 100%;
+}
+
+.host-wrap {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 1rem;
+  width: 25rem;
+  min-width: 30rem;
+}
+
+.event-image {
+  width: 25rem;
+  min-width: 30rem;
+}
+
+.host-buttons {
+  margin-left: 10rem;
+}
