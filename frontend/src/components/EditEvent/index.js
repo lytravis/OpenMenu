@@ -29,8 +29,8 @@ function EditEvent() {
   const [city, setCity] = useState("");
   const [state, setState] = useState("");
   const [zipCode, setZipCode] = useState("");
-  const [latitude, setLatitude] = useState("");
-  const [longitude, setLongitude] = useState("");
+  // const [latitude, setLatitude] = useState("");
+  // const [longitude, setLongitude] = useState("");
   const [typeId, setTypeId] = useState(1);
   const [validationErrors, setValidationErrors] = useState([]);
 
@@ -44,8 +44,8 @@ function EditEvent() {
     if (!city) validateErrors.push("please provide an event city");
     if (!state) validateErrors.push("please provide an event state");
     if (!zipCode) validateErrors.push("please provide an event zipCode");
-    if (!latitude) validateErrors.push("please provide an event latitude");
-    if (!longitude) validateErrors.push("please provide an event longitude");
+    // if (!latitude) validateErrors.push("please provide an event latitude");
+    // if (!longitude) validateErrors.push("please provide an event longitude");
 
     return validateErrors;
   };
@@ -66,8 +66,8 @@ function EditEvent() {
     setCity(event?.city);
     setState(event?.state);
     setZipCode(event?.zipCode);
-    setLatitude(event?.latitude);
-    setLongitude(event?.longitude);
+    // setLatitude(event?.latitude);
+    // setLongitude(event?.longitude);
     setTypeId(event?.typeId);
   }, [event]);
 
@@ -85,8 +85,8 @@ function EditEvent() {
       city,
       state,
       zipCode,
-      latitude,
-      longitude,
+      // latitude,
+      // longitude,
       typeId,
     };
 
@@ -157,7 +157,7 @@ function EditEvent() {
               placeholder="Event Zip Code"
             />
           </div>
-          <div>
+          {/* <div>
             <input
               onChange={(e) => setLatitude(e.target.value)}
               value={latitude}
@@ -172,7 +172,7 @@ function EditEvent() {
               type="text"
               placeholder="Event Longitude"
             />
-          </div>
+          </div> */}
           <div>
             <label>Type</label>
             <select value={typeId} onChange={(e) => setTypeId(e.target.value)}>

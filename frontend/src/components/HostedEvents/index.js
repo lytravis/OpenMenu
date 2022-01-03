@@ -14,8 +14,8 @@ function HostedEvents({
   city,
   state,
   zipCode,
-  latitude,
-  longitude,
+  // latitude,
+  // longitude,
   userId,
   typeId,
 }) {

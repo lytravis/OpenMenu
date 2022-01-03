@@ -11,7 +11,7 @@ function CreateEvent() {
   const [loaded, setLoaded] = useState(false);
 
   const userId = useSelector((state) => state.session.user.id);
-  const events = useSelector((state) => Object.values(state.event));
+  // const events = useSelector((state) => Object.values(state.event));
   const eventTypes = useSelector((state) => Object.values(state.type));
 
   // console.log("---------> eventTypes", eventTypes);
@@ -22,8 +22,8 @@ function CreateEvent() {
   const [city, setCity] = useState("");
   const [state, setState] = useState("");
   const [zipCode, setZipCode] = useState("");
-  const [latitude, setLatitude] = useState("");
-  const [longitude, setLongitude] = useState("");
+  // const [latitude, setLatitude] = useState("");
+  // const [longitude, setLongitude] = useState("");
   const [typeId, setTypeId] = useState(1);
   const [validationErrors, setValidationErrors] = useState([]);
 
@@ -37,8 +37,8 @@ function CreateEvent() {
     if (!city) validateErrors.push("please provide an event city");
     if (!state) validateErrors.push("please provide an event state");
     if (!zipCode) validateErrors.push("please provide an event zipCode");
-    if (!latitude) validateErrors.push("please provide an event latitude");
-    if (!longitude) validateErrors.push("please provide an event longitude");
+    // if (!latitude) validateErrors.push("please provide an event latitude");
+    // if (!longitude) validateErrors.push("please provide an event longitude");
 
     return validateErrors;
   };
@@ -61,8 +61,8 @@ function CreateEvent() {
       city,
       state,
       zipCode,
-      latitude,
-      longitude,
+      // latitude,
+      // longitude,
       typeId,
     };
 
@@ -77,9 +77,8 @@ function CreateEvent() {
   return (
     <div className="add-event-container">
       <div className="add-event">
-        <h2>Add an Event</h2>
         {validationErrors.length > 0 && (
-          <div>
+          <div className="error-msg">
             The following errors were found:
             <ul>
               {validationErrors.map((error) => (
@@ -89,6 +88,7 @@ function CreateEvent() {
           </div>
         )}
         <form onSubmit={handleSubmit} className="add-event">
+          <h2>Host an Event</h2>
           <div>
             <input
               onChange={(e) => setName(e.target.value)}
@@ -137,7 +137,7 @@ function CreateEvent() {
               placeholder="Event Zip Code"
             />
           </div>
-          <div>
+          {/* <div>
             <input
               onChange={(e) => setLatitude(e.target.value)}
               value={latitude}
@@ -152,7 +152,7 @@ function CreateEvent() {
               type="text"
               placeholder="Event Longitude"
             />
-          </div>
+          </div> */}
           <div>
             <label>Type</label>
             <select value={typeId} onChange={(e) => setTypeId(e.target.value)}>
