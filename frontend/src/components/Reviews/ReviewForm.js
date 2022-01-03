@@ -89,6 +89,16 @@ const ReviewForm = () => {
         <div className="review-container">
           <div>
             <h3>Leave a Review</h3>
+            {validationErrors.length > 0 && (
+              <div className="error-msg">
+                The following errors were found:
+                <ul>
+                  {validationErrors.map((error) => (
+                    <li key={error}>{error}</li>
+                  ))}
+                </ul>
+              </div>
+            )}
           </div>
           <div className="rating-container">
             <div>

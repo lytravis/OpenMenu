@@ -5,6 +5,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { updateReview, getReviews } from "../../store/review";
 import { getEvents } from "../../store/event";
 import { getImages } from "../../store/image";
+import "./EditReview.css";
 
 function EditReview({ event }) {
   const dispatch = useDispatch();
@@ -24,13 +25,13 @@ function EditReview({ event }) {
   const [validationErrors, setValidationErrors] = useState([]);
 
   //   console.log("mmmmmmmm***************mmmm eventId", eventId);
-  console.log("this is the event", event);
+  // console.log("this is the event", event);
 
   const reviews = useSelector((state) => Object.values(state.review));
   // const eventReviews = reviews.filter((review) => review.eventId == event.id);
   const review = useSelector((state) => state.review[reviewId]);
 
-  console.log("THIS IS THE REVIEW", review);
+  // console.log("THIS IS THE REVIEW", review);
 
   // console.log("THIS IS THE REVIEW", eventReviews);
 
@@ -97,9 +98,19 @@ function EditReview({ event }) {
       {isLoaded && (
         <div className="review-container">
           <div>
-            <h1>TEST</h1>
+            <h1>Edit Your Review</h1>
           </div>
-          <div>Leave a Review</div>
+
+          {validationErrors.length > 0 && (
+            <div className="error-msg">
+              The following errors were found:
+              <ul>
+                {validationErrors.map((error) => (
+                  <li key={error}>{error}</li>
+                ))}
+              </ul>
+            </div>
+          )}
           <div className="rating-container">
             <div>
               <div>Food</div>

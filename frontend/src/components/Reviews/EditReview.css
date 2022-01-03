@@ -1,0 +1,10 @@
+.review-container {
+  display: grid;
+  place-items: center;
+  margin-top: 10rem;
+  margin-bottom: 13.6rem;
+}
+
+.review-button {
+  text-align: center;
+}
