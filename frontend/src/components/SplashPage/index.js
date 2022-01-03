@@ -31,7 +31,6 @@ const SplashPage = () => {
           <div></div>
         </div>
       </div>
-      <div className="splash-h1">SPLASH</div>
     </>
   );
 };

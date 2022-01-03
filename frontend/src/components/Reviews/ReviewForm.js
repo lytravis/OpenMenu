@@ -87,7 +87,9 @@ const ReviewForm = () => {
     <>
       {isLoaded && (
         <div className="review-container">
-          <div>Leave a Review</div>
+          <div>
+            <h3>Leave a Review</h3>
+          </div>
           <div className="rating-container">
             <div>
               <div>Food</div>

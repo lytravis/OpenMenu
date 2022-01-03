@@ -55,7 +55,19 @@ function Events() {
               onClick={(e) => goToEvent(e, event.id)}
             >
               <div className="events-image">
-                <img className="img1" src={event?.Images[0]?.url} alt="event" />
+                {event?.Images[0]?.url?.length > 0 ? (
+                  <img
+                    className="img1"
+                    src={event?.Images[0]?.url}
+                    alt="event"
+                  />
+                ) : (
+                  <img
+                    className="img1"
+                    src="https://us.123rf.com/450wm/pavelstasevich/pavelstasevich1811/pavelstasevich181101027/112815900-no-image-available-icon-flat-vector.jpg?ver=6"
+                    alt="event"
+                  />
+                )}
               </div>
               <div className="events-info">
                 <div className="events-words">

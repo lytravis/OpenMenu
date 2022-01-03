@@ -37,7 +37,7 @@ export const addImage = (image) => async (dispatch) => {
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(image),
   });
-  console.log();
+  console.log("----------------->", response);
   if (response.ok) {
     const data = await response.json();
     dispatch(newImage(data));
