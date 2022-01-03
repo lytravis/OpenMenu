@@ -43,6 +43,13 @@ function SingleEvent() {
     dispatch(removeReview(reviewId));
   };
 
+  useEffect(
+    (eventImages) => {
+      return eventImages;
+    },
+    [dispatch, eventImages]
+  );
+
   const img1 = eventImages[0];
   const img2 = eventImages[1];
   const img3 = eventImages[2];
@@ -83,7 +90,8 @@ function SingleEvent() {
         avgAccuracy +
         avgValue +
         avgCommunication) /
-      6;
+      6 /
+      20;
   });
 
   let totalSum =
@@ -119,18 +127,21 @@ function SingleEvent() {
               <h1>{event.name}</h1>
             </div>
             <div>
-              <h2>{event.typeId}</h2>
+              <span className="total-review">
+                <i className="fas fa-star" />
+                {totalAvg} ({eventReviews.length} review)
+              </span>
             </div>
             <div className="event-images-container">
               <img
                 className="event-images-first"
-                src={img1.url}
+                src={img1?.url}
                 alt={eventImages.id}
               />
-              <img src={img2.url} alt={eventImages.id} />
-              <img src={img3.url} alt={eventImages.id} />
-              <img src={img4.url} alt={eventImages.id} />
-              <img src={img5.url} alt={eventImages.id} />
+              <img src={img2?.url} alt={eventImages.id} />
+              <img src={img3?.url} alt={eventImages.id} />
+              <img src={img4?.url} alt={eventImages.id} />
+              <img src={img5?.url} alt={eventImages.id} />
             </div>
             <div>
               <h3>{event.description}</h3>
