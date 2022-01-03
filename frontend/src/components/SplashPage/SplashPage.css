@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat&display=swap");
+
 .splash-picture {
   background-image: url("https://cdn.discordapp.com/attachments/920377762068447282/925140382650630235/pexels-photo-3298637.jpg");
   background-size: cover;
@@ -6,8 +8,64 @@
   flex-direction: column;
   align-items: center;
   color: white;
+  margin-left: 4.5rem;
+  margin-right: 4.5rem;
+  border-radius: 1rem;
 }
 
 /* .splash-h1 {
   font-size: 100px;
 } */
+
+.splash-type-container {
+  margin-top: 2rem;
+  margin-left: 2rem;
+  margin-right: 2rem;
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.splash-type-container img {
+  width: 20rem;
+  height: 20rem;
+}
+
+.splash-child {
+  margin: 2.5rem;
+  cursor: pointer;
+  overflow: hidden;
+  border-radius: 10.5px;
+  box-shadow: 1px 7px 16px -10px rgba(0, 0, 0, 0.65);
+  transition: transform 100ms ease-in;
+}
+
+.splash-child img {
+  min-width: 300px;
+  min-height: 200px;
+  width: 100%;
+  object-fit: fill;
+}
+
+.splash-info {
+  font-family: "Bebas Neue", cursive;
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 10px;
+  border-radius: 10px;
+  padding-top: 18px;
+  padding: 18px;
+  border: 1;
+}
+
+.splash {
+  font-family: "Bebas Neue", cursive;
+  font-size: 5rem;
+
+  text-align: center;
+  margin-top: 18rem;
+}
+.splash button {
+  font-family: "Bebas Neue", cursive;
+  font-size: 1.5rem;
+}

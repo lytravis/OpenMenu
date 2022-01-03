@@ -50,6 +50,11 @@ function ProfileButton({ user }) {
               <NavLink to="/host">My Events</NavLink>
             </li>
             <li>
+              <NavLink className="nav-link" exact to={`/events/new`}>
+                Host an event
+              </NavLink>
+            </li>
+            <li>
               <button onClick={logout}>Log Out</button>
             </li>
           </ul>
