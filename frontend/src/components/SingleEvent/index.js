@@ -49,6 +49,67 @@ function SingleEvent() {
   const img4 = eventImages[3];
   const img5 = eventImages[4];
   // console.log("imgggggg 1", img1);
+
+  let totalFood = 0;
+  let totalExperience = 0;
+  let totalCleanliness = 0;
+  let totalAccuracy = 0;
+  let totalValue = 0;
+  let totalCommunication = 0;
+  let avgFood = 0;
+  let avgExperience = 0;
+  let avgCleanliness = 0;
+  let avgAccuracy = 0;
+  let avgValue = 0;
+  let avgCommunication = 0;
+  let totalAvg = 0;
+
+  console.log("THIS IS REVIEWS HERE", reviews);
+
+  eventReviews?.forEach((review) => {
+    avgFood = (totalFood += review.food) / eventReviews.length;
+    avgExperience =
+      (totalExperience += review.experience) / eventReviews.length;
+    avgCleanliness =
+      (totalCleanliness += review.cleanliness) / eventReviews.length;
+    avgAccuracy = (totalAccuracy += review.accuracy) / eventReviews.length;
+    avgValue = (totalValue += review.value) / eventReviews.length;
+    avgCommunication =
+      (totalCommunication += review.communication) / eventReviews.length;
+    totalAvg =
+      (avgFood +
+        avgExperience +
+        avgCleanliness +
+        avgAccuracy +
+        avgValue +
+        avgCommunication) /
+      6;
+  });
+
+  let totalSum =
+    avgFood +
+    avgExperience +
+    avgCleanliness +
+    avgAccuracy +
+    avgValue +
+    avgCommunication;
+
+  console.log("TOTAL SUM", totalSum);
+  console.log("THIS IS THE TOTAL AVG", totalAvg);
+
+  // console.log("***** TOTAL FOOD", totalFood);
+
+  // console.log("THIS IS EVENT REVEIWS", eventReviews);
+  // console.log(
+  //   "THIS IS THE AVG FOOD",
+  //   avgFood,
+  //   avgExperience,
+  //   avgCommunication,
+  //   avgCleanliness,
+  //   avgValue,
+  //   avgAccuracy
+  // );
+
   return (
     <>
       {isLoaded && (
