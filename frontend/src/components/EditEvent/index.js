@@ -91,7 +91,7 @@ function EditEvent() {
     };
 
     dispatch(updateEvent(payload, eventId));
-    history.push("/host");
+    history.push(`/events/${eventId}`);
   };
 
   return (
