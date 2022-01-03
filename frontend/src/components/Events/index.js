@@ -13,7 +13,7 @@ function Events() {
   const history = useHistory();
   const [isLoaded, setIsLoaded] = useState(false);
   const { eventId, reviewId } = useParams();
-  const userId = useSelector((state) => state.session.user.id);
+  const userId = useSelector((state) => state.session.user?.id);
   const events = useSelector((state) => Object.values(state.event));
   const images = useSelector((state) => Object.values(state.image));
   const event = useSelector((state) => state?.event[eventId]);
@@ -59,8 +59,8 @@ function Events() {
               </div>
               <div className="events-info">
                 <div className="events-words">
-                <h2>{event.name}</h2>
-                <p>{event.description}</p>
+                  <h2>{event.name}</h2>
+                  <p>{event.description}</p>
                 </div>
               </div>
             </div>
