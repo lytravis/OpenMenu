@@ -62,7 +62,7 @@ module.exports = {
           firstName: "Jamie",
           lastName: "Oliver",
           profilePic:
-            "https://cdn.discordapp.com/attachments/920377762068447282/920803239518154823/bZay1J9F_400x400.jpg",
+            "https://cdn.discordapp.com/attachments/920377762068447282/920803239753027594/jamieoliveratphotoshoot-t.jpg",
           hashedPassword: bcrypt.hashSync("password"),
           createdAt: new Date(),
           updatedAt: new Date(),

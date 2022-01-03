@@ -3,14 +3,14 @@ module.exports = (sequelize, DataTypes) => {
   const Event = sequelize.define(
     "Event",
     {
-      name: { type: DataTypes.STRING(50), allowNull: false },
+      name: { type: DataTypes.STRING(100), allowNull: false },
       description: { type: DataTypes.STRING(255), allowNull: false },
       address: { type: DataTypes.STRING(50), allowNull: false },
       city: { type: DataTypes.STRING(50), allowNull: false },
       state: { type: DataTypes.STRING(50), allowNull: false },
       zipCode: { type: DataTypes.INTEGER, allowNull: false },
-      latitude: { type: DataTypes.DECIMAL, allowNull: false },
-      longitude: { type: DataTypes.DECIMAL, allowNull: false },
+      // latitude: { type: DataTypes.DECIMAL, allowNull: true },
+      // longitude: { type: DataTypes.DECIMAL, allowNull: true },
       userId: { type: DataTypes.INTEGER, allowNull: false },
       typeId: { type: DataTypes.INTEGER, allowNull: false },
     },

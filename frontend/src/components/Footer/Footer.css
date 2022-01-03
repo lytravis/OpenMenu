@@ -1,8 +1,10 @@
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat&display=swap");
+
 footer {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: gray;
+  background-color: #393e46;
   width: 100%;
   margin-top: 100px;
   /*
@@ -11,4 +13,17 @@ footer {
   bottom: 0px;
   z-index: 1;
   width: 100%;
+  font-family: "Bebas Neue", cursive;
+  font-size: 20px;
+}
+
+footer p {
+  margin-right: 10px;
+}
+
+.footer-icon {
+  display: flex;
+  flex-direction: row;
+  color: white;
+  padding: 5px;
 }

@@ -10,7 +10,7 @@ module.exports = {
       },
       name: {
         allowNull: false,
-        type: Sequelize.STRING(50),
+        type: Sequelize.STRING(100),
       },
       description: {
         allowNull: false,
@@ -32,14 +32,14 @@ module.exports = {
         allowNull: false,
         type: Sequelize.INTEGER,
       },
-      latitude: {
-        allowNull: false,
-        type: Sequelize.DECIMAL,
-      },
-      longitude: {
-        allowNull: false,
-        type: Sequelize.DECIMAL,
-      },
+      // latitude: {
+      //   allowNull: true,
+      //   type: Sequelize.DECIMAL,
+      // },
+      // longitude: {
+      //   allowNull: true,
+      //   type: Sequelize.DECIMAL,
+      // },
       userId: {
         allowNull: false,
         references: { model: "Users" },

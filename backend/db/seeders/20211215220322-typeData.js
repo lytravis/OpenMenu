@@ -22,7 +22,7 @@ module.exports = {
           updatedAt: new Date(),
         },
         {
-          name: "Homestlye Cooking",
+          name: "Online",
           createdAt: new Date(),
           updatedAt: new Date(),
         },
