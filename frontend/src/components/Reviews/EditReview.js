@@ -25,15 +25,19 @@ function EditReview({ event }) {
   const [validationErrors, setValidationErrors] = useState([]);
 
   //   console.log("mmmmmmmm***************mmmm eventId", eventId);
-  // console.log("this is the event", event);
+
+  // const event = useSelector((state) => state?.event[eventId]);
+  console.log("this is the event", event);
 
   const reviews = useSelector((state) => Object.values(state.review));
-  // const eventReviews = reviews.filter((review) => review.eventId == event.id);
+  const eventReviews = reviews.filter((review) => review?.eventId == event?.id);
   const review = useSelector((state) => state.review[reviewId]);
 
   // console.log("THIS IS THE REVIEW", review);
 
-  // console.log("THIS IS THE REVIEW", eventReviews);
+  // console.log("THIS IS THE REVIEW", review?.eventId);
+
+  // console.log("----->THIS IS THE EVENTID", eventId);
 
   const validate = () => {
     const validationErrors = [];
@@ -56,9 +60,9 @@ function EditReview({ event }) {
 
   useEffect(() => {
     // dispatch(getEvent(eventId));
-    dispatch(getEvents());
+    dispatch(getEvents(eventId));
     dispatch(getReviews()).then(() => setIsLoaded(true));
-  }, [dispatch]);
+  }, [dispatch, eventId]);
 
   useEffect(() => {
     setFoodRating(review?.food);
@@ -89,8 +93,8 @@ function EditReview({ event }) {
     };
 
     dispatch(updateReview(payload, reviewId));
-    // history.push(`/events/:eventId`);
-    history.push("/events/1");
+    history.push(`/events/${review?.eventId}`);
+    // history.push("/events/1");
   };
 
   return (
