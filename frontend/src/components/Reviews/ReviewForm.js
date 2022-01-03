@@ -11,7 +11,7 @@ const ReviewForm = () => {
   const { eventId } = useParams();
 
   const [isLoaded, setIsLoaded] = useState(false);
-  const userId = useSelector((state) => state.session.user.id);
+  const userId = useSelector((state) => state.session.user?.id);
   const [foodRating, setFoodRating] = useState(0);
   const [experienceRating, setExperienceRating] = useState(0);
   const [cleanlinessRating, setCleanlinessRating] = useState(0);

@@ -13,13 +13,13 @@ function SingleEvent() {
   const dispatch = useDispatch();
   const { eventId, reviewId } = useParams();
   const [isLoaded, setIsLoaded] = useState(false);
-  const userId = useSelector((state) => state.session.user.id);
+  const userId = useSelector((state) => state.session.user?.id);
   const events = useSelector((state) => Object.values(state.event));
   const images = useSelector((state) => Object.values(state.image));
   const event = useSelector((state) => state?.event[eventId]);
-  const eventImages = images.filter((image) => image.eventId == event.id);
+  const eventImages = images.filter((image) => image?.eventId == event.id);
   const reviews = useSelector((state) => Object.values(state.review));
-  const eventReviews = reviews.filter((review) => review.eventId == event.id);
+  const eventReviews = reviews.filter((review) => review?.eventId == event.id);
   const [showModal, setShowModal] = useState(false);
   // console.log("REVIEWS", reviews);
   // console.log("$$ EVENT REVIEWS", eventReviews);
