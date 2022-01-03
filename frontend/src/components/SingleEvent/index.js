@@ -6,29 +6,21 @@ import { getImages } from "../../store/image";
 import { getReviews, removeReview } from "../../store/review";
 import { getTypes } from "../../store/type";
 import ReviewForm from "../Reviews/ReviewForm";
-import "./SingleEvent.css";
 import EditReview from "../Reviews/EditReview";
 import { Modal } from "../../context/Modal";
-import { Slide } from "react-slideshow-image";
-import "react-slideshow-image/dist/styles.css";
-
+import "./SingleEvent.css";
 function SingleEvent() {
   const dispatch = useDispatch();
-
   const { eventId, reviewId } = useParams();
   const [isLoaded, setIsLoaded] = useState(false);
   const userId = useSelector((state) => state.session.user.id);
   const events = useSelector((state) => Object.values(state.event));
   const images = useSelector((state) => Object.values(state.image));
   const event = useSelector((state) => state?.event[eventId]);
-
   const eventImages = images.filter((image) => image.eventId == event.id);
-
   const reviews = useSelector((state) => Object.values(state.review));
   const eventReviews = reviews.filter((review) => review.eventId == event.id);
-
   const [showModal, setShowModal] = useState(false);
-
   // console.log("REVIEWS", reviews);
   // console.log("$$ EVENT REVIEWS", eventReviews);
   // console.log("$$$$ EVENT IMAGES", eventImages);
@@ -36,30 +28,31 @@ function SingleEvent() {
   // console.log("mmmmmmmmm EVENTID", eventId);
   // //   console.log("-----> userId", userId);
   // //   console.log("&&&&&&&&&&&&&&&&&&&&> images", images);
-
   // console.log("oooooooooooo>>> event", event);
-
   const eventTypes = useSelector((state) => Object.values(state.event));
-
   // console.log("---------> eventTypes", eventTypes);
   // console.log("THIS IS THE REVIEW ID#####", reviewId);
-
   useEffect(() => {
     // dispatch(getEvent(eventId));
-    dispatch(getEvents()).then(() => setIsLoaded(true));
+    dispatch(getEvents());
     dispatch(getImages());
     dispatch(getTypes());
     dispatch(getReviews()).then(() => setIsLoaded(true));
   }, [dispatch]);
-
   const handleDelete = (reviewId) => {
     dispatch(removeReview(reviewId));
   };
 
+  const img1 = eventImages[0];
+  const img2 = eventImages[1];
+  const img3 = eventImages[2];
+  const img4 = eventImages[3];
+  const img5 = eventImages[4];
+  // console.log("imgggggg 1", img1);
   return (
     <>
       {isLoaded && (
-        <div>
+        <div className="container-single">
           <div className="event-container">
             <div>
               <h1>{event.name}</h1>
@@ -67,18 +60,16 @@ function SingleEvent() {
             <div>
               <h2>{event.typeId}</h2>
             </div>
-
             <div className="event-images-container">
-              <div className="event-images">
-                <Slide easing="ease" autoplay={false}>
-                  {eventImages?.map(({ id, url }) => (
-                    <div className="each-slide" key={id}>
-                      <img key={id} src={url} alt="img[i]" />
-                      <div style={{ backgroundImage: `url(${url})` }}></div>
-                    </div>
-                  ))}
-                </Slide>
-              </div>
+              <img
+                className="event-images-first"
+                src={img1.url}
+                alt={eventImages.id}
+              />
+              <img src={img2.url} alt={eventImages.id} />
+              <img src={img3.url} alt={eventImages.id} />
+              <img src={img4.url} alt={eventImages.id} />
+              <img src={img5.url} alt={eventImages.id} />
             </div>
             <div>
               <h3>{event.description}</h3>
@@ -87,7 +78,6 @@ function SingleEvent() {
               {event.address} {event.city} {event.state} {event.zipCode}{" "}
             </div>
           </div>
-
           <div className="reviews-container">
             <div>
               <h2>Reviews</h2>
@@ -135,7 +125,6 @@ function SingleEvent() {
                 ))}
               </div>
             </div>
-
             <div>
               <ReviewForm />
             </div>
@@ -145,9 +134,7 @@ function SingleEvent() {
     </>
   );
 }
-
 export default SingleEvent;
-
 // {
 //   /* <div>
 //                               <button
@@ -175,3 +162,16 @@ export default SingleEvent;
 //                               )}
 //                             </div> */
 // }
+//MAPPED VER
+{
+  /* <div className="event-images">
+{eventImages?.map(({ id, url }) => (
+  <img
+    className="event-images-col-2  event-images-row-2"
+    key={id}
+    src={url}
+    alt="img[i]"
+  />
+))}
+</div> */
+}
