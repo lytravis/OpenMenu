@@ -15,13 +15,28 @@ OpenMenu is a Airbnb clone that aims to build community amongst food lovers, whe
 ## [Features ](https://github.com/lytravis/OpenMenu/wiki/MVP-Features-List) include:
 
 ### Events
+ - Users can choose from various types of events that include: Online Experiences, Find Dining, Food Trucks, Cooking Lessons, and more
+ - Users can host events for other members to book
 ### Reviews
+- Reviews are calulated by a total average of all listing reviews
+- Users can post new reviews in six categories (food, experience, value, cleanliness, accuracy, and communication
+- Users can also comment on their experience to help other users
 ### Bookings
+- Bookings can be selected based on availability
+- If a user wishes to cancel a reservation, he/she may access their reservations through their account page
 ### Search (by location & availability) & Google Maps on search
+- The search feature provides users the ability to find specific listings
+- Google Maps will be used to allow users to search and view by location
 
 ## [Database Schema](https://github.com/lytravis/OpenMenu/wiki/Database-Schema)
 
 ![Database schema image](https://cdn.discordapp.com/attachments/920377762068447282/920421269063757824/drawSQL-export-2021-12-14_13_05.png)
+
+## Installation Instructions
+1. Clone down or download the the respository
+2. Install all dependencies
+3.  npm install for both front-end and back-end
+4.  npm start for both front-end and back-end
 
 
 ## Contributors
