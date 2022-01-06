@@ -15,9 +15,9 @@ const {
 
 const router = express.Router();
 
-const rsvpNotFoundError = (id) => {
+const rsvpNotFoundError = (userId) => {
   const err = Error("Reservation not found");
-  err.errors = [`Reservation ${id} could not be found`];
+  err.errors = [`Reservation ${userId} could not be found`];
   err.title = "Reservation not found";
   err.status = 404;
   return err;
