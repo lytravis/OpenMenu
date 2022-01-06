@@ -15,6 +15,11 @@ const loadRsvp = (data) => ({
   data,
 });
 
+const addRsvp = (data) => ({
+  type: ADD_RSVP,
+  data,
+});
+
 export const getRSVP = (userId) => async (dispatch) => {
   const response = await fetch(`/api/reservations/${userId}`);
   console.log("**** RSVP response", response);
@@ -37,6 +42,21 @@ export const getAllRsvps = () => async (dispatch) => {
   }
 };
 
+export const addRSVP = (reservation) => async (dispatch) => {
+  const { userId, eventId, startDate, endDate } = reservation;
+  const response = await csrfFetch("/api/reservations", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ userId, eventId, startDate, endDate }),
+  });
+
+  if (response.ok) {
+    const rsvp = await response.json();
+    dispatch(addRsvp(rsvp));
+    return rsvp;
+  }
+};
+
 export default function reducer(state = {}, action) {
   let newState;
   switch (action.type) {
@@ -49,10 +69,19 @@ export default function reducer(state = {}, action) {
     case LOAD_RSVPS:
       newState = { ...state };
       newState = action.data;
-    //   console.log("@@@@newState", newState);
-    //   console.log("@@@@### action", action.data);
+      //   console.log("@@@@newState", newState);
+      //   console.log("@@@@### action", action.data);
+      return newState;
+
+    case ADD_RSVP:
+      newState = { ...state };
+      newState[action.data.id] = action.data;
       return newState;
     default:
       return state;
   }
 }
+
+// case ADD_RSVP: {
+//     return [...state, action.data];
+//   }
