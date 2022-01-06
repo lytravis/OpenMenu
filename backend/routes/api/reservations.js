@@ -34,11 +34,11 @@ router.get(
 );
 
 router.get(
-  "/:id(\\d+)",
+  "/:userId(\\d+)",
   asyncHandler(async (req, res) => {
-    const { id } = req.params;
+    const { userId } = req.params;
     const reservations = await Reservation.findAll({
-      where: { userId: id },
+      where: { userId: userId },
       include: Event,
     });
     return res.json({ reservations });

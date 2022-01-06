@@ -5,6 +5,7 @@ import event from "./event";
 import image from "./image";
 import review from "./review";
 import type from "./type";
+import reservation from "./reservation";
 
 const rootReducer = combineReducers({
   session,
@@ -12,6 +13,7 @@ const rootReducer = combineReducers({
   image,
   review,
   type,
+  reservation,
 });
 
 let enhancer;

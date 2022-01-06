@@ -17,6 +17,7 @@ import SplashPage from "./components/SplashPage";
 import Reviews from "./components/Reviews/Reviews";
 import EditReview from "./components/Reviews/EditReview";
 import Footer from "./components/Footer";
+import Reservation from "./components/Reservation";
 
 function App() {
   const dispatch = useDispatch();
@@ -78,6 +79,10 @@ function App() {
           </Route>
           <Route exact path="/reviews/new">
             <ReviewForm />
+            <Footer />
+          </Route>
+          <Route exact path="/rsvp">
+            <Reservation />
             <Footer />
           </Route>
           {/* <Route exact path="/reviews">
