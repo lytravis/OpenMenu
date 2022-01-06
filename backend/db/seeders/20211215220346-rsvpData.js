@@ -14,7 +14,7 @@ module.exports = {
         {
           userId: 1,
           eventId: 1,
-          checkIn: new Date(2021, 12, 5),
+          checkIn: new Date(2022, 1, 5, 20, 0, 0),
           guests: 2,
           createdAt: new Date(),
           updatedAt: new Date(),
@@ -22,7 +22,7 @@ module.exports = {
         {
           userId: 1,
           eventId: 2,
-          checkIn: new Date(2021, 12, 5),
+          checkIn: new Date(2022, 1, 15, 19, 0, 0),
           guests: 1,
           createdAt: new Date(),
           updatedAt: new Date(),
@@ -30,7 +30,7 @@ module.exports = {
         {
           userId: 1,
           eventId: 3,
-          checkIn: new Date(2021, 12, 5),
+          checkIn: new Date(2022, 1, 21, 20, 0, 0),
           guests: 2,
           createdAt: new Date(),
           updatedAt: new Date(),
@@ -38,12 +38,11 @@ module.exports = {
         {
           userId: 1,
           eventId: 4,
-          checkIn: new Date(2021, 12, 5),
+          checkIn: new Date(2022, 1, 19, 20, 0, 0),
           guests: 4,
           createdAt: new Date(),
           updatedAt: new Date(),
         },
-
       ],
       {}
     );
