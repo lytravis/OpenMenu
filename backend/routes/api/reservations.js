@@ -48,13 +48,13 @@ router.get(
 router.post(
   "/",
   asyncHandler(async (req, res, next) => {
-    const { userId, eventId, startDate, endDate } = req.body;
+    const { userId, eventId, checkIn, guests } = req.body;
 
     const reservation = {
       userId,
       eventId,
-      startDate,
-      endDate,
+      checkIn,
+      guests,
     };
 
     const rsvp = await Reservation.create(reservation);
