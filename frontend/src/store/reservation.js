@@ -22,10 +22,10 @@ const addRsvp = (data) => ({
 
 export const getRSVP = (userId) => async (dispatch) => {
   const response = await fetch(`/api/reservations/${userId}`);
-  console.log("**** RSVP response", response);
+  // console.log("**** RSVP response", response);
   if (response.ok) {
     const reservations = await response.json();
-    console.log("$$$$$ reservations", reservations);
+    // console.log("$$$$$ reservations", reservations);
     dispatch(loadRsvp(reservations));
     return reservations;
   }
@@ -69,8 +69,8 @@ export default function reducer(state = {}, action) {
     case LOAD_RSVPS:
       newState = { ...state };
       newState = action.data;
-      //   console.log("@@@@newState", newState);
-      //   console.log("@@@@### action", action.data);
+      // console.log("@@@@newState", newState);
+      // console.log("@@@@### action", action.data);
       return newState;
 
     case ADD_RSVP:

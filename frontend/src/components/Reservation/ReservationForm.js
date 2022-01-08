@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { useHistory, useParams } from "react-router-dom";
 import "./CreateEvent.css";
 import { addRsvp } from "../../store/reservation";
-import date from "date-and-time";
+
 
 export default function ReservationForm() {
   const dispatch = useDispatch();
@@ -44,9 +44,7 @@ export default function ReservationForm() {
     history.push("/host");
   };
 
-//   const now = new Date();
-//   date.format(now, "hh:mm A [GMT]Z"); // => '11:14 PM GMT-0800'
-//   console.log(".......................> now", now);
+
 
   return (
     <div className="review-form-container">

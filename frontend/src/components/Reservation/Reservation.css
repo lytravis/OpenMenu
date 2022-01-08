@@ -1,0 +1,23 @@
+.rsvp-container {
+  display: flex;
+  flex-wrap: row;
+}
+
+.container {
+    width: 63%;
+    margin: auto;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.rsvp-info {
+  width: 270px;
+  height: 290px;
+  margin: 15px;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 0 15px rgba(66, 66, 66, 0.5);
+}
