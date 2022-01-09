@@ -43,6 +43,11 @@ export default function Reservation() {
     dispatch(removeRSVP(userId));
   };
 
+  const goToEvent = (e, eventId) => {
+    e.preventDefault();
+    history.push(`/events/${eventId}`);
+  };
+
   // console.log("************** convert time", convertTime(today));
 
   // for (let rsvp of rsvps) {
@@ -67,7 +72,7 @@ export default function Reservation() {
         <div className="rsvp-container">
           <div className="container">
             {rsvps?.map((rsvp) => (
-              <div className="rsvp-card">
+              <div className="rsvp-card" key={rsvp.id}>
                 <div className="rsvp-title">{rsvp.Event.name}</div>
                 <div>
                   {" "}
@@ -78,7 +83,11 @@ export default function Reservation() {
                     Delete
                   </button>{" "}
                 </div>
-                <div className="rsvp-info" key={rsvp.id}>
+                <div
+                  className="rsvp-info"
+                  key={rsvp.id}
+                  onClick={(e) => goToEvent(e, rsvp.id)}
+                >
                   <div>
                     <div> {rsvp.checkIn} </div>
                     <div>

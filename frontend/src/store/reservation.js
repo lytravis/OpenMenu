@@ -25,15 +25,6 @@ const deleteRsvp = (userId) => ({
   userId,
 });
 
-export const removeRSVP = (userId) => async (dispatch) => {
-  const response = await csrfFetch(`/api/reservations/${userId}`, {
-    method: "DELETE",
-  });
-  if (response.ok) {
-    dispatch(deleteRsvp(userId));
-  }
-};
-
 export const getRSVP = (userId) => async (dispatch) => {
   const response = await fetch(`/api/reservations/${userId}`);
   // console.log("**** RSVP response", response);
@@ -71,6 +62,18 @@ export const addRSVP = (reservation) => async (dispatch) => {
   }
 };
 
+export const removeRSVP = (userId) => async (dispatch) => {
+  const response = await csrfFetch(`/api/reservations/${userId}`, {
+    method: "DELETE",
+  });
+  console.log("THIS IS THE RESPONSE", response);
+  if (response.ok) {
+    console.log("-----------> response.ok", response.ok);
+    console.log("^^^^^^^^^^^^^^^^ dispatch", deleteRsvp(userId));
+    dispatch(deleteRsvp(userId));
+  }
+};
+
 export default function reducer(state = {}, action) {
   let newState;
   switch (action.type) {
@@ -91,13 +94,14 @@ export default function reducer(state = {}, action) {
       newState = { ...state };
       newState[action.data.id] = action.data;
       return newState;
-    default:
-      return state;
+
     case DELETE_RSVP: {
-      const newState = { ...state };
+      newState = { ...state };
       delete newState[action.userId];
       return newState;
     }
+    default:
+      return state;
   }
 }
 
