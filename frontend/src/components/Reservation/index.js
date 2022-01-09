@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
-import { getRSVP, getAllRsvps } from "../../store/reservation";
+import { getRSVP, getAllRsvps, removeRSVP } from "../../store/reservation";
 import "./Reservation.css";
 
 export default function Reservation() {
@@ -15,8 +15,10 @@ export default function Reservation() {
 
   const userId = useSelector((state) => state.session.user?.id);
 
+  const [isLoaded, setIsLoaded] = useState(false);
+
   useEffect(() => {
-    dispatch(getRSVP(userId));
+    dispatch(getRSVP(userId)).then(() => setIsLoaded(true));
     // dispatch(getAllRsvps());
   }, [dispatch, userId]);
 
@@ -37,6 +39,10 @@ export default function Reservation() {
       timeZone: "America/Los_Angeles",
     });
 
+  const handleDelete = (userId) => {
+    dispatch(removeRSVP(userId));
+  };
+
   // console.log("************** convert time", convertTime(today));
 
   // for (let rsvp of rsvps) {
@@ -56,17 +62,40 @@ export default function Reservation() {
   // console.log(">>>>>>>>>>>>>> newRsvp", newRsvp);
 
   return (
-    <div className="rsvp-container">
-      <div className="container">
-        {rsvps?.map((rsvp) => (
-          <div className="rsvp-info" key={rsvp.id}>
-            <span>{rsvp.Event.name}</span>
-            <div> {rsvp.checkIn} </div>
-
-            <div> {rsvp.guests} </div>
+    <>
+      {isLoaded && (
+        <div className="rsvp-container">
+          <div className="container">
+            {rsvps?.map((rsvp) => (
+              <div className="rsvp-card">
+                <div className="rsvp-title">{rsvp.Event.name}</div>
+                <div>
+                  {" "}
+                  <button
+                    onClick={() => handleDelete(rsvp.id)}
+                    className="delete-button"
+                  >
+                    Delete
+                  </button>{" "}
+                </div>
+                <div className="rsvp-info" key={rsvp.id}>
+                  <div>
+                    <div> {rsvp.checkIn} </div>
+                    <div>
+                      <img
+                        className="rsvp-img"
+                        src={rsvp.User.profilePic}
+                        alt="img"
+                      />
+                    </div>
+                    <div> {rsvp.guests} </div>
+                  </div>
+                </div>
+              </div>
+            ))}
           </div>
-        ))}
-      </div>
-    </div>
+        </div>
+      )}
+    </>
   );
 }

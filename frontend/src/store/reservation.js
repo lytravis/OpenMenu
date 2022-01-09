@@ -20,6 +20,20 @@ const addRsvp = (data) => ({
   data,
 });
 
+const deleteRsvp = (userId) => ({
+  type: DELETE_RSVP,
+  userId,
+});
+
+export const removeRSVP = (userId) => async (dispatch) => {
+  const response = await csrfFetch(`/api/reservations/${userId}`, {
+    method: "DELETE",
+  });
+  if (response.ok) {
+    dispatch(deleteRsvp(userId));
+  }
+};
+
 export const getRSVP = (userId) => async (dispatch) => {
   const response = await fetch(`/api/reservations/${userId}`);
   // console.log("**** RSVP response", response);
@@ -79,6 +93,11 @@ export default function reducer(state = {}, action) {
       return newState;
     default:
       return state;
+    case DELETE_RSVP: {
+      const newState = { ...state };
+      delete newState[action.userId];
+      return newState;
+    }
   }
 }
 

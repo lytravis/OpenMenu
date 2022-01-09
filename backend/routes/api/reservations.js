@@ -39,7 +39,7 @@ router.get(
     const { userId } = req.params;
     const reservations = await Reservation.findAll({
       where: { userId: userId },
-      include: Event,
+      include: [{ model: User }, { model: Event }],
     });
     return res.json({ reservations });
   })
