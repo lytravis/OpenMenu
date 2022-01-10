@@ -64,8 +64,7 @@ export default function ReservationForm() {
                 type="datetime-local"
                 value={checkIn}
                 onChange={(e) => setCheckIn(e.target.value)}
-                // pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}"
-                // required
+                pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}"
                 required
               />
             </div>

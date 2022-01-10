@@ -128,12 +128,12 @@ function SingleEvent() {
         <div className="container-single">
           <div className="event-container">
             <div>
-              <h1>{event.name}</h1>
+              <h1>{event?.name}</h1>
             </div>
             <div>
               <span className="total-review">
                 <i className="fas fa-star" />
-                {totalAvg} ({eventReviews.length} reviews)
+                {totalAvg} ({eventReviews?.length} reviews)
               </span>
             </div>
             <div className="event-images-container">
@@ -148,10 +148,10 @@ function SingleEvent() {
               <img src={img5?.url} alt={eventImages.id} />
             </div>
             <div>
-              <h3>{event.description}</h3>
+              <h3>{event?.description}</h3>
             </div>
             <div>
-              {event.address} {event.city} {event.state} {event.zipCode}{" "}
+              {event?.address} {event?.city} {event?.state} {event?.zipCode}{" "}
             </div>
             <div className="event-info-container">
               <div className="owner-info">
