@@ -48,13 +48,13 @@ export const getAllRsvps = () => async (dispatch) => {
 };
 
 export const addRSVP = (reservation) => async (dispatch) => {
-  const { userId, eventId, startDate, endDate } = reservation;
+  const { userId, eventId, checkIn, guests } = reservation;
   const response = await csrfFetch("/api/reservations", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ userId, eventId, startDate, endDate }),
+    body: JSON.stringify({ userId, eventId, checkIn, guests }),
   });
-
+  console.log("------------> rsvp add response", response);
   if (response.ok) {
     const rsvp = await response.json();
     dispatch(addRsvp(rsvp));
@@ -87,8 +87,8 @@ export default function reducer(state = {}, action) {
     case LOAD_RSVPS:
       newState = { ...state };
       newState = action.data;
-      // console.log("@@@@newState", newState);
-      // console.log("@@@@### action", action.data);
+      console.log("@@@@newState", newState);
+      console.log("@@@@### action", action.data);
       return newState;
 
     case ADD_RSVP:

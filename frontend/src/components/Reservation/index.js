@@ -8,7 +8,7 @@ export default function Reservation() {
   const dispatch = useDispatch();
   const history = useHistory();
 
-  let rsvpss = useSelector((state) => Object.values(state.reservation));
+  let rsvpss = useSelector((state) => Object.values(state?.reservation));
   let rsvps = rsvpss[0];
 
   // const rsvpObj = Object.assign({}, ...rsvpss);
@@ -22,7 +22,7 @@ export default function Reservation() {
     // dispatch(getAllRsvps());
   }, [dispatch, userId]);
 
-  console.log("---------------> rsvp", rsvps);
+  // console.log("---------------> rsvp", rsvps);
   // console.log("---------------> rsvp[0]", rsvps[0]);
   // console.log("---------------> rsvpObj", rsvpObj);
   // console.log("&&& userId", userId);

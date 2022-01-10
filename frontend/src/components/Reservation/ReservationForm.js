@@ -40,7 +40,7 @@ export default function ReservationForm() {
 
     dispatch(addRSVP(payload));
     // history.push(`/users/${userId}`);
-    history.push("/host");
+    history.push("/rsvp");
   };
 
   return (
