@@ -9,6 +9,7 @@ import ReviewForm from "../Reviews/ReviewForm";
 import EditReview from "../Reviews/EditReview";
 import { Modal } from "../../context/Modal";
 import "./SingleEvent.css";
+import ReservationForm from "../Reservation/ReservationForm";
 function SingleEvent() {
   const dispatch = useDispatch();
   const { eventId, reviewId } = useParams();
@@ -234,6 +235,9 @@ function SingleEvent() {
             </div>
             <div>
               <ReviewForm />
+            </div>
+            <div>
+              <ReservationForm />
             </div>
           </div>
         </div>

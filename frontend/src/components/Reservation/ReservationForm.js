@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useHistory, useParams } from "react-router-dom";
-import "./CreateEvent.css";
-import { addRsvp } from "../../store/reservation";
+import "./RegistrationForm.css";
+import { addRSVP } from "../../store/reservation";
 
 export default function ReservationForm() {
   const dispatch = useDispatch();
@@ -38,7 +38,7 @@ export default function ReservationForm() {
       guests,
     };
 
-    dispatch(addRsvp(payload));
+    dispatch(addRSVP(payload));
     // history.push(`/users/${userId}`);
     history.push("/host");
   };
@@ -57,7 +57,28 @@ export default function ReservationForm() {
           </div>
         )}
         <form onSubmit={handleSubmit} className="">
-          <div className="form-inputs"></div>
+          <div className="form-inputs">
+            <div>
+              <input
+                className="rsvp-input"
+                type="datetime-local"
+                value={checkIn}
+                onChange={(e) => setCheckIn(e.target.value)}
+                // pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}"
+                // required
+                required
+              />
+            </div>
+            <div>
+              <input
+                className="rsvp-input"
+                type="text"
+                value={guests}
+                onChange={(e) => setGuests(e.target.value)}
+                required
+              />
+            </div>
+          </div>
 
           <button
             className="reserve-btn"
