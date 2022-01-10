@@ -4,7 +4,6 @@ import { useHistory, useParams } from "react-router-dom";
 import "./CreateEvent.css";
 import { addRsvp } from "../../store/reservation";
 
-
 export default function ReservationForm() {
   const dispatch = useDispatch();
   const history = useHistory();
@@ -13,15 +12,15 @@ export default function ReservationForm() {
   const userId = useSelector((state) => state.session.user.id);
 
   const [loaded, setLoaded] = useState(false);
-  const [startDate, setStartDate] = useState("");
-  const [endDate, setEndDate] = useState("");
+  const [checkIn, setCheckIn] = useState("");
+  const [guests, setGuests] = useState(0);
   const [validationErrors, setValidationErrors] = useState([]);
 
   const validate = () => {
     const validateErrors = [];
 
-    if (!startDate) validateErrors.push("Please provide a start date");
-    if (!endDate) validateErrors.push("Please provide an end date");
+    if (!checkIn) validateErrors.push("Please provide a check in date");
+    if (!guests) validateErrors.push("Please provide number of guests");
 
     return validateErrors;
   };
@@ -35,16 +34,14 @@ export default function ReservationForm() {
     const payload = {
       userId: userId,
       eventId,
-      startDate,
-      endDate,
+      checkIn,
+      guests,
     };
 
     dispatch(addRsvp(payload));
     // history.push(`/users/${userId}`);
     history.push("/host");
   };
-
-
 
   return (
     <div className="review-form-container">

@@ -70,6 +70,7 @@ export const removeRSVP = (userId) => async (dispatch) => {
   if (response.ok) {
     console.log("-----------> response.ok", response.ok);
     console.log("^^^^^^^^^^^^^^^^ dispatch", deleteRsvp(userId));
+
     dispatch(deleteRsvp(userId));
   }
 };
