@@ -23,3 +23,30 @@
 .total-review {
   font-size: 14px;
 }
+
+.event-info-container {
+  /* display: flex; */
+  flex-direction: row;
+}
+
+.single-events-container {
+  /* display: flex; */
+}
+
+.reviews-container {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-around;
+  border: 1px solid red;
+}
+
+.review-info {
+  flex: 50%;
+}
+
+.review-user-pic {
+  height: 50px;
+  width: 50px;
+  background-color: grey;
+  border-radius: 25px;
+}

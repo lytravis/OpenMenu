@@ -147,97 +147,99 @@ function SingleEvent() {
               <img src={img4?.url} alt={eventImages.id} />
               <img src={img5?.url} alt={eventImages.id} />
             </div>
-            <div>
-              <h3>{event?.description}</h3>
-            </div>
-            <div>
-              {event?.address} {event?.city} {event?.state} {event?.zipCode}{" "}
-            </div>
-            <div className="event-info-container">
-              <div className="owner-info">
-                <div className="host-img">
-                  <img
-                    className="nav-user-pic"
-                    src={event?.User.profilePic}
-                    alt="profilePic"
-                  />
-                </div>
-                <div>
-                  {`This event is hosted by ${event?.User.firstName} ${event?.User.lastName} `}
-                </div>
-              </div>
-              <div className="event-type">
-                <div>
-                  <i className="fa fa-list-alt fa-2x" />
-                  Type
-                </div>
-                <div>{event?.Type.name}</div>
-              </div>
-              <div className="event-type">
-                <div>
-                  <i className="fas fa-user fa-2x" />
-                  Member Since
-                </div>
-                <div>2021</div>
-              </div>
-            </div>
-          </div>
-          <div className="reviews-container">
-            <div>
-              <h2>Reviews</h2>
-            </div>
-            <div className="reviews-container">
+            <div className="single-events-container">
               <div>
-                {eventReviews?.map((review) => (
-                  <>
-                    <div key={review?.id}>
-                      <div className="review-img">
-                        <img
-                          className="nav-user-pic"
-                          src={review?.User?.profilePic}
-                          alt="profilePic"
-                        />
-                      </div>
-                      <div>
-                        <div className="review-name"> </div>
-                        {review?.User?.firstName}
-                        {review?.userId === userId && (
-                          // console.log("TEST ===",review.userId === userId ),
-                          <div className="review-btns">
-                            <div>
-                              {/* <Link to={`reviews/${review.id}/edit`}>
+                <h3>{event?.description}</h3>
+              </div>
+              <div>
+                {event?.address} {event?.city} {event?.state} {event?.zipCode}{" "}
+              </div>
+              <div className="event-info-container">
+                <div className="owner-info">
+                  <div className="host-img">
+                    <img
+                      className="nav-user-pic"
+                      src={event?.User.profilePic}
+                      alt="profilePic"
+                    />
+                  </div>
+                  <div>
+                    {`This event is hosted by ${event?.User.firstName} ${event?.User.lastName} `}
+                  </div>
+                </div>
+                <div className="event-type">
+                  <div>
+                    <i className="fa fa-list-alt fa-2x" />
+                    Type
+                  </div>
+                  <div>{event?.Type.name}</div>
+                </div>
+                <div className="event-type">
+                  <div>
+                    <i className="fas fa-user fa-2x" />
+                    Member Since
+                  </div>
+                  <div>2021</div>
+                </div>
+              </div>
+            </div>
+            <div className="">
+              <div>
+                <h2>Reviews</h2>
+              </div>
+              <div className="reviews-container">
+                <div>
+                  {eventReviews?.map((review) => (
+                    <>
+                      <div key={review?.id} className="review-info">
+                        <div className="review-img">
+                          <img
+                            className="review-user-pic"
+                            src={review?.User?.profilePic}
+                            alt="profilePic"
+                          />
+                        </div>
+                        <div>
+                          <div className="review-name"> </div>
+                          {review?.User?.firstName}
+                          {review?.userId === userId && (
+                            // console.log("TEST ===",review.userId === userId ),
+                            <div className="review-btns">
+                              <div>
+                                {/* <Link to={`reviews/${review.id}/edit`}>
                                 <button type="button" className="edit-button">
                                   Edit
                                 </button>
                               </Link> */}
-                              <Link to={`/${review.id}/edit`}>
-                                <button type="button" className="edit-button">
-                                  Edit
+                                <Link to={`/${review.id}/edit`}>
+                                  <button type="button" className="edit-button">
+                                    Edit
+                                  </button>
+                                </Link>
+                              </div>
+                              <div>
+                                <button
+                                  onClick={() => handleDelete(review?.id)}
+                                  className="delete-button"
+                                >
+                                  Delete
                                 </button>
-                              </Link>
+                              </div>
                             </div>
-                            <div>
-                              <button
-                                onClick={() => handleDelete(review?.id)}
-                                className="delete-button"
-                              >
-                                Delete
-                              </button>
-                            </div>
-                          </div>
-                        )}
+                          )}
+                        </div>
+                        <div>{review.comment}</div>
                       </div>
-                      <div>{review.comment}</div>
-                    </div>
-                  </>
-                ))}
+                    </>
+                  ))}
+                </div>
               </div>
-            </div>
-            <div>
-              <ReviewForm />
-            </div>
-            <div>
-              <ReservationForm />
+              <div>
+                <ReviewForm />
+              </div>
+              {/* <div>
+                <ReservationForm />
+              </div> */}
             </div>
           </div>
         </div>
