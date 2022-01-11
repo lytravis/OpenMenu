@@ -112,53 +112,46 @@ const ReviewForm = () => {
                   rtl={false}
                 />
               </div>
-              <div>
-                <div className="singleAvgRating addRatingCategory">
-                  <div className="reviewCategory">Experience</div>
-                  <Rating
-                    onClick={(rating) => setExperienceRating(rating)}
-                    ratingValue={experienceRating}
-                  />
-                </div>
+              <div className="emptySpace"></div>
+              <div className="singleAvgRating addRatingCategory">
+                <div className="reviewCategory">Experience</div>
+                <Rating
+                  onClick={(rating) => setExperienceRating(rating)}
+                  ratingValue={experienceRating}
+                />
               </div>
-              <div>
-                <div className="singleAvgRating addRatingCategory">
-                  <div className="reviewCategory">Cleanliness</div>
-                  <Rating
-                    onClick={(rating) => setCleanlinessRating(rating)}
-                    ratingValue={cleanlinessRating}
-                  />
-                </div>
+              <div className="emptySpace"></div>
+              <div className="singleAvgRating addRatingCategory">
+                <div className="reviewCategory">Cleanliness</div>
+                <Rating
+                  onClick={(rating) => setCleanlinessRating(rating)}
+                  ratingValue={cleanlinessRating}
+                />
               </div>
             </div>
-
             <div className="review-row2">
-              <div>
-                <div className="singleAvgRating addRatingCategory">
-                  <div className="reviewCategory">Accuracy</div>
-                  <Rating
-                    onClick={(rating) => setAccuracyRating(rating)}
-                    ratingValue={accuracyRating}
-                  />
-                </div>
+              <div className="singleAvgRating addRatingCategory">
+                <div className="reviewCategory">Accuracy</div>
+                <Rating
+                  onClick={(rating) => setAccuracyRating(rating)}
+                  ratingValue={accuracyRating}
+                />
               </div>
-              <div>
-                <div className="singleAvgRating addRatingCategory">
-                  <div className="reviewCategory">Value</div>
-                  <Rating
-                    onClick={(rating) => setValueRating(rating)}
-                    ratingValue={valueRating}
-                  />
-                </div>
+              <div className="emptySpace"></div>
+              <div className="singleAvgRating addRatingCategory">
+                <div className="reviewCategory">Value</div>
+                <Rating
+                  onClick={(rating) => setValueRating(rating)}
+                  ratingValue={valueRating}
+                />
               </div>
-              <div>
-                <div className="singleAvgRating addRatingCategory">
-                  <div className="reviewCategory">Communication</div>
-                  <Rating
-                    onClick={(rating) => setCommunicationRating(rating)}
-                    ratingValue={communicationRating}
-                  />
-                </div>
+              <div className="emptySpace"></div>
+              <div className="singleAvgRating addRatingCategory">
+                <div className="reviewCategory">Communication</div>
+                <Rating
+                  onClick={(rating) => setCommunicationRating(rating)}
+                  ratingValue={communicationRating}
+                />
               </div>
             </div>
             <div className="commentBox">
