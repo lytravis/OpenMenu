@@ -50,18 +50,6 @@ const ReviewForm = () => {
     dispatch(getEvents()).then(() => setIsLoaded(true));
   }, [dispatch]);
 
-  useEffect(() => {
-    return () => {
-      setFoodRating(0);
-      setExperienceRating(0);
-      setCleanlinessRating(0);
-      setAccuracyRating(0);
-      setValueRating(0);
-      setCommunicationRating(0);
-      setComment("");
-    };
-  }, []);
-
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -81,6 +69,15 @@ const ReviewForm = () => {
     };
 
     dispatch(addReview(payload));
+
+    setFoodRating(0);
+    setExperienceRating(0);
+    setCleanlinessRating(0);
+    setAccuracyRating(0);
+    setValueRating(0);
+    setCommunicationRating(0);
+    setComment("");
+
     history.push(`/events/${event.id}`);
     // history.push("/events");
   };
