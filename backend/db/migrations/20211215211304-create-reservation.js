@@ -18,13 +18,13 @@ module.exports = {
         type: Sequelize.INTEGER,
         references: { model: "Events" },
       },
-      startDate: {
+      checkIn: {
         allowNull: false,
         type: Sequelize.STRING,
       },
-      endDate: {
+      guests: {
         allowNull: false,
-        type: Sequelize.STRING,
+        type: Sequelize.INTEGER,
       },
       createdAt: {
         allowNull: false,

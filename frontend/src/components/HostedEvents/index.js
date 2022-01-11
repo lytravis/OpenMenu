@@ -72,8 +72,8 @@ function HostedEvents({
       {isLoaded && (
         <div>
           {hostedEvents.map((hostedEvent) => (
-            <div>
-              <div className="host-container" key={hostedEvent.id}>
+            <div key={hostedEvent.id}>
+              <div className="host-container">
                 <div
                   className="host-wrap"
                   onClick={(e) => goToEvent(e, hostedEvent.id)}

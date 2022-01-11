@@ -5,6 +5,8 @@ import { useSelector, useDispatch } from "react-redux";
 import { addReview } from "../../store/review";
 import { getEvents } from "../../store/event";
 
+import "./ReviewForm.css";
+
 const ReviewForm = () => {
   const dispatch = useDispatch();
   const history = useHistory();
@@ -48,18 +50,6 @@ const ReviewForm = () => {
     dispatch(getEvents()).then(() => setIsLoaded(true));
   }, [dispatch]);
 
-  useEffect(() => {
-    return () => {
-      setFoodRating(0);
-      setExperienceRating(0);
-      setCleanlinessRating(0);
-      setAccuracyRating(0);
-      setValueRating(0);
-      setCommunicationRating(0);
-      setComment("");
-    };
-  }, []);
-
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -79,6 +69,15 @@ const ReviewForm = () => {
     };
 
     dispatch(addReview(payload));
+
+    setFoodRating(0);
+    setExperienceRating(0);
+    setCleanlinessRating(0);
+    setAccuracyRating(0);
+    setValueRating(0);
+    setCommunicationRating(0);
+    setComment("");
+
     history.push(`/events/${event.id}`);
     // history.push("/events");
   };
@@ -90,7 +89,7 @@ const ReviewForm = () => {
           <div>
             <h3>Leave a Review</h3>
             {validationErrors.length > 0 && (
-              <div className="error-msg">
+              <div className="addReviewError">
                 The following errors were found:
                 <ul>
                   {validationErrors.map((error) => (
@@ -101,69 +100,73 @@ const ReviewForm = () => {
             )}
           </div>
           <div className="rating-container">
-            <div>
-              <div>Food</div>
-              <Rating
-                onClick={(rating) => setFoodRating(rating)}
-                ratingValue={foodRating}
-                showTooltip
-              />
-            </div>
-
-            <div>
-              <div>Experience</div>
-              <Rating
-                onClick={(rating) => setExperienceRating(rating)}
-                ratingValue={experienceRating}
-                showTooltip
-              />
-            </div>
-            <div>
-              <div>Cleanliness</div>
-              <Rating
-                onClick={(rating) => setCleanlinessRating(rating)}
-                ratingValue={cleanlinessRating}
-                showTooltip
-              />
-            </div>
-            <div>
-              <div>Accuracy</div>
-              <Rating
-                onClick={(rating) => setAccuracyRating(rating)}
-                ratingValue={accuracyRating}
-                showTooltip
-              />
-            </div>
-            <div>
-              <div>Value</div>
-              <Rating
-                onClick={(rating) => setValueRating(rating)}
-                ratingValue={valueRating}
-                showTooltip
-              />
-            </div>
-            <div>
-              <div>Communication</div>
-              <Rating
-                onClick={(rating) => setCommunicationRating(rating)}
-                ratingValue={communicationRating}
-                showTooltip
-              />
-            </div>
-          </div>
-          <div>
-            <form onSubmit={handleSubmit}>
-              <label>Comment</label>
-              <textarea
-                onChange={(e) => setComment(e.target.value)}
-                value={comment}
-                type="text"
-                placeholder="Comment"
-              />
-              <div className="review-button">
-                <button type="submit">Submit Review</button>
+            <div className="review-row1">
+              <div className="singleAvgRating addRatingCategory">
+                <div className="reviewCategory">Food</div>
+                <Rating
+                  onClick={(rating) => setFoodRating(rating)}
+                  ratingValue={foodRating}
+                  rtl={false}
+                />
               </div>
-            </form>
+              <div className="emptySpace"></div>
+              <div className="singleAvgRating addRatingCategory">
+                <div className="reviewCategory">Experience</div>
+                <Rating
+                  onClick={(rating) => setExperienceRating(rating)}
+                  ratingValue={experienceRating}
+                />
+              </div>
+              <div className="emptySpace"></div>
+              <div className="singleAvgRating addRatingCategory">
+                <div className="reviewCategory">Cleanliness</div>
+                <Rating
+                  onClick={(rating) => setCleanlinessRating(rating)}
+                  ratingValue={cleanlinessRating}
+                />
+              </div>
+            </div>
+            <div className="review-row2">
+              <div className="singleAvgRating addRatingCategory">
+                <div className="reviewCategory">Accuracy</div>
+                <Rating
+                  onClick={(rating) => setAccuracyRating(rating)}
+                  ratingValue={accuracyRating}
+                />
+              </div>
+              <div className="emptySpace"></div>
+              <div className="singleAvgRating addRatingCategory">
+                <div className="reviewCategory">Value</div>
+                <Rating
+                  onClick={(rating) => setValueRating(rating)}
+                  ratingValue={valueRating}
+                />
+              </div>
+              <div className="emptySpace"></div>
+              <div className="singleAvgRating addRatingCategory">
+                <div className="reviewCategory">Communication</div>
+                <Rating
+                  onClick={(rating) => setCommunicationRating(rating)}
+                  ratingValue={communicationRating}
+                />
+              </div>
+            </div>
+            <div className="commentBox">
+              <form className="commentForm" onSubmit={handleSubmit}>
+                <div className="commentHolder">
+                  <label>Comment</label>
+                  <textarea
+                    onChange={(e) => setComment(e.target.value)}
+                    value={comment}
+                    type="text"
+                    placeholder="Comment"
+                  />
+                </div>
+                <div className="reviewButtonContainer">
+                  <button type="submit">Submit Review</button>
+                </div>
+              </form>
+            </div>
           </div>
         </div>
       )}

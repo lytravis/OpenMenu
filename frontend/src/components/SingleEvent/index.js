@@ -9,6 +9,7 @@ import ReviewForm from "../Reviews/ReviewForm";
 import EditReview from "../Reviews/EditReview";
 import { Modal } from "../../context/Modal";
 import "./SingleEvent.css";
+import ReservationForm from "../Reservation/ReservationForm";
 function SingleEvent() {
   const dispatch = useDispatch();
   const { eventId, reviewId } = useParams();
@@ -76,6 +77,8 @@ function SingleEvent() {
   // console.log("THIS IS REVIEWS HERE", reviews);
 
   eventReviews?.forEach((review) => {
+    console.log("88888888888888888 event reviews", eventReviews);
+    console.log("88888888888888888 event length", eventReviews.length);
     avgFood = (totalFood += review.food) / eventReviews.length;
     avgExperience =
       (totalExperience += review.experience) / eventReviews.length;
@@ -127,12 +130,12 @@ function SingleEvent() {
         <div className="container-single">
           <div className="event-container">
             <div>
-              <h1>{event.name}</h1>
+              <h1>{event?.name}</h1>
             </div>
             <div>
               <span className="total-review">
                 <i className="fas fa-star" />
-                {totalAvg} ({eventReviews.length} reviews)
+                {totalAvg} ({eventReviews?.length} reviews)
               </span>
             </div>
             <div className="event-images-container">
@@ -146,94 +149,203 @@ function SingleEvent() {
               <img src={img4?.url} alt={eventImages.id} />
               <img src={img5?.url} alt={eventImages.id} />
             </div>
-            <div>
-              <h3>{event.description}</h3>
-            </div>
-            <div>
-              {event.address} {event.city} {event.state} {event.zipCode}{" "}
-            </div>
-            <div className="event-info-container">
-              <div className="owner-info">
-                <div className="host-img">
-                  <img
-                    className="nav-user-pic"
-                    src={event?.User.profilePic}
-                    alt="profilePic"
-                  />
-                </div>
-                <div>
-                  {`This event is hosted by ${event?.User.firstName} ${event?.User.lastName} `}
-                </div>
-              </div>
-              <div className="event-type">
-                <div>
-                  <i className="fa fa-list-alt fa-2x" />
-                  Type
-                </div>
-                <div>{event?.Type.name}</div>
-              </div>
-              <div className="event-type">
-                <div>
-                  <i className="fas fa-user fa-2x" />
-                  Member Since
-                </div>
-                <div>2021</div>
-              </div>
-            </div>
-          </div>
-          <div className="reviews-container">
-            <div>
-              <h2>Reviews</h2>
-            </div>
-            <div className="reviews-container">
+            <div className="single-events-container">
               <div>
-                {eventReviews?.map((review) => (
-                  <>
-                    <div key={review?.id}>
-                      <div className="review-img">
-                        <img
-                          className="nav-user-pic"
-                          src={review?.User?.profilePic}
-                          alt="profilePic"
-                        />
+                <h3>{event?.description}</h3>
+              </div>
+              <div>
+                {event?.address} {event?.city} {event?.state} {event?.zipCode}{" "}
+              </div>
+              <div className="event-info-container">
+                <div className="owner-info">
+                  <div className="host-img">
+                    <img
+                      className="nav-user-pic"
+                      src={event?.User.profilePic}
+                      alt="profilePic"
+                    />
+                  </div>
+                  <div>
+                    {`This event is hosted by ${event?.User.firstName} ${event?.User.lastName} `}
+                  </div>
+                </div>
+                <div className="event-type">
+                  <div>
+                    <i className="fa fa-list-alt fa-2x" />
+                    Type
+                  </div>
+                  <div>{event?.Type.name}</div>
+                </div>
+                <div className="event-type">
+                  <div>
+                    <i className="fas fa-user fa-2x" />
+                    Member Since
+                  </div>
+                  <div>2021</div>
+                </div>
+              </div>
+              <div>
+                <ReservationForm />
+              </div>
+            </div>
+            <div className="">
+              <div className="reviews-header">
+                <div>
+                  <span className="reviews-star">
+                    <i className="fas fa-star" />
+                  </span>
+                  {totalAvg}
+                  {"  "}
+                  <span id="reviews-length">
+                    ({eventReviews?.length} reviews)
+                  </span>
+                </div>
+              </div>
+
+              <div className="reviewsContainer">
+                <div className="rating-container">
+                  <div className="review-row1">
+                    <div className="singleAvgRating">
+                      <div className="reviewCategory">Food</div>
+                      <div className="rate-bar">
+                        <div className="max-bar">
+                          <div
+                            className="rev-bar"
+                            style={{ width: `${avgFood * 1.2}px` }}
+                          ></div>
+                        </div>
+                        <div className="avgRating">
+                          {(avgFood / 20).toFixed(1)}
+                        </div>
                       </div>
-                      <div>
-                        <div className="review-name"> </div>
-                        {review?.User?.firstName}
-                        {review?.userId === userId && (
-                          // console.log("TEST ===",review.userId === userId ),
-                          <div className="review-btns">
-                            <div>
-                              {/* <Link to={`reviews/${review.id}/edit`}>
+                    </div>
+                    <div className="emptySpace"></div>
+                    <div className="singleAvgRating">
+                      <div className="reviewCategory">Experience</div>
+                      <div className="rate-bar">
+                        <div className="max-bar">
+                          <div
+                            className="rev-bar"
+                            style={{ width: `${avgExperience * 1.2}px` }}
+                          ></div>
+                        </div>
+                        <div className="avgRating">
+                          {(avgExperience / 20).toFixed(1)}
+                        </div>
+                      </div>
+                    </div>
+                    <div className="emptySpace"></div>
+                    <div className="singleAvgRating">
+                      <div className="reviewCategory">Cleanliness</div>
+                      <div className="rate-bar">
+                        <div className="max-bar">
+                          <div
+                            className="rev-bar"
+                            style={{ width: `${avgCleanliness * 1.2}px` }}
+                          ></div>
+                        </div>
+                        <div className="avgRating">
+                          {(avgCleanliness / 20).toFixed(1)}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="review-row2">
+                    <div className="singleAvgRating">
+                      <div className="reviewCategory">Accuracy</div>
+                      <div className="rate-bar">
+                        <div className="max-bar">
+                          <div
+                            className="rev-bar"
+                            style={{ width: `${avgAccuracy * 1.2}px` }}
+                          ></div>
+                        </div>
+                        <div className="avgRating">
+                          {(avgAccuracy / 20).toFixed(1)}
+                        </div>
+                      </div>
+                    </div>
+                    <div className="emptySpace"></div>
+                    <div className="singleAvgRating">
+                      <div className="reviewCategory">Value</div>
+                      <div className="rate-bar">
+                        <div className="max-bar">
+                          <div
+                            className="rev-bar"
+                            style={{ width: `${avgValue * 1.2}px` }}
+                          ></div>
+                        </div>
+                        <div className="avgRating">
+                          {(avgValue / 20).toFixed(1)}
+                        </div>
+                      </div>
+                    </div>
+                    <div className="emptySpace"></div>
+                    <div className="singleAvgRating">
+                      <div className="reviewCategory">Communication</div>
+                      <div className="rate-bar">
+                        <div className="max-bar">
+                          <div
+                            className="rev-bar"
+                            style={{ width: `${avgCommunication * 1.2}px` }}
+                          ></div>
+                        </div>
+                        <div className="avgRating">
+                          {(avgCommunication / 20).toFixed(1)}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div>
+                  {eventReviews?.map((review) => (
+                    <>
+                      <div key={review?.id} className="review-info">
+                        <div className="review-img">
+                          <img
+                            className="review-user-pic"
+                            src={review?.User?.profilePic}
+                            alt="profilePic"
+                          />
+                        </div>
+                        <div>
+                          <div className="review-name"> </div>
+                          {review?.User?.firstName}
+                          {review?.userId === userId && (
+                            // console.log("TEST ===",review.userId === userId ),
+                            <div className="review-btns">
+                              <div>
+                                {/* <Link to={`reviews/${review.id}/edit`}>
                                 <button type="button" className="edit-button">
                                   Edit
                                 </button>
                               </Link> */}
-                              <Link to={`/${review.id}/edit`}>
-                                <button type="button" className="edit-button">
-                                  Edit
+                                <Link to={`/${review.id}/edit`}>
+                                  <button type="button" className="edit-button">
+                                    Edit
+                                  </button>
+                                </Link>
+                              </div>
+                              <div>
+                                <button
+                                  onClick={() => handleDelete(review?.id)}
+                                  className="delete-button"
+                                >
+                                  Delete
                                 </button>
-                              </Link>
+                              </div>
                             </div>
-                            <div>
-                              <button
-                                onClick={() => handleDelete(review?.id)}
-                                className="delete-button"
-                              >
-                                Delete
-                              </button>
-                            </div>
-                          </div>
-                        )}
+                          )}
+                        </div>
+                        <div>{review.comment}</div>
                       </div>
-                      <div>{review.comment}</div>
-                    </div>
-                  </>
-                ))}
+                    </>
+                  ))}
+                </div>
               </div>
-            </div>
-            <div>
-              <ReviewForm />
+              <div>
+                <ReviewForm />
+              </div>
             </div>
           </div>
         </div>

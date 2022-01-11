@@ -15,9 +15,9 @@ const {
 
 const router = express.Router();
 
-const rsvpNotFoundError = (id) => {
+const rsvpNotFoundError = (userId) => {
   const err = Error("Reservation not found");
-  err.errors = [`Reservation ${id} could not be found`];
+  err.errors = [`Reservation ${userId} could not be found`];
   err.title = "Reservation not found";
   err.status = 404;
   return err;
@@ -34,26 +34,43 @@ router.get(
 );
 
 router.get(
-  "/:id(\\d+)",
+  "/:userId(\\d+)",
   asyncHandler(async (req, res) => {
-    const { id } = req.params;
+    const { userId } = req.params;
     const reservations = await Reservation.findAll({
-      where: { userId: id },
-      include: Event,
+      where: { userId: userId },
+      include: [{ model: User }, { model: Event }],
     });
     return res.json({ reservations });
   })
 );
 
-router.delete(
-  "/:id(\\d+)",
+router.post(
+  "/",
   asyncHandler(async (req, res, next) => {
-    const reservation = await Reservation.findByPk(req.params.id);
+    const { userId, eventId, checkIn, guests } = req.body;
+
+    const reservation = {
+      userId,
+      eventId,
+      checkIn,
+      guests,
+    };
+
+    const rsvp = await Reservation.create(reservation);
+    res.json(rsvp);
+  })
+);
+
+router.delete(
+  "/:userId(\\d+)",
+  asyncHandler(async (req, res, next) => {
+    const reservation = await Reservation.findByPk(req.params.userId);
     if (reservation) {
       await reservation.destroy();
       res.status(204).end();
     } else {
-      next(rsvpNotFoundError(req.params.id));
+      next(rsvpNotFoundError(req.params.userId));
     }
   })
 );

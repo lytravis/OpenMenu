@@ -14,88 +14,88 @@ module.exports = {
         {
           userId: 1,
           eventId: 1,
-          startDate: "Fri, December 10, 2021",
-          endDate: "Fri, December 10, 2021",
+          checkIn: new Date("2022-02-05T00:00:00.000+20:00").toLocaleString(
+            "en-US",
+            { timeZone: "America/Los_Angeles" }
+          ),
+          guests: 2,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          userId: 1,
+          eventId: 2,
+          checkIn: new Date("2022-02-15T00:00:00.000+20:00").toLocaleString(
+            "en-US",
+            { timeZone: "America/Los_Angeles" }
+          ),
+          guests: 1,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          userId: 1,
+          eventId: 3,
+          checkIn: new Date("2022-01-21T00:00:00.000+20:30").toLocaleString(
+            "en-US",
+            { timeZone: "America/Los_Angeles" }
+          ),
+          guests: 2,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          userId: 1,
+          eventId: 4,
+          checkIn: new Date("2022-02-01T00:00:00.000+19:00").toLocaleString(
+            "en-US",
+            { timeZone: "America/Los_Angeles" }
+          ),
+          guests: 4,
           createdAt: new Date(),
           updatedAt: new Date(),
         },
         {
           userId: 1,
           eventId: 1,
-          startDate: "Sat, December 11, 2021",
-          endDate: "Sat, December 11, 2021",
+          checkIn: new Date("2022-02-05T00:00:00.000+20:00").toLocaleString(
+            "en-US",
+            { timeZone: "America/Los_Angeles" }
+          ),
+          guests: 2,
           createdAt: new Date(),
           updatedAt: new Date(),
         },
         {
           userId: 1,
-          eventId: 1,
-          startDate: "Sun, December 12, 2021",
-          endDate: "Sun, December 12, 2021",
+          eventId: 2,
+          checkIn: new Date("2022-02-15T00:00:00.000+20:00").toLocaleString(
+            "en-US",
+            { timeZone: "America/Los_Angeles" }
+          ),
+          guests: 1,
           createdAt: new Date(),
           updatedAt: new Date(),
         },
         {
           userId: 1,
-          eventId: 1,
-          startDate: "Mon, December 13, 2021",
-          endDate: "Mon, December 13, 2021",
+          eventId: 3,
+          checkIn: new Date("2022-01-21T00:00:00.000+20:30").toLocaleString(
+            "en-US",
+            { timeZone: "America/Los_Angeles" }
+          ),
+          guests: 2,
           createdAt: new Date(),
           updatedAt: new Date(),
         },
         {
           userId: 1,
-          eventId: 1,
-          startDate: "Tue, December 14, 2021",
-          endDate: "Tue, December 14, 2021",
-          createdAt: new Date(),
-          updatedAt: new Date(),
-        },
-        {
-          userId: 1,
-          eventId: 1,
-          startDate: "Wed, December 15, 2021",
-          endDate: "Wed, December 15, 2021",
-          createdAt: new Date(),
-          updatedAt: new Date(),
-        },
-        {
-          userId: 1,
-          eventId: 1,
-          startDate: "Thu, December 16, 2021",
-          endDate: "Thu, December 16, 2021",
-          createdAt: new Date(),
-          updatedAt: new Date(),
-        },
-        {
-          userId: 1,
-          eventId: 1,
-          startDate: "Fri, December 17, 2021",
-          endDate: "Fri, December 17, 2021",
-          createdAt: new Date(),
-          updatedAt: new Date(),
-        },
-        {
-          userId: 1,
-          eventId: 1,
-          startDate: "Sat, December 18, 2021",
-          endDate: "Sat, December 18, 2021",
-          createdAt: new Date(),
-          updatedAt: new Date(),
-        },
-        {
-          userId: 1,
-          eventId: 1,
-          startDate: "Wed, December 1, 2021",
-          endDate: "Wed, December 1, 2021",
-          createdAt: new Date(),
-          updatedAt: new Date(),
-        },
-        {
-          userId: 1,
-          eventId: 1,
-          startDate: "Thu, December 2, 2021",
-          endDate: "Thu, December 2, 2021",
+          eventId: 4,
+          checkIn: new Date("2022-02-01T00:00:00.000+19:00").toLocaleString(
+            "en-US",
+            { timeZone: "America/Los_Angeles" }
+          ),
+          guests: 4,
           createdAt: new Date(),
           updatedAt: new Date(),
         },
