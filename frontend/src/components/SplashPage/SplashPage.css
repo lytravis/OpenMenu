@@ -69,3 +69,16 @@
   font-family: "Bebas Neue", cursive;
   font-size: 1.5rem;
 }
+
+.splash-pic {
+  background-image: url("https://cdn.discordapp.com/attachments/920377762068447282/931585437041045674/how-to-host-an-allergy-friendly-dinner-party-1200x684.jpg");
+  background-size: cover;
+  height: 50em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: white;
+  margin-left: 4.5rem;
+  margin-right: 4.5rem;
+  border-radius: 1rem;
+}

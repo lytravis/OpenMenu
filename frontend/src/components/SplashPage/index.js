@@ -18,7 +18,7 @@ const SplashPage = () => {
       <div className="splash-container">
         <div className="splash-picture">
           <div className="splash">
-            <p>Not sure what to do?  Perfect.</p>
+            <p>Not sure what to do? Perfect.</p>
 
             <Link to="/events">
               <button type="button" className="splash-btn">
@@ -63,6 +63,17 @@ const SplashPage = () => {
               />
             </Link>
             <div className="splash-info">Food Trucks</div>
+          </div>
+        </div>
+        <div className="splash-pic">
+          <div className="splash">
+            <p>Share your Skills and Host An Event</p>
+
+            <Link to="/events/new">
+              <button type="button" className="splash-btn">
+                Host now
+              </button>
+            </Link>
           </div>
         </div>
       </div>
