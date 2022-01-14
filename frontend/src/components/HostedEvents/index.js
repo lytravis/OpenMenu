@@ -70,7 +70,7 @@ function HostedEvents({
   return (
     <>
       {isLoaded && (
-        <div>
+        <div className="host-container">
           {hostedEvents.map((hostedEvent) => (
             <div key={hostedEvent.id}>
               <div className="host-container">
@@ -93,30 +93,30 @@ function HostedEvents({
                       />
                     )}
                   </div>
-                  <div>{hostedEvent.name}</div>
-                </div>
-                <div className="host-info">
-                  {" "}
-                  {/* <div>{hostedEvent.description}</div> */}
-                  {/* <div>
+                  <div className="host-desc">{hostedEvent.name}</div>
+
+                  <div className="host-info">
+                    {" "}
+                    {/* <div>{hostedEvent.description}</div> */}
+                    {/* <div>
                     {hostedEvent.address} {hostedEvent.city} {hostedEvent.state}{" "}
                     , {hostedEvent.zipCode}{" "}
                   </div> */}
-                  <div className="host-buttons">
-                    <button
-                      onClick={() => handleDelete(hostedEvent.id)}
-                      className="delete-button"
-                    >
-                      Delete
-                    </button>
-                    <Link to={`events/${hostedEvent.id}/edit`}>
-                      <button type="button" className="edit-button">
-                        Edit
+                    <div className="host-buttons">
+                      <button
+                        onClick={() => handleDelete(hostedEvent.id)}
+                        className="delete-button"
+                      >
+                        Delete
                       </button>
-                    </Link>
-                    {/* <ImageForm  /> */}
+                      <Link to={`events/${hostedEvent.id}/edit`}>
+                        <button type="button" className="edit-button">
+                          Edit
+                        </button>
+                      </Link>
+                      {/* <ImageForm  /> */}
 
-                    {/* <div>
+                      {/* <div>
                       <form>
                         <input
                           type="text"
@@ -129,6 +129,7 @@ function HostedEvents({
                         </button>
                       </form>
                     </div> */}
+                    </div>
                   </div>
                 </div>
               </div>

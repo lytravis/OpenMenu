@@ -1,14 +1,15 @@
 .host-container {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  flex-wrap: wrap;
   justify-content: center;
   text-align: center;
   margin-top: 20px;
   margin-left: 30px;
   width: fit-content;
   padding: 10px 15px;
-  border-radius: 10px;
-  border: 1px solid lightgrey;
+  /* border-radius: 10px;
+  border: 1px solid lightgrey; */
   font-size: 16px;
   color: #222222;
   transition: all 0.25s 0s;
@@ -25,13 +26,25 @@
 
 .host-wrap {
   display: flex;
+
   justify-content: center;
   flex-direction: column;
   align-items: center;
   border-radius: 1rem;
   width: 25rem;
   min-width: 30rem;
-  margin-top: 15px;
+  margin-top: 10px;
+  padding-top: 15px;
+  border-radius: 10px;
+  border: 1px solid lightgrey;
+  font-size: 16px;
+  color: #222222;
+}
+.host-desc {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-size: 18px;
+  text-align: center;
 }
 
 .event-image {
@@ -40,8 +53,8 @@
 }
 
 .host-buttons {
-  margin-left: 10rem;
-  /* text-align: center;
+  margin-left: 15rem;
+  /* ==text-align: center;
 
   width: fit-content;
   padding: 10px 15px;
