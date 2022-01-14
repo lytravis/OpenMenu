@@ -74,10 +74,7 @@ function HostedEvents({
           {hostedEvents.map((hostedEvent) => (
             <div key={hostedEvent.id}>
               <div className="host-container">
-                <div
-                  className="host-wrap"
-                  onClick={(e) => goToEvent(e, hostedEvent.id)}
-                >
+                <div className="host-wrap">
                   <div className="events-image">
                     {hostedEvent?.Images[0]?.url?.length > 0 ? (
                       <img
