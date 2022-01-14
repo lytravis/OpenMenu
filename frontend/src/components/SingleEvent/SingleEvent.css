@@ -50,3 +50,20 @@
   background-color: grey;
   border-radius: 25px;
 }
+
+.total-review {
+  font-size: 19px;
+}
+
+.single-events-container {
+  font-size: 20px;
+}
+
+.event-info-container {
+  padding: 15px;
+  margin: 15px;
+}
+
+.event-type {
+  margin-right: 100px;
+}

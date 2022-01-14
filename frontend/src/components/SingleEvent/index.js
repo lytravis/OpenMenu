@@ -172,7 +172,7 @@ function SingleEvent() {
                 <div className="event-type">
                   <div>
                     <i className="fa fa-list-alt fa-2x" />
-                    Type
+                    <span className="event-type">Type</span>
                   </div>
                   <div>{event?.Type.name}</div>
                 </div>
