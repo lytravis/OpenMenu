@@ -2,14 +2,19 @@
 
 OpenMenu is a Airbnb clone that aims to build community amongst food lovers, where users can find their next food adventure.
 
+![home](https://cdn.discordapp.com/attachments/930559495803928577/930564766873833533/unknown.png)
+
 ## [GitHub Wiki Page](https://github.com/lytravis/OpenMenu/wiki)
 
-## Technologies Used
+## Project Structure
+### Technologies Used
 - JavaScipt
 - Express
 - Sequelize
 - React
 - Redux
+- PostgreSQL
+- HTML
 - CSS
 
 ## [Features ](https://github.com/lytravis/OpenMenu/wiki/MVP-Features-List) include:
