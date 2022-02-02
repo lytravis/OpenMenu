@@ -39,6 +39,9 @@ function SingleEvent() {
     dispatch(getImages());
     dispatch(getTypes());
     dispatch(getReviews()).then(() => setIsLoaded(true));
+    return () => {
+      setIsLoaded();
+    };
   }, [dispatch]);
   const handleDelete = (reviewId) => {
     dispatch(removeReview(reviewId));
@@ -77,8 +80,8 @@ function SingleEvent() {
   // console.log("THIS IS REVIEWS HERE", reviews);
 
   eventReviews?.forEach((review) => {
-    console.log("88888888888888888 event reviews", eventReviews);
-    console.log("88888888888888888 event length", eventReviews.length);
+    // console.log("88888888888888888 event reviews", eventReviews);
+    // console.log("88888888888888888 event length", eventReviews.length);
     avgFood = (totalFood += review.food) / eventReviews.length;
     avgExperience =
       (totalExperience += review.experience) / eventReviews.length;
