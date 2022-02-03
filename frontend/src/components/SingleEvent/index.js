@@ -10,10 +10,17 @@ import EditReview from "../Reviews/EditReview";
 import { Modal } from "../../context/Modal";
 import "./SingleEvent.css";
 import ReservationForm from "../Reservation/ReservationForm";
+// import ReactBnbGallery from "react-bnb-gallery";
+
 function SingleEvent() {
   const dispatch = useDispatch();
   const { eventId, reviewId } = useParams();
   const [isLoaded, setIsLoaded] = useState(false);
+
+  const [photoIndex, setPhotoIndex] = useState(0);
+  const [photoObject, setPhotoObject] = useState([]);
+  const [showPhotoModal, setShowPhotoModal] = useState(false);
+
   const userId = useSelector((state) => state.session.user?.id);
   const events = useSelector((state) => Object.values(state.event));
   const images = useSelector((state) => Object.values(state.image));
@@ -61,7 +68,7 @@ function SingleEvent() {
   const img3 = eventImages[2];
   const img4 = eventImages[3];
   const img5 = eventImages[4];
-  // console.log("imgggggg 1", img1);
+  console.log("imgggggg 1", img1);
 
   let totalFood = 0;
   let totalExperience = 0;
@@ -127,6 +134,23 @@ function SingleEvent() {
   //   avgAccuracy
   // );
 
+  // const handlePhotoModal = (photoIndex) => {
+  //   if (!photoObject.length) {
+  //     const EventImages = [];
+
+  //     for (let x = 0; x < eventImages?.length; x++) {
+  //       EventImages.push({
+  //         photo: event?.images[x],
+  //         caption: event?.name,
+  //         subcaption: `${event?.city}, ${event?.state}`,
+  //       });
+  //     }
+  //     setPhotoObject(EventImages);
+  //   }
+  //   setPhotoIndex(photoIndex);
+  //   setShowPhotoModal(true);
+  // };
+
   return (
     <>
       {isLoaded && (
@@ -142,7 +166,48 @@ function SingleEvent() {
               </span>
             </div>
             <div className="event-images-container">
-              <img
+              <div
+                className="mainEventImage"
+                // onClick={() => handlePhotoModal(0)}
+                style={{
+                  backgroundImage: `url(${img1?.url}), url("https://res.cloudinary.com/dt8q1ngxj/image/upload/v1637621047/Capstone/EventFallBack_zbctxj.png")`,
+                }}
+              ></div>
+              <div className="smallerEventImageContainer">
+                <div
+                  className="smallEventImage"
+                  id="firstSmallImage"
+                  // onClick={() => handlePhotoModal(1)}
+                  style={{
+                    backgroundImage: `url(${img2.url}), url("https://res.cloudinary.com/dt8q1ngxj/image/upload/v1637621047/Capstone/EventFallBack_zbctxj.png")`,
+                  }}
+                ></div>
+                <div
+                  className="smallEventImage"
+                  id="secondSmallImage"
+                  // onClick={() => handlePhotoModal(2)}
+                  style={{
+                    backgroundImage: `url(${img3.url}), url("https://res.cloudinary.com/dt8q1ngxj/image/upload/v1637621047/Capstone/EventFallBack_zbctxj.png")`,
+                  }}
+                ></div>
+                {/* <div
+                  className="smallEventImage"
+                  id="firstSmallImage"
+                  // onClick={() => handlePhotoModal(1)}
+                  style={{
+                    backgroundImage: `url(${img2.url}), url("https://res.cloudinary.com/dt8q1ngxj/image/upload/v1637621047/Capstone/EventFallBack_zbctxj.png")`,
+                  }}
+                ></div>
+                <div
+                  className="smallEventImage"
+                  id="secondSmallImage"
+                  // onClick={() => handlePhotoModal(2)}
+                  style={{
+                    backgroundImage: `url(${img3.url}), url("https://res.cloudinary.com/dt8q1ngxj/image/upload/v1637621047/Capstone/EventFallBack_zbctxj.png")`,
+                  }}
+                ></div> */}
+              </div>
+              {/* <img
                 className="event-images-first"
                 src={img1?.url}
                 alt={eventImages.id}
@@ -150,8 +215,14 @@ function SingleEvent() {
               <img src={img2?.url} alt={eventImages.id} />
               <img src={img3?.url} alt={eventImages.id} />
               <img src={img4?.url} alt={eventImages.id} />
-              <img src={img5?.url} alt={eventImages.id} />
+              <img src={img5?.url} alt={eventImages.id} /> */}
             </div>
+            {/* <ReactBnbGallery
+              show={showPhotoModal}
+              onClose={() => setShowPhotoModal(false)}
+              photos={photoObject}
+              activePhotoIndex={photoIndex}
+            /> */}
             <div className="single-events-container">
               <div>
                 <h3>{event?.description}</h3>
