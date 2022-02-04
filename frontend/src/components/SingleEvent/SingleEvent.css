@@ -1,6 +1,7 @@
 .container-single {
   margin-left: 25rem;
   margin-right: 25rem;
+  margin-top: 10rem;
 }
 /* .event-images-container {
   display: grid;
@@ -65,7 +66,7 @@
 }
 
 .total-review {
-  font-size: 14px;
+
 }
 
 .event-info-container {
@@ -100,7 +101,7 @@
 }
 
 .single-events-container {
-  font-size: 20px;
+  font-size: 18px;
 }
 
 .event-info-container {
@@ -110,4 +111,9 @@
 
 .event-type {
   margin-right: 100px;
+  margin-bottom: 15px;
+}
+
+.host-tag {
+  margin-bottom: 15px;
 }

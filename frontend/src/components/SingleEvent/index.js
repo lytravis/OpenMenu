@@ -182,7 +182,7 @@ function SingleEvent() {
                     backgroundImage: `url(${img2.url}), url("https://cdn.discordapp.com/attachments/920377762068447282/939220064979271700/depositphotos_247872612-stock-illustration-no-image-available-icon-vector.jpg")`,
                   }}
                 ></div>
-                {/* <div
+                <div
                   className="smallEventImage"
                   id="secondSmallImage"
                   // onClick={() => handlePhotoModal(2)}
@@ -190,7 +190,7 @@ function SingleEvent() {
                     backgroundImage: `url(${img3.url}), url("https://cdn.discordapp.com/attachments/920377762068447282/939220064979271700/depositphotos_247872612-stock-illustration-no-image-available-icon-vector.jpg")`,
                   }}
                 ></div>
-                <div
+                {/* <div
                   className="smallEventImage"
                   id="firstSmallImage"
                   // onClick={() => handlePhotoModal(1)}
@@ -239,7 +239,7 @@ function SingleEvent() {
                       alt="profilePic"
                     />
                   </div>
-                  <div>
+                  <div className="host-tag">
                     {`This event is hosted by ${event?.User.firstName} ${event?.User.lastName} `}
                   </div>
                 </div>
