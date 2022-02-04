@@ -170,8 +170,7 @@ function SingleEvent() {
                 className="mainEventImage"
                 // onClick={() => handlePhotoModal(0)}
                 style={{
-                  backgroundImage: `url(${img1?.url}), url("https://res.cloudinary.com/dt8q1ngxj/image/upload/v1637621047/Capstone/EventFallBack_zbctxj.png")`,
-                }}
+                  backgroundImage: `url(${img1?.url}), url("https://cdn.discordapp.com/attachments/920377762068447282/939220064979271700/depositphotos_247872612-stock-illustration-no-image-available-icon-vector.jpg
               ></div>
               <div className="smallerEventImageContainer">
                 <div
@@ -179,7 +178,7 @@ function SingleEvent() {
                   id="firstSmallImage"
                   // onClick={() => handlePhotoModal(1)}
                   style={{
-                    backgroundImage: `url(${img2.url}), url("https://res.cloudinary.com/dt8q1ngxj/image/upload/v1637621047/Capstone/EventFallBack_zbctxj.png")`,
+                    backgroundImage: `url(${img2.url}), url("https://cdn.discordapp.com/attachments/920377762068447282/939220064979271700/depositphotos_247872612-stock-illustration-no-image-available-icon-vector.jpg")`,
                   }}
                 ></div>
                 <div
@@ -187,15 +186,15 @@ function SingleEvent() {
                   id="secondSmallImage"
                   // onClick={() => handlePhotoModal(2)}
                   style={{
-                    backgroundImage: `url(${img3.url}), url("https://res.cloudinary.com/dt8q1ngxj/image/upload/v1637621047/Capstone/EventFallBack_zbctxj.png")`,
+                    backgroundImage: `url(${img3.url}), url("https://cdn.discordapp.com/attachments/920377762068447282/939220064979271700/depositphotos_247872612-stock-illustration-no-image-available-icon-vector.jpg")`,
                   }}
                 ></div>
-                {/* <div
+                <div
                   className="smallEventImage"
                   id="firstSmallImage"
                   // onClick={() => handlePhotoModal(1)}
                   style={{
-                    backgroundImage: `url(${img2.url}), url("https://res.cloudinary.com/dt8q1ngxj/image/upload/v1637621047/Capstone/EventFallBack_zbctxj.png")`,
+                    backgroundImage: `url(${img2.url}), url("https://cdn.discordapp.com/attachments/920377762068447282/939220064979271700/depositphotos_247872612-stock-illustration-no-image-available-icon-vector.jpg")`,
                   }}
                 ></div>
                 <div
@@ -203,9 +202,9 @@ function SingleEvent() {
                   id="secondSmallImage"
                   // onClick={() => handlePhotoModal(2)}
                   style={{
-                    backgroundImage: `url(${img3.url}), url("https://res.cloudinary.com/dt8q1ngxj/image/upload/v1637621047/Capstone/EventFallBack_zbctxj.png")`,
+                    backgroundImage: `url(${img3.url}), url("https://cdn.discordapp.com/attachments/920377762068447282/939220064979271700/depositphotos_247872612-stock-illustration-no-image-available-icon-vector.jpg")`,
                   }}
-                ></div> */}
+                ></div>
               </div>
               {/* <img
                 className="event-images-first"
