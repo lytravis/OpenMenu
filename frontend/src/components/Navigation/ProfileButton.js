@@ -47,8 +47,11 @@ function ProfileButton({ user }) {
               {user.firstName} {user.lastName}
             </li>
             <li>
-              <NavLink to="/host">My Events</NavLink>
+              <NavLink className="nav-link" to="/host">
+                My Events
+              </NavLink>
             </li>
+
             <li>
               <NavLink className="nav-link" exact to={`/events/new`}>
                 Host an event
