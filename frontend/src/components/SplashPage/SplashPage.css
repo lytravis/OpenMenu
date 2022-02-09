@@ -18,17 +18,17 @@
 } */
 
 .splash-type-container {
-  margin-top: 2rem;
-  margin-left: 2rem;
-  margin-right: 2rem;
-  display: flex;
-  justify-content: space-between;
-  gap: 20px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 25px;
+  align-items: center;
+  margin-left: 10rem;
+  margin-right: 10rem;
 }
 
 .splash-type-container img {
-  width: 20rem;
-  height: 20rem;
+  width: 100%;
+  height: auto;
 }
 
 .splash-child {
@@ -46,6 +46,8 @@
   width: 100%;
   object-fit: fill;
 }
+
+
 
 .splash-info {
   font-family: "Bebas Neue", cursive;
