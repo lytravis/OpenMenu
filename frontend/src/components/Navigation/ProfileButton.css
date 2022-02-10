@@ -1,62 +1,111 @@
-.container-profile {
-  display: flex;
-  flex: flex;
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat&display=swap");
+
+
+
+.profileButtonAndDropDown {
+  position: relative;
 }
 
-.profile-dropdown {
+.profileButton {
+  width: 78px;
+  height: 40px;
+  border: 1px solid rgb(221, 221, 221);
+  border-radius: 21px;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  cursor: pointer;
+  transition: box-shadow 0.25s 0s;
+  background-color: white;
+}
+
+.profileButton:hover {
+  box-shadow: -1px 1px 3px rgb(173, 173, 173), 1px 1px 3px rgb(173, 173, 173);
+}
+
+.threeLines {
   display: flex;
   flex-direction: column;
-  position: absolute;
-  z-index: 0;
-  margin-left: -5em;
-  border-bottom-left-radius: 1rem;
-  border-bottom-right-radius: 1rem;
-  margin-top: 45px;
-  padding-right: 25px;
-  color: white;
-  background-color: #222831;
-  list-style-type: none;
-  text-decoration: none;
+  height: 12px;
+  justify-content: space-between;
 }
 
-.profile-dropdown > li {
-  text-decoration: none;
-
-}
-
-.nav-btn {
-  position: relative;
+.threeLines > div {
+  height: 2px;
   background-color: black;
-  size: 120px;
-  color: white;
-  border: none;
+  width: 14px;
+}
+
+.profileButtonUserIcon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: rgb(113, 113, 113);
+  background-size: cover;
+  background-position: center;
+  border: 1px solid rgb(221, 221, 221);
+}
+
+.profileDropDown {
+  position: absolute;
+  background-color: white;
+  width: 242px;
+  height: fit-content;
+  box-sizing: border-box;
+  box-shadow: -1px 1px 3px rgb(214, 214, 214), 1px 1px 3px rgb(214, 214, 214);
+  border-radius: 10px;
+  right: 0;
+  top: 70px;
+  font-family: Arial, Helvetica, sans-serif;
+  z-index: 9999;
+}
+
+.loggedInProfileDropDown > *:first-child div,
+.loggedOutProfileDropDown > *:first-child {
+  margin-top: 8px;
+}
+
+.loggedInProfileDropDown > *:last-child,
+.loggedOutProfileDropDown > *:last-child {
+  margin-bottom: 8px;
+}
+
+.loggedInProfileDropDown a div,
+.loggedOutProfileDropDown div {
+  padding: 8px;
+  padding-left: 12px;
   cursor: pointer;
+  color: black;
+  text-decoration: none;
+  font-size: 14px;
 }
 
-.nav-user-pic {
-  height: 2.5rem;
-  width: 2.5rem;
+.loggedInProfileDropDown > .dropdown-logout:hover {
+  background-color: rgb(244, 244, 244);
 }
 
-
-
-
-
-.footer-icon {
-  color: white;
-  text-shadow: 0 0 1px #000;
-  font-size: 30px;
-  transition: all 0.2s 0s;
-}
-.footer-icon:hover {
-  color: rgb(204, 204, 204);
+.loggedInProfileDropDown > a:hover div,
+.loggedOutProfileDropDown > div:hover {
+  background-color: rgb(244, 244, 244);
 }
 
-.footer-container {
-  display: flex;
-  justify-content: flex-end;
+.dropDownLine {
+  height: 1px;
+  width: 242px;
+  background-color: rgb(224, 224, 224);
+  margin: 8px 0;
 }
 
-.footer-container a {
-  margin: 0 20px;
+.dropdown-logout {
+  padding: 8px;
+  padding-left: 12px;
+  cursor: pointer;
+  color: black;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.dropdown-links {
+  color: black;
+  font-size: 14px;
 }
