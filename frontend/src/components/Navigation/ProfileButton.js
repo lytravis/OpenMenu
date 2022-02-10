@@ -42,25 +42,23 @@ function ProfileButton({ user }) {
           <i className="fas fa-utensils fa-2x" />
         </button>
         {showMenu && (
-          <ul className="profile-dropdown">
+          <div className="profile-dropdown">
             <li>
               {user.firstName} {user.lastName}
             </li>
-            <li>
-              <NavLink className="nav-link" to="/host">
-                My Events
-              </NavLink>
-            </li>
 
-            <li>
-              <NavLink className="nav-link" exact to={`/events/new`}>
-                Host an event
-              </NavLink>
-            </li>
-            <li>
+            <NavLink className="nav-link" to="/host">
+              <div className="dropdown-links">My Events</div>
+            </NavLink>
+
+            <NavLink className="nav-link" exact to={`/events/new`}>
+              <div className="dropdown-links">Host an Event</div>
+            </NavLink>
+
+            <div className="dropdown-logout">
               <button onClick={logout}>Log Out</button>
-            </li>
-          </ul>
+            </div>
+          </div>
         )}
       </div>
     </>
