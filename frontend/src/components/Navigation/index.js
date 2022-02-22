@@ -8,34 +8,31 @@ import "./Navigation.css";
 function Navigation({ isLoaded }) {
   const sessionUser = useSelector((state) => state.session.user);
 
-  let sessionLinks;
-  if (sessionUser) {
-    sessionLinks = <ProfileButton user={sessionUser} />;
-  } else {
-    sessionLinks = (
-      <>
-        <LoginFormModal />
-        <NavLink className="nav-signup" to="/signup">Sign Up</NavLink>
-      </>
-    );
-  }
+  // let sessionLinks;
+  // if (sessionUser) {
+  //   sessionLinks = <ProfileButton user={sessionUser} />;
+  // } else {
+  //   sessionLinks = (
+  //     <>
+  //       <LoginFormModal />
+  //       <NavLink className="nav-signup" to="/signup">
+  //         Sign Up
+  //       </NavLink>
+  //     </>
+  //   );
+  // }
 
   return (
-    <div className="nav-container">
-      <div className="nav-contents">
-        <NavLink exact to="/" id="nav-logo">
-          OpenMenu
-        </NavLink>
-        <NavLink className="nav-link" exact to={`/events`}>
-          Experiences
-        </NavLink>
-
-        {/* <NavLink className="nav-nav" exact to={`/users/${sessionUser?.id}`}>
-          Manage events
-        </NavLink> */}
-        <div className="nav-right">{isLoaded && sessionLinks}</div>
-      </div>
-    </div>
+    <header>
+      <NavLink exact to="/" id="nav-logo">
+        OpenMenu
+      </NavLink>
+      <NavLink className="nav-link" exact to={`/events`}>
+        Experiences
+      </NavLink>
+      <ProfileButton user={sessionUser} />
+      {/* <div className="nav-right">{isLoaded && sessionLinks}</div> */}
+    </header>
   );
 }
 

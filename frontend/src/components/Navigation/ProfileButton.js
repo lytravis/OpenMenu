@@ -5,9 +5,15 @@ import { NavLink } from "react-router-dom";
 import * as sessionActions from "../../store/session";
 import "./ProfileButton.css";
 
+import { Modal } from "../../context/Modal";
+import LoginForm from "../LoginFormModal/LoginForm";
+import SignupFormPage from "../SignupFormPage";
+
 function ProfileButton({ user }) {
   const dispatch = useDispatch();
   const [showMenu, setShowMenu] = useState(false);
+  const [showLoginModal, setShowLoginModal] = useState(false);
+  const [showSignUpModal, setShowSignUpModal] = useState(false);
 
   // const user = useSelector((state) => state.session.user);
   // console.log("THIS BE THE USER", user);
@@ -36,30 +42,80 @@ function ProfileButton({ user }) {
 
   return (
     <>
-      <div className="container-profile">
-        <img className="nav-user-pic" src={user.profilePic} alt="profilePic" />
-        <button className="nav-btn" onClick={openMenu}>
-          <i className="fas fa-utensils fa-2x" />
-        </button>
+      <div className="profileButtonAndDropDown">
+        <div className="profileButton" onClick={() => setShowMenu(!showMenu)}>
+          <div className="threeLines">
+            <div></div>
+            <div></div>
+            <div></div>
+          </div>
+          {user ? (
+            <>
+              {user.profilePic ? (
+                <div
+                  className="profileButtonUserIcon"
+                  style={{
+                    backgroundImage: `url(${user.profilePic}), url(https://res.cloudinary.com/dt8q1ngxj/image/upload/v1637102034/Capstone/noProfPic_uxrkv7.png)`,
+                  }}
+                ></div>
+              ) : (
+                <div
+                  className="profileButtonUserIcon"
+                  style={{
+                    backgroundImage:
+                      "url(https://res.cloudinary.com/dt8q1ngxj/image/upload/v1637102034/Capstone/noProfPic_uxrkv7.png",
+                  }}
+                ></div>
+              )}
+            </>
+          ) : (
+            <div
+              className="profileButtonUserIcon"
+              style={{
+                backgroundImage: `url(https://res.cloudinary.com/dt8q1ngxj/image/upload/v1637102034/Capstone/noProfPic_uxrkv7.png)`,
+              }}
+            ></div>
+          )}
+        </div>
         {showMenu && (
-          <ul className="profile-dropdown">
-            <li>
-              {user.firstName} {user.lastName}
-            </li>
-            <li>
-              <NavLink to="/host">My Events</NavLink>
-            </li>
-            <li>
-              <NavLink className="nav-link" exact to={`/events/new`}>
-                Host an event
-              </NavLink>
-            </li>
-            <li>
-              <button onClick={logout}>Log Out</button>
-            </li>
-          </ul>
+          <div className="profileDropDown">
+            {user ? (
+              <div className="loggedInProfileDropDown">
+                <div>
+                  {user.firstName} {user.lastName}
+                </div>
+
+                <NavLink className="nav-link" to="/host">
+                  <div className="dropdown-links">My Events</div>
+                </NavLink>
+
+                <NavLink className="nav-link" exact to={`/events/new`}>
+                  <div className="dropdown-links">Host an Event</div>
+                </NavLink>
+                <div className="dropDownLine"></div>
+                <div className="dropdown-logout" onClick={logout}>
+                  Log Out
+                </div>
+              </div>
+            ) : (
+              <div className="loggedOutProfileDropDown">
+                <div onClick={() => setShowLoginModal(true)}>Log in</div>
+                <div onClick={() => setShowSignUpModal(true)}>Sign up</div>
+              </div>
+            )}
+          </div>
         )}
       </div>
+      {showLoginModal && (
+        <Modal onClose={() => setShowLoginModal(false)}>
+          <LoginForm />
+        </Modal>
+      )}
+      {showSignUpModal && (
+        <Modal onClose={() => setShowSignUpModal(false)}>
+          <SignupFormPage />
+        </Modal>
+      )}
     </>
   );
 }
