@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat&display=swap');
+
 .profile-dropdown {
   position: absolute;
 }
@@ -43,4 +45,8 @@
   justify-content: space-between;
   width: 15vw;
   margin-right: 80px;
+}
+
+.nav-host {
+  font-family: 'Montserrat', sans-serif;
 }
