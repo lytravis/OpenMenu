@@ -34,31 +34,18 @@ function LoginForm({ setShowLoginModal }) {
     );
   };
 
-  const onLogin = async (e) => {
-    e.preventDefault();
-
-    const data = await dispatch(login(credential, password));
-    if (data) {
-      setErrors(data);
-    }
-
-    // setErrors([]);
-    // return dispatch(sessionActions.login({ credential, password })).catch(
-    //   async (res) => {
-    //     const data = await res.json();
-    //     if (data && data.errors) setErrors(data.errors);
-    //   }
-    // );
-  };
-
   const handleSubmit = (e) => {
     e.preventDefault();
     setErrors([]);
-    // setShowLoginModal(false);
+
     return dispatch(sessionActions.login({ credential, password })).catch(
       async (res) => {
         const data = await res.json();
-        if (data && data.errors) setErrors(data.errors);
+        if (data && data.errors) {
+          setErrors(data.errors);
+        } else {
+          setShowLoginModal(false);
+        }
       }
     );
   };

@@ -6,69 +6,13 @@ import LoginFormModal from '../auth/LoginFormModal';
 import { Modal } from '../../context/Modal';
 import './ProfileButton.css';
 import LoginForm from '../auth/LoginFormModal/LoginForm';
+import SignupForm from '../auth/SignupFormPage/SignUpForm';
 
 function ProfileButton({ user }) {
   const dispatch = useDispatch();
   const [showMenu, setShowMenu] = useState(false);
   const [showLoginModal, setShowLoginModal] = useState(false);
   const [showSignUpModal, setShowSignUpModal] = useState(false);
-
-  // const logger = (
-  //   <div className="loginModal">
-  //     <div className="loginFormContainer">
-  //       <div className="topRowForm">
-  //         <div className="xToClose" onClick={resetLoginForm}>
-  //           <i className="fas fa-times"></i>
-  //         </div>
-  //         <h3>Login</h3>
-  //         <div></div>
-  //       </div>
-  //       <h2>Welcome to ChihuaWalk</h2>
-  //       <form id="signUpForm" autoComplete="off" onSubmit={onLogin}>
-  //         <div className="formField">
-  //           <input
-  //             className={borderError}
-  //             name="email"
-  //             type="text"
-  //             required
-  //             autoComplete="off"
-  //             value={email}
-  //             onChange={(e) => setEmail(e.target.value)}
-  //           />
-  //           <label id={emailLable}>Email</label>
-  //         </div>
-  //         <div className="formField">
-  //           <input
-  //             className={borderError}
-  //             name="password"
-  //             type="password"
-  //             required
-  //             autoComplete="off"
-  //             value={password}
-  //             onChange={(e) => setPassword(e.target.value)}
-  //           />
-  //           <label id={passwordLable}>Password</label>
-  //         </div>
-  //         <div className="loginError" style={{ visibility: loginError }}>
-  //           <div>!</div>
-  //           <span> Email or password is invalid.</span>
-  //         </div>
-  //         <div className="loginButtons">
-  //           <button className="formButton" type="submit">
-  //             Login
-  //           </button>
-  //           <button
-  //             id="demoLoginButton"
-  //             className="formButton"
-  //             onClick={demoLogin}
-  //           >
-  //             Demo Login
-  //           </button>
-  //         </div>
-  //       </form>
-  //     </div>
-  //   </div>
-  // );
 
   const openMenu = () => {
     if (showMenu) return;
@@ -178,13 +122,13 @@ function ProfileButton({ user }) {
           <LoginForm setShowLoginModal={setShowLoginModal} />
         </Modal>
       )}
-      {/* {showSignUpModal && (
+      {showSignUpModal && (
         <Modal onClose={() => setShowSignUpModal(false)}>
-          <SignupFormPage />
+          <SignupForm setShowSignUpModal={setShowSignUpModal} />
         </Modal>
-      )} */}
+      )}
     </>
   );
 }
-
+// onClose={() => setShowSignUpModal(false)}
 export default ProfileButton;
