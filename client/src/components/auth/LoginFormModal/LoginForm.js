@@ -34,7 +34,11 @@ function LoginForm({ setShowLoginModal }) {
     );
   };
 
-  const handleSubmit = (e) => {
+  const resetLog = () => {
+    setShowLoginModal(false);
+  };
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setErrors([]);
 
@@ -44,7 +48,7 @@ function LoginForm({ setShowLoginModal }) {
         if (data && data.errors) {
           setErrors(data.errors);
         } else {
-          setShowLoginModal(false);
+          resetLoginForm();
         }
       }
     );
@@ -123,7 +127,7 @@ function LoginForm({ setShowLoginModal }) {
               <span> Email or password is invalid.</span>
             </div>
             <div className="loginButtons">
-              <button className="formButton" type="submit">
+              <button  className="formButton" type="submit">
                 Login
               </button>
               <button

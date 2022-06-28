@@ -4,7 +4,7 @@ import { Redirect } from 'react-router-dom';
 import { signup } from '../../../store/session';
 import './signup.css';
 
-function SignupFormPage({ setShowSignUpModal }) {
+function SignupFormPage({ showSignModel, setShowSignUpModal }) {
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
   const [email, setEmail] = useState('');
@@ -42,9 +42,7 @@ function SignupFormPage({ setShowSignUpModal }) {
 
   // if (sessionUser) return <Redirect to="/" />;
 
-
-
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const cleanEmail = email.toLowerCase();
     if (password === confirmPassword) {
@@ -59,7 +57,11 @@ function SignupFormPage({ setShowSignUpModal }) {
         })
       ).catch(async (res) => {
         const data = await res.json();
-        if (data && data.errors) setErrors(data.errors);
+        if (data && data.errors) {
+          setErrors(data.errors);
+        } else {
+          resetSignUpForm();
+        }
       });
     }
     return setErrors([
