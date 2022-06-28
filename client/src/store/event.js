@@ -50,10 +50,10 @@ export const getEvent = (eventId) => async (dispatch) => {
 
 export const getEvents = () => async (dispatch) => {
   const response = await fetch("/api/events");
-  // console.log("------> response", response);
+  console.log("------> response", response);
   if (response.ok) {
     const events = await response.json();
-    // console.log("---------->events", events);
+    console.log("---------->events", events);
     dispatch(loadEvents(events));
     return events;
   }

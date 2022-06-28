@@ -1,9 +1,17 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import './SingleListing.css';
+import { useSelector, useDispatch } from 'react-redux';
+import { Link, useHistory, useParams } from 'react-router-dom';
 
 //   .item{Item $}*12
 
 const SingleListing = () => {
+  const { eventId } = useParams();
+  const event = useSelector((state) => state?.event[eventId]);
+  const events = useSelector((state) => Object.values(state.event));
+
+  console.log('hello----->', events);
+
   return (
     <div className="sl-container">
       <div className="sl-title">Item 1</div>
