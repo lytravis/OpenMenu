@@ -4,10 +4,10 @@ import { Route, Switch } from 'react-router-dom';
 import SignupFormPage from './components/auth/SignupFormPage';
 import SingleListing from './pages/SingleListing/SingleListing';
 
-
 // import LoginFormPage from "./components/LoginFormPage";
 import * as sessionActions from './store/session';
 import Header from './components/Header';
+import Reviews from './components/Reviews/Reviews';
 
 function App() {
   const dispatch = useDispatch();
@@ -35,6 +35,9 @@ function App() {
           </Route>
           <Route exact path="/events/:eventId">
             <SingleListing />
+          </Route>
+          <Route exact path="/reviews">
+            <Reviews />
           </Route>
         </Switch>
       )}

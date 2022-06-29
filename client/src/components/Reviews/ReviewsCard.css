@@ -1,0 +1,19 @@
+
+
+
+.rc-cards {
+    background-color: steelblue;
+    color: #191919;
+    padding: 20px;
+    border: skyblue 1px solid;
+}
+
+
+.rc-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(2, auto);
+  gap: 1.75rem;
+  width: min(90%, 68.5rem);
+  margin-inline: auto;
+}

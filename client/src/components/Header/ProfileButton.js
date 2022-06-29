@@ -48,7 +48,7 @@ function ProfileButton({ user }) {
     <LoginFormModal />;
   }
 
-  console.log('@@@@@@@@@@@@@@@@@@@@@@@ user', user.profilePic);
+  // console.log('@@@@@@@@@@@@@@@@@@@@@@@ user', user?.profilePic);
 
   return (
     <>

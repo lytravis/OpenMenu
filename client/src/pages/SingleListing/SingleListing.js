@@ -7,8 +7,9 @@ import { Modal } from '../../context/Modal';
 import { getEvents } from '../../store/event';
 import { getReviews, removeReview } from '../../store/review';
 import AirCover from '../../components/AirCover/AirCover';
-import Reviews from '../../components/Reviews/ReviewsRating';
+import Reviews from '../../components/Reviews/Reviews';
 import ReviewsForm from '../../components/Reviews/ReviewsForm';
+
 //   .item{Item $}*12
 const SingleListing = () => {
   const dispatch = useDispatch();
@@ -22,7 +23,7 @@ const SingleListing = () => {
   const eventReviews = reviews.filter((review) => review?.eventId == event?.id);
   const events = useSelector((state) => Object.values(state.event));
   const user = useSelector((state) => state.session.user);
-  const userId = useSelector((state) => state.session.user.id);
+  const userId = useSelector((state) => state.session.user?.id);
 
   useEffect(() => {
     dispatch(getEvents());
@@ -189,31 +190,12 @@ const SingleListing = () => {
           <div className="sl-review">
             <Reviews
               eventReviews={eventReviews}
+              user={user}
               userId={userId}
               hasReviewed={hasReviewed}
               isHost={isHost}
             />
-            <>
-              {user?.id && (
-                <>
-                  {!hasReviewed && !isHost && <ReviewsForm />}
-                  {hasReviewed && (
-                    <div className="addReviewContainer">
-                      <div className="addAReview alreadyAdded">
-                        You have already submitted a review
-                      </div>
-                    </div>
-                  )}
-                  {isHost && (
-                    <div className="addReviewContainer">
-                      <div className="addAReview alreadyAdded">
-                        You cannot add a review to your own event
-                      </div>
-                    </div>
-                  )}
-                </>
-              )}
-            </>
+           
           </div>
           <div className="sl-checkinfo">Check in info</div>
         </div>
