@@ -59,12 +59,11 @@ module.exports = (sequelize, DataTypes) => {
     });
   };
 
-
   //! MIGHT HAVE TO DELETE profilePic from below
   User.prototype.toSafeObject = function () {
     // remember, this cannot be an arrow function
-    const { id, email, profilePic } = this; // context will be the User instance
-    return { id, email, profilePic };
+    const { id, email } = this; // context will be the User instance
+    return { id, email };
   };
 
   User.prototype.validatePassword = function (password) {
@@ -89,20 +88,13 @@ module.exports = (sequelize, DataTypes) => {
     }
   };
 
-  User.signup = async function ({
-    email,
-    password,
-    firstName,
-    lastName,
-    profilePic,
-  }) {
+  User.signup = async function ({ email, password, firstName, lastName }) {
     const hashedPassword = bcrypt.hashSync(password);
     const user = await User.create({
       email,
       hashedPassword,
       firstName,
       lastName,
-      profilePic,
     });
     return await User.scope('currentUser').findByPk(user.id);
   };

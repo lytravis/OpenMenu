@@ -6,12 +6,12 @@ module.exports = (sequelize, DataTypes) => {
       userId: { type: DataTypes.INTEGER, allowNull: false },
       eventId: { type: DataTypes.INTEGER, allowNull: false },
       comment: { type: DataTypes.STRING(255), allowNull: false },
-      food: { type: DataTypes.INTEGER, allowNull: false },
-      experience: { type: DataTypes.INTEGER, allowNull: false },
-      cleanliness: { type: DataTypes.INTEGER, allowNull: false },
-      accuracy: { type: DataTypes.INTEGER, allowNull: false },
-      value: { type: DataTypes.INTEGER, allowNull: false },
-      communication: { type: DataTypes.INTEGER, allowNull: false },
+      food: { type: DataTypes.NUMERIC, allowNull: false },
+      experience: { type: DataTypes.NUMERIC, allowNull: false },
+      cleanliness: { type: DataTypes.NUMERIC, allowNull: false },
+      accuracy: { type: DataTypes.NUMERIC, allowNull: false },
+      value: { type: DataTypes.NUMERIC, allowNull: false },
+      communication: { type: DataTypes.NUMERIC, allowNull: false },
     },
     {}
   );
