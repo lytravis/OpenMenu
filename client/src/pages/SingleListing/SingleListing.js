@@ -27,20 +27,32 @@ const SingleListing = () => {
     };
   }, [dispatch]);
 
-  console.log('hello----->', event);
-  console.log('$$ EVENT REVIEWS', eventReviews);
+  console.log('hello-----> images', event.Images[0].url);
+  // console.log('$$ EVENT REVIEWS', eventReviews);
   return (
     <>
       {isLoaded && (
         <div className="sl-container">
           <div className="sl-header">{event.name}</div>
           <div className="sl-photogrid-container">
-        
-            <div className="sl-main-img"></div>
-            <div className="sl-tm-img"></div>
-            <div className="sl-tr-img"></div>
-            <div className="sl-bm-img"></div>
-            <div className="sl-br-img"></div>
+            <div
+              className="sl-main-img"
+              style={{
+                backgroundImage: `url(${event?.Images[0].url}), url("https://cdn.discordapp.com/attachments/920377762068447282/939220064979271700/depositphotos_247872612-stock-illustration-no-image-available-icon-vector.jpg")`,
+              }}
+            ></div>
+            <div className="sl-tm-img" style={{
+                backgroundImage: `url(${event?.Images[1].url}), url("https://cdn.discordapp.com/attachments/920377762068447282/939220064979271700/depositphotos_247872612-stock-illustration-no-image-available-icon-vector.jpg")`,
+              }}></div>
+            <div className="sl-tr-img" style={{
+                backgroundImage: `url(${event?.Images[2].url}), url("https://cdn.discordapp.com/attachments/920377762068447282/939220064979271700/depositphotos_247872612-stock-illustration-no-image-available-icon-vector.jpg")`,
+              }}></div>
+            <div className="sl-bm-img" style={{
+                backgroundImage: `url(${event?.Images[3].url}), url("https://cdn.discordapp.com/attachments/920377762068447282/939220064979271700/depositphotos_247872612-stock-illustration-no-image-available-icon-vector.jpg")`,
+              }}></div>
+            <div className="sl-br-img" style={{
+                backgroundImage: `url(${event?.Images[4].url}), url("https://cdn.discordapp.com/attachments/920377762068447282/939220064979271700/depositphotos_247872612-stock-illustration-no-image-available-icon-vector.jpg")`,
+              }}></div>
           </div>
           <div className="sl-description">Description</div>
           <div className="sl-review">Review</div>
