@@ -23,7 +23,7 @@
 
 /*
 !MAKE SURE TO DELETE THIS  */
- .sl-header, .sl-photogrid,  .sl-checkinfo,  .sl-description, .sl-review
+ .sl-header, .sl-photogrid,  .sl-checkinfo, .sl-review
 {
 
   /* background-color: steelblue; */
@@ -200,4 +200,8 @@
 
 .learnMore {
   text-decoration-line: underline;
+}
+
+.sl-description {
+  margin-top: 30px;
 }

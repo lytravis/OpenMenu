@@ -7,6 +7,7 @@ import { Modal } from '../../context/Modal';
 import { getEvents } from '../../store/event';
 import { getReviews, removeReview } from '../../store/review';
 import AirCover from '../../components/AirCover/AirCover';
+import Reviews from '../../components/Reviews/ReviewsRating';
 //   .item{Item $}*12
 const SingleListing = () => {
   const dispatch = useDispatch();
@@ -37,7 +38,7 @@ const SingleListing = () => {
       {isLoaded && (
         <div className="sl-container">
           <div className="sl-header">
-            <h2> {event.name}</h2>
+            <h2> {event?.name}</h2>
           </div>
           <div className="sl-photogrid-container">
             <div
@@ -150,7 +151,10 @@ const SingleListing = () => {
                   cancellations, listing inaccuracies, and other issues like
                   trouble checking in.
                 </p>
-                <div className="learnMore" onClick={() => setShowModal(true)}>
+                <div
+                  className="learnMore borderBot"
+                  onClick={() => setShowModal(true)}
+                >
                   Learn More
                 </div>
               </div>
@@ -159,9 +163,12 @@ const SingleListing = () => {
                   <AirCover setShowModal={setShowModal} />
                 </Modal>
               )}
+              <div className="sl-description">{event?.description}</div>
             </div>
           </div>
-          <div className="sl-review">Review</div>
+          <div className="sl-review">
+            <Reviews eventReviews={eventReviews} />
+          </div>
           <div className="sl-checkinfo">Check in info</div>
         </div>
       )}
