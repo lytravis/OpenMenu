@@ -62,8 +62,8 @@ module.exports = (sequelize, DataTypes) => {
   //! MIGHT HAVE TO DELETE profilePic from below
   User.prototype.toSafeObject = function () {
     // remember, this cannot be an arrow function
-    const { id, email } = this; // context will be the User instance
-    return { id, email };
+    const { id, email, profilePic } = this; // context will be the User instance
+    return { id, email, profilePic };
   };
 
   User.prototype.validatePassword = function (password) {

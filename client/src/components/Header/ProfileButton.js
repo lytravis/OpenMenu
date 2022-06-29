@@ -48,6 +48,8 @@ function ProfileButton({ user }) {
     <LoginFormModal />;
   }
 
+  console.log('@@@@@@@@@@@@@@@@@@@@@@@ user', user.profilePic);
+
   return (
     <>
       <div className="profileButtonAndDropDown">
@@ -59,7 +61,7 @@ function ProfileButton({ user }) {
           </div>
           {user ? (
             <>
-              {user.profile_pic ? (
+              {user.profilePic ? (
                 <div
                   className="profileButtonUserIcon"
                   style={{

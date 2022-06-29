@@ -32,8 +32,8 @@
 }
 
 .profileButtonUserIcon {
-  width: 27px;
-  height: 27px;
+  width: 2rem;
+  height: 2rem;
   border-radius: 50%;
   background-color: rgb(113, 113, 113);
   background-size: cover;
