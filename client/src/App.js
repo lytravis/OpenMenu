@@ -4,15 +4,14 @@ import { Route, Switch } from 'react-router-dom';
 import SignupFormPage from './components/auth/SignupFormPage';
 import SingleListing from './pages/SingleListing/SingleListing';
 
-// client/src/pages/SingleListing/SingleListing.js
+
 // import LoginFormPage from "./components/LoginFormPage";
 import * as sessionActions from './store/session';
 import Header from './components/Header';
-import { Modal } from './context/Modal';
+
 function App() {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
-  const [showModal, setShowModal] = useState(false);
   useEffect(() => {
     dispatch(sessionActions.restoreUser()).then(() => setIsLoaded(true));
   }, [dispatch]);

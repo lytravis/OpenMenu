@@ -3,33 +3,51 @@ import './SingleListing.css';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link, useHistory, useParams } from 'react-router-dom';
 
+import { getEvents } from '../../store/event';
+import { getReviews, removeReview } from '../../store/review';
 //   .item{Item $}*12
 
 const SingleListing = () => {
+  const dispatch = useDispatch();
   const { eventId } = useParams();
+
+  const [isLoaded, setIsLoaded] = useState(false);
+
   const event = useSelector((state) => state?.event[eventId]);
+  const reviews = useSelector((state) => Object.values(state.review));
+  const eventReviews = reviews.filter((review) => review?.eventId == event?.id);
   const events = useSelector((state) => Object.values(state.event));
+  const user = useSelector((state) => state.session.user);
 
-  console.log('hello----->', events);
+  useEffect(() => {
+    dispatch(getEvents());
+    dispatch(getReviews()).then(() => setIsLoaded(true));
+    return () => {
+      setIsLoaded();
+    };
+  }, [dispatch]);
 
+  console.log('hello----->', event);
+  console.log('$$ EVENT REVIEWS', eventReviews);
   return (
-    <div className="sl-container">
-      <div className="sl-title">Item 1</div>
-      <div className="sl-miniheader">Item 2</div>
-      <div className="sl-photogrid">Item 3</div>
-      <div className="sl-hostedby">Item 4</div>
-      <div className="sl-checkinfo">Item 5</div>
-      <div className="sl-bulletinfo">Item 6</div>
-      <div className="sl-desciption">Item 7</div>
-      <div className="sl-reviews">Item 8</div>
-      <div className="sl-map">Item 9</div>
-      {/* <div className="item">Item 10</div>
-      <div className="item">Item 11</div>
-      <div className="item">Item 12</div>
-      <div className="item">Item 13</div>
-      <div className="item">Item 14</div> */}
-    </div>
+    <>
+      {isLoaded && (
+        <div className="sl-container">
+          <div className="sl-header">{event.name}</div>
+          <div className="sl-photogrid-container">
+        
+            <div className="sl-main-img"></div>
+            <div className="sl-tm-img"></div>
+            <div className="sl-tr-img"></div>
+            <div className="sl-bm-img"></div>
+            <div className="sl-br-img"></div>
+          </div>
+          <div className="sl-description">Description</div>
+          <div className="sl-review">Review</div>
+          <div className="sl-checkinfo">Check in info</div>
+        </div>
+      )}
+    </>
   );
 };
-
 export default SingleListing;
