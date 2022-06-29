@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import './Reviews.css';
 
 const ReviewsRating = ({ eventReviews }) => {
@@ -19,10 +19,6 @@ const ReviewsRating = ({ eventReviews }) => {
   // console.log("THIS IS REVIEWS HERE", reviews);
 
   eventReviews?.forEach((review) => {
-    // console.log('88888888888888888 event reviews', eventReviews);
-    // console.log('88888888888888888 event length', eventReviews.length);
-    console.log('-----> typeof', typeof review.food);
-    console.log('----->xxxxxx typeof', typeof avgFood);
     avgFood = (totalFood += Number(review.food)) / eventReviews.length;
     avgExperience =
       (totalExperience += Number(review.experience)) / eventReviews.length;
@@ -43,13 +39,7 @@ const ReviewsRating = ({ eventReviews }) => {
         avgCommunication) /
       6
     ).toFixed(1);
-
-    console.log("'``````````````````' review food", review.food);
-    console.log("'``````````````````' avg food", avgFood);
-    console.log("'``````````````````' totalllllllll food", totalFood);
   });
-
-  console.log('****************************** totalVF', totalAvg);
 
   let totalSum =
     avgFood +

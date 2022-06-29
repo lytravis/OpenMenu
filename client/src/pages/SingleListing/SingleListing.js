@@ -22,6 +22,7 @@ const SingleListing = () => {
   const eventReviews = reviews.filter((review) => review?.eventId == event?.id);
   const events = useSelector((state) => Object.values(state.event));
   const user = useSelector((state) => state.session.user);
+  const userId = useSelector((state) => state.session.user.id);
 
   useEffect(() => {
     dispatch(getEvents());
@@ -31,9 +32,27 @@ const SingleListing = () => {
     };
   }, [dispatch]);
 
+  // console.log('!!!!!!!!!!!!!!!!!!!!', eventReviews);
   // console.log('hello-----> images', event?.Images[0].url);
-  console.log('````````````````````````', event?.User.profilePic);
+  // console.log('````````````````````````', event?.User.profilePic);
   // console.log('$$ EVENT REVIEWS', eventReviews);
+  const hasReviewed =
+    eventReviews.filter((x) => x.userId === userId).length > 0;
+  const isHost = userId === event?.userId;
+
+  // console.log('*************** user', userId);
+  // console.log('*************** this is the host', isHost);
+  // console.log('*************** this is the isReviwer', isReviewed);
+  // console.log(
+  //   '*************** this is the eventReview.user',
+  //   eventReviews.userId
+  // );
+
+  // console.log('eventReviewseventReviewseventReviewseventReviews', eventReviews);
+  // console.log('e@@@@@@@@@@@@@@@@@@@@@@@@ews', eventReviews.userId);
+
+  // console.log('===================== hasReviewed', hasReviewed);
+
   return (
     <>
       {isLoaded && (
@@ -168,8 +187,33 @@ const SingleListing = () => {
             </div>
           </div>
           <div className="sl-review">
-            <Reviews eventReviews={eventReviews} />
-            <ReviewsForm />
+            <Reviews
+              eventReviews={eventReviews}
+              userId={userId}
+              hasReviewed={hasReviewed}
+              isHost={isHost}
+            />
+            <>
+              {user?.id && (
+                <>
+                  {!hasReviewed && !isHost && <ReviewsForm />}
+                  {hasReviewed && (
+                    <div className="addReviewContainer">
+                      <div className="addAReview alreadyAdded">
+                        You have already submitted a review
+                      </div>
+                    </div>
+                  )}
+                  {isHost && (
+                    <div className="addReviewContainer">
+                      <div className="addAReview alreadyAdded">
+                        You cannot add a review to your own event
+                      </div>
+                    </div>
+                  )}
+                </>
+              )}
+            </>
           </div>
           <div className="sl-checkinfo">Check in info</div>
         </div>

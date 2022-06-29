@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Rating } from 'react-simple-star-rating';
+
 import ReactStars from 'react-rating-stars-component';
 import { useHistory, useParams } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
