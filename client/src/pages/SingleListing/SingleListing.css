@@ -26,7 +26,7 @@
  .sl-header, .sl-photogrid,  .sl-checkinfo,  .sl-description, .sl-review
 {
 
-  background-color: steelblue;
+  /* background-color: steelblue; */
   color: #191919;
   padding: 20px;
   border: skyblue 1px solid;
@@ -121,6 +121,9 @@
 
 .sl-hostInfo {
   display: grid;
+  margin-top: 30px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid rgb(221, 221, 221);
 }
 
 .sl-hostInfo h3 {
@@ -160,4 +163,31 @@
 .sl-button:hover {
   box-shadow: -1px 1px 3px rgb(173, 173, 173), 1px 1px 3px rgb(173, 173, 173);
 
+}
+
+.sl-eventInfo {
+  margin-top: 30px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid rgb(221, 221, 221);
+}
+
+.sl-eventInfoContainer {
+  display: flex;
+  align-items: center;
+  margin-bottom: 25px;
+}
+
+.event-icon {
+  font-size: 40px;
+  margin-right: 20px;
+}
+
+.event-header {
+  font-size: 25px;
+  font-weight: 600;
+  margin-bottom: 3px;
+}
+
+.event-info {
+  color: rgb(117, 117, 117);
 }

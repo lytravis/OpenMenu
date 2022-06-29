@@ -6,7 +6,6 @@ import { Link, useHistory, useParams } from 'react-router-dom';
 import { getEvents } from '../../store/event';
 import { getReviews, removeReview } from '../../store/review';
 //   .item{Item $}*12
-
 const SingleListing = () => {
   const dispatch = useDispatch();
   const { eventId } = useParams();
@@ -78,7 +77,9 @@ const SingleListing = () => {
                 Top Tags:{' '}
                 <span>
                   <button className="sl-button">Great For Brunch</button>
-                  <button className="sl-button">Great For Outdoor Dining</button>
+                  <button className="sl-button">
+                    Great For Outdoor Dining
+                  </button>
                   <button className="sl-button">Fit For Foodies</button>
                 </span>
               </p>
@@ -97,6 +98,48 @@ const SingleListing = () => {
                   }}
                 ></div>
               )}
+            </div>
+            <div className="sl-eventInfo">
+              <div className="sl-eventInfoContainer">
+                <div className="event-icon">
+                  <i class="fab fa-accessible-icon"></i>
+                </div>
+                <div className="event-text">
+                  <div className="event-header"></div>
+                  <div className="event-info">
+                    Credit Cards, Google Pay, Apple Pay Accepted
+                  </div>
+                </div>
+              </div>
+              <div className="sl-eventInfoContainer">
+                <div className="event-icon">
+                  <i class="fab fa-accessible-icon"></i>
+                </div>
+                <div className="event-text">
+                  <div className="event-header"></div>
+                  <div className="event-info">Handicap accessible</div>
+                </div>
+              </div>
+              <div className="sl-eventInfoContainer">
+                <div className="event-icon">
+                  <i class="fab fa-accessible-icon"></i>
+                </div>
+                <div className="event-text">
+                  <div className="event-header"></div>
+                  <div className="event-info">
+                    Many vegetarian options provided
+                  </div>
+                </div>
+              </div>
+              <div className="sl-eventInfoContainer">
+                <div className="event-icon">
+                  <i class="fab fa-accessible-icon"></i>
+                </div>
+                <div className="event-text">
+                  <div className="event-header"></div>
+                  <div className="event-info">Full bar</div>
+                </div>
+              </div>
             </div>
           </div>
           <div className="sl-review">Review</div>
