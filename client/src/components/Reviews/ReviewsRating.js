@@ -19,17 +19,21 @@ const ReviewsRating = ({ eventReviews }) => {
   // console.log("THIS IS REVIEWS HERE", reviews);
 
   eventReviews?.forEach((review) => {
-    // console.log("88888888888888888 event reviews", eventReviews);
-    // console.log("88888888888888888 event length", eventReviews.length);
-    avgFood = (totalFood += review.food) / eventReviews.length;
+    // console.log('88888888888888888 event reviews', eventReviews);
+    // console.log('88888888888888888 event length', eventReviews.length);
+    console.log('-----> typeof', typeof review.food);
+    console.log('----->xxxxxx typeof', typeof avgFood);
+    avgFood = (totalFood += Number(review.food)) / eventReviews.length;
     avgExperience =
-      (totalExperience += review.experience) / eventReviews.length;
+      (totalExperience += Number(review.experience)) / eventReviews.length;
     avgCleanliness =
-      (totalCleanliness += review.cleanliness) / eventReviews.length;
-    avgAccuracy = (totalAccuracy += review.accuracy) / eventReviews.length;
-    avgValue = (totalValue += review.value) / eventReviews.length;
+      (totalCleanliness += Number(review.cleanliness)) / eventReviews.length;
+    avgAccuracy =
+      (totalAccuracy += Number(review.accuracy)) / eventReviews.length;
+    avgValue = (totalValue += Number(review.value)) / eventReviews.length;
     avgCommunication =
-      (totalCommunication += review.communication) / eventReviews.length;
+      (totalCommunication += Number(review.communication)) /
+      eventReviews.length;
     totalAvg = (
       (avgFood +
         avgExperience +
@@ -37,10 +41,15 @@ const ReviewsRating = ({ eventReviews }) => {
         avgAccuracy +
         avgValue +
         avgCommunication) /
-      6 /
-      20
+      6
     ).toFixed(1);
+
+    console.log("'``````````````````' review food", review.food);
+    console.log("'``````````````````' avg food", avgFood);
+    console.log("'``````````````````' totalllllllll food", totalFood);
   });
+
+  console.log('****************************** totalVF', totalAvg);
 
   let totalSum =
     avgFood +
@@ -72,10 +81,10 @@ const ReviewsRating = ({ eventReviews }) => {
                 <div className="max-bar">
                   <div
                     className="rev-bar"
-                    style={{ width: `${avgFood * 1.2}px` }}
+                    style={{ width: `${avgFood * 24}px` }}
                   ></div>
                 </div>
-                <div className="avgRating">{(avgFood / 20).toFixed(1)}</div>
+                <div className="avgRating">{avgFood.toFixed(1)}</div>
               </div>
             </div>
             <div className="emptySpace"></div>
@@ -85,12 +94,10 @@ const ReviewsRating = ({ eventReviews }) => {
                 <div className="max-bar">
                   <div
                     className="rev-bar"
-                    style={{ width: `${avgExperience * 1.2}px` }}
+                    style={{ width: `${avgExperience * 24}px` }}
                   ></div>
                 </div>
-                <div className="avgRating">
-                  {(avgExperience / 20).toFixed(1)}
-                </div>
+                <div className="avgRating">{avgExperience.toFixed(1)}</div>
               </div>
             </div>
             <div className="emptySpace"></div>
@@ -100,12 +107,10 @@ const ReviewsRating = ({ eventReviews }) => {
                 <div className="max-bar">
                   <div
                     className="rev-bar"
-                    style={{ width: `${avgCleanliness * 1.2}px` }}
+                    style={{ width: `${avgCleanliness * 24}px` }}
                   ></div>
                 </div>
-                <div className="avgRating">
-                  {(avgCleanliness / 20).toFixed(1)}
-                </div>
+                <div className="avgRating">{avgCleanliness.toFixed(1)}</div>
               </div>
             </div>
           </div>
@@ -116,10 +121,10 @@ const ReviewsRating = ({ eventReviews }) => {
                 <div className="max-bar">
                   <div
                     className="rev-bar"
-                    style={{ width: `${avgAccuracy * 1.2}px` }}
+                    style={{ width: `${avgAccuracy * 24}px` }}
                   ></div>
                 </div>
-                <div className="avgRating">{(avgAccuracy / 20).toFixed(1)}</div>
+                <div className="avgRating">{avgAccuracy.toFixed(1)}</div>
               </div>
             </div>
             <div className="emptySpace"></div>
@@ -129,10 +134,10 @@ const ReviewsRating = ({ eventReviews }) => {
                 <div className="max-bar">
                   <div
                     className="rev-bar"
-                    style={{ width: `${avgValue * 1.2}px` }}
+                    style={{ width: `${avgValue * 24}px` }}
                   ></div>
                 </div>
-                <div className="avgRating">{(avgValue / 20).toFixed(1)}</div>
+                <div className="avgRating">{avgValue.toFixed(1)}</div>
               </div>
             </div>
             <div className="emptySpace"></div>
@@ -142,12 +147,10 @@ const ReviewsRating = ({ eventReviews }) => {
                 <div className="max-bar">
                   <div
                     className="rev-bar"
-                    style={{ width: `${avgCommunication * 1.2}px` }}
+                    style={{ width: `${avgCommunication * 24}px` }}
                   ></div>
                 </div>
-                <div className="avgRating">
-                  {(avgCommunication / 20).toFixed(1)}
-                </div>
+                <div className="avgRating">{avgCommunication.toFixed(1)}</div>
               </div>
             </div>
           </div>

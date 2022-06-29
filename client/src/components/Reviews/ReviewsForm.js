@@ -85,7 +85,6 @@ const ReviewsForm = () => {
   return (
     <>
       <div className="review-container">
-        <h1>sadadsadsadasdsadsa</h1>
         <div>
           <h3>Leave a Review</h3>
           {validationErrors.length > 0 && (
