@@ -1,0 +1,14 @@
+.openCover-container {
+  /* -moz-box-shadow: 3px 3px 5px #535353;
+  -webkit-box-shadow: 3px 3px 5px #535353;
+  box-shadow: 3px 3px 5px #535353; */
+background-color: steelblue;
+max-width: 800px;
+max-height: 1100px;
+padding: 25px;
+border: 1px solid rgb(221, 221, 221);
+border-bottom-left-radius: 13px;
+border-bottom-right-radius: 13px;
+border-top-left-radius: 13px;
+border-top-right-radius: 13px;
+}

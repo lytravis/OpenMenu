@@ -2,15 +2,18 @@ import React, { useState, useEffect } from 'react';
 import './SingleListing.css';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link, useHistory, useParams } from 'react-router-dom';
+import { Modal } from '../../context/Modal';
 
 import { getEvents } from '../../store/event';
 import { getReviews, removeReview } from '../../store/review';
+import AirCover from '../../components/AirCover/AirCover';
 //   .item{Item $}*12
 const SingleListing = () => {
   const dispatch = useDispatch();
   const { eventId } = useParams();
 
   const [isLoaded, setIsLoaded] = useState(false);
+  const [showModal, setShowModal] = useState(false);
 
   const event = useSelector((state) => state?.event[eventId]);
   const reviews = useSelector((state) => Object.values(state.review));
@@ -131,7 +134,7 @@ const SingleListing = () => {
                   </div>
                 </div>
               </div>
-              <div className="sl-eventInfoContainer">
+              <div className="sl-eventInfoContainer borderBot">
                 <div className="event-icon">
                   <i class="fab fa-accessible-icon"></i>
                 </div>
@@ -140,6 +143,22 @@ const SingleListing = () => {
                   <div className="event-info">Full bar</div>
                 </div>
               </div>
+              <div className="openCover">
+                <h2>opencover</h2>
+                <p>
+                  Every booking includes free protection from Host
+                  cancellations, listing inaccuracies, and other issues like
+                  trouble checking in.
+                </p>
+                <div className="learnMore" onClick={() => setShowModal(true)}>
+                  Learn More
+                </div>
+              </div>
+              {showModal && (
+                <Modal onClose={() => setShowModal(false)}>
+                  <AirCover setShowModal={setShowModal} />
+                </Modal>
+              )}
             </div>
           </div>
           <div className="sl-review">Review</div>
