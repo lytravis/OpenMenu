@@ -27,7 +27,7 @@
 {
 
   background-color: steelblue;
-  color: #fff;
+  color: #191919;
   padding: 20px;
   border: skyblue 1px solid;
 }
@@ -56,8 +56,6 @@
   background-size: cover;
   border-top-left-radius: 13px;
   border-bottom-left-radius: 13px;
-  background-color: black;
-
 }
 
 .sl-tm-img {
@@ -68,8 +66,6 @@
   height: 260px;
   background-size: cover;
   margin-left: 7px;
-
-  background-color: red;
 }
 
 .sl-tr-img {
@@ -81,9 +77,7 @@
   background-size: cover;
   margin-left: 7px;
   margin-bottom: 10px;
-
   border-top-right-radius: 13px;
-  background-color: blue;
 }
 
 .sl-bm-img {
@@ -94,7 +88,6 @@
   height: 260px;
   background-size: cover;
   margin-left: 7px;
-  background-color: blue;
 }
 
 .sl-br-img {
@@ -106,7 +99,6 @@
   background-size: cover;
   margin-left: 7px;
   border-bottom-right-radius: 13px;
-  background-color: blue;
 }
 
 
@@ -119,8 +111,53 @@
 
 .sl-description {
   grid-area: description;
+
+  display: grid;
 }
 
 .sl-review {
   grid-area: review;
+}
+
+.sl-hostInfo {
+  display: grid;
+}
+
+.sl-hostInfo h3 {
+  grid-column: 1 / 3;
+  grid-row: 1;
+}
+
+.sl-hostInfo p {
+  grid-column: 1 / 3;
+  grid-row: 2;
+}
+
+.ownerIcon {
+  grid-column: 2;
+  grid-row: 1;
+
+  width: 90px;
+  height: 90px;
+  background-size: cover;
+  border-radius: 50%;
+}
+
+.sl-button {
+  border: 1px solid rgb(221, 221, 221);;
+  border-radius: 1rem;
+  padding: 0.3125rem 16px;
+  text-transform: capitalize;
+  font-size: .775rem;
+  /* font-weight: 500; */
+  line-height: 1.25rem;
+
+  margin-left: .25rem;
+  margin-right: .25rem;
+  /* background-color: initial; */
+}
+
+.sl-button:hover {
+  box-shadow: -1px 1px 3px rgb(173, 173, 173), 1px 1px 3px rgb(173, 173, 173);
+
 }

@@ -28,12 +28,15 @@ const SingleListing = () => {
   }, [dispatch]);
 
   // console.log('hello-----> images', event?.Images[0].url);
+  console.log('````````````````````````', event?.User.profilePic);
   // console.log('$$ EVENT REVIEWS', eventReviews);
   return (
     <>
       {isLoaded && (
         <div className="sl-container">
-          <div className="sl-header">{event.name}</div>
+          <div className="sl-header">
+            <h2> {event.name}</h2>
+          </div>
           <div className="sl-photogrid-container">
             <div
               className="sl-main-img"
@@ -66,7 +69,36 @@ const SingleListing = () => {
               }}
             ></div>
           </div>
-          <div className="sl-description">Description</div>
+          <div className="sl-description">
+            <div className="sl-hostInfo">
+              <h3>
+                {`Experience hosted by ${event?.User.firstName} ${event?.User.lastName}`}{' '}
+              </h3>
+              <p>
+                Top Tags:{' '}
+                <span>
+                  <button className="sl-button">Great For Brunch</button>
+                  <button className="sl-button">Great For Outdoor Dining</button>
+                  <button className="sl-button">Fit For Foodies</button>
+                </span>
+              </p>
+
+              {event?.User.profilePic ? (
+                <div
+                  className="ownerIcon"
+                  style={{ backgroundImage: `url(${event?.User.profilePic})` }}
+                ></div>
+              ) : (
+                <div
+                  className="ownerIcon"
+                  style={{
+                    backgroundImage:
+                      'url(https://cdn.discordapp.com/attachments/920377762068447282/991505531703410698/664742.png',
+                  }}
+                ></div>
+              )}
+            </div>
+          </div>
           <div className="sl-review">Review</div>
           <div className="sl-checkinfo">Check in info</div>
         </div>
