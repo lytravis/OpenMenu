@@ -8,6 +8,7 @@ import { getEvents } from '../../store/event';
 import { getReviews, removeReview } from '../../store/review';
 import AirCover from '../../components/AirCover/AirCover';
 import Reviews from '../../components/Reviews/ReviewsRating';
+import ReviewsForm from '../../components/Reviews/ReviewsForm';
 //   .item{Item $}*12
 const SingleListing = () => {
   const dispatch = useDispatch();
@@ -168,6 +169,7 @@ const SingleListing = () => {
           </div>
           <div className="sl-review">
             <Reviews eventReviews={eventReviews} />
+            <ReviewsForm />
           </div>
           <div className="sl-checkinfo">Check in info</div>
         </div>

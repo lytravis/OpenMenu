@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Rating } from 'react-simple-star-rating';
+import ReactStars from 'react-rating-stars-component';
 import { useHistory, useParams } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { addReview } from '../../store/review';
@@ -12,7 +13,6 @@ const ReviewsForm = () => {
   const history = useHistory();
   const { eventId } = useParams();
 
-  const [isLoaded, setIsLoaded] = useState(false);
   const userId = useSelector((state) => state.session.user?.id);
   const [foodRating, setFoodRating] = useState(0);
   const [experienceRating, setExperienceRating] = useState(0);
@@ -47,7 +47,7 @@ const ReviewsForm = () => {
 
   useEffect(() => {
     // dispatch(getEvent(eventId));
-    dispatch(getEvents()).then(() => setIsLoaded(true));
+    dispatch(getEvents());
   }, [dispatch]);
 
   const handleSubmit = async (e) => {
@@ -84,92 +84,96 @@ const ReviewsForm = () => {
 
   return (
     <>
-      {isLoaded && (
-        <div className="review-container">
-          <div>
-            <h3>Leave a Review</h3>
-            {validationErrors.length > 0 && (
-              <div className="addReviewError">
-                The following errors were found:
-                <ul>
-                  {validationErrors.map((error) => (
-                    <li key={error}>{error}</li>
-                  ))}
-                </ul>
-              </div>
-            )}
+      <div className="review-container">
+        <h1>sadadsadsadasdsadsa</h1>
+        <div>
+          <h3>Leave a Review</h3>
+          {validationErrors.length > 0 && (
+            <div className="addReviewError">
+              The following errors were found:
+              <ul>
+                {validationErrors.map((error) => (
+                  <li key={error}>{error}</li>
+                ))}
+              </ul>
+            </div>
+          )}
+        </div>
+        <div className="rating-container">
+          <div className="review-row1">
+            <div className="singleAvgRating addRatingCategory">
+              <div className="reviewCategory">Food</div>
+              <ReactStars
+                onChange={(rating) => setFoodRating(rating)}
+                value={foodRating}
+                isHalf={true}
+              />
+            </div>
+            <div className="emptySpace"></div>
+            <div className="singleAvgRating addRatingCategory">
+              <div className="reviewCategory">Experience</div>
+              <ReactStars
+                onChange={(rating) => setExperienceRating(rating)}
+                value={experienceRating}
+                isHalf={true}
+              />
+            </div>
+            <div className="emptySpace"></div>
+            <div className="singleAvgRating addRatingCategory">
+              <div className="reviewCategory">Cleanliness</div>
+              <ReactStars
+                onChange={(rating) => setCleanlinessRating(rating)}
+                value={cleanlinessRating}
+                isHalf={true}
+              />
+            </div>
           </div>
-          <div className="rating-container">
-            <div className="review-row1">
-              <div className="singleAvgRating addRatingCategory">
-                <div className="reviewCategory">Food</div>
-                <Rating
-                  onClick={(rating) => setFoodRating(rating)}
-                  ratingValue={foodRating}
-                  rtl={false}
-                />
-              </div>
-              <div className="emptySpace"></div>
-              <div className="singleAvgRating addRatingCategory">
-                <div className="reviewCategory">Experience</div>
-                <Rating
-                  onClick={(rating) => setExperienceRating(rating)}
-                  ratingValue={experienceRating}
-                />
-              </div>
-              <div className="emptySpace"></div>
-              <div className="singleAvgRating addRatingCategory">
-                <div className="reviewCategory">Cleanliness</div>
-                <Rating
-                  onClick={(rating) => setCleanlinessRating(rating)}
-                  ratingValue={cleanlinessRating}
-                />
-              </div>
+          <div className="review-row2">
+            <div className="singleAvgRating addRatingCategory">
+              <div className="reviewCategory">Accuracy</div>
+              <ReactStars
+                onChange={(rating) => setAccuracyRating(rating)}
+                value={accuracyRating}
+                isHalf={true}
+              />
             </div>
-            <div className="review-row2">
-              <div className="singleAvgRating addRatingCategory">
-                <div className="reviewCategory">Accuracy</div>
-                <Rating
-                  onClick={(rating) => setAccuracyRating(rating)}
-                  ratingValue={accuracyRating}
-                />
-              </div>
-              <div className="emptySpace"></div>
-              <div className="singleAvgRating addRatingCategory">
-                <div className="reviewCategory">Value</div>
-                <Rating
-                  onClick={(rating) => setValueRating(rating)}
-                  ratingValue={valueRating}
-                />
-              </div>
-              <div className="emptySpace"></div>
-              <div className="singleAvgRating addRatingCategory">
-                <div className="reviewCategory">Communication</div>
-                <Rating
-                  onClick={(rating) => setCommunicationRating(rating)}
-                  ratingValue={communicationRating}
-                />
-              </div>
+            <div className="emptySpace"></div>
+            <div className="singleAvgRating addRatingCategory">
+              <div className="reviewCategory">Value</div>
+              <ReactStars
+                onChange={(rating) => setValueRating(rating)}
+                value={valueRating}
+                isHalf={true}
+              />
             </div>
-            <div className="commentBox">
-              <form className="commentForm" onSubmit={handleSubmit}>
-                <div className="commentHolder">
-                  <label>Comment</label>
-                  <textarea
-                    onChange={(e) => setComment(e.target.value)}
-                    value={comment}
-                    type="text"
-                    placeholder="Comment"
-                  />
-                </div>
-                <div className="reviewButtonContainer">
-                  <button type="submit">Submit Review</button>
-                </div>
-              </form>
+            <div className="emptySpace"></div>
+            <div className="singleAvgRating addRatingCategory">
+              <div className="reviewCategory">Communication</div>
+              <ReactStars
+                onChange={(rating) => setCommunicationRating(rating)}
+                value={communicationRating}
+                isHalf={true}
+              />
             </div>
+          </div>
+          <div className="commentBox">
+            <form className="commentForm" onSubmit={handleSubmit}>
+              <div className="commentHolder">
+                <label>Comment</label>
+                <textarea
+                  onChange={(e) => setComment(e.target.value)}
+                  value={comment}
+                  type="text"
+                  placeholder="Comment"
+                />
+              </div>
+              <div className="reviewButtonContainer">
+                <button type="submit">Submit Review</button>
+              </div>
+            </form>
           </div>
         </div>
-      )}
+      </div>
     </>
   );
 };
