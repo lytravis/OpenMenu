@@ -1,10 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import * as sessionActions from '../../../store/session';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector  } from 'react-redux';
+import { Redirect } from "react-router-dom";
 import { login } from '../../../store/session';
 import './LoginForm.css';
 
-function LoginForm({ setShowLoginModal }) {
+function LoginForm({ setShowLoginModal,showLoginModal }) {
+
+  const sessionUser = useSelector((state) => state.session.user);
   const dispatch = useDispatch();
   const [credential, setCredential] = useState('');
   const [password, setPassword] = useState('');
@@ -14,6 +17,10 @@ function LoginForm({ setShowLoginModal }) {
 
   const [passwordLable, setPasswordLabel] = useState('passwordLable');
   const [emailLable, setEmailLabel] = useState('emailLable');
+
+
+
+// console.log("@@@@@@@@@@@@@@@@@@@@@",  showLoginModal === true)
 
   // DEMO LOG IN
   const demoLogin = () => {
@@ -52,6 +59,7 @@ function LoginForm({ setShowLoginModal }) {
         }
       }
     );
+
   };
 
   const resetLoginForm = () => {
@@ -84,6 +92,9 @@ function LoginForm({ setShowLoginModal }) {
       setEmailLabel('emailLable');
     }
   }, [credential.length]);
+
+
+  if (sessionUser) return <Redirect to="/" />;
 
   return (
     <>

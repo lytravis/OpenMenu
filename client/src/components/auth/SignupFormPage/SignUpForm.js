@@ -10,7 +10,7 @@ function SignupFormPage({ showSignModel, setShowSignUpModal }) {
   const [email, setEmail] = useState('');
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
-  const [profilePic, setProfilePic] = useState('');
+  // const [profilePic, setProfilePic] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [errors, setErrors] = useState([]);
@@ -40,7 +40,7 @@ function SignupFormPage({ showSignModel, setShowSignUpModal }) {
   const [passwordErrorMessaage, setPasswordErrorMessage] = useState('');
   const [passwordErrorVisible, setPasswordErrorVisible] = useState('hidden');
 
-  // if (sessionUser) return <Redirect to="/" />;
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -52,12 +52,13 @@ function SignupFormPage({ showSignModel, setShowSignUpModal }) {
           email,
           firstName,
           lastName,
-          profilePic,
+          // profilePic,
           password,
         })
       ).catch(async (res) => {
         const data = await res.json();
         if (data && data.errors) {
+
           setErrors(data.errors);
         } else {
           resetSignUpForm();
@@ -159,6 +160,8 @@ function SignupFormPage({ showSignModel, setShowSignUpModal }) {
     }
   }, [signUpErrors]);
 
+  if (sessionUser) return <Redirect to="/" />;
+  
   return (
     <>
       <div className="loginModal">
@@ -229,7 +232,7 @@ function SignupFormPage({ showSignModel, setShowSignUpModal }) {
               <div>!</div>
               <span> Please provide a valid email address.</span>
             </div>
-            <div className="formField">
+            {/* <div className="formField">
               <input
                 // id={signUpEmailError}
                 name="profilePic"
@@ -241,7 +244,7 @@ function SignupFormPage({ showSignModel, setShowSignUpModal }) {
                 onChange={(e) => setProfilePic(e.target.value)}
               />
               <label id={emailLable}>Profile Picture URL</label>
-            </div>
+            </div> */}
             <div
               className="loginError"
               style={{ visibility: signUpEmailErrorVisible }}
@@ -251,7 +254,7 @@ function SignupFormPage({ showSignModel, setShowSignUpModal }) {
             </div>
             <div className="formField">
               <input
-                id={passwordError}
+                className={passwordError}
                 name="password"
                 type="password"
                 required
@@ -264,7 +267,7 @@ function SignupFormPage({ showSignModel, setShowSignUpModal }) {
             </div>
             <div className="formField">
               <input
-                id={passwordError}
+                className={passwordError}
                 name="confirm password"
                 type="password"
                 required
