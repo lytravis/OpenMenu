@@ -106,3 +106,10 @@
   font-size: 15px;
   color: #222222;
 }
+
+
+.allReviews {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 50px;
+}

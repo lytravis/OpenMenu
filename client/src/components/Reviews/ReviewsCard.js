@@ -80,9 +80,12 @@ const ReviewsCard = ({ review, user, userId }) => {
     setShowUpdate(false);
   };
 
-  // console.log('############### profilePic', review?.User.profilePic);
+  // console.log('############### profilePic', review?.User?.profilePic);
   // console.log('!!!!!!!!!!!!!!!!!!!!!! reviewYear', reviewYear);
   // console.log('!!!!!!!!!!!!!!!!!!!!!! reviewMonth', reviewMonth);
+
+
+
 
   return (
     <>
@@ -92,7 +95,7 @@ const ReviewsCard = ({ review, user, userId }) => {
             <div
               className="reviewerIcon"
               style={{
-                backgroundImage: `url(${review?.User?.profilePic})`,
+                backgroundImage: `url(${review?.User?.profilePic}), url(https://cdn.discordapp.com/attachments/920377762068447282/991505593279971368/isolated-chef-man-cartoon-design-icon-avatar-people-person-human-theme-vector-illustration-78587865.jpg)`,
               }}
             ></div>
           ) : (

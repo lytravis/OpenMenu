@@ -55,7 +55,7 @@ const Reviews = ({ eventReviews, userId, hasReviewed, isHost, user }) => {
           )}
         </>
       </div>
-      <div>
+      <div className="allReviews">
         {eventReviews.map((review) => (
           <ReviewsCard
             review={review}
