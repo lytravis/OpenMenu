@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
+import { useHistory, useParams } from 'react-router-dom';
 import './ReviewsCard.css';
 import { getReviews, removeReview, updateReview } from '../../store/review';
 import ReactStars from 'react-rating-stars-component';
 
-const ReviewsCard = ({ review, user }) => {
+const ReviewsCard = ({ review, user, userId }) => {
   const dispatch = useDispatch();
+  const { eventId, reviewId } = useParams();
 
   const [showUpdate, setShowUpdate] = useState(false);
   const [showDelete, setShowDelete] = useState(false);
@@ -23,6 +25,10 @@ const ReviewsCard = ({ review, user }) => {
 
   const reviewMonth = review.createdAt.slice(5, 10);
 
+  // console.log('$$$$$$$$$$$$$$$$$ eventId', eventId);
+  // console.log('%%%%%%%%%%%%%%%%%%%%%% reviewId', reviewId);
+  console.log('%%%%%%%%%%%%%%%%%%%%%% review', review.id);
+
   useEffect(() => {
     setFoodRating(review?.food);
     setExperienceRating(review?.experience);
@@ -38,22 +44,25 @@ const ReviewsCard = ({ review, user }) => {
     setShowDelete(false);
   };
 
-  const updateReview = async (e) => {
+
+  const editReview = async (e) => {
     e.preventDefault();
 
-    const data = await dispatch(
-      updateReview(
-        review.id,
-        comment,
-        foodRating,
-        experienceRating,
-        cleanlinessRating,
-        accuracyRating,
-        valueRating,
-        communicationRating
-      )
-    );
-    if (data[0] === 'Updated') {
+    const payload = {
+      userId,
+      eventId,
+      food: foodRating,
+      experience: experienceRating,
+      cleanliness: cleanlinessRating,
+      accuracy: accuracyRating,
+      value: valueRating,
+      communication: communicationRating,
+      comment,
+    };
+
+    const reviewEdited = await dispatch(updateReview(payload, review.id));
+
+    if (reviewEdited) {
       setShowUpdate(false);
     } else {
       setShowError(true);
@@ -120,14 +129,8 @@ const ReviewsCard = ({ review, user }) => {
                 <i className="fas fa-times"></i>
               </div>
               <div className="areYouSure">{`Are you sure you want to delete your review?`}</div>
-              <div
-                className="deleteConfirmButtons"
-              >
-                <div
-                  onClick={deleteReview}
-                >
-                  Delete Review
-                </div>
+              <div className="deleteConfirmButtons">
+                <div onClick={deleteReview}>Delete Review</div>
                 <div id="cancelDelete" onClick={() => setShowDelete(false)}>
                   Go Back
                 </div>
@@ -202,7 +205,7 @@ const ReviewsCard = ({ review, user }) => {
                   </div>
                 </div>
                 <div className="commentBox">
-                  <form className="commentForm" onSubmit={updateReview}>
+                  <form className="commentForm" onSubmit={editReview}>
                     <div className="commentHolder">
                       <label>Comment</label>
                       <textarea
