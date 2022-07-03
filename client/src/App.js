@@ -8,6 +8,7 @@ import SingleListing from './pages/SingleListing/SingleListing';
 import * as sessionActions from './store/session';
 import Header from './components/Header';
 import Reviews from './components/Reviews/Reviews';
+import SplashPage from './pages/SplashPage/SplashPage';
 
 function App() {
   const dispatch = useDispatch();
@@ -32,6 +33,9 @@ function App() {
           </Route> */}
           <Route path="/signup">
             <SignupFormPage />
+          </Route>
+          <Route exact path="/">
+            <SplashPage />
           </Route>
           <Route exact path="/events/:eventId">
             <SingleListing />

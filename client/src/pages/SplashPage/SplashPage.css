@@ -1,0 +1,39 @@
+.splash-container {
+  width: 2100px;
+  max-width: 2100px;
+  margin: 0 auto;
+  height: fit-content;
+  display: grid;
+  /* grid-template-columns: 50px 50px 50px 50px;
+  grid-template-rows: auto; */
+  grid-template-areas:
+    "top top top "
+    "mid mid mid "
+    "bot bot bot ";
+}
+
+
+
+.splash-top, .splash-bottom, .splash-mid, .splash-footer {
+    background-color: steelblue;
+    color: #191919;
+    padding: 20px;
+    border: skyblue 1px solid;
+}
+
+
+
+
+
+.splash-top {
+  grid-area: top;
+}
+
+.splash-mid {
+  grid-area: mid;
+}
+
+
+.splash-bottom {
+  grid-area: bot;
+}
