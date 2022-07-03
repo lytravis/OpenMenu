@@ -1,25 +1,17 @@
 .splash-container {
-  width: 2100px;
+  width: 1600px;
   max-width: 2100px;
   margin: 0 auto;
   height: fit-content;
   display: grid;
-  /* grid-template-columns: 50px 50px 50px 50px;
-  grid-template-rows: auto; */
+
   grid-template-areas:
     "top top top "
     "mid mid mid "
-    "bot bot bot ";
+    "bot bot bot";
 }
 
 
-
-.splash-top, .splash-bottom, .splash-mid, .splash-footer {
-    background-color: steelblue;
-    color: #191919;
-    padding: 20px;
-    border: skyblue 1px solid;
-}
 
 
 
@@ -27,13 +19,143 @@
 
 .splash-top {
   grid-area: top;
+  margin-top: 4rem;
+  margin-bottom: 4rem;
 }
 
 .splash-mid {
   grid-area: mid;
+  margin-bottom: 4rem;
 }
 
 
 .splash-bottom {
   grid-area: bot;
+  margin-bottom: 4rem;
 }
+
+
+.splash-type-container {
+  display: flex;
+  justify-content: space-between;
+
+  /* gap: 20px; */
+  /* align-items: center; */
+  /* margin-left: 5rem; */
+  /* margin-right: 5rem; */
+}
+
+.splash-type-container img {
+  width: 100%;
+  height: auto;
+}
+
+.splash-child {
+  /* margin: 2.5rem; */
+  cursor: pointer;
+  overflow: hidden;
+  border-radius: 10.5px;
+  box-shadow: 1px 7px 16px -10px rgba(0, 0, 0, 0.65);
+  transition: transform 100ms ease-in;
+  /* flex-flow: row wrap; */
+  /* flex: 1; */
+  /* display: flex; */
+  /* justify-content: center; */
+  /* flex-direction: column; */
+}
+
+.splash-child img {
+  max-width: 350px;
+  max-height: 250px;
+  /* width: 100%; */
+  /* object-fit: fill; */
+}
+
+
+
+.splash-info {
+  font-family: 'Montserrat', sans-serif;
+  text-align: center;
+  font-size: 24px;
+  margin-bottom: 10px;
+  border-radius: 10px;
+  padding-top: 18px;
+  padding: 18px;
+  border: 1;
+
+}
+
+.splash {
+  font-family: "Bebas Neue", cursive;
+  font-size: 5rem;
+
+  text-align: center;
+  margin-top: 14rem;
+}
+
+
+.splash button {
+  font-family: "Bebas Neue", cursive;
+  font-size: 1.5rem;
+}
+
+.splash-pic {
+  background-image: url("https://cdn.discordapp.com/attachments/920377762068447282/931585437041045674/how-to-host-an-allergy-friendly-dinner-party-1200x684.jpg");
+  background-size: cover;
+  height: 50em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: white;
+
+  border-radius: 1rem;
+}
+
+
+
+/* @media (max-width: 900px) {
+  .splash-container{
+      display: flex;
+      flex-direction: column;
+  }
+
+} */
+
+
+/* @media (max-width: 900px) {
+  .splash-container {
+    display: flex;
+    flex-direction: column;
+
+  }
+  .splash-type-container {
+    display: flex;
+    flex-direction: column;
+  }
+  .ssplash-child  {
+    display: flex;
+    flex-direction: column;
+  }
+
+
+
+} */
+
+
+
+/* @media (max-width: 1110px) {
+  .splash-type-container{
+   flex-direction: column;
+  }
+
+} */
+/* @media (max-width: 773px) {
+
+  .splash-type-container{
+   display: unset;
+  }
+  .splash-type-container div{
+   margin: 10px 0;
+  }
+
+} */

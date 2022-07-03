@@ -32,7 +32,7 @@ module.exports = {
           updatedAt: new Date(),
         },
         {
-          name: "Food Vendor",
+          name: "Fine Dining",
           createdAt: new Date(),
           updatedAt: new Date(),
         },

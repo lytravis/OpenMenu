@@ -9,6 +9,7 @@ import * as sessionActions from './store/session';
 import Header from './components/Header';
 import Reviews from './components/Reviews/Reviews';
 import SplashPage from './pages/SplashPage/SplashPage';
+import Listings from './pages/Listings/Listings';
 
 function App() {
   const dispatch = useDispatch();
@@ -36,6 +37,9 @@ function App() {
           </Route>
           <Route exact path="/">
             <SplashPage />
+          </Route>
+          <Route exact path="/events">
+            <Listings />
           </Route>
           <Route exact path="/events/:eventId">
             <SingleListing />

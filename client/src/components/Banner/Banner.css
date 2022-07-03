@@ -63,3 +63,33 @@
   background-color: #FFAD9B;
   color: #FFFF;
 }
+
+
+@media (max-width: 1299px){
+  .banner-container{
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+  }
+  .banner-container *{
+      margin: 0;
+      padding: 0;
+  }
+  .banner-img{
+      margin: -60px 0 -16px 0;
+  }
+  .banner-img img{
+      margin: 0;
+  }
+  .banner-text{
+      width: 80%;
+      text-align: center;
+  }
+  .banner-text h1{
+      padding: 2rem 0;
+  }
+  .general-btn{
+      padding: 1rem;
+  }
+
+}
