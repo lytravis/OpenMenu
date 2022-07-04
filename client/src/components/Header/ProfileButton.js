@@ -91,7 +91,7 @@ function ProfileButton({ user }) {
           <div className="profileDropDown">
             {user ? (
               <div className="loggedInProfileDropDown">
-                <Link to="/">
+                <Link to="/events">
                   <div className="profileDropDownLinks">New Experiences</div>
                 </Link>
                 <Link to="/">

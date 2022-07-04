@@ -1,39 +1,64 @@
-.card {
-  margin: 10px;
-  border-radius: 10px;
-  overflow: hidden;
-  box-shadow: 0px 6px 18px -9px rgba(0, 0, 0, 0.75);
-  transition: transform 100ms ease-in;
-  cursor: pointer;
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat&display=swap');
+
+
+.browseEventContainer {
+  width: 90vw;
+  max-width: 1600px;
+  margin: 0 auto;
+  height: fit-content;
+  font-family: 'Montserrat', sans-serif;
 }
 
-.card:hover {
-  transform: scale(1.07);
+.browseEventContainer h1 {
+  margin-bottom: 0;
 }
 
-.card > img {
-  object-fit: fill;
-  min-width: 300px;
-  min-height: 200px;
+.allEventsContainer {
+  display: flex;
+  flex-wrap: wrap;
+  width: fit-content;
+  margin: 0 auto;
+  margin-bottom: 100px;
+}
+
+.fetchGif {
+  margin: 0 auto;
+  display: block;
+  border-radius: 50%;
+  margin-top: 100px;
+}
+
+.sortByContainer {
+  display: flex;
+  align-items: center;
   width: 100%;
+  justify-content: flex-end;
+  margin-bottom: 30px;
 }
 
-.card__info {
-    margin-top: -9px;
-    border-radius: 10px;
-    padding: 20px;
-    padding-top: 20px;
-    border: 1;
-  }
+.sortHeader {
+  font-size: 20px;
+  font-weight: 600;
+  margin-right: 10px;
+}
 
-  .card__info > h2 {
-    font-size: 18px;
-    font-weight: 600;
-  }
+.sortCategory {
+  border: 1px solid rgb(221, 221, 221);
+  padding: 5px 10px;
+  border-radius: 21px;
+  margin: 0 5px;
+  cursor: pointer;
+  transition: all .2s 0s;
+}
 
-  .card__info > h4 {
-    font-size: 14px;
-    font-weight: 300;
-    margin-top: 8px;
-    margin-bottom: 8px;
-  }
+.sortCategory:hover {
+  background-color: rgb(238, 238, 238);
+  border: 1px solid rgb(163, 163, 163);
+  box-shadow: -1px 1px 2px rgb(173, 173, 173), 1px 1px 2px rgb(173, 173, 173);
+}
+
+.sortSelected {
+  background-color: rgb(238, 238, 238);
+  border: 1px solid rgb(163, 163, 163);
+  box-shadow: -1px 1px 2px rgb(173, 173, 173), 1px 1px 2px rgb(173, 173, 173);
+}
