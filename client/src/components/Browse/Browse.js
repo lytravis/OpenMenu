@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import EventsHolder from '../EventsHolder/EventsHolder';
 import './Browse.css';
 
 const Browse = ({ events }) => {
@@ -120,6 +121,17 @@ const Browse = ({ events }) => {
           Food Trucks
         </div>
       </div>
+      {isLoaded && (
+        <div className="allEventsContainer">
+          {eventList.map((event) => (
+            <EventsHolder
+              event={event}
+              events={events}
+              key={`Event_Browse_${event?.id}`}
+            />
+          ))}
+        </div>
+      )}
     </>
   );
 };

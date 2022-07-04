@@ -25,7 +25,7 @@ const Listings = () => {
 
   const [isLoaded, setIsLoaded] = useState(false);
 
-  console.log('events ------------->', events);
+  // console.log('events ------------->', events);
   // console.log('sortedEvents ------------->', sortedEvents);
   // console.log('sorted ------------->', sortedEvents);
 
