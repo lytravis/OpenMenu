@@ -85,6 +85,7 @@ router.post(
       city,
       state,
       zipCode,
+      avgCost,
       // latitude,
       // longitude,
       userId,
@@ -98,6 +99,7 @@ router.post(
       city,
       state,
       zipCode,
+      avgCost,
       // latitude,
       // longitude,
       userId,
@@ -120,6 +122,7 @@ router.put(
       event.city = req.body.city;
       event.state = req.body.state;
       event.zipCode = req.body.zipCode;
+      event.avgCost = req.body.avgCost;
       // event.latitude = req.body.latitude;
       // event.longitude = req.body.longitude;
       // console.log("TEST 2 =====>", event);
