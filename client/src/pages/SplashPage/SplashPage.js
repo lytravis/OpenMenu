@@ -14,7 +14,7 @@ const SplashPage = ({ src, title, description, price }) => {
       <div className="splash-mid">
         <div className="splash-type-container">
           <div className="splash-child btn-link">
-            <Link to="/events">
+            <Link to="/events" style={{ textDecoration: 'none' }}>
               <img
                 src="https://cdn.discordapp.com/attachments/920377762068447282/927500295217512458/online-cooking-classs.jpg"
                 alt="type1"
@@ -23,7 +23,7 @@ const SplashPage = ({ src, title, description, price }) => {
             </Link>
           </div>
           <div className="splash-child btn-link">
-            <Link to="/events">
+            <Link to="/events" style={{ textDecoration: 'none' }}>
               <img
                 src="https://cdn.discordapp.com/attachments/920377762068447282/927498450004738048/istockphoto-1081422898-612x612.jpg"
                 alt="type1"
@@ -32,7 +32,7 @@ const SplashPage = ({ src, title, description, price }) => {
             </Link>
           </div>
           <div className="splash-child btn-link">
-            <Link to="/events">
+            <Link to="/events" style={{ textDecoration: 'none' }}>
               <img
                 src="https://cdn.discordapp.com/attachments/920377762068447282/927497897317117982/Super-Cooking-Vacation.jpg"
                 alt="type1"
@@ -41,7 +41,7 @@ const SplashPage = ({ src, title, description, price }) => {
             </Link>
           </div>
           <div className="splash-child btn-link">
-            <Link to="/events">
+            <Link to="/events" style={{ textDecoration: 'none' }}>
               <img
                 src="https://media.discordapp.net/attachments/920377762068447282/927499689874571314/web.ae_.4.2.truckingaround.picA_.Alisha-Kapur.jpg?width=1074&height=676"
                 alt="type1"

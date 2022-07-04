@@ -94,13 +94,11 @@ function ProfileButton({ user }) {
                 <Link to="/events">
                   <div className="profileDropDownLinks">New Experiences</div>
                 </Link>
-                <Link to="/">
+                <Link to="/events/new">
                   <div className="profileDropDownLinks">Host an Event</div>
                 </Link>
                 <Link to="/">
-                  <div className="profileDropDownLinks">
-                    Manage Reservations
-                  </div>
+                  <div className="profileDropDownLinks">Manage Events</div>
                 </Link>
                 <Link to="/account-settings">
                   <div className="profileDropDownLinks">Account</div>
@@ -121,7 +119,10 @@ function ProfileButton({ user }) {
       </div>
       {showLoginModal && (
         <Modal onClose={() => setShowLoginModal(false)}>
-          <LoginForm setShowLoginModal={setShowLoginModal} showLoginModal={showLoginModal} />
+          <LoginForm
+            setShowLoginModal={setShowLoginModal}
+            showLoginModal={showLoginModal}
+          />
         </Modal>
       )}
       {showSignUpModal && (

@@ -44,7 +44,7 @@ const EventsHolder = ({ event, events }) => {
           <div className="eventStats">
             <p className="eventAddress">{`${event.city}, ${event.state}`}</p>
 
-            <p>{event.zipCode}</p>
+            <p>{event.avgCost}</p>
           </div>
         </div>
       </Link>

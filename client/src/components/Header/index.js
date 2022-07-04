@@ -29,7 +29,9 @@ function Header() {
       </div>
 
       <div className="header__right">
-        <p className="nav-host">Become a host</p>
+        <Link to="/events/new" style={{ textDecoration: 'none' }}>
+          <p className="nav-host">Become a host</p>
+        </Link>
         <LanguageIcon />
         <ProfileButton user={user} />
       </div>

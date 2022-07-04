@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux';
 import { Route, Switch } from 'react-router-dom';
 import SignupFormPage from './components/auth/SignupFormPage';
 import SingleListing from './pages/SingleListing/SingleListing';
+import CreateEvent from './pages/CreateEvent/CreateEvent';
 
 // import LoginFormPage from "./components/LoginFormPage";
 import * as sessionActions from './store/session';
@@ -37,6 +38,9 @@ function App() {
           </Route>
           <Route exact path="/">
             <SplashPage />
+          </Route>
+          <Route exact path="/events/new">
+            <CreateEvent />
           </Route>
           <Route exact path="/events">
             <Listings />
