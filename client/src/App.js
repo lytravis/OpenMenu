@@ -11,6 +11,7 @@ import Header from './components/Header';
 import Reviews from './components/Reviews/Reviews';
 import SplashPage from './pages/SplashPage/SplashPage';
 import Listings from './pages/Listings/Listings';
+import ProtectedRoute from './components/auth/ProtectedRoute';
 
 function App() {
   const dispatch = useDispatch();
@@ -39,9 +40,9 @@ function App() {
           <Route exact path="/">
             <SplashPage />
           </Route>
-          <Route exact path="/events/new">
+          <ProtectedRoute exact path="/events/new">
             <CreateEvent />
-          </Route>
+          </ProtectedRoute>
           <Route exact path="/events">
             <Listings />
           </Route>
