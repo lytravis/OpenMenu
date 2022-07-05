@@ -1,13 +1,19 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import Card from '../Card/Card';
+import HostCard from '../Card/HostCard';
+import ReservationCard from '../Card/ReservationCard';
 
-import './HostedEvents.css';
+import './UserEvents.css';
 
-const HostedEvents = ({ hostedEvents, reservations, user }) => {
+const UserEvents = ({ hostedEvents, reservations, user }) => {
   // const [hostEvents, setHostEvents] = useState(hostedEvents);
   // const [rsvpEvents, setRsvpEvents] = useState([]);
   const [showRsvpEvents, setShowRsvpEvents] = useState(false);
+
+  console.log('$$$$$ RSVP', reservations);
+
+  const tester = reservations?.map((el) => el.Event);
+  console.log('#################', tester);
 
   return (
     <div>
@@ -37,9 +43,10 @@ const HostedEvents = ({ hostedEvents, reservations, user }) => {
                 <>
                   <div className="eventTextContainer">
                     <p className="eventText">
-                      When you’re ready to start planning your next experience, click
+                      When you’re ready to start planning your next experience,
+                      click
                     </p>
-                    <Link to="/browse" className="noEventsBrowse">
+                    <Link to="/events" className="noEventsBrowse">
                       here
                     </Link>
                     <p className="eventText"> to browse.</p>
@@ -52,9 +59,11 @@ const HostedEvents = ({ hostedEvents, reservations, user }) => {
                 </>
               ) : (
                 <div className="eventsContainer">
-                  {hostedEvents.map((walk, index) => (
-                    <Card
-
+                  {hostedEvents.map((event, index) => (
+                    <HostCard
+                      event={event}
+                      hosted={true}
+                      key={`Your_events_${event.id}_${index}`}
                     />
                   ))}
                 </div>
@@ -66,7 +75,7 @@ const HostedEvents = ({ hostedEvents, reservations, user }) => {
               {reservations.length === 0 ? (
                 <>
                   <p className="eventText">
-                    You don’t have any past walks yet—but when you do, you’ll
+                    You don’t have any reservations yet—but when you do, you’ll
                     find them here.
                   </p>
                   <img
@@ -77,9 +86,11 @@ const HostedEvents = ({ hostedEvents, reservations, user }) => {
                 </>
               ) : (
                 <div className="eventsContainer">
-                  {reservations.map((walk, index) => (
-                    <Card
-
+                  {reservations?.map((event, index) => (
+                    <ReservationCard
+                      event={event}
+                      hosted={false}
+                      key={`Your_reservations_${event.id}_${index}`}
                     />
                   ))}
                 </div>
@@ -92,4 +103,4 @@ const HostedEvents = ({ hostedEvents, reservations, user }) => {
   );
 };
 
-export default HostedEvents;
+export default UserEvents;

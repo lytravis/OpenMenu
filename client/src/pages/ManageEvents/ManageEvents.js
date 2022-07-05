@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link, useHistory, useParams } from 'react-router-dom';
-import HostedEvents from '../../components/HostedEvents/HostedEvents';
+import HostedEvents from '../../components/UserEvents/UserEvents';
 import { getEvents, removeEvent } from '../../store/event';
 import { getRSVP, getAllRsvps, removeRSVP } from '../../store/reservation';
 
@@ -19,14 +19,14 @@ const ManageEvents = () => {
   const userId = useSelector((state) => state.session.user.id);
   const user = useSelector((state) => state.session.user);
 
-  console.log('************* userID', userId);
+  // console.log('************* userID', userId);
 
   const hostedEvents = events.filter((event) => event?.userId === hostId);
 
   let reservations = useSelector((state) => state?.reservation?.reservations);
 
-  console.log('------hosted events', hostedEvents);
-  console.log('%%%%%%%%%%%%%%%%%%%%% rsvp', reservations);
+  // console.log('------hosted events', hostedEvents);
+  // console.log('%%%%%%%%%%%%%%%%%%%%% rsvp', reservations);
 
   useEffect(() => {
     dispatch(getRSVP(userId));
@@ -37,13 +37,12 @@ const ManageEvents = () => {
   }, [dispatch, userId]);
 
   return (
-    <div>
+    <div className="yourEventsContainer">
       <HostedEvents
         hostedEvents={hostedEvents}
         reservations={reservations}
         user={user}
       />
-      test
     </div>
   );
 };
