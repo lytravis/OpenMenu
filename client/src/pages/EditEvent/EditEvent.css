@@ -1,0 +1,40 @@
+#editYourEvent {
+  margin: 30px auto;
+
+}
+
+
+.editFormAndImg {
+  display: flex;
+  justify-content: space-between;
+  width: 1000px;
+  margin: 0 auto;
+  align-items: flex-start;
+}
+
+.editFormAndImg span {
+  width: 300px;
+  /* height: fit-content; */
+
+
+}
+
+
+/* .editEventForm {
+  display: flex;
+} */
+
+/* .editorForm #imageUploadSection {
+  margin-top: 0;
+  margin-left: 20px;
+} */
+
+@media screen and (max-width: 1300px) {
+  .editorForm #imageUploadSection {
+      width: 500px;
+  }
+
+  .clickDragHere {
+      width: 466px;
+  }
+}

@@ -228,11 +228,6 @@ const CreateEvent = () => {
                       onChange={(e) => setZipCode(e.target.value)}
                     />
                   </div>
-
-                  <div className="addEventError" id={addressErrorId}>
-                    <div>!</div>
-                    <span>Invalid address.</span>
-                  </div>
                 </div>
               </div>
               <div className="formInputSection" id="imageUploadSection">
@@ -259,10 +254,8 @@ const CreateEvent = () => {
           </div>
         </div>
       </div>
-
     </div>
   );
 };
 
 export default CreateEvent;
-
