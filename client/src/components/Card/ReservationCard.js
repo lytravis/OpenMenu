@@ -32,6 +32,7 @@ const ReservationCard = ({ event, hosted }) => {
 
   const deleteRSVP = () => {
     dispatch(removeRSVP(event.id));
+    setShowDelete(false);
   };
 
   const images = useSelector((state) => Object.values(state.image));
@@ -56,14 +57,17 @@ const ReservationCard = ({ event, hosted }) => {
               {/* <ImageSlider event={event} /> */}
             </div>
             <div className="m-eventInfo">
-              <div >
+              <div>
                 <div className="eventConfirmDetails">
                   <div className="eventConfirmDetailHeader">Event Name:</div>
                   <div className="eventConfirmeDetailInfo">
                     {event.Event.name}
                   </div>
                 </div>
-                <div className="eventConfirmDetails" id="eventLocationContainer">
+                <div
+                  className="eventConfirmDetails"
+                  id="eventLocationContainer"
+                >
                   <div className="eventConfirmDetailHeader" id="eventLocation">
                     Location:
                   </div>
@@ -83,38 +87,6 @@ const ReservationCard = ({ event, hosted }) => {
           </div>
         </div>
       </Link>
-      {showUpdate && (
-        <div className="loginModal">
-          <div className="deleteEventForm" id="changeEventDateForm">
-            {showError && (
-              <div className="addEventError" id="updateEventError">
-                <span>
-                  An error occured. Please refresh the page and try again.
-                </span>
-              </div>
-            )}
-            <div className="changeEvent">
-              <div className="areYouSureDelete" id="selectNewDateHeader">
-                Select a New Date
-              </div>
-              {/* <DatePicker
-                onChange={(picked) => setDate(picked)}
-                view={'month'}
-                prev2Label={null}
-                next2Label={null}
-                showFixedNumberOfWeeks={true}
-                value={date}
-                minDate={tomorrow}
-                tileDisabled={tileDisabled}
-              /> */}
-            </div>
-            <div
-              className="eventDeleteConfirmButtons"
-              id="eventDeleteConfirmButtons"
-            ></div>
-          </div>
-        </div>
-      )}
       {showDelete && (
         <div className="loginModal">
           <div className="deleteEventForm">

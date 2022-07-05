@@ -123,14 +123,3 @@ const HostCard = ({ event, hosted }) => {
   );
 };
 export default HostCard;
-
-//  <div className="card">
-// <div>
-//   <ImageSlider event={event} />
-// </div>
-// <div className="card__info">
-//   <h2>{event.name}</h2>
-//   <h4>{event.description}</h4>
-//   <h3>{event.Type.name}</h3>
-// </div>
-// </div>

@@ -53,15 +53,14 @@ const UserEvents = ({ hostedEvents, reservations, user, eventId }) => {
                   </div>
                   <img
                     className="noEvents"
-                    src="https://cdn.discordapp.com/attachments/920377762068447282/989333650812313630/OpenMenu_1.png"
-                    alt="OpenMenu logo"
+                    src="https://cdn.discordapp.com/attachments/920377762068447282/993990185295548587/gif-animations-replace-loading-screen-14.gif"
+                    alt="empty gif"
                   />
                 </>
               ) : (
                 <div className="eventsContainer">
                   {hostedEvents.map((event, index) => (
                     <HostCard
-
                       event={event}
                       hosted={true}
                       key={`Your_events_${event.id}_${index}`}
@@ -81,8 +80,8 @@ const UserEvents = ({ hostedEvents, reservations, user, eventId }) => {
                   </p>
                   <img
                     className="event"
-                    src="https://cdn.discordapp.com/attachments/920377762068447282/989333650812313630/OpenMenu_1.png"
-                    alt="OpenMenu logo"
+                    src="https://cdn.discordapp.com/attachments/920377762068447282/993990185295548587/gif-animations-replace-loading-screen-14.gif"
+                    alt="empty gif"
                   />
                 </>
               ) : (
