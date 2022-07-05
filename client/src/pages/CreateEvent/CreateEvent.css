@@ -1,10 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat&display=swap');
+
 .eventloadContainer {
   width: 90vw;
   max-width: 1600px;
   margin: 0 auto;
   height: fit-content;
   margin-bottom: 100px;
-  font-family: 'Questrial', sans-serif;
+  font-family: 'Montserrat', sans-serif;
 }
 
 .eventloadContainer h1 {

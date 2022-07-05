@@ -97,7 +97,7 @@ function ProfileButton({ user }) {
                 <Link to="/events/new">
                   <div className="profileDropDownLinks">Host an Event</div>
                 </Link>
-                <Link to="/">
+                <Link to="/manage">
                   <div className="profileDropDownLinks">Manage Events</div>
                 </Link>
                 <Link to="/account-settings">
