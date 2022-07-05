@@ -83,6 +83,7 @@ const EditEvent = () => {
     setCity(event?.city);
     setState(event?.state);
     setZipCode(event?.zipCode);
+    setAvgCost(event?.avgCost);
     // setLatitude(event?.latitude);
     // setLongitude(event?.longitude);
     setTypeId(event?.typeId);
@@ -102,12 +103,14 @@ const EditEvent = () => {
       city,
       state,
       zipCode,
+      avgCost,
       // latitude,
       // longitude,
       typeId,
     };
 
     dispatch(updateEvent(payload, eventId));
+    // history.push(`/events/${eventId}/edit`);
     history.push(`/events/${eventId}`);
   };
 
