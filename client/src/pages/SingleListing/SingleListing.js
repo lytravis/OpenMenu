@@ -9,6 +9,7 @@ import { getReviews, removeReview } from '../../store/review';
 import AirCover from '../../components/AirCover/AirCover';
 import Reviews from '../../components/Reviews/Reviews';
 import ReviewsForm from '../../components/Reviews/ReviewsForm';
+import ReservationForm from '../../components/Reservation/ReservationForm';
 
 //   .item{Item $}*12
 const SingleListing = () => {
@@ -195,9 +196,11 @@ const SingleListing = () => {
               hasReviewed={hasReviewed}
               isHost={isHost}
             />
-           
+
           </div>
-          <div className="sl-checkinfo">Check in info</div>
+          <div className="sl-checkinfo">
+          <ReservationForm/>
+          </div>
         </div>
       )}
     </>
