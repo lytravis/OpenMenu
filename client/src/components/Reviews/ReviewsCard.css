@@ -83,7 +83,7 @@
     cursor: pointer;
     color: black;
     transition: all 0.25s 0s;
-    font-family: 'Questrial', sans-serif;
+    font-family: 'Montserrat', sans-serif;
     font-size: 16px;
     margin-top: 20px;
     font-size: 14px;
@@ -151,7 +151,7 @@
   background-color: white;
   border-radius: 15px;
   padding: 20px;
-  font-family: 'Questrial', sans-serif;
+  font-family: 'Montserrat', sans-serif;
 }
 
 .areYouSure {

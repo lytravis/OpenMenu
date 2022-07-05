@@ -24,7 +24,7 @@ const ReservationSlider = ({ event, eventImages }) => {
         cssClass="eventSlide"
         transitionDuration={500}
       >
-        {eventImages.map((img) => (
+        {eventImages?.map((img) => (
           <Link to={`/events/${img.eventId}`} key={`Event_slide_${img.id}`}>
             <div
               style={{

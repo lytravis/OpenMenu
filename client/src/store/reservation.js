@@ -54,7 +54,7 @@ export const addRSVP = (reservation) => async (dispatch) => {
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ userId, eventId, checkIn, guests }),
   });
-  console.log("------------> rsvp add response", response);
+  // console.log("------------> rsvp add response", response);
   if (response.ok) {
     const rsvp = await response.json();
     dispatch(addRsvp(rsvp));
@@ -66,10 +66,10 @@ export const removeRSVP = (userId) => async (dispatch) => {
   const response = await csrfFetch(`/api/reservations/${userId}`, {
     method: "DELETE",
   });
-  console.log("THIS IS THE RESPONSE", response);
+  // console.log("THIS IS THE RESPONSE", response);
   if (response.ok) {
-    console.log("-----------> response.ok", response.ok);
-    console.log("^^^^^^^^^^^^^^^^ dispatch", deleteRsvp(userId));
+    // console.log("-----------> response.ok", response.ok);
+    // console.log("^^^^^^^^^^^^^^^^ dispatch", deleteRsvp(userId));
 
     dispatch(deleteRsvp(userId));
   }
@@ -87,8 +87,8 @@ export default function reducer(state = {}, action) {
     case LOAD_RSVPS:
       newState = { ...state };
       newState = action.data;
-      console.log("@@@@newState", newState);
-      console.log("@@@@### action", action.data);
+      // console.log("@@@@newState", newState);
+      // console.log("@@@@### action", action.data);
       return newState;
 
     case ADD_RSVP:

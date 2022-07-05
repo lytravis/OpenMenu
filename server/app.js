@@ -28,6 +28,7 @@ app.use(
   })
 );
 
+//! COMMENT THIS OUT IF YOU WANT TO TEST ROUTES THROUGH POSTMAN
 // Set the _csrf token and create req.csrfToken method
 app.use(
   csurf({

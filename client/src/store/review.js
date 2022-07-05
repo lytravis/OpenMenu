@@ -1,9 +1,9 @@
-import { csrfFetch } from "./csrf";
+import { csrfFetch } from './csrf';
 
-const LOAD_REVIEWS = "reviews/LOAD_REVIEWS";
-const ADD_REVIEWS = "reviews/ADD_REVIEWS";
-const EDIT_REVIEW = "reviews/EDIT_REVIEW";
-const DELETE_REVIEW = "reviews/DELETE_REVIEW";
+const LOAD_REVIEWS = 'reviews/LOAD_REVIEWS';
+const ADD_REVIEWS = 'reviews/ADD_REVIEWS';
+const EDIT_REVIEW = 'reviews/EDIT_REVIEW';
+const DELETE_REVIEW = 'reviews/DELETE_REVIEW';
 
 const loadReviews = (data) => ({
   type: LOAD_REVIEWS,
@@ -26,7 +26,7 @@ const deleteReview = (reviewId) => ({
 });
 
 export const getReviews = () => async (dispatch) => {
-  const response = await fetch("/api/reviews");
+  const response = await fetch('/api/reviews');
   if (response.ok) {
     const types = await response.json();
     dispatch(loadReviews(types));
@@ -35,9 +35,9 @@ export const getReviews = () => async (dispatch) => {
 };
 
 export const addReview = (review) => async (dispatch) => {
-  const response = await csrfFetch("/api/reviews", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
+  const response = await csrfFetch('/api/reviews', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(review),
   });
   // console.log("xxxxxxxxxx> response", response);
@@ -52,7 +52,7 @@ export const addReview = (review) => async (dispatch) => {
 export const removeReview = (reviewId) => async (dispatch) => {
   // console.log("!!!! store reviewId", reviewId);
   const response = await csrfFetch(`/api/reviews/${reviewId}`, {
-    method: "DELETE",
+    method: 'DELETE',
   });
   // console.log("@@@@@@@@@@ STORE response for DELETE", response);
   if (response.ok) {
@@ -62,8 +62,8 @@ export const removeReview = (reviewId) => async (dispatch) => {
 
 export const updateReview = (data, reviewId) => async (dispatch) => {
   const response = await csrfFetch(`/api/reviews/${reviewId}`, {
-    method: "PUT",
-    headers: { "Content-Type": "application/json" },
+    method: 'PUT',
+    headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(data),
   });
   // console.log("xxxxxxxxxxxxx> edit response", response);
@@ -95,9 +95,14 @@ export default function reducer(state = {}, action) {
     // }
     case EDIT_REVIEW: {
       // console.log("DDDAAAAADADA action.data", action.data);
-      newState = { ...state };
-      newState[action.data.eventId] = action.data;
-      return newState;
+      // newState = { ...state };
+      // newState[action.data.eventId] = action.data;
+      // return newState;
+
+      return {
+        ...state,
+        [action.data.eventId]: action.data,
+      };
     }
     case DELETE_REVIEW: {
       const newState = { ...state };

@@ -5,15 +5,15 @@ import ReservationCard from '../Card/ReservationCard';
 
 import './UserEvents.css';
 
-const UserEvents = ({ hostedEvents, reservations, user }) => {
+const UserEvents = ({ hostedEvents, reservations, user, eventId }) => {
   // const [hostEvents, setHostEvents] = useState(hostedEvents);
   // const [rsvpEvents, setRsvpEvents] = useState([]);
   const [showRsvpEvents, setShowRsvpEvents] = useState(false);
 
-  console.log('$$$$$ RSVP', reservations);
+  // console.log('$$$$$ RSVP', reservations);
 
-  const tester = reservations?.map((el) => el.Event);
-  console.log('#################', tester);
+  // const tester = reservations?.map((el) => el.Event);
+  // console.log('#################', tester);
 
   return (
     <div>
@@ -49,10 +49,10 @@ const UserEvents = ({ hostedEvents, reservations, user }) => {
                     <Link to="/events" className="noEventsBrowse">
                       here
                     </Link>
-                    <p className="eventText"> to browse.</p>
+                    <p className="noEventText"> to browse.</p>
                   </div>
                   <img
-                    className="event"
+                    className="noEvents"
                     src="https://cdn.discordapp.com/attachments/920377762068447282/989333650812313630/OpenMenu_1.png"
                     alt="OpenMenu logo"
                   />
@@ -61,6 +61,7 @@ const UserEvents = ({ hostedEvents, reservations, user }) => {
                 <div className="eventsContainer">
                   {hostedEvents.map((event, index) => (
                     <HostCard
+
                       event={event}
                       hosted={true}
                       key={`Your_events_${event.id}_${index}`}

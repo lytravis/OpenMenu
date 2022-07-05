@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link, useHistory, useParams } from 'react-router-dom';
-import HostedEvents from '../../components/UserEvents/UserEvents';
+import UserEvents from '../../components/UserEvents/UserEvents';
 import { getEvents, removeEvent } from '../../store/event';
 import { getRSVP, getAllRsvps, removeRSVP } from '../../store/reservation';
 
@@ -38,7 +38,8 @@ const ManageEvents = () => {
 
   return (
     <div className="yourEventsContainer">
-      <HostedEvents
+      <UserEvents
+      
         hostedEvents={hostedEvents}
         reservations={reservations}
         user={user}

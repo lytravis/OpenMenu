@@ -11,6 +11,7 @@ import Header from './components/Header';
 import Reviews from './components/Reviews/Reviews';
 import SplashPage from './pages/SplashPage/SplashPage';
 import Listings from './pages/Listings/Listings';
+import EditEvent from './pages/EditEvent/EditEvent';
 import ProtectedRoute from './components/auth/ProtectedRoute';
 import ManageEvents from './pages/ManageEvents/ManageEvents';
 
@@ -45,13 +46,16 @@ function App() {
             <CreateEvent />
           </ProtectedRoute>
           <ProtectedRoute exact path="/manage">
-          <ManageEvents/>
+            <ManageEvents />
           </ProtectedRoute>
           <Route exact path="/events">
             <Listings />
           </Route>
           <Route exact path="/events/:eventId">
             <SingleListing />
+          </Route>
+          <Route exact path="/events/:eventId/edit">
+            <EditEvent />
           </Route>
           <Route exact path="/reviews">
             <Reviews />

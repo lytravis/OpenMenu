@@ -3,7 +3,7 @@
   max-width: 1600px;
   margin: 0 auto;
   height: fit-content;
-  font-family: 'Questrial', sans-serif;
+  font-family: 'Montserrat', sans-serif;
 }
 
 .navHeader {
@@ -45,7 +45,7 @@
   min-height: 383px;
 }
 
-.noWalks {
+.noEvents {
   width: 800px;
   margin: 0 auto;
   z-index: -1;
@@ -59,7 +59,7 @@
 
 }
 
-.eventText {
+.noEventText {
   color: rgb(72,72,72);
   margin-top: 20px;
 }

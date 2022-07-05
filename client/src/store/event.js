@@ -87,8 +87,11 @@ export const removeEvent = (eventId) => async (dispatch) => {
   const response = await csrfFetch(`/api/events/${eventId}`, {
     method: 'DELETE',
   });
+
+  console.log('$$$$$$$$$$$', response);
   if (response.ok) {
     dispatch(deleteEvent(eventId));
+    console.log('$$$$$$$$$$$ response is ok', response);
   }
 };
 

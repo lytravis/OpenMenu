@@ -1,39 +1,322 @@
-.card {
-  margin: 10px;
-  border-radius: 10px;
-  overflow: hidden;
-  box-shadow: 0px 6px 18px -9px rgba(0, 0, 0, 0.75);
-  transition: transform 100ms ease-in;
-  cursor: pointer;
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat&display=swap');
+
+.outerEventCardContainer {
+  width: 48%;
+  padding: 5px;
+  border-bottom: 1px solid rgb(221, 221, 221);
 }
 
-.card:hover {
-  transform: scale(1.07);
+.outerEventCardContainer:nth-child(odd) {
+  border-right: 1px solid rgb(221, 221, 221);
 }
 
-.card > img {
-  object-fit: fill;
-  min-width: 300px;
-  min-height: 200px;
+.outerEventCardContainer:nth-child(1), .outerEventCardContainer:nth-child(2) {
+  border-bottom: 1px solid transparent;
+}
+
+.outerEventCardContainer:nth-child(3), .outerEventCardContainer:nth-child(4) {
+  border-top: 1px solid rgb(221, 221, 221);
+}
+
+.outerEventCardContainer:nth-last-child(1) {
+  border-bottom: 1px solid transparent;
+}
+
+.m-eventCard {
+  color: black;
+  display: flex;
+  flex-direction: column;
   width: 100%;
+  padding: 25px;
+  box-sizing: border-box;
+  background-color: white;
+  transition: all .5s 0s;
+  border-radius: 10px;
 }
 
-.card__info {
-    margin-top: -9px;
-    border-radius: 10px;
-    padding: 20px;
-    padding-top: 20px;
-    border: 1;
-  }
+.m-eventCard:hover {
+  background-color: rgb(236, 248, 255);
+}
 
-  .card__info > h2 {
-    font-size: 18px;
-    font-weight: 600;
-  }
+.m-eventInfo {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 12vw;
+}
 
-  .card__info > h4 {
-    font-size: 14px;
-    font-weight: 300;
-    margin-top: 8px;
-    margin-bottom: 8px;
-  }
+/* .eventConfirmDetails {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+  font-family: 'Montserrat', sans-serif;
+  margin-left: 8px;
+} */
+
+.m-event-container {
+  display: flex;
+  font-size: 20px;
+}
+
+.eventDate {
+  font-size: 28px;
+  margin-bottom: 7px;
+}
+
+.eventPic {
+  width: 15vw;
+  height: 12vw;
+  min-width: 15vw;
+  min-height: 12vw;
+  background-size: cover;
+  background-position: center;
+  border-radius: 10px;
+  margin-right: 20px;
+}
+
+#eventLocationContainer {
+  align-items: flex-start;
+}
+
+#eventLocation {
+  margin-right: 25px;
+}
+
+#editDeleteEventButtons div {
+  width: fit-content;
+  padding: 5px 10px;
+}
+
+#editEventButton {
+  margin-right: 10px;
+}
+
+#eventDeleteConfirmButtons div {
+  width: fit-content;
+  position: relative;
+}
+
+#changeEventDateForm {
+  min-height: 500px;
+  width: 400px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+}
+
+#selectNewDateHeader {
+  font-weight: 600;
+  font-size: 30px;
+}
+
+#changeDateConfimButton {
+  background-color: rgb(26,136,199);
+}
+
+#changeDateConfimButton:hover {
+  background-color: rgb(16, 87, 128);
+}
+
+#updateEventError {
+  visibility: visible;
+  position: absolute;
+  margin: 0 auto;
+  width: 420px;
+  bottom: 0;
+  left: 0;
+  z-index: 2;
+  font-size: 20px;
+  background-color: rgb(231, 195, 186);
+  color: white;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+#updateEventError div {
+  width: 20px;
+  height: 20px;
+  margin: 1px;
+  text-align: center;
+}
+
+.addEventError {
+  display: flex;
+  align-items: center;
+  font-size: 15px;
+  margin-bottom: 5px;
+  visibility: hidden;
+}
+
+
+.editDeleteEventButtons {
+  display: flex;
+  margin-top: 10px;
+}
+
+.editDeleteEventButtons div {
+  width: 80px;
+  text-align: center;
+  padding: 10px 0;
+  border: 1px solid rgb(221, 221, 221);
+  background-color: white;
+  border-radius: 20px;
+  cursor: pointer;
+  color: black;
+  transition: all 0.35s 0s;
+}
+
+.editDeleteEventButtons a {
+  margin-right: 10px;
+}
+
+.editDeleteEventButtons div:hover {
+  background-color: rgb(26,136,199);
+  color: white;
+}
+
+#deleteEventButton:hover {
+  background-color: rgb(204,45,74);
+}
+
+.deleteEventForm {
+  width: fit-content;
+  max-width: 500px;
+  height: fit-content;
+  max-height: 260px;
+  background-color: white;
+  border-radius: 15px;
+  padding: 20px;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.m-deleteConfirm {
+  font-size: 20px;
+  margin: 10px;
+}
+
+.deleteConfirmButtons {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.deleteConfirmButtons div {
+  border: 1px solid rgb(221, 221, 221);
+  margin-left: 15px;
+  cursor: pointer;
+  padding: 5px 10px;
+  width: 60px;
+  background-color: rgb(204,45,74);
+  color: white;
+  text-align: center;
+  border-radius: 20px;
+  transition: all 0.35s 0s;
+}
+
+.deleteConfirmButtons div:hover {
+  background-color: rgb(151, 34, 55);
+  color: rgb(202, 202, 202);
+}
+
+#cancelEventDelete {
+  background-color: white;
+  color: black;
+}
+
+#cancelEventDelete:hover {
+  background-color: rgb(238, 238, 238);
+}
+
+
+
+
+
+
+
+
+
+.editDeleteEventButtons a {
+  margin-right: 10px;
+}
+
+
+.eventConfirmDetailHeader {
+  font-size: 18px;
+  font-weight: 700;
+  margin-right: 10px;
+
+}
+
+.eventConfirmeDetailInfo {
+  font-size: 18px;
+  color: rgb(54, 54, 54);
+  flex-grow: 1;
+}
+
+
+.eventDeleteConfirmButtons {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.eventDeleteConfirmButtons div {
+  border: 1px solid rgb(221, 221, 221);
+  margin-left: 15px;
+  cursor: pointer;
+  padding: 5px 10px;
+  width: 60px;
+  background-color: rgb(204,45,74);
+  color: white;
+  text-align: center;
+  border-radius: 20px;
+  transition: all 0.35s 0s;
+}
+
+.eventDeleteConfirmButtons div:hover {
+  background-color: rgb(151, 34, 55);
+  color: rgb(202, 202, 202);
+}
+
+
+#cancelEventDelete {
+  background-color: white;
+  color: black;
+}
+
+#cancelEventDelete:hover {
+  background-color: rgb(238, 238, 238);
+}
+
+
+.areYouSureDelete {
+  font-size: 20px;
+  margin: 10px;
+}
+
+
+.loginModal {
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* font-family: Arial, Helvetica, sans-serif; */
+  font-family: 'Montserrat', sans-serif;
+
+  z-index: 9999;
+}
+
+.deleteEventForm {
+  width: fit-content;
+  max-width: 500px;
+  height: fit-content;
+  max-height: 260px;
+  background-color: white;
+  border-radius: 15px;
+  padding: 20px;
+  font-family: 'Montserrat', sans-serif;
+}

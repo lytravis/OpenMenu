@@ -21,13 +21,15 @@ const ReviewsCard = ({ review, user, userId }) => {
   const [communicationRating, setCommunicationRating] = useState(0);
   const [comment, setComment] = useState('');
 
+  const [isLoaded, setIsLoaded] = useState(false);
+
   const reviewYear = review.createdAt.slice(0, 4);
 
   const reviewMonth = review.createdAt.slice(5, 10);
 
   // console.log('$$$$$$$$$$$$$$$$$ eventId', eventId);
   // console.log('%%%%%%%%%%%%%%%%%%%%%% reviewId', reviewId);
-  console.log('%%%%%%%%%%%%%%%%%%%%%% review', review.id);
+  // console.log('%%%%%%%%%%%%%%%%%%%%%% review', review.id);
 
   useEffect(() => {
     setFoodRating(review?.food);
@@ -43,7 +45,6 @@ const ReviewsCard = ({ review, user, userId }) => {
     dispatch(removeReview(review.id));
     setShowDelete(false);
   };
-
 
   const editReview = async (e) => {
     e.preventDefault();
@@ -83,9 +84,6 @@ const ReviewsCard = ({ review, user, userId }) => {
   // console.log('############### profilePic', review?.User?.profilePic);
   // console.log('!!!!!!!!!!!!!!!!!!!!!! reviewYear', reviewYear);
   // console.log('!!!!!!!!!!!!!!!!!!!!!! reviewMonth', reviewMonth);
-
-
-
 
   return (
     <>
