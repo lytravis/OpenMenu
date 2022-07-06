@@ -37,13 +37,13 @@ const Listings = () => {
     };
   }, [dispatch]);
 
-  
-
   return (
-    <div className="browseEventContainer">
-      <h1>Browse all events</h1>
-      <Browse events={events} />
-    </div>
+    isLoaded && (
+      <div className="browseEventContainer">
+        <h1>Browse all events</h1>
+        <Browse events={events} />
+      </div>
+    )
   );
 };
 
