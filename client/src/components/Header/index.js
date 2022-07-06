@@ -1,16 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { Link, NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import ProfileButton from './ProfileButton';
-import LoginFormModal from '../auth/LoginFormModal';
+
 import './Header.css';
 
 import { searchResultsType } from '../../store/search';
 
 import SearchIcon from '@mui/icons-material/Search';
 import LanguageIcon from '@mui/icons-material/Language';
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import Avatar from '@mui/material/Avatar';
 
 function Header() {
   const dispatch = useDispatch();

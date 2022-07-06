@@ -1,7 +1,6 @@
 import React from 'react';
 import Banner from '../../components/Banner/Banner';
 import { Link } from 'react-router-dom';
-import Card from '../../components/Browse/Browse';
 import './SplashPage.css';
 
 const SplashPage = ({ src, title, description, price }) => {

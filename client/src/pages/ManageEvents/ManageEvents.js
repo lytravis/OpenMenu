@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { Link, useHistory, useParams } from 'react-router-dom';
+import {  useHistory, useParams } from 'react-router-dom';
 import UserEvents from '../../components/UserEvents/UserEvents';
-import { getEvents, removeEvent } from '../../store/event';
-import { getRSVP, getAllRsvps, removeRSVP } from '../../store/reservation';
+import { getEvents } from '../../store/event';
+import { getRSVP } from '../../store/reservation';
 
 const ManageEvents = () => {
   const dispatch = useDispatch();
@@ -39,7 +39,7 @@ const ManageEvents = () => {
   return (
     <div className="yourEventsContainer">
       <UserEvents
-      
+
         hostedEvents={hostedEvents}
         reservations={reservations}
         user={user}

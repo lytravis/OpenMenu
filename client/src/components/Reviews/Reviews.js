@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import ReviewsRating from './ReviewsRating';
 import './Reviews.css';
 import ReviewsForm from './ReviewsForm';

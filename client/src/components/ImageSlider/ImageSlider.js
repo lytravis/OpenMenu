@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { Slide } from 'react-slideshow-image';
 import { Link } from 'react-router-dom';
 

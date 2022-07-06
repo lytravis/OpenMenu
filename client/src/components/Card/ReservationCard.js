@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
-import EventsHolder from '../EventsHolder/EventsHolder';
+
 import './ReservationCard.css';
 
 import { getImages } from '../../store/image';
 import { getEvents, removeEvent } from '../../store/event';
-import { getRSVP, getAllRsvps, removeRSVP } from '../../store/reservation';
-// import EditEvent from '../EditEvent';
+import {  removeRSVP } from '../../store/reservation';
 
-import ReservationSlider from '../ImageSlider/ReservationSlider';
+
+
 
 const ReservationCard = ({ event, hosted }) => {
   const dispatch = useDispatch();
@@ -71,7 +71,7 @@ const ReservationCard = ({ event, hosted }) => {
                   <div className="eventConfirmDetailHeader" id="eventLocation">
                     Location:
                   </div>
-                  <div className="walkConfirmeDetailInfo">{`${event.Event?.address}, ${event.Event?.city}, ${event.Event?.state}`}</div>
+                  <div className="eventConfirmeDetailInfo">{`${event.Event?.address}, ${event.Event?.city}, ${event.Event?.state}`}</div>
                 </div>
               </div>
 

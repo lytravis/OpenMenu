@@ -17,10 +17,10 @@ const EditEvent = () => {
   // const userId = useSelector((state) => state.session.user.id);
   const hostId = useSelector((state) => state.session.user.id);
   const images = useSelector((state) => Object.values(state.image));
-  const events = useSelector((state) => Object.values(state.event));
+  // const events = useSelector((state) => Object.values(state.event));
   const eventTypes = useSelector((state) => Object.values(state.type));
   const event = useSelector((state) => state?.event[eventId]);
-  const eventImages = images.filter((image) => image.eventId == event.id);
+  // const eventImages = images.filter((image) => image.eventId == event.id);
 
   const [isLoaded, setIsLoaded] = useState(false);
   const [showModal, setShowModal] = useState(false);

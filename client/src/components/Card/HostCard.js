@@ -1,13 +1,10 @@
-import React, { useEffect, useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { Link, useParams } from 'react-router-dom';
-import EventsHolder from '../EventsHolder/EventsHolder';
+import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
+
 import './HostCard.css';
 
-import { getEvents, removeEvent } from '../../store/event';
-// import EditEvent from '../EditEvent';
-
-import ImageSlider from '../ImageSlider/ImageSlider';
+import { removeEvent } from '../../store/event';
 
 const HostCard = ({ event, hosted }) => {
   const dispatch = useDispatch();
@@ -57,9 +54,7 @@ const HostCard = ({ event, hosted }) => {
               style={{
                 backgroundImage: `url(${event?.Images[0]?.url}), url("https://cdn.discordapp.com/attachments/920377762068447282/939220064979271700/depositphotos_247872612-stock-illustration-no-image-available-icon-vector.jpg")`,
               }}
-            >
-              {/* <ImageSlider event={event} /> */}
-            </div>
+            ></div>
             <div className="m-eventInfo">
               <div>
                 <div className="eventConfirmDetails">
@@ -73,7 +68,7 @@ const HostCard = ({ event, hosted }) => {
                   <div className="eventConfirmDetailHeader" id="eventLocation">
                     Location:
                   </div>
-                  <div className="walkConfirmeDetailInfo">{`${event?.address}, ${event?.city}, ${event?.state}`}</div>
+                  <div className="eventConfirmeDetailInfo">{`${event?.address}, ${event?.city}, ${event?.state}`}</div>
                 </div>
               </div>
 
@@ -83,12 +78,9 @@ const HostCard = ({ event, hosted }) => {
               >
                 {/* <div id="editEventButton">
                 </div> */}
-                <Link
-                  to={`/events/${event.id}/edit`}
-                  style={{ textDecoration: 'none' }}
-                >
-                  <div>Edit</div>
-                </Link>
+
+                <div>Edit</div>
+
                 <div id="deleteEventButton" onClick={showDeleteConfirmation}>
                   Cancel Event
                 </div>

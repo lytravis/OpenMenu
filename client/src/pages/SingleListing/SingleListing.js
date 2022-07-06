@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import './SingleListing.css';
 import { useSelector, useDispatch } from 'react-redux';
-import { Link, useHistory, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { Modal } from '../../context/Modal';
 
 import { getEvents } from '../../store/event';
-import { getReviews, removeReview } from '../../store/review';
+import { getReviews } from '../../store/review';
 import AirCover from '../../components/AirCover/AirCover';
 import Reviews from '../../components/Reviews/Reviews';
-import ReviewsForm from '../../components/Reviews/ReviewsForm';
+
 import ReservationForm from '../../components/Reservation/ReservationForm';
 
 //   .item{Item $}*12
@@ -22,7 +22,6 @@ const SingleListing = () => {
   const event = useSelector((state) => state?.event[eventId]);
   const reviews = useSelector((state) => Object.values(state.review));
   const eventReviews = reviews.filter((review) => review?.eventId == event?.id);
-  const events = useSelector((state) => Object.values(state.event));
   const user = useSelector((state) => state.session.user);
   const userId = useSelector((state) => state.session.user?.id);
 

@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { useHistory, useParams } from 'react-router-dom';
+import {  useParams } from 'react-router-dom';
 import './ReviewsCard.css';
-import { getReviews, removeReview, updateReview } from '../../store/review';
+import {  removeReview, updateReview } from '../../store/review';
 import ReactStars from 'react-rating-stars-component';
 
 const ReviewsCard = ({ review, user, userId }) => {

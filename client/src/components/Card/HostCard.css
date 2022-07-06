@@ -229,7 +229,11 @@
 
 
 
-
+.eventConfirmeDetailInfo {
+  font-size: 18px;
+  color: rgb(54, 54, 54);
+  flex-grow: 1;
+}
 
 
 

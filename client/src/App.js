@@ -1,11 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { Route, Switch } from 'react-router-dom';
-import SignupFormPage from './components/auth/SignupFormPage';
 import SingleListing from './pages/SingleListing/SingleListing';
 import CreateEvent from './pages/CreateEvent/CreateEvent';
 
-// import LoginFormPage from "./components/LoginFormPage";
 import * as sessionActions from './store/session';
 import Header from './components/Header';
 import Footer from './components/Footer';
@@ -25,12 +23,6 @@ function App() {
 
   return (
     <>
-      {/* <button onClick={() => setShowModal(true)}>Modal</button>
-      {showModal && (
-        <Modal onClose={() => setShowModal(false)}>
-          <h1>Hello I am a Modal</h1>
-        </Modal>
-      )} */}
       {isLoaded && (
         <div className="pageContainer">
           <Header isLoaded={isLoaded} />
