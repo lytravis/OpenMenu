@@ -124,7 +124,7 @@ module.exports = {
           updatedAt: new Date(),
         },
         {
-          name: 'Orlando Fine Dining Private Chef',
+          name: 'Fine Dining Private Chef',
           description:
             "I will arrive 90 minutes before your preferred dining time in order to begin working my magic. I won't arrive empty-handed! ",
           address: ' 9669 S Santa Monica Blvd',
@@ -140,7 +140,7 @@ module.exports = {
           updatedAt: new Date(),
         },
         {
-          name: 'Take a Chef has connected thousands of local chefs and guests in over 100 countries',
+          name: 'Taste of the Sea',
           description:
             "Feel free to put your apron on and cook some of the dishes with me! I am eager to share with you the secrets behind my recipes and Los Angeles' local hidden treasures.",
           address: '468 N Bedford Dr',
