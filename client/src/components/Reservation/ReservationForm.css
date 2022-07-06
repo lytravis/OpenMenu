@@ -1,0 +1,87 @@
+.rsvpContainer {
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 6px 16px rgb(0 0 0 / 12%);
+  background-color: white;
+  /* align-items: center; */
+  justify-content: center;
+  position: sticky;
+  top: 130px;
+  z-index: 2;
+}
+
+.rsvpInfo {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+
+  align-items: center;
+  justify-content: center;
+}
+
+
+/* .rsvpContiner * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Maison Neue Book","Helvetica Neue",Helvetica,Arial,sans-serif;
+  line-height: 1.5;
+} */
+
+
+.rsvpForm input {
+  padding: 10px;
+  /* max-width: 25rem; */
+  width: 250px;
+  font-size: 16px;
+}
+
+.rsvpBorders-1 {
+  border-top-left-radius: 13px;
+  border: 1px solid #ddd;
+  border-top-right-radius: 13px;
+  border-bottom: none;
+  box-shadow: 0 6px 16px rgb(0 0 0 / 12%);
+}
+.rsvpBorders-2 {
+  border-bottom-left-radius: 13px;
+  border: 1px solid #ddd;
+  border-bottom-right-radius: 13px;
+  border-top: none;
+  box-shadow: 0 6px 16px rgb(0 0 0 / 12%);
+}
+
+
+
+.rsvpBtn {
+  width: 100%;
+  text-align: center;
+  display:block;
+  margin: 1rem auto;
+  padding: 10px;
+  border: 1px solid rgb(221, 221, 221);
+  background: transparent linear-gradient(90deg,#e61e4d 0,#e31c5f 50%,#d70466) repeat scroll 0 0;
+  color: #fff;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.25s 0s;
+  font-family: 'Montserrat', sans-serif;
+  margin-top: 20px;
+  font-size: 16px;
+  font-weight: 600;
+  /* color: rgb(82, 82, 82); */
+
+}
+/* .rsvpBtn {
+  display: flex;
+  margin: 0 auto;
+
+  padding: 10px;
+  align-items: center;
+  background: transparent linear-gradient(90deg,#e61e4d 0,#e31c5f 50%,#d70466) repeat scroll 0 0;
+  color: #fff;
+  width: 100%;
+  margin-top: 1rem;
+
+} */

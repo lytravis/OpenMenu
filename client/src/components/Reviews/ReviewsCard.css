@@ -1,0 +1,197 @@
+/*
+
+
+.rc-cards {
+    background-color: steelblue;
+    color: #191919;
+    padding: 20px;
+    border: skyblue 1px solid;
+}
+
+
+.rc-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(2, auto);
+  gap: 1.75rem;
+  width: min(90%, 68.5rem);
+  margin-inline: auto;
+}
+
+ */
+
+
+ .rc-container {
+  width: 48%;
+  box-sizing: border-box;
+  padding: 30px;
+  padding-bottom: 40px;
+  padding-top: 0;
+  font-weight: 200;
+  color: rgb(34, 34, 34);
+}
+
+.rc-container:nth-child(odd) {
+  padding-left: 0;
+}
+
+.rc-container:nth-last-child(1),
+.rc-container:nth-last-child(2) {
+  padding-bottom: 0;
+}
+
+.rc-topRow {
+  display: flex;
+  align-items: center;
+}
+
+.reviewInput {
+  font-size: 1.2rem;
+}
+
+.reviewerIcon {
+  width: 65px;
+  height: 65px;
+  border-radius: 50%;
+  background-size: cover;
+  border: 1px solid rgb(221, 221, 221);
+  margin-right: 15px;
+}
+
+.reivewNameDateAndButtons {
+  display: flex;
+  justify-content: space-between;
+  flex-grow: 1;
+  align-items: center;
+}
+
+.reviewerName {
+  font-size: 20px;
+}
+
+.reviewDate {
+    color: rgb(113,113,113);
+}
+
+.editDeleteReviewButtons {
+  display: flex;
+}
+
+.editDeleteReviewButtons div {
+    width: fit-content;
+    text-align: center;
+    padding: 5px 10px;
+    border: 1px solid rgb(221, 221, 221);
+    background-color: white;
+    border-radius: 8px;
+    cursor: pointer;
+    color: black;
+    transition: all 0.25s 0s;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
+    margin-top: 20px;
+    font-size: 14px;
+    color: rgb(82, 82, 82);
+}
+
+.editDeleteReviewButtons div:hover {
+  background-color: rgb(26,136,199);
+  color: white;
+}
+
+#deleteReviewButton {
+  margin-left: 7px;
+}
+
+#deleteReviewButton:hover {
+  background-color: rgb(204,45,74);
+}
+
+.reviewComment {
+    margin-top: 10px;
+    line-height: 23px;
+    overflow-wrap: break-word;
+    font-size: 17px;
+}
+
+#updateReviewForm  .avgRatingsContainer .singleAvgRating {
+  width: 250px;
+}
+
+
+#updateReviewForm {
+  width: 750px;
+  max-width: 800px;
+  height: 400px;
+  max-height: 600px;
+}
+
+#updateEmptySpace1, #updateEmptySpace2 {
+  width: 50px;
+}
+
+#updateReviewHeader {
+  font-weight: 600;
+  font-size: 25px;
+  margin-left: 0;
+}
+
+#goBackUpdateReviewButton {
+  margin-left: 15px;
+}
+
+
+#goBackUpdateReviewButton:hover {
+  background-color: rgb(238, 238, 238);
+  color: black;
+}
+
+
+
+.editForm {
+  width: fit-content;
+  max-width: 600px;
+  height: fit-content;
+  max-height: 260px;
+  background-color: white;
+  border-radius: 15px;
+  padding: 40px;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.areYouSure {
+  font-size: 20px;
+  margin: 10px;
+}
+
+.deleteConfirmButtons {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.deleteConfirmButtons div {
+  border: 1px solid rgb(221, 221, 221);
+  margin-left: 15px;
+  cursor: pointer;
+  padding: 5px 10px;
+  width: 60px;
+  background-color: rgb(204,45,74);
+  color: white;
+  text-align: center;
+  border-radius: 20px;
+  transition: all 0.35s 0s;
+}
+
+.deleteConfirmButtons div:hover {
+  background-color: rgb(151, 34, 55);
+  color: rgb(202, 202, 202);
+}
+
+#cancelDelete {
+  background-color: white;
+  color: black;
+}
+
+#cancelDelete:hover {
+  background-color: rgb(238, 238, 238);
+}

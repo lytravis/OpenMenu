@@ -1,0 +1,188 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat&display=swap');
+
+.eventloadContainer {
+  width: 90vw;
+  max-width: 1600px;
+  margin: 0 auto;
+  height: fit-content;
+  margin-bottom: 100px;
+  font-family: 'Montserrat', sans-serif;
+  flex-direction: column;
+}
+
+.eventloadContainer h1 {
+  width: fit-content;
+  margin: 30px auto;
+}
+
+.formAndIntro {
+  display: flex;
+  justify-content: space-between;
+  width: 1000px;
+  margin: 0 auto;
+  align-items: flex-start;
+}
+
+.formAndIntro h2 {
+  font-size: 17px;
+  width: 300px;
+  height: fit-content;
+  box-sizing: border-box;
+  font-weight: 200;
+  line-height: 24px;
+  text-align: justify;
+  border: 1px solid rgb(221,221,221);
+  border-radius: 10px;
+  padding: 20px;
+  margin: 0;
+}
+
+.eventloadFormsContainer {
+  display: flex;
+  justify-content: space-between;
+}
+
+.formInputSection {
+  display: flex;
+  flex-wrap: nowrap;
+  border: 1px solid rgb(221,221,221);
+  border-radius: 10px;
+  width: fit-content;
+  padding: 10px;
+  height: fit-content;
+}
+
+.eventLoadField {
+  display: flex;
+  flex-direction: column;
+  padding: 5px;
+}
+
+.eventLoadField input {
+  padding: 10px;
+  font-size: 18px;
+  width: 250px;
+  border: 1px solid rgb(175, 175, 175);
+  outline: none;
+}
+
+.eventLoadField label {
+  font-size: 20px;
+  margin-bottom: 3px;
+}
+
+.eventLoadField input:focus {
+  border: 1px solid rgb(45, 160, 226);
+}
+
+.eventLoadField textarea {
+  padding: 10px;
+  font-size: 14px;
+  width: 250px;
+  border: 1px solid rgb(175, 175, 175);
+  height: 60px;
+  outline: none;
+}
+
+.eventLoadField textarea:focus {
+  border: 1px solid rgb(45, 160, 226);
+}
+
+
+#stateSelector select {
+  width: 170px;
+  font-size: 16px;
+}
+
+.fieldSection {
+  padding: 5px;
+  height: fit-content;
+}
+
+.fieldSection h3 {
+  font-size: 25px;
+  max-width: 282px;
+  overflow-wrap: break-word;
+  margin-top: 0;
+}
+
+textarea {
+  resize: none;
+  font-family: inherit;
+}
+
+.addEventError {
+  display: flex;
+  align-items: center;
+  font-size: 15px;
+  margin-bottom: 5px;
+  visibility: hidden;
+}
+
+.addEventError div {
+  background-color: rgb(192, 53, 22);
+  color: white;
+  border-radius: 50%;
+  height: 17px;
+  width: 17px;
+  text-align: center;
+  margin: 0 5px 0 15px;
+}
+
+.addEventError span {
+  color: rgb(192, 53, 22);
+}
+
+#addressError {
+  visibility:visible;
+}
+
+#eventError {
+  visibility:visible;
+}
+
+
+
+.classYesAddressError {
+  background-color: rgb(255, 154, 154);
+
+}
+
+.eventloadButtons {
+  margin-top: 20px;
+}
+
+.eventloadButtons button {
+  width: 150px;
+  height: 32px;
+  margin: 5px;
+  background-color: rgb(26, 136, 199);
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-size: 20px;
+  border-radius: 8px;
+  transition: all 0.25s ease-in-out;
+}
+
+#cleareventloadForm {
+  background-color: #CC2D4A;
+}
+
+.eventloadButtons button:hover {
+  background-color: rgb(16, 87, 128);
+}
+
+#cleareventloadForm:hover {
+  background-color: #861e31;
+}
+
+#imageUploadSection {
+  box-sizing: border-box;
+  width: 606px;
+  margin-top: 20px;
+}
+
+.imagesHeader {
+  margin-bottom: 10px;
+}
