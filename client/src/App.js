@@ -8,6 +8,7 @@ import CreateEvent from './pages/CreateEvent/CreateEvent';
 // import LoginFormPage from "./components/LoginFormPage";
 import * as sessionActions from './store/session';
 import Header from './components/Header';
+import Footer from './components/Footer';
 import Reviews from './components/Reviews/Reviews';
 import SplashPage from './pages/SplashPage/SplashPage';
 import Listings from './pages/Listings/Listings';
@@ -24,7 +25,7 @@ function App() {
 
   return (
     <>
-      <Header isLoaded={isLoaded} />
+
       {/* <button onClick={() => setShowModal(true)}>Modal</button>
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
@@ -33,13 +34,11 @@ function App() {
       )} */}
       {isLoaded && (
         <Switch>
-          {/* <Route path="/login" >
-            <LoginFormPage />
-          </Route> */}
-          <Route path="/signup">
-            <SignupFormPage />
-          </Route>
-          <Route exact path="/">
+
+        <div className='pageContainer'>
+        <Header isLoaded={isLoaded} />
+        <div className='mainContent'>
+        <Route exact path="/">
             <SplashPage />
           </Route>
           <ProtectedRoute exact path="/events/new">
@@ -60,6 +59,9 @@ function App() {
           <Route exact path="/reviews">
             <Reviews />
           </Route>
+        </div>
+          <Footer/>
+          </div>
         </Switch>
       )}
     </>

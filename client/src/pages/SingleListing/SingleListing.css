@@ -23,14 +23,14 @@
 
 /*
 !MAKE SURE TO DELETE THIS  */
- .sl-header, .sl-photogrid,  .sl-checkinfo, .sl-review
+ /* .sl-header, .sl-photogrid,  .sl-checkinfo, .sl-review
 {
 
-  /* background-color: steelblue; */
+  background-color: steelblue;
   color: #191919;
   padding: 20px;
   border: skyblue 1px solid;
-}
+} */
 
 .sl-header {
   grid-area: header;
