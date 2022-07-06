@@ -21,19 +21,25 @@ function Header() {
   const searchResults = useSelector((state) => Object.values(state?.search));
   // const searchResultsArr = Object.assign([], searchResults);
 
-  console.log('$$$$$$$$$$$$$$$$$$$$$$$$$$ search results****', searchResults);
-  console.log(
-    '################ searchResultssearchResultssearchResults',
-    searchResults[0]?.Events[0]?.name
-  );
-
-  const tester = searchResults[0]?.Events;
+  // console.log('$$$$$$$$$$$$$$$$$$$$$$$$$$ search results****', searchResults);
+  // console.log(
+  //   '################ searchResultssearchResultssearchResults',
+  //   searchResults[0]?.Events[0]?.name
+  // );
 
   useEffect(() => {
     if (searchString !== '') {
       dispatch(searchResultsType(searchString));
     }
   }, [dispatch, searchString]);
+
+  const toTitleCase = (phrase) => {
+    return phrase
+      .toLowerCase()
+      .split(' ')
+      .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+      .join(' ');
+  };
 
   return (
     <div className="header">
@@ -56,26 +62,20 @@ function Header() {
             onFocus={(e) => setDivStyle({ visibility: 'visible' })}
           />
           <SearchIcon />
-          <div style={divStyle} className="search-results-parent-div">
+          <div style={divStyle} className="searchResults-container">
             {searchString !== '' &&
               searchResults?.map((type) => (
                 <div className="name-in-results">
+                  <div className="type-results">{type.name}</div>
                   {type.Events.map((event, index) => (
                     <a
                       key={event.id}
                       href={`/events/${event?.id}`}
-                      className="a-link-single-result"
+                      className="single-result"
                     >
-                      <div>{event.name}</div>
+                      <div>{toTitleCase(event?.name)}</div>
                     </a>
                   ))}
-
-                  {/* {type?Events?.map((event) => (
-                        <div>{event.name}</div>
-                      ))} */}
-                  {console.log('!!!!!!!!!!!!!!!!!!!', type)}
-
-                  {/* {`${type?.Events[0]?.name} `} */}
                 </div>
               ))}
           </div>

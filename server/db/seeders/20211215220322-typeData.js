@@ -16,11 +16,11 @@ module.exports = {
           createdAt: new Date(),
           updatedAt: new Date(),
         },
-        {
-          name: 'Celebrity Chef',
-          createdAt: new Date(),
-          updatedAt: new Date(),
-        },
+        // {
+        //   name: 'Celebrity Chef',
+        //   createdAt: new Date(),
+        //   updatedAt: new Date(),
+        // },
         {
           name: 'Online',
           createdAt: new Date(),
@@ -36,26 +36,26 @@ module.exports = {
           createdAt: new Date(),
           updatedAt: new Date(),
         },
-        {
-          name: 'Cater Service',
-          createdAt: new Date(),
-          updatedAt: new Date(),
-        },
-        {
-          name: 'Desert',
-          createdAt: new Date(),
-          updatedAt: new Date(),
-        },
-        {
-          name: 'Unique',
-          createdAt: new Date(),
-          updatedAt: new Date(),
-        },
-        {
-          name: 'Budget Meals',
-          createdAt: new Date(),
-          updatedAt: new Date(),
-        },
+        // {
+        //   name: 'Cater Service',
+        //   createdAt: new Date(),
+        //   updatedAt: new Date(),
+        // },
+        // {
+        //   name: 'Desert',
+        //   createdAt: new Date(),
+        //   updatedAt: new Date(),
+        // },
+        // {
+        //   name: 'Unique',
+        //   createdAt: new Date(),
+        //   updatedAt: new Date(),
+        // },
+        // {
+        //   name: 'Budget Meals',
+        //   createdAt: new Date(),
+        //   updatedAt: new Date(),
+        // },
       ],
       {}
     );
