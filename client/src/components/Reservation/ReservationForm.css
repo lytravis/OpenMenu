@@ -6,6 +6,9 @@
   background-color: white;
   /* align-items: center; */
   justify-content: center;
+  position: sticky;
+  top: 130px;
+  z-index: 2;
 }
 
 .rsvpInfo {
