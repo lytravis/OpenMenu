@@ -27,6 +27,8 @@ function Header() {
     searchResults[0]?.Events[0]?.name
   );
 
+  const tester = searchResults[0]?.Events;
+
   useEffect(() => {
     if (searchString !== '') {
       dispatch(searchResultsType(searchString));
@@ -57,22 +59,24 @@ function Header() {
           <div style={divStyle} className="search-results-parent-div">
             {searchString !== '' &&
               searchResults?.map((type) => (
-                <a
-                  key={type?.id}
-                  href={`/events/${type?.Event?.id}`}
-                  className="a-link-single-result"
-                >
-                  <div>
-                    <div className="name-in-results">
-                      {/* {type.map((event) => (
+                <div className="name-in-results">
+                  {type.Events.map((event, index) => (
+                    <a
+                      key={event.id}
+                      href={`/events/${event?.id}`}
+                      className="a-link-single-result"
+                    >
+                      <div>{event.name}</div>
+                    </a>
+                  ))}
+
+                  {/* {type?Events?.map((event) => (
                         <div>{event.name}</div>
                       ))} */}
-                      {console.log('!!!!!!!!!!!!!!!!!!!', type)}
+                  {console.log('!!!!!!!!!!!!!!!!!!!', type)}
 
-                      {`${type?.Events[0]?.name} `}
-                    </div>
-                  </div>
-                </a>
+                  {/* {`${type?.Events[0]?.name} `} */}
+                </div>
               ))}
           </div>
         </div>
