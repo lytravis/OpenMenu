@@ -78,9 +78,12 @@ const HostCard = ({ event, hosted }) => {
               >
                 {/* <div id="editEventButton">
                 </div> */}
-
-                <div>Edit</div>
-
+                <Link
+                  to={`/events/${event.id}/edit`}
+                  style={{ textDecoration: 'none' }}
+                >
+                  <div>Edit</div>
+                </Link>
                 <div id="deleteEventButton" onClick={showDeleteConfirmation}>
                   Cancel Event
                 </div>
