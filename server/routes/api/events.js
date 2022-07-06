@@ -1,9 +1,10 @@
-const express = require("express");
-const { check } = require("express-validator");
-const asyncHandler = require("express-async-handler");
+const express = require('express');
+const { check } = require('express-validator');
+const asyncHandler = require('express-async-handler');
+const { Op } = require('sequelize');
 
-const { handleValidationErrors } = require("../../utils/validation");
-const { setTokenCookie, requireAuth } = require("../../utils/auth");
+const { handleValidationErrors } = require('../../utils/validation');
+const { setTokenCookie, requireAuth } = require('../../utils/auth');
 const {
   User,
   Event,
@@ -11,37 +12,37 @@ const {
   Reservation,
   Review,
   Type,
-} = require("../../db/models");
+} = require('../../db/models');
 
 const router = express.Router();
 
 const eventNotFoundError = (eventId) => {
-  const err = Error("Event not found");
+  const err = Error('Event not found');
   err.errors = [`Event ${eventId} could not be found`];
-  err.title = "Event not found";
+  err.title = 'Event not found';
   err.status = 404;
   return err;
 };
 
 const validateEvent = [
-  check("name")
+  check('name')
     .exists({ checkFalsy: true })
-    .withMessage("Please provide an event name"),
-  check("description")
+    .withMessage('Please provide an event name'),
+  check('description')
     .exists({ checkFalsy: true })
-    .withMessage("Please provide an event description"),
-  check("address")
+    .withMessage('Please provide an event description'),
+  check('address')
     .exists({ checkFalsy: true })
-    .withMessage("Please provide an event address"),
-  check("city")
+    .withMessage('Please provide an event address'),
+  check('city')
     .exists({ checkFalsy: true })
-    .withMessage("Please provide an event city"),
-  check("state")
+    .withMessage('Please provide an event city'),
+  check('state')
     .exists({ checkFalsy: true })
-    .withMessage("Please provide an event state"),
-  check("zipCode")
+    .withMessage('Please provide an event state'),
+  check('zipCode')
     .exists({ checkFalsy: true })
-    .withMessage("Please provide an event zip code"),
+    .withMessage('Please provide an event zip code'),
   // check("latitude")
   //   .exists({ checkFalsy: true })
   //   .withMessage("Please provide a valid latitude"),
@@ -53,7 +54,7 @@ const validateEvent = [
 
 //GET ALL EVENTS
 router.get(
-  "/",
+  '/',
   asyncHandler(async (req, res) => {
     const events = await Event.findAll({
       include: [{ model: User }, { model: Type }, { model: Image }],
@@ -64,7 +65,7 @@ router.get(
 
 //GET ONE EVENT
 router.get(
-  "/:eventId(\\d+)",
+  '/:eventId(\\d+)',
   asyncHandler(async (req, res) => {
     const event = await Event.findByPk(req.params.eventId, {
       include: [{ model: User }, { model: Type }],
@@ -75,7 +76,7 @@ router.get(
 );
 
 router.post(
-  "/",
+  '/',
   validateEvent,
   asyncHandler(async (req, res) => {
     const {
@@ -110,7 +111,7 @@ router.post(
 );
 
 router.put(
-  "/:eventId(\\d+)",
+  '/:eventId(\\d+)',
   validateEvent,
   asyncHandler(async (req, res, next) => {
     const event = await Event.findByPk(req.params.eventId);
@@ -135,7 +136,7 @@ router.put(
 );
 
 router.delete(
-  "/:eventId(\\d+)",
+  '/:eventId(\\d+)',
   asyncHandler(async (req, res, next) => {
     const event = await Event.findByPk(req.params.eventId);
     if (event) {
@@ -144,6 +145,23 @@ router.delete(
     } else {
       next(eventNotFoundError(req.params.eventId));
     }
+  })
+);
+
+router.get(
+  '/search/:searchTerm',
+  asyncHandler(async (req, res) => {
+    const { searchTerm } = req.params;
+    const events = await Event.findAll({
+      include: [{ model: User }, { model: Type }],
+      where: {
+        [Op.or]: [
+          { name: { [Op.iLike]: `%${searchTerm}%` } },
+          { address: { [Op.iLike]: `%${searchTerm}%` } },
+        ],
+      },
+    });
+    return res.json(events);
   })
 );
 
