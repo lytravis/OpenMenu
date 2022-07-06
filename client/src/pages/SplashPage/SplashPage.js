@@ -54,7 +54,7 @@ const SplashPage = ({ src, title, description, price }) => {
       <div className="splash-bottom">
         <div className="splash-pic">
           <div className="splash">
-            <p className="splash-p">Share your Skills and Host An Event</p>
+            <p className="splash-p">Share Your Skills & Host An Event</p>
 
             <Link to="/events/new">
               <button type="button" className="general-btn btn-link">

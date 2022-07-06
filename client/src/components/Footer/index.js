@@ -1,9 +1,28 @@
-import React from 'react'
+import "./Footer.css";
+
+import React from "react";
+
 
 const Footer = () => {
   return (
-    <div>Footer</div>
-  )
-}
+    <div>
+      <footer>
+        <p>Developed by Travis Ly</p>
+        <div className="footer-container">
+          <a href="https://www.linkedin.com/in/lytravis/">
+            <div className="footer-icon">
+              <i className="fab fa-linkedin "></i>
+            </div>
+          </a>
+          <a href="https://github.com/lytravis">
+            <div className="footer-icon">
+              <i className="fab fa-github  "></i>
+            </div>
+          </a>
+        </div>
+      </footer>
+    </div>
+  );
+};
 
-export default Footer
+export default Footer;

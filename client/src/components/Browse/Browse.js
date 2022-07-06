@@ -45,6 +45,8 @@ const Browse = ({ events }) => {
     const sortedEvents = events.filter(
       (event) => event.Type.name === 'Cooking Lesson'
     );
+
+
     await setEventList(sortedEvents);
     setIsLoaded(true);
   };
@@ -52,10 +54,10 @@ const Browse = ({ events }) => {
     const sortedEvents = events.filter(
       (event) => event.Type.name === 'Food Truck'
     );
+
     await setEventList(sortedEvents);
     setIsLoaded(true);
   };
-
 
 
   const resetSortedBy = async () => {

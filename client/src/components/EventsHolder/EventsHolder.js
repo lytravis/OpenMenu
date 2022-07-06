@@ -7,7 +7,7 @@ import './EventsHolder.css';
 import 'react-slideshow-image/dist/styles.css';
 
 const EventsHolder = ({ event, events }) => {
-  console.log('THIS IS THE EVENT ------> ', Object.values(event));
+  // console.log('THIS IS THE EVENT ------> ', Object.values(event));
 
   // const eventImages = event.map((img) => (
   //   console.log("&&&&&&&&&&&&&&&&&&&& img" , img)

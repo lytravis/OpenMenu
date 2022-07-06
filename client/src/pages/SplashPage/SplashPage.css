@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat&display=swap");
+
 .splash-container {
   width: 1600px;
   max-width: 2100px;
@@ -74,14 +76,17 @@
 
 
 .splash-info {
+  font-family: "Bebas Neue", cursive;
   font-family: 'Montserrat', sans-serif;
   text-align: center;
-  font-size: 24px;
+  font-size: 1.5rem;
   margin-bottom: 10px;
   border-radius: 10px;
   padding-top: 18px;
   padding: 18px;
   border: 1;
+  color: black;
+  font-weight: bold;
 
 }
 
@@ -109,6 +114,11 @@
   color: white;
 
   border-radius: 1rem;
+}
+
+.splash-p {
+  font-weight: 900;
+  font-family: "Bebas Neue", cursive;
 }
 
 

@@ -1,0 +1,39 @@
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat&display=swap");
+
+footer {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  width: 100%;
+  background-color: #EFEFEF;
+  height: 56px;
+}
+
+
+
+footer p {
+  color: #BB6464;
+  text-shadow: 0 0 1px #000;
+  font-family: "Bebas Neue", cursive;
+  margin-right: 20px;
+  cursor: default;
+}
+
+.footer-icon {
+  color: white;
+  text-shadow: 0 0 1px #000;
+  font-size: 30px;
+  transition: all 0.2s 0s;
+}
+.footer-icon:hover {
+  color: rgb(204, 204, 204);
+}
+
+.footer-container {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.footer-container a {
+  margin: 0 20px;
+}
