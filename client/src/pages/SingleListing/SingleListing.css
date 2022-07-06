@@ -200,6 +200,7 @@
 
 .learnMore {
   text-decoration-line: underline;
+  cursor: pointer;
 }
 
 .sl-description {

@@ -128,7 +128,7 @@ const SingleListing = () => {
             <div className="sl-eventInfo">
               <div className="sl-eventInfoContainer">
                 <div className="event-icon">
-                  <i class="fab fa-accessible-icon"></i>
+                  <i class="fas fa-credit-card"></i>
                 </div>
                 <div className="event-text">
                   <div className="event-header"></div>
@@ -148,25 +148,25 @@ const SingleListing = () => {
               </div>
               <div className="sl-eventInfoContainer">
                 <div className="event-icon">
-                  <i class="fab fa-accessible-icon"></i>
+                  <i class="fas fa-seedling"></i>
                 </div>
                 <div className="event-text">
                   <div className="event-header"></div>
                   <div className="event-info">
-                    Many vegetarian options provided
+                    Plant-based options available
                   </div>
                 </div>
               </div>
               <div className="sl-eventInfoContainer borderBot">
                 <div className="event-icon">
-                  <i class="fab fa-accessible-icon"></i>
+                  <i class="fas fa-glass-martini-alt"></i>
                 </div>
                 <div className="event-text">
                   <div className="event-header"></div>
                   <div className="event-info">Full bar</div>
                 </div>
               </div>
-              <div className="openCover">
+              <div className="airCover">
                 <h2>opencover</h2>
                 <p>
                   Every booking includes free protection from Host
@@ -196,10 +196,9 @@ const SingleListing = () => {
               hasReviewed={hasReviewed}
               isHost={isHost}
             />
-
           </div>
           <div className="sl-checkinfo">
-          <ReservationForm/>
+            <ReservationForm />
           </div>
         </div>
       )}
