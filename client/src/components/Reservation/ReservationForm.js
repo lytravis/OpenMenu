@@ -9,7 +9,7 @@ const ReservationForm = () => {
   const history = useHistory();
   const { eventId } = useParams();
 
-  const userId = useSelector((state) => state.session.user.id);
+  const userId = useSelector((state) => state.session.user?.id);
 
   const [loaded, setLoaded] = useState(false);
   const [checkIn, setCheckIn] = useState('');

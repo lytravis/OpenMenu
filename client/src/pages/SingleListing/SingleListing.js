@@ -70,7 +70,7 @@ const SingleListing = () => {
       {isLoaded && (
         <div className="sl-container">
           <div className="sl-header">
-            <h2> {toTitleCase(event?.name)}</h2>
+            <h2> {event?.name}</h2>
           </div>
           <div className="sl-photogrid-container">
             <div

@@ -135,7 +135,7 @@
   width: 567px;
   height: 52px;
   margin: 5px;
-  background-color: rgb(220, 17, 99);
+  background-color: #678983;
   color: white;
   border: none;
   cursor: pointer;
@@ -145,7 +145,7 @@
 }
 
 .loginButtons button:hover {
-  background-color: rgb(175, 13, 78);
+  background-color: #181D31;
 }
 
 .loginButtons > button:first-child {

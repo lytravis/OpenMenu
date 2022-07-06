@@ -25,7 +25,6 @@ function App() {
 
   return (
     <>
-
       {/* <button onClick={() => setShowModal(true)}>Modal</button>
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
@@ -33,36 +32,35 @@ function App() {
         </Modal>
       )} */}
       {isLoaded && (
-        <Switch>
-
-        <div className='pageContainer'>
-        <Header isLoaded={isLoaded} />
-        <div className='mainContent'>
-        <Route exact path="/">
-            <SplashPage />
-          </Route>
-          <ProtectedRoute exact path="/events/new">
-            <CreateEvent />
-          </ProtectedRoute>
-          <ProtectedRoute exact path="/manage">
-            <ManageEvents />
-          </ProtectedRoute>
-          <Route exact path="/events">
-            <Listings />
-          </Route>
-          <Route exact path="/events/:eventId">
-            <SingleListing />
-          </Route>
-          <Route exact path="/events/:eventId/edit">
-            <EditEvent />
-          </Route>
-          <Route exact path="/reviews">
-            <Reviews />
-          </Route>
-        </div>
-          <Footer/>
+        <div className="pageContainer">
+          <Header isLoaded={isLoaded} />
+          <div className="mainContent">
+            <Switch>
+              <Route exact path="/">
+                <SplashPage />
+              </Route>
+              <ProtectedRoute exact path="/events/new">
+                <CreateEvent />
+              </ProtectedRoute>
+              <ProtectedRoute exact path="/manage">
+                <ManageEvents />
+              </ProtectedRoute>
+              <Route exact path="/events">
+                <Listings />
+              </Route>
+              <Route exact path="/events/:eventId/edit">
+                <EditEvent />
+              </Route>
+              <Route exact path="/reviews">
+                <Reviews />
+              </Route>
+              <Route exact path="/events/:eventId">
+                <SingleListing />
+              </Route>
+            </Switch>
           </div>
-        </Switch>
+          <Footer />
+        </div>
       )}
     </>
   );
