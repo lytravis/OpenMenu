@@ -32,7 +32,7 @@
   border-radius: 999px;
 }
 
-.header__center > input {
+.header__center div input {
   border: none;
   padding: 10px;
   outline-width: 0;
@@ -51,4 +51,40 @@
 
 .nav-host {
   font-family: 'Montserrat', sans-serif;
+}
+
+/* .search-bar-div {
+  position: relative;
+  z-index: 3;
+} */
+
+/* .navbar-search-input-field {
+
+  border-radius:20px;
+  font-size: 17px;
+  height: 40px;
+  width: 268px;
+  padding-left: 20px;
+  outline: none;
+  color: black;
+  font-family: 'Montserrat', sans-serif;
+} */
+
+
+.search-results-parent-div {
+  margin-top: 5px;
+  background-color: lightgray;
+  border-radius: 5px;
+  /* box-shadow: 0 2px 4px rgb(0 0 0 / 10%), 0 8px 16px rgb(0 0 0 / 10%); */
+  overflow-y: auto;
+  z-index: 10;
+  position: absolute;
+  width: 263px;
+  /* padding: 5px; */
+  max-height: 268px;
+}
+
+
+.search-results-parent-div::-webkit-scrollbar {
+  display: none;
 }
