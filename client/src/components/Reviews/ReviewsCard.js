@@ -65,6 +65,7 @@ const ReviewsCard = ({ review, user, userId }) => {
 
     if (reviewEdited) {
       setShowUpdate(false);
+
     } else {
       setShowError(true);
     }
@@ -125,7 +126,7 @@ const ReviewsCard = ({ review, user, userId }) => {
         <div className="reviewComment">{review?.comment}</div>
         {showDelete && (
           <div className="loginModal">
-            <div className="deleteForm">
+            <div className="editForm">
               <div className="xToClose" onClick={() => setShowDelete(false)}>
                 <i className="fas fa-times"></i>
               </div>
@@ -141,7 +142,7 @@ const ReviewsCard = ({ review, user, userId }) => {
         )}
         {showUpdate && (
           <div className="loginModal">
-            <div className="deleteForm" id="updateReviewForm">
+            <div className="editForm" id="updateReviewForm">
               <div className="xToClose" onClick={closeUpdateForm}>
                 <i className="fas fa-times"></i>
               </div>
@@ -151,7 +152,7 @@ const ReviewsCard = ({ review, user, userId }) => {
               <div className="rating-container">
                 <div className="review-row1">
                   <div className="singleAvgRating addRatingCategory">
-                    <div className="reviewCategory">Food</div>
+                    <div className="reviewCategory reviewInput">Food</div>
                     <ReactStars
                       onChange={(rating) => setFoodRating(rating)}
                       value={foodRating}
@@ -160,7 +161,7 @@ const ReviewsCard = ({ review, user, userId }) => {
                   </div>
                   <div className="emptySpace"></div>
                   <div className="singleAvgRating addRatingCategory">
-                    <div className="reviewCategory">Experience</div>
+                    <div className="reviewCategory reviewInput">Experience</div>
                     <ReactStars
                       onChange={(rating) => setExperienceRating(rating)}
                       value={experienceRating}
@@ -169,7 +170,7 @@ const ReviewsCard = ({ review, user, userId }) => {
                   </div>
                   <div className="emptySpace"></div>
                   <div className="singleAvgRating addRatingCategory">
-                    <div className="reviewCategory">Cleanliness</div>
+                    <div className="reviewCategory reviewInput">Cleanliness</div>
                     <ReactStars
                       onChange={(rating) => setCleanlinessRating(rating)}
                       value={cleanlinessRating}
@@ -179,7 +180,7 @@ const ReviewsCard = ({ review, user, userId }) => {
                 </div>
                 <div className="review-row2">
                   <div className="singleAvgRating addRatingCategory">
-                    <div className="reviewCategory">Accuracy</div>
+                    <div className="reviewCategory reviewInput">Accuracy</div>
                     <ReactStars
                       onChange={(rating) => setAccuracyRating(rating)}
                       value={accuracyRating}
@@ -188,7 +189,7 @@ const ReviewsCard = ({ review, user, userId }) => {
                   </div>
                   <div className="emptySpace"></div>
                   <div className="singleAvgRating addRatingCategory">
-                    <div className="reviewCategory">Value</div>
+                    <div className="reviewCategory reviewInput">Value</div>
                     <ReactStars
                       onChange={(rating) => setValueRating(rating)}
                       value={valueRating}
@@ -197,7 +198,7 @@ const ReviewsCard = ({ review, user, userId }) => {
                   </div>
                   <div className="emptySpace"></div>
                   <div className="singleAvgRating addRatingCategory">
-                    <div className="reviewCategory">Communication</div>
+                    <div className="reviewCategory reviewInput">Communication</div>
                     <ReactStars
                       onChange={(rating) => setCommunicationRating(rating)}
                       value={communicationRating}

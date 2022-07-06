@@ -19,15 +19,15 @@ const {
 
 
 
-var getRadiosByGenre = function(Radio,Genre,genreName) {
-  Genre.findOne({
-    where: {
-      name: {
-        [Sequelize.Op.iLike]: genreName
-      }
-    }
-  });
-}
+// var getRadiosByGenre = function(Radio,Genre,genreName) {
+//   Genre.findOne({
+//     where: {
+//       name: {
+//         [Sequelize.Op.iLike]: genreName
+//       }
+//     }
+//   });
+// }
 
 
 const router = express.Router();

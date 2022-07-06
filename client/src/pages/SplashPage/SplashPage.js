@@ -1,9 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Banner from '../../components/Banner/Banner';
 import { Link } from 'react-router-dom';
 import './SplashPage.css';
+import { searchResultsEvents } from '../../store/search';
 
 const SplashPage = ({ src, title, description, price }) => {
+  const [searchString, setSearchString] = useState('');
+
   return (
     <div className="splash-container">
       <div className="splash-top">

@@ -16,7 +16,7 @@ const EditEvent = () => {
   const { eventId } = useParams();
   // const userId = useSelector((state) => state.session.user.id);
   const hostId = useSelector((state) => state.session.user.id);
-  const images = useSelector((state) => Object.values(state.image));
+  // const images = useSelector((state) => Object.values(state.image));
   // const events = useSelector((state) => Object.values(state.event));
   const eventTypes = useSelector((state) => Object.values(state.type));
   const event = useSelector((state) => state?.event[eventId]);
@@ -24,10 +24,7 @@ const EditEvent = () => {
 
   const [isLoaded, setIsLoaded] = useState(false);
   const [showModal, setShowModal] = useState(false);
-  const [addressErrorId, setAddressErrorId] = useState('noAddressError');
-  const [addressErrorBackground, setAddressErrorBackground] = useState(
-    'classNoAddressError'
-  );
+
   const [eventErrorId, setEventErrorId] = useState('noEventError');
   const [eventErrorMessage, setEventErrorMessage] = useState('');
 
@@ -172,7 +169,7 @@ const EditEvent = () => {
                           <select
                             value={avgCost}
                             onChange={(e) => setAvgCost(e.target.value)}
-                            className={addressErrorBackground}
+
                           >
                             <option value="$">$</option>
                             <option value="$$">$$</option>
@@ -186,7 +183,7 @@ const EditEvent = () => {
                         <div className="eventLoadField">
                           <label>Street Address</label>
                           <input
-                            className={addressErrorBackground}
+
                             name="address"
                             type="input"
                             maxLength="255"
@@ -199,7 +196,7 @@ const EditEvent = () => {
                         <div className="eventLoadField">
                           <label>City</label>
                           <input
-                            className={addressErrorBackground}
+
                             name="city"
                             type="input"
                             required
@@ -212,7 +209,7 @@ const EditEvent = () => {
                         <div className="eventLoadField">
                           <label>State</label>
                           <input
-                            className={addressErrorBackground}
+
                             name="state"
                             type="input"
                             required
@@ -225,7 +222,7 @@ const EditEvent = () => {
                         <div className="eventLoadField">
                           <label>Zip Code</label>
                           <input
-                            className={addressErrorBackground}
+
                             name="zipCode"
                             type="input"
                             required

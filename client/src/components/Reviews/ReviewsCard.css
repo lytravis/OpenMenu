@@ -45,6 +45,10 @@
   align-items: center;
 }
 
+.reviewInput {
+  font-size: 1.2rem;
+}
+
 .reviewerIcon {
   width: 65px;
   height: 65px;
@@ -114,6 +118,7 @@
   width: 250px;
 }
 
+
 #updateReviewForm {
   width: 750px;
   max-width: 800px;
@@ -143,14 +148,14 @@
 
 
 
-.deleteForm {
+.editForm {
   width: fit-content;
-  max-width: 500px;
+  max-width: 600px;
   height: fit-content;
   max-height: 260px;
   background-color: white;
   border-radius: 15px;
-  padding: 20px;
+  padding: 40px;
   font-family: 'Montserrat', sans-serif;
 }
 

@@ -157,7 +157,7 @@ router.get(
       where: {
         [Op.or]: [
           { name: { [Op.iLike]: `%${searchTerm}%` } },
-          { address: { [Op.iLike]: `%${searchTerm}%` } },
+          // { address: { [Op.iLike]: `%${searchTerm}%` } },
         ],
       },
     });

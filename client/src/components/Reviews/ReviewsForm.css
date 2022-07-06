@@ -10,6 +10,7 @@
 
 .addRatingCategory {
   align-items: center;
+
 }
 
 .commentForm {
@@ -81,7 +82,7 @@
 }
 
 .emptySpace {
-  width: 80px;
+  width: 40px;
 }
 
 .singleAvgRating {
