@@ -56,6 +56,8 @@ const Browse = ({ events }) => {
     setIsLoaded(true);
   };
 
+
+
   const resetSortedBy = async () => {
     setAllEvents('');
     setOnlineEvents('');

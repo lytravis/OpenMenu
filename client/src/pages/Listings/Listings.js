@@ -37,6 +37,8 @@ const Listings = () => {
     };
   }, [dispatch]);
 
+  
+
   return (
     <div className="browseEventContainer">
       <h1>Browse all events</h1>
