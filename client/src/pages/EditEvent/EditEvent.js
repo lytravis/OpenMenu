@@ -155,10 +155,12 @@ const EditEvent = () => {
       url: image5,
     };
 
-    await dispatch(updateEvent(payload, eventId));
-    await dispatch(
-      updateEventImage(payload2, payload3, payload4, payload5, payload6)
-    );
+    dispatch(updateEvent(payload, eventId));
+    dispatch(addImage(payload2));
+    dispatch(addImage(payload3));
+    dispatch(addImage(payload4));
+    dispatch(addImage(payload5));
+    dispatch(addImage(payload6));
     // history.push(`/events/${eventId}/edit`);
     history.push(`/events/${eventId}`);
   };
