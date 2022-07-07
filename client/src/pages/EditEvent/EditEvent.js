@@ -4,7 +4,7 @@ import { useHistory, useParams } from 'react-router-dom';
 
 import { updateEvent, getEvents } from '../../store/event';
 import { getTypes } from '../../store/type';
-import { getImages, addImage } from '../../store/image';
+import { getImages, addImage, updateEventImage } from '../../store/image';
 
 import './EditEvent.css';
 
@@ -47,9 +47,8 @@ const EditEvent = () => {
   const [validationErrors, setValidationErrors] = useState([]);
 
   // console.log('%%%%%%%%', eventImages[0]?.url);
-  console.log('%!!!!!!!!!!!!!!!!!!!!!!event', event?.Images);
+  console.log('%!!!!!!!!!!!!!!!!!!!!!!event', event);
   // console.log('%!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!', eventId);
-
 
   const cancelEdit = (e) => {
     e.preventDefault();
@@ -113,7 +112,7 @@ const EditEvent = () => {
   //   return { url: image };
   // });
 
-  // console.log('******** this is imgs', test);
+  console.log('********image picsss', event?.Images);
 
   const handleUpdate = async (e) => {
     e.preventDefault();
@@ -157,7 +156,9 @@ const EditEvent = () => {
     };
 
     await dispatch(updateEvent(payload, eventId));
-    await dispatch(addImage(payload2, payload3, payload4, payload5, payload6));
+    await dispatch(
+      updateEventImage(payload2, payload3, payload4, payload5, payload6)
+    );
     // history.push(`/events/${eventId}/edit`);
     history.push(`/events/${eventId}`);
   };
