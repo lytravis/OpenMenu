@@ -38,3 +38,12 @@
       width: 466px;
   }
 }
+
+/* .editUrl {
+ font-size: 12px;
+} */
+
+#inputTop {
+  top: 13px;
+  font-size: 13px;
+}

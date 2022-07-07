@@ -30,6 +30,8 @@ const EditEvent = () => {
   const [image1, setImage1] = useState('');
   const [image2, setImage2] = useState('');
   const [image3, setImage3] = useState('');
+  const [image4, setImage4] = useState('');
+  const [image5, setImage5] = useState('');
   const [imgs, setImgs] = useState('');
 
   const [name, setName] = useState('');
@@ -45,31 +47,9 @@ const EditEvent = () => {
   const [validationErrors, setValidationErrors] = useState([]);
 
   // console.log('%%%%%%%%', eventImages[0]?.url);
-  // console.log('%!!!!!!!!!!!!!!!!!!!!!!event', event.Images);
+  console.log('%!!!!!!!!!!!!!!!!!!!!!!event', event?.Images);
   // console.log('%!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!', eventId);
 
-  const updateProfilePic = async (e) => {
-    e.preventDefault();
-
-    const regex =
-      /[-a-zA-Z0-9@:%._+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_+.~#?&//=]*)/;
-    // if (profilePic.length > 0 && !regex.test(profilePic)) {
-    //   setProfilePicErrorId('updatePicError');
-    //   setPicErrorMessage('Please add a valid Image URL.');
-    //   return;
-    // }
-
-    const data = await dispatch(addImage(event.id, image1));
-    // if (data[0] === 'Error') {
-    //   setProfilePicErrorId('updatePicError');
-    //   setPicErrorMessage('An error occured. Refresh the page and try again.');
-    //   return;
-    // } else {
-    //   setProfilePicErrorId('noUpdatePicError');
-    //   setPicErrorMessage('');
-    //   setShowPicForm(false);
-    // }
-  };
 
   const cancelEdit = (e) => {
     e.preventDefault();
@@ -122,14 +102,18 @@ const EditEvent = () => {
 
     // });
 
-    setImgs(images);
+    setImage1(event.Images[0]?.url);
+    setImage2(event.Images[1]?.url);
+    setImage3(event.Images[2]?.url);
+    setImage4(event.Images[3]?.url);
+    setImage5(event.Images[4]?.url);
   }, [event]);
 
-  let test = event?.Images.map((image) => {
-    return { url: image };
-  });
+  // let test = event?.Images.map((image) => {
+  //   return { url: image };
+  // });
 
-  console.log('******** this is imgs', test);
+  // console.log('******** this is imgs', test);
 
   const handleUpdate = async (e) => {
     e.preventDefault();
@@ -155,9 +139,25 @@ const EditEvent = () => {
       eventId,
       url: image1,
     };
+    const payload3 = {
+      eventId,
+      url: image2,
+    };
+    const payload4 = {
+      eventId,
+      url: image3,
+    };
+    const payload5 = {
+      eventId,
+      url: image4,
+    };
+    const payload6 = {
+      eventId,
+      url: image5,
+    };
 
     await dispatch(updateEvent(payload, eventId));
-    await dispatch(addImage(payload2));
+    await dispatch(addImage(payload2, payload3, payload4, payload5, payload6));
     // history.push(`/events/${eventId}/edit`);
     history.push(`/events/${eventId}`);
   };
@@ -284,7 +284,7 @@ const EditEvent = () => {
                       <div className="fieldSection">
                         <h3 className="imagesHeader">Images</h3>
                         <div className="imageUploadContainer">
-                          <div className="formField">
+                          <div className="formField editUrl">
                             <input
                               // id={signUpEmailError}
                               name="profilePic"
@@ -295,7 +295,59 @@ const EditEvent = () => {
                               value={image1}
                               onChange={(e) => setImage1(e.target.value)}
                             />
-                            <label>Image URL</label>
+                            <label id="inputTop">Image URL</label>
+                          </div>
+                          <div className="formField editUrl">
+                            <input
+                              // id={signUpEmailError}
+                              name="profilePic"
+                              type="text"
+                              required
+                              autoComplete="off"
+                              maxLength="255"
+                              value={image2}
+                              onChange={(e) => setImage2(e.target.value)}
+                            />
+                            <label id="inputTop">Image URL</label>
+                          </div>
+                          <div className="formField editUrl">
+                            <input
+                              // id={signUpEmailError}
+                              name="profilePic"
+                              type="text"
+                              required
+                              autoComplete="off"
+                              maxLength="255"
+                              value={image3}
+                              onChange={(e) => setImage3(e.target.value)}
+                            />
+                            <label id="inputTop">Image URL</label>
+                          </div>
+                          <div className="formField editUrl">
+                            <input
+                              // id={signUpEmailError}
+                              name="profilePic"
+                              type="text"
+                              required
+                              autoComplete="off"
+                              maxLength="255"
+                              value={image4}
+                              onChange={(e) => setImage4(e.target.value)}
+                            />
+                            <label id="inputTop">Image URL</label>
+                          </div>
+                          <div className="formField editUrl">
+                            <input
+                              // id={signUpEmailError}
+                              name="profilePic"
+                              type="text"
+                              required
+                              autoComplete="off"
+                              maxLength="255"
+                              value={image5}
+                              onChange={(e) => setImage5(e.target.value)}
+                            />
+                            <label id="inputTop">Image URL</label>
                           </div>
                         </div>
                       </div>
@@ -324,6 +376,7 @@ const EditEvent = () => {
                 alt="cooking img"
               />
             </span>
+
             <div className="accountFormContainer">
               <div className="topRowAccount">
                 {/* <div className="accountHeader">Profile picture</div> */}
@@ -332,27 +385,6 @@ const EditEvent = () => {
                   Cancel
                 </div> */}
               </div>
-              {/* <div className="accountInfo">Enter a valid Image URL.</div> */}
-              <form className="accountForm" onSubmit={updateProfilePic}>
-                <div className="nameInputs">
-                  {/* <div className="accountFormInputContainer extraLongInput"> */}
-                    {/* <label>Image URL</label> */}
-                    <input
-                      name="image1"
-                      type="input"
-                      maxLength="255"
-                      value={image1}
-                      onChange={(e) => setImage1(e.target.value)}
-                    />
-                  {/* </div> */}
-                </div>
-                <div className="accountFormUpdateErrorContainer">
-                  {/* <button type="submit">Save</button> */}
-                  {/* <div className="updateAccountError" id={profiePicErrorId}>
-                    {picErrorMessage}
-                  </div> */}
-                </div>
-              </form>
             </div>
           </div>
 
