@@ -86,23 +86,15 @@ export default function reducer(state = {}, action) {
       newState = { ...state };
       newState[action.payload.id] = action.payload;
       return newState;
-    // case EDIT_REVIEWS: {
-    //   // console.log(action.event);
-    //   return {
-    //     ...state,
-    //     [action.review.event.id]: action.review.event,
-    //   };
-    // }
     case EDIT_REVIEW: {
-      console.log('DDDAAAAADADA action.data', action.data);
       newState = { ...state };
-      console.log('DDDAAAAADADA newState', newState);
       newState[action.data.id] = action.data;
+
       return newState;
 
       // return {
       //   ...state,
-      //   [action.data.eventId]: action.data,
+      //   [action.data.id]: action.data,
       // };
     }
     case DELETE_REVIEW: {
