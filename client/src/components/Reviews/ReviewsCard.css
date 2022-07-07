@@ -22,13 +22,14 @@
 
 
  .rc-container {
-  width: 48%;
+  width: 40%;
   box-sizing: border-box;
   padding: 30px;
   padding-bottom: 40px;
   padding-top: 0;
   font-weight: 200;
   color: rgb(34, 34, 34);
+  margin: 0 auto;
 }
 
 .rc-container:nth-child(odd) {

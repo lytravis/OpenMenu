@@ -90,3 +90,30 @@
   color: rgb(113,113,113);
   font-weight: 300;
 }
+
+
+
+@media (max-width: 950px) {
+  .sortByContainer {
+    /* display: flex; */
+flex-direction: column;
+
+
+  }
+  .eventInfoTopRowBrowse{
+    color: white;
+      background-color:black
+
+  }
+  .eventStats {
+    background-color:black
+  }
+  .eventTypeBrowse{
+    background-color:black
+
+  }
+.allEventsContainer {
+  justify-content: center;
+}
+
+}
