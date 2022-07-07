@@ -4,35 +4,30 @@ import { useHistory, useParams } from 'react-router-dom';
 
 import { updateEvent, getEvents } from '../../store/event';
 import { getTypes } from '../../store/type';
-import { getImages, addImage, updateEventImage } from '../../store/image';
-
+import { getImages, addImage } from '../../store/image';
 import './EditEvent.css';
 
-// import '../pages/CreateEvent/CreateEvent.css';
-// client/src/pages/CreateEvent/CreateEvent.css
 const EditEvent = () => {
   const dispatch = useDispatch();
   const history = useHistory();
   const { eventId } = useParams();
-  // const userId = useSelector((state) => state.session.user.id);
+
   const hostId = useSelector((state) => state.session.user.id);
   const images = useSelector((state) => Object.values(state.image));
-  // const events = useSelector((state) => Object.values(state.event));
+
   const eventTypes = useSelector((state) => Object.values(state.type));
   const event = useSelector((state) => state?.event[eventId]);
-  const eventImages = images.filter((image) => image.eventId == event.id);
+
 
   const [isLoaded, setIsLoaded] = useState(false);
   const [showModal, setShowModal] = useState(false);
 
-  const [eventErrorId, setEventErrorId] = useState('noEventError');
-  const [eventErrorMessage, setEventErrorMessage] = useState('');
+
   const [image1, setImage1] = useState('');
   const [image2, setImage2] = useState('');
   const [image3, setImage3] = useState('');
   const [image4, setImage4] = useState('');
   const [image5, setImage5] = useState('');
-  const [imgs, setImgs] = useState('');
 
   const [name, setName] = useState('');
   const [description, setDescription] = useState('');
@@ -44,10 +39,9 @@ const EditEvent = () => {
   // const [latitude, setLatitude] = useState("");
   // const [longitude, setLongitude] = useState("");
   const [typeId, setTypeId] = useState(1);
-  const [validationErrors, setValidationErrors] = useState([]);
+
 
   // console.log('%%%%%%%%', eventImages[0]?.url);
-  console.log('%!!!!!!!!!!!!!!!!!!!!!!event', event);
   // console.log('%!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!', eventId);
 
   const cancelEdit = (e) => {
@@ -95,11 +89,7 @@ const EditEvent = () => {
     // setLongitude(event?.longitude);
     setTypeId(event?.typeId);
 
-    // let imgs = event?.Images.map((image) => {
 
-    //   return { url: image };
-
-    // });
 
     setImage1(event.Images[0]?.url);
     setImage2(event.Images[1]?.url);
@@ -108,17 +98,15 @@ const EditEvent = () => {
     setImage5(event.Images[4]?.url);
   }, [event]);
 
-  // let test = event?.Images.map((image) => {
-  //   return { url: image };
-  // });
 
-  console.log('********image picsss', event?.Images);
+
+
 
   const handleUpdate = async (e) => {
     e.preventDefault();
 
-    const errors = validate();
-    if (errors.length > 0) return setValidationErrors(errors);
+    // const errors = validate();
+    // if (errors.length > 0) return setValidationErrors(errors);
 
     const payload = {
       userId: hostId,
@@ -366,10 +354,7 @@ const EditEvent = () => {
                       Cancel Edit
                     </button>
                   </div>
-                  <div className="addEventError" id={eventErrorId}>
-                    <div>!</div>
-                    <span>{eventErrorMessage}</span>
-                  </div>
+
                 </form>
               </div>
             </div>
@@ -381,13 +366,6 @@ const EditEvent = () => {
             </span>
 
             <div className="accountFormContainer">
-              <div className="topRowAccount">
-                {/* <div className="accountHeader">Profile picture</div> */}
-                {/* <div className="editAccountButton"
-                onClick={resetPictureForm}>
-                  Cancel
-                </div> */}
-              </div>
             </div>
           </div>
 

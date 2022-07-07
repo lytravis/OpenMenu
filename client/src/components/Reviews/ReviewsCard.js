@@ -7,7 +7,7 @@ import ReactStars from 'react-rating-stars-component';
 
 const ReviewsCard = ({ review, user, userId }) => {
   const dispatch = useDispatch();
-  const { eventId, reviewId } = useParams();
+  const { eventId} = useParams();
 
   const [showUpdate, setShowUpdate] = useState(false);
   const [showDelete, setShowDelete] = useState(false);
@@ -21,7 +21,7 @@ const ReviewsCard = ({ review, user, userId }) => {
   const [communicationRating, setCommunicationRating] = useState(0);
   const [comment, setComment] = useState('');
 
-  const [isLoaded, setIsLoaded] = useState(false);
+
 
   const reviewYear = review.createdAt.slice(0, 4);
 

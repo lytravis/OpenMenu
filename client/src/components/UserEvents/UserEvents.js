@@ -5,15 +5,8 @@ import ReservationCard from '../Card/ReservationCard';
 
 import './UserEvents.css';
 
-const UserEvents = ({ hostedEvents, reservations, user, eventId }) => {
-  // const [hostEvents, setHostEvents] = useState(hostedEvents);
-  // const [rsvpEvents, setRsvpEvents] = useState([]);
+const UserEvents = ({ hostedEvents, reservations }) => {
   const [showRsvpEvents, setShowRsvpEvents] = useState(false);
-
-  // console.log('$$$$$ RSVP', reservations);
-
-  // const tester = reservations?.map((el) => el.Event);
-  // console.log('#################', tester);
 
   return (
     <div>

@@ -22,20 +22,9 @@ const Reviews = ({ eventReviews, userId, hasReviewed, isHost, user }) => {
     setSortedReviews(sortedReviews);
   }, [eventReviews]);
 
-  console.log('$$$$$$$$$$$$$$$$$$$', sortedReviews);
 
-  function randomDate(start, end) {
-    return new Date(
-      start.getTime() + Math.random() * (end.getTime() - start.getTime())
-    );
-  }
 
-  // randomDate(new Date(2022, 0, 1), new Date());
 
-  console.log(
-    '!!!!!!!!! randomDate ',
-    randomDate(new Date(2022, 0, 1), new Date())
-  );
 
   return (
     <div>

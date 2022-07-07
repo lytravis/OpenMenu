@@ -12,6 +12,8 @@
 }
 
 .eventSlide {
+  background-image: url("https://cdn.discordapp.com/attachments/920377762068447282/939220064979271700/depositphotos_247872612-stock-illustration-no-image-available-icon-vector.jpg");
+  background-size: cover;
   max-width: 300px;
   min-width: 260px;
   max-height: 300px;

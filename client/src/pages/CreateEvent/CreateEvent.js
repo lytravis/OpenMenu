@@ -9,7 +9,6 @@ import './CreateEvent.css';
 const CreateEvent = () => {
   const dispatch = useDispatch();
   const history = useHistory();
-  // const [loaded, setLoaded] = useState(false);
 
   const userId = useSelector((state) => state.session.user.id);
   const eventTypes = useSelector((state) => Object.values(state.type));
@@ -26,7 +25,6 @@ const CreateEvent = () => {
   const [typeId, setTypeId] = useState(1);
   const [validationErrors, setValidationErrors] = useState([]);
 
-  const [showModal, setShowModal] = useState(false);
 
   const validate = () => {
     const validateErrors = [];
@@ -71,7 +69,6 @@ const CreateEvent = () => {
     };
 
     dispatch(addEvent(payload));
-    // history.push(`/users/${userId}`);
     history.push('/events');
   };
 
