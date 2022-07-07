@@ -4,7 +4,7 @@ import { useHistory, useParams } from 'react-router-dom';
 
 import { updateEvent, getEvents } from '../../store/event';
 import { getTypes } from '../../store/type';
-import { getImages } from '../../store/image';
+import { getImages, addImage } from '../../store/image';
 
 import './EditEvent.css';
 
@@ -16,17 +16,21 @@ const EditEvent = () => {
   const { eventId } = useParams();
   // const userId = useSelector((state) => state.session.user.id);
   const hostId = useSelector((state) => state.session.user.id);
-  // const images = useSelector((state) => Object.values(state.image));
+  const images = useSelector((state) => Object.values(state.image));
   // const events = useSelector((state) => Object.values(state.event));
   const eventTypes = useSelector((state) => Object.values(state.type));
   const event = useSelector((state) => state?.event[eventId]);
-  // const eventImages = images.filter((image) => image.eventId == event.id);
+  const eventImages = images.filter((image) => image.eventId == event.id);
 
   const [isLoaded, setIsLoaded] = useState(false);
   const [showModal, setShowModal] = useState(false);
 
   const [eventErrorId, setEventErrorId] = useState('noEventError');
   const [eventErrorMessage, setEventErrorMessage] = useState('');
+  const [image1, setImage1] = useState('');
+  const [image2, setImage2] = useState('');
+  const [image3, setImage3] = useState('');
+  const [imgs, setImgs] = useState('');
 
   const [name, setName] = useState('');
   const [description, setDescription] = useState('');
@@ -39,6 +43,33 @@ const EditEvent = () => {
   // const [longitude, setLongitude] = useState("");
   const [typeId, setTypeId] = useState(1);
   const [validationErrors, setValidationErrors] = useState([]);
+
+  // console.log('%%%%%%%%', eventImages[0]?.url);
+  // console.log('%!!!!!!!!!!!!!!!!!!!!!!event', event.Images);
+  // console.log('%!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!', eventId);
+
+  const updateProfilePic = async (e) => {
+    e.preventDefault();
+
+    const regex =
+      /[-a-zA-Z0-9@:%._+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_+.~#?&//=]*)/;
+    // if (profilePic.length > 0 && !regex.test(profilePic)) {
+    //   setProfilePicErrorId('updatePicError');
+    //   setPicErrorMessage('Please add a valid Image URL.');
+    //   return;
+    // }
+
+    const data = await dispatch(addImage(event.id, image1));
+    // if (data[0] === 'Error') {
+    //   setProfilePicErrorId('updatePicError');
+    //   setPicErrorMessage('An error occured. Refresh the page and try again.');
+    //   return;
+    // } else {
+    //   setProfilePicErrorId('noUpdatePicError');
+    //   setPicErrorMessage('');
+    //   setShowPicForm(false);
+    // }
+  };
 
   const cancelEdit = (e) => {
     e.preventDefault();
@@ -84,7 +115,21 @@ const EditEvent = () => {
     // setLatitude(event?.latitude);
     // setLongitude(event?.longitude);
     setTypeId(event?.typeId);
+
+    // let imgs = event?.Images.map((image) => {
+
+    //   return { url: image };
+
+    // });
+
+    setImgs(images);
   }, [event]);
+
+  let test = event?.Images.map((image) => {
+    return { url: image };
+  });
+
+  console.log('******** this is imgs', test);
 
   const handleUpdate = async (e) => {
     e.preventDefault();
@@ -106,7 +151,13 @@ const EditEvent = () => {
       typeId,
     };
 
-    dispatch(updateEvent(payload, eventId));
+    const payload2 = {
+      eventId,
+      url: image1,
+    };
+
+    await dispatch(updateEvent(payload, eventId));
+    await dispatch(addImage(payload2));
     // history.push(`/events/${eventId}/edit`);
     history.push(`/events/${eventId}`);
   };
@@ -169,7 +220,6 @@ const EditEvent = () => {
                           <select
                             value={avgCost}
                             onChange={(e) => setAvgCost(e.target.value)}
-
                           >
                             <option value="$">$</option>
                             <option value="$$">$$</option>
@@ -183,7 +233,6 @@ const EditEvent = () => {
                         <div className="eventLoadField">
                           <label>Street Address</label>
                           <input
-
                             name="address"
                             type="input"
                             maxLength="255"
@@ -196,7 +245,6 @@ const EditEvent = () => {
                         <div className="eventLoadField">
                           <label>City</label>
                           <input
-
                             name="city"
                             type="input"
                             required
@@ -209,7 +257,6 @@ const EditEvent = () => {
                         <div className="eventLoadField">
                           <label>State</label>
                           <input
-
                             name="state"
                             type="input"
                             required
@@ -222,7 +269,6 @@ const EditEvent = () => {
                         <div className="eventLoadField">
                           <label>Zip Code</label>
                           <input
-
                             name="zipCode"
                             type="input"
                             required
@@ -237,7 +283,21 @@ const EditEvent = () => {
                     <div className="formInputSection" id="imageUploadSection">
                       <div className="fieldSection">
                         <h3 className="imagesHeader">Images</h3>
-                        <div className="imageUploadContainer"></div>
+                        <div className="imageUploadContainer">
+                          <div className="formField">
+                            <input
+                              // id={signUpEmailError}
+                              name="profilePic"
+                              type="text"
+                              required
+                              autoComplete="off"
+                              maxLength="255"
+                              value={image1}
+                              onChange={(e) => setImage1(e.target.value)}
+                            />
+                            <label>Image URL</label>
+                          </div>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -264,6 +324,36 @@ const EditEvent = () => {
                 alt="cooking img"
               />
             </span>
+            <div className="accountFormContainer">
+              <div className="topRowAccount">
+                {/* <div className="accountHeader">Profile picture</div> */}
+                {/* <div className="editAccountButton"
+                onClick={resetPictureForm}>
+                  Cancel
+                </div> */}
+              </div>
+              {/* <div className="accountInfo">Enter a valid Image URL.</div> */}
+              <form className="accountForm" onSubmit={updateProfilePic}>
+                <div className="nameInputs">
+                  {/* <div className="accountFormInputContainer extraLongInput"> */}
+                    {/* <label>Image URL</label> */}
+                    <input
+                      name="image1"
+                      type="input"
+                      maxLength="255"
+                      value={image1}
+                      onChange={(e) => setImage1(e.target.value)}
+                    />
+                  {/* </div> */}
+                </div>
+                <div className="accountFormUpdateErrorContainer">
+                  {/* <button type="submit">Save</button> */}
+                  {/* <div className="updateAccountError" id={profiePicErrorId}>
+                    {picErrorMessage}
+                  </div> */}
+                </div>
+              </form>
+            </div>
           </div>
 
           {showModal && (

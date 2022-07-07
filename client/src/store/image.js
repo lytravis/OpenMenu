@@ -45,6 +45,9 @@ export const addImage = (image) => async (dispatch) => {
   }
 };
 
+
+
+
 export const removeImage = (id) => async (dispatch) => {
   const response = await csrfFetch(`/api/images/${id}`, {
     method: "DELETE",
