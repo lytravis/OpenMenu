@@ -94,15 +94,16 @@ export default function reducer(state = {}, action) {
     //   };
     // }
     case EDIT_REVIEW: {
-      // console.log("DDDAAAAADADA action.data", action.data);
-      // newState = { ...state };
-      // newState[action.data.eventId] = action.data;
-      // return newState;
+      console.log('DDDAAAAADADA action.data', action.data);
+      newState = { ...state };
+      console.log('DDDAAAAADADA newState', newState);
+      newState[action.data.id] = action.data;
+      return newState;
 
-      return {
-        ...state,
-        [action.data.eventId]: action.data,
-      };
+      // return {
+      //   ...state,
+      //   [action.data.eventId]: action.data,
+      // };
     }
     case DELETE_REVIEW: {
       const newState = { ...state };

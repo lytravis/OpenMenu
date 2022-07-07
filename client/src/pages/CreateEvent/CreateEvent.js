@@ -9,7 +9,7 @@ import './CreateEvent.css';
 const CreateEvent = () => {
   const dispatch = useDispatch();
   const history = useHistory();
-  const [loaded, setLoaded] = useState(false);
+  // const [loaded, setLoaded] = useState(false);
 
   const userId = useSelector((state) => state.session.user.id);
   const eventTypes = useSelector((state) => Object.values(state.type));
@@ -20,19 +20,13 @@ const CreateEvent = () => {
   const [city, setCity] = useState('');
   const [state, setState] = useState('');
   const [zipCode, setZipCode] = useState('');
-  const [avgCost, setAvgCost] = useState('');
+  const [avgCost, setAvgCost] = useState('$');
   // const [latitude, setLatitude] = useState("");
   // const [longitude, setLongitude] = useState("");
   const [typeId, setTypeId] = useState(1);
   const [validationErrors, setValidationErrors] = useState([]);
-  const [eventErrorId, setEventErrorId] = useState('noEventError');
-  const [eventErrorMessage, setEventErrorMessage] = useState('');
-  const [showModal, setShowModal] = useState(false);
 
-  const [addressErrorId, setAddressErrorId] = useState('noAddressError');
-  const [addressErrorBackground, setAddressErrorBackground] = useState(
-    'classNoAddressError'
-  );
+  const [showModal, setShowModal] = useState(false);
 
   const validate = () => {
     const validateErrors = [];
@@ -91,10 +85,6 @@ const CreateEvent = () => {
     setCity('');
     setState('');
     setZipCode('');
-    setAddressErrorId('noAddressError');
-    setAddressErrorBackground('classNoAddressError');
-    setEventErrorId('noEventError');
-    setEventErrorMessage('');
   };
 
   return (
@@ -165,7 +155,6 @@ const CreateEvent = () => {
                     <select
                       value={avgCost}
                       onChange={(e) => setAvgCost(e.target.value)}
-                      className={addressErrorBackground}
                     >
                       <option value="$">$</option>
                       <option value="$$">$$</option>
@@ -179,7 +168,6 @@ const CreateEvent = () => {
                   <div className="eventLoadField">
                     <label>Street Address</label>
                     <input
-                      className={addressErrorBackground}
                       name="address"
                       type="input"
                       maxLength="255"
@@ -192,7 +180,6 @@ const CreateEvent = () => {
                   <div className="eventLoadField">
                     <label>City</label>
                     <input
-                      className={addressErrorBackground}
                       name="city"
                       type="input"
                       required
@@ -205,7 +192,6 @@ const CreateEvent = () => {
                   <div className="eventLoadField">
                     <label>State</label>
                     <input
-                      className={addressErrorBackground}
                       name="state"
                       type="input"
                       required
@@ -218,7 +204,6 @@ const CreateEvent = () => {
                   <div className="eventLoadField">
                     <label>Zip Code</label>
                     <input
-                      className={addressErrorBackground}
                       name="zipCode"
                       type="input"
                       required
@@ -245,10 +230,6 @@ const CreateEvent = () => {
                 >
                   Clear Form
                 </button>
-              </div>
-              <div className="addEventError" id={eventErrorId}>
-                <div>!</div>
-                <span>{eventErrorMessage}</span>
               </div>
             </form>
           </div>
