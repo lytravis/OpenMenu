@@ -13,8 +13,8 @@ module.exports = {
       [
         {
           eventId: 1,
-          // url: 'https://cdn.discordapp.com/attachments/920377762068447282/920824216855642112/BakedStuffedLobster-TheSpruce_DianaChistruga-3fcb6301491a4be193ecf40d0735e8d1.jpg',
-          url: 'https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg',
+          url: 'https://cdn.discordapp.com/attachments/920377762068447282/920824216855642112/BakedStuffedLobster-TheSpruce_DianaChistruga-3fcb6301491a4be193ecf40d0735e8d1.jpg',
+
           createdAt: new Date(),
           updatedAt: new Date(),
         },
