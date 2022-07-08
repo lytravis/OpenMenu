@@ -24,12 +24,12 @@ OpenMenu is a Airbnb clone that aims to build community amongst food lovers, whe
  - Users can choose from various types of events that include: Online Experiences, Find Dining, Food Trucks, Cooking Lessons, and more
  - Users can host events for other members to book
 ### Reviews
-![reviews](https://cdn.discordapp.com/attachments/920377762068447282/933640655266275378/unknown.png)
+![reviews](https://cdn.discordapp.com/attachments/994067967023259668/995088629716242532/unknown.png)
 - Reviews are calulated by a total average of all listing reviews
 - Users can post new reviews in six categories (food, experience, value, cleanliness, accuracy, and communication
 - Users can also comment on their experience to help other users
 ### Bookings
-![bookings](https://cdn.discordapp.com/attachments/920377762068447282/933640829694803998/unknown.png)
+![bookings](https://cdn.discordapp.com/attachments/994067967023259668/995088838538039366/unknown.png)
 - Bookings can be selected based on availability
 - If a user wishes to cancel a reservation, he/she may access their reservations through their account page
 ### Search (by location & availability) & Google Maps on search
