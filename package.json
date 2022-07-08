@@ -1,6 +1,10 @@
 {
   "name": "openmenu",
-  "version": "1.0.0",
+  "version":"1.2.1",
+  "engines": {
+    "node": "16.x",
+    "npm": "8.x"
+  },
   "description": "OpenMenu is a Airbnb clone that aims to build community amongst food lovers, where users can find their next food adventure.",
   "main": "index.js",
   "dependencies": {
