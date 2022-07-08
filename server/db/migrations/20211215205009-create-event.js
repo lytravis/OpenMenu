@@ -54,6 +54,11 @@ module.exports = {
         references: { model: 'Types' },
         type: Sequelize.INTEGER,
       },
+      tagId: {
+        allowNull: false,
+        references: { model: 'Tags' },
+        type: Sequelize.INTEGER,
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE,

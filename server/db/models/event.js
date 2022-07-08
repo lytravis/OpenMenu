@@ -14,6 +14,7 @@ module.exports = (sequelize, DataTypes) => {
       // longitude: { type: DataTypes.DECIMAL, allowNull: true },
       userId: { type: DataTypes.INTEGER, allowNull: false },
       typeId: { type: DataTypes.INTEGER, allowNull: false },
+      tagId: { type: DataTypes.INTEGER, allowNull: false },
     },
     {}
   );
@@ -37,6 +38,7 @@ module.exports = (sequelize, DataTypes) => {
 
     Event.belongsTo(models.User, { foreignKey: "userId" });
     Event.belongsTo(models.Type, { foreignKey: "typeId" });
+    Event.belongsTo(models.Tag, { foreignKey: "tagId" });
   };
   return Event;
 };
