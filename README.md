@@ -2,7 +2,7 @@
 
 OpenMenu is a Airbnb clone that aims to build community amongst food lovers, where users can find their next food adventure.
 
-![home](https://cdn.discordapp.com/attachments/920377762068447282/933639938568781834/unknown.png)
+![home](https://cdn.discordapp.com/attachments/994067967023259668/995005230028697620/unknown.png)
 
 ## [GitHub Wiki Page](https://github.com/lytravis/OpenMenu/wiki)
 
@@ -20,7 +20,7 @@ OpenMenu is a Airbnb clone that aims to build community amongst food lovers, whe
 ## [Features ](https://github.com/lytravis/OpenMenu/wiki/MVP-Features-List) include:
 
 ### Events
-![events](https://cdn.discordapp.com/attachments/920377762068447282/933640283755802634/unknown.png)
+![events](https://cdn.discordapp.com/attachments/994067967023259668/995088320004632636/unknown.png)
  - Users can choose from various types of events that include: Online Experiences, Find Dining, Food Trucks, Cooking Lessons, and more
  - Users can host events for other members to book
 ### Reviews
