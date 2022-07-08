@@ -100,6 +100,8 @@
   border-bottom: 1px solid lightgrey;
   scroll-behavior: smooth;
   z-index: 1;
+  width: 90%;
+  margin: 0 auto;
 }
 
 .avgRating {
@@ -112,4 +114,47 @@
   display: flex;
   flex-wrap: wrap;
   margin-top: 50px;
+}
+
+
+
+@media (max-width: 950px) {
+  .reviewsContainer {
+    /* display: flex; */
+    grid-template-columns: 1fr 1fr auto;
+    width: 100%;
+
+  }
+.review-row1,
+.review-row2 {
+  display: flex;
+  /* justify-content: center; */
+  align-items: center;
+  flex-direction: column;
+}
+.commentHolder {
+  max-width: 35rem;
+}
+.commentHolder label {
+display: none;
+}
+.commentBox {
+  width: 60%;
+  margin: 0 auto;
+}
+.reviewButtonContainer button  {
+  text-align: center;
+  margin-top: 20px;
+  width: fit-content;
+  padding: 10px 15px;
+  border-radius: 10px;
+  border: 1px solid lightgrey;
+  font-size: 16px;
+  color: #222222;
+  transition: all 0.25s 0s;
+  cursor: pointer;
+  background-color: white;
+margin-right: 8rem;
+
+}
 }

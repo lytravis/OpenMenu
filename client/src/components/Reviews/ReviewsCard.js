@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import {  useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import './ReviewsCard.css';
-import {  removeReview, updateReview } from '../../store/review';
+import { removeReview, updateReview } from '../../store/review';
 import ReactStars from 'react-rating-stars-component';
 
 const ReviewsCard = ({ review, user, userId }) => {
   const dispatch = useDispatch();
-  const { eventId, reviewId } = useParams();
+  const { eventId} = useParams();
 
   const [showUpdate, setShowUpdate] = useState(false);
   const [showDelete, setShowDelete] = useState(false);
@@ -21,7 +21,7 @@ const ReviewsCard = ({ review, user, userId }) => {
   const [communicationRating, setCommunicationRating] = useState(0);
   const [comment, setComment] = useState('');
 
-  const [isLoaded, setIsLoaded] = useState(false);
+
 
   const reviewYear = review.createdAt.slice(0, 4);
 
@@ -51,7 +51,7 @@ const ReviewsCard = ({ review, user, userId }) => {
 
     const payload = {
       userId,
-      eventId,
+      eventId: parseInt(eventId),
       food: foodRating,
       experience: experienceRating,
       cleanliness: cleanlinessRating,
@@ -65,7 +65,6 @@ const ReviewsCard = ({ review, user, userId }) => {
 
     if (reviewEdited) {
       setShowUpdate(false);
-
     } else {
       setShowError(true);
     }
@@ -170,7 +169,9 @@ const ReviewsCard = ({ review, user, userId }) => {
                   </div>
                   <div className="emptySpace"></div>
                   <div className="singleAvgRating addRatingCategory">
-                    <div className="reviewCategory reviewInput">Cleanliness</div>
+                    <div className="reviewCategory reviewInput">
+                      Cleanliness
+                    </div>
                     <ReactStars
                       onChange={(rating) => setCleanlinessRating(rating)}
                       value={cleanlinessRating}
@@ -198,7 +199,9 @@ const ReviewsCard = ({ review, user, userId }) => {
                   </div>
                   <div className="emptySpace"></div>
                   <div className="singleAvgRating addRatingCategory">
-                    <div className="reviewCategory reviewInput">Communication</div>
+                    <div className="reviewCategory reviewInput">
+                      Communication
+                    </div>
                     <ReactStars
                       onChange={(rating) => setCommunicationRating(rating)}
                       value={communicationRating}

@@ -8,15 +8,15 @@ const Banner = () => {
   const divStyle = {
     backgroundImage: `url(${imgBg})`,
     // backgroundRepeat: 'no-repeat',
-    // backgroundPosition: 'fit-content',
+    backgroundPosition: 'fit-content',
     backgroundSize: 'cover',
     backgroundRepeat: 'no-repeat',
-    backgroundPosition: 'center',
+    // backgroundPosition: 'center',
   };
 
   return (
     <div>
-      <div className="banner-container" style={divStyle}>
+      <div className="banner-container banner" style={divStyle}>
         <div className="banner-text">
           <h1>Say Yes To New Experiences</h1>
           <p>

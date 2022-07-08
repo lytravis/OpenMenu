@@ -11,7 +11,6 @@ const ReservationForm = () => {
 
   const userId = useSelector((state) => state.session.user?.id);
 
-  const [loaded, setLoaded] = useState(false);
   const [checkIn, setCheckIn] = useState('');
   const [guests, setGuests] = useState('');
   const [validationErrors, setValidationErrors] = useState([]);
@@ -39,7 +38,6 @@ const ReservationForm = () => {
     };
 
     dispatch(addRSVP(payload));
-    // history.push(`/users/${userId}`);
     history.push('/manage');
   };
 

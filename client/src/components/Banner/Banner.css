@@ -5,6 +5,7 @@
   display: flex;
   justify-content: space-around;
   border-radius: 12px;
+  /* width:50% */
 }
 
 .banner-text{
@@ -65,11 +66,15 @@
 }
 
 
-@media (max-width: 1299px){
+
+@media (max-width: 900){
   .banner-container{
-      flex-direction: column;
+      flex-direction: row;
       justify-content: center;
       align-items: center;
+      /* width: 50%; */
+      background-size: contain;
+      background-repeat: no-repeat;
   }
   .banner-container *{
       margin: 0;

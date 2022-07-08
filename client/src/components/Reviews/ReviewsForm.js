@@ -46,7 +46,6 @@ const ReviewsForm = () => {
   };
 
   useEffect(() => {
-    // dispatch(getEvent(eventId));
     dispatch(getEvents());
   }, [dispatch]);
 
@@ -79,7 +78,6 @@ const ReviewsForm = () => {
     setComment('');
 
     history.push(`/events/${event.id}`);
-    // history.push("/events");
   };
 
   return (

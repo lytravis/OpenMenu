@@ -1,9 +1,9 @@
-import { csrfFetch } from "./csrf";
+import { csrfFetch } from './csrf';
 
-const LOAD_IMAGE = "events/LOAD_IMAGE";
-const ADD_IMAGE = "events/ADD_IMAGE";
-
-const DELETE_IMAGE = "events/DELETE_IMAGE";
+const LOAD_IMAGE = 'events/LOAD_IMAGE';
+const ADD_IMAGE = 'events/ADD_IMAGE';
+const DELETE_IMAGE = 'events/DELETE_IMAGE';
+const UPDATE_IMAGE = 'events/UPDATE_NAME';
 
 const loadImages = (data) => ({
   type: LOAD_IMAGE,
@@ -20,8 +20,13 @@ const deleteImage = (id) => ({
   id,
 });
 
+const updateImage = (image) => ({
+  type: UPDATE_IMAGE,
+  payload: image,
+});
+
 export const getImages = () => async (dispatch) => {
-  const response = await fetch("/api/images");
+  const response = await fetch('/api/images');
   // console.log("%%%%%%%%%%%%%%------> response", response);
   if (response.ok) {
     const images = await response.json();
@@ -32,12 +37,12 @@ export const getImages = () => async (dispatch) => {
 };
 
 export const addImage = (image) => async (dispatch) => {
-  const response = await csrfFetch("/api/images", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
+  const response = await csrfFetch('/api/images', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(image),
   });
-  console.log("----------------->", response);
+  console.log('----------------->', response);
   if (response.ok) {
     const data = await response.json();
     dispatch(newImage(data));
@@ -47,10 +52,29 @@ export const addImage = (image) => async (dispatch) => {
 
 export const removeImage = (id) => async (dispatch) => {
   const response = await csrfFetch(`/api/images/${id}`, {
-    method: "DELETE",
+    method: 'DELETE',
   });
   if (response.ok) {
     dispatch(deleteImage(id));
+  }
+};
+
+export const updateEventImage = (imageId, url) => async (dispatch) => {
+  const response = await csrfFetch(`/api/images/${imageId}`, {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      url,
+    }),
+  });
+
+  console.log('this is the response !!!!', response);
+  if (response.ok) {
+    const data = await response.json();
+    console.log('this is the data !!!!', data);
+    dispatch(updateImage(data));
   }
 };
 
@@ -70,6 +94,8 @@ export default function reducer(state = {}, action) {
       delete newState[action.id];
       return newState;
     }
+    case UPDATE_IMAGE:
+      return { image: action.payload };
     default:
       return state;
   }

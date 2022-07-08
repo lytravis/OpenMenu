@@ -41,13 +41,13 @@ const ReviewsRating = ({ eventReviews }) => {
     ).toFixed(1);
   });
 
-  let totalSum =
-    avgFood +
-    avgExperience +
-    avgCleanliness +
-    avgAccuracy +
-    avgValue +
-    avgCommunication;
+  // let totalSum =
+  //   avgFood +
+  //   avgExperience +
+  //   avgCleanliness +
+  //   avgAccuracy +
+  //   avgValue +
+  //   avgCommunication;
 
   return (
     <div>

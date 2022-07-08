@@ -78,3 +78,11 @@
   flex-wrap: wrap;
   margin: 0 auto;
 }
+
+
+/* @media (max-width: 950px) {
+  .eventsContainer {
+display: grid;
+grid-template-columns: 1fr;
+  }
+} */

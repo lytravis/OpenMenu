@@ -324,3 +324,35 @@
   padding: 20px;
   font-family: 'Montserrat', sans-serif;
 }
+
+
+
+@media (max-width: 950px) {
+
+
+  .eventConfirmeDetailInfo{
+  font-size: 5px;
+  }
+  .sl-main-img {
+    /* grid-column: 1;
+    grid-row: 2; */
+  }
+
+
+
+}
+
+@media (max-width: 1070px) {
+
+
+  .eventConfirmeDetailInfo{
+  font-size: 15px;
+  }
+  #editDeleteEventButtons div {
+  font-size: 15px;
+  }
+/* .outerEventCardContainer {
+  margin-bottom: 30px;
+} */
+
+}

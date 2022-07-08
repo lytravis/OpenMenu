@@ -1,31 +1,30 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import ReviewsRating from './ReviewsRating';
 import './Reviews.css';
 import ReviewsForm from './ReviewsForm';
 import ReviewsCard from './ReviewsCard';
 
 const Reviews = ({ eventReviews, userId, hasReviewed, isHost, user }) => {
-  // const hasReviewed =
-  //   eventReviews.filter((x) => x.userId === userId).length > 0;
-  // const isHost = userId === event?.userId;
+  const [sortedReviews, setSortedReviews] = useState([]);
 
-  // const isHost = userId !== eventReviews.userId;
+  //Sort reviews by most recent
+  useEffect(() => {
+    if (eventReviews[0] === null) {
+      return;
+    }
 
-  // const tester = eventReviews?.map((review) =>
-  //   console.log('^^^^^^^', review.User.profilePic)
-  // );
+    const sortedReviews = eventReviews;
 
-  // console.log('useruseruser eventReviews', eventReviews);
-  // console.log('useruseruser tester', tester);
-  console.log('useruseruser user', user);
-  // console.log('*************** this is the host', isHost);
-  // console.log(
-  //   '*************** this is the eventReview.user',
-  //   eventReviews?.userId
-  // );
+    sortedReviews.sort(function (a, b) {
+      return new Date(b.createdAt) - new Date(a.createdAt);
+    });
 
-  // console.log('TESTERSS');
-  // console.log('eventReviewseventReviewseventReviewseventReviews', eventReviews);
+    setSortedReviews(sortedReviews);
+  }, [eventReviews]);
+
+
+
+
 
   return (
     <div>
@@ -56,7 +55,7 @@ const Reviews = ({ eventReviews, userId, hasReviewed, isHost, user }) => {
         </>
       </div>
       <div className="allReviews">
-        {eventReviews.map((review) => (
+        {sortedReviews.map((review) => (
           <ReviewsCard
             review={review}
             key={review.id}

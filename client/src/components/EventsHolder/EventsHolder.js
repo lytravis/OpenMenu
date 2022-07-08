@@ -6,14 +6,14 @@ import './EventsHolder.css';
 
 import 'react-slideshow-image/dist/styles.css';
 
-const EventsHolder = ({ event, events }) => {
+const EventsHolder = ({ event }) => {
   // console.log('THIS IS THE EVENT ------> ', Object.values(event));
 
   // const eventImages = event.map((img) => (
   //   console.log("&&&&&&&&&&&&&&&&&&&& img" , img)
   // ))
 
-  // console.log("**********************", eventImages)
+
 
   const toTitleCase = (phrase) => {
     return phrase
@@ -35,12 +35,12 @@ const EventsHolder = ({ event, events }) => {
       >
         {event.Images.map((img) => (
           <Link to={`/events/${event.id}`} key={`Event_slide_${img.id}`}>
-            <div
-              style={{
-                backgroundImage: `url(${img?.url}), url("https://cdn.discordapp.com/attachments/920377762068447282/939220064979271700/depositphotos_247872612-stock-illustration-no-image-available-icon-vector.jpg")`,
-              }}
-              className="eventImageSlide"
-            ></div>
+              <div
+                className="eventImageSlide"
+                style={{
+                  backgroundImage: `url(${img?.url}), url(https://cdn.discordapp.com/attachments/920377762068447282/991505593279971368/isolated-chef-man-cartoon-design-icon-avatar-people-person-human-theme-vector-illustration-78587865.jpg)`,
+                }}
+              ></div>
           </Link>
         ))}
       </Slide>

@@ -11,7 +11,6 @@ import Reviews from '../../components/Reviews/Reviews';
 
 import ReservationForm from '../../components/Reservation/ReservationForm';
 
-//   .item{Item $}*12
 const SingleListing = () => {
   const dispatch = useDispatch();
   const { eventId } = useParams();
@@ -33,34 +32,21 @@ const SingleListing = () => {
     };
   }, [dispatch]);
 
-  // console.log('!!!!!!!!!!!!!!!!!!!!', eventReviews);
-  // console.log('hello-----> images', event?.Images[0].url);
-  // console.log('````````````````````````', event?.User.profilePic);
-  // console.log('$$ EVENT REVIEWS', eventReviews);
+
   const hasReviewed =
     eventReviews.filter((x) => x.userId === userId).length > 0;
   const isHost = userId === event?.userId;
 
-  // console.log('*************** user', userId);
-  // console.log('*************** this is the host', isHost);
-  // console.log('*************** this is the isReviwer', isReviewed);
-  // console.log(
-  //   '*************** this is the eventReview.user',
-  //   eventReviews.userId
-  // );
 
-  // console.log('eventReviewseventReviewseventReviewseventReviews', eventReviews);
-  // console.log('e@@@@@@@@@@@@@@@@@@@@@@@@ews', eventReviews.userId);
 
-  // console.log('===================== hasReviewed', hasReviewed);
 
-  const toTitleCase = (phrase) => {
-    return phrase
-      .toLowerCase()
-      .split(' ')
-      .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-      .join(' ');
-  };
+  // const toTitleCase = (phrase) => {
+  //   return phrase
+  //     .toLowerCase()
+  //     .split(' ')
+  //     .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+  //     .join(' ');
+  // };
 
   // console.log('testtttter#####  ', toTitleCase(event.name));
 

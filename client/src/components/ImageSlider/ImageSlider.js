@@ -6,7 +6,7 @@ import './ImageSlider.css';
 
 import 'react-slideshow-image/dist/styles.css';
 
-const ImageSlider = ({ event, events }) => {
+const ImageSlider = ({ event }) => {
   // console.log('THIS IS THE EVENT ------> ', Object.values(event));
 
   // const eventImages = event.map((img) => (
@@ -35,19 +35,6 @@ const ImageSlider = ({ event, events }) => {
           </Link>
         ))}
       </Slide>
-      {/* <Link to={`/events/${event.id}`}>
-        <div className="eventInfo">
-          <div className="eventInfoTopRowBrowse">
-            <p className="eventName">{event.name}</p>
-            <p className="eventTypeBrowse">{event.Type.name}</p>
-          </div>
-          <div className="eventStats">
-            <p className="eventAddress">{`${event.city}, ${event.state}`}</p>
-
-            <p>{event.avgCost}</p>
-          </div>
-        </div>
-      </Link> */}
     </div>
   );
 };

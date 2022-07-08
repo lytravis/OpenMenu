@@ -4,29 +4,30 @@ import { useHistory, useParams } from 'react-router-dom';
 
 import { updateEvent, getEvents } from '../../store/event';
 import { getTypes } from '../../store/type';
-import { getImages } from '../../store/image';
-
+import { getImages, addImage } from '../../store/image';
 import './EditEvent.css';
 
-// import '../pages/CreateEvent/CreateEvent.css';
-// client/src/pages/CreateEvent/CreateEvent.css
 const EditEvent = () => {
   const dispatch = useDispatch();
   const history = useHistory();
   const { eventId } = useParams();
-  // const userId = useSelector((state) => state.session.user.id);
+
   const hostId = useSelector((state) => state.session.user.id);
-  // const images = useSelector((state) => Object.values(state.image));
-  // const events = useSelector((state) => Object.values(state.event));
+  const images = useSelector((state) => Object.values(state.image));
+
   const eventTypes = useSelector((state) => Object.values(state.type));
   const event = useSelector((state) => state?.event[eventId]);
-  // const eventImages = images.filter((image) => image.eventId == event.id);
+
 
   const [isLoaded, setIsLoaded] = useState(false);
   const [showModal, setShowModal] = useState(false);
 
-  const [eventErrorId, setEventErrorId] = useState('noEventError');
-  const [eventErrorMessage, setEventErrorMessage] = useState('');
+
+  const [image1, setImage1] = useState('');
+  const [image2, setImage2] = useState('');
+  const [image3, setImage3] = useState('');
+  const [image4, setImage4] = useState('');
+  const [image5, setImage5] = useState('');
 
   const [name, setName] = useState('');
   const [description, setDescription] = useState('');
@@ -38,7 +39,10 @@ const EditEvent = () => {
   // const [latitude, setLatitude] = useState("");
   // const [longitude, setLongitude] = useState("");
   const [typeId, setTypeId] = useState(1);
-  const [validationErrors, setValidationErrors] = useState([]);
+
+
+  // console.log('%%%%%%%%', eventImages[0]?.url);
+  // console.log('%!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!', eventId);
 
   const cancelEdit = (e) => {
     e.preventDefault();
@@ -84,13 +88,25 @@ const EditEvent = () => {
     // setLatitude(event?.latitude);
     // setLongitude(event?.longitude);
     setTypeId(event?.typeId);
+
+
+
+    setImage1(event.Images[0]?.url);
+    setImage2(event.Images[1]?.url);
+    setImage3(event.Images[2]?.url);
+    setImage4(event.Images[3]?.url);
+    setImage5(event.Images[4]?.url);
   }, [event]);
+
+
+
+
 
   const handleUpdate = async (e) => {
     e.preventDefault();
 
-    const errors = validate();
-    if (errors.length > 0) return setValidationErrors(errors);
+    // const errors = validate();
+    // if (errors.length > 0) return setValidationErrors(errors);
 
     const payload = {
       userId: hostId,
@@ -106,7 +122,33 @@ const EditEvent = () => {
       typeId,
     };
 
+    const payload2 = {
+      eventId,
+      url: image1,
+    };
+    const payload3 = {
+      eventId,
+      url: image2,
+    };
+    const payload4 = {
+      eventId,
+      url: image3,
+    };
+    const payload5 = {
+      eventId,
+      url: image4,
+    };
+    const payload6 = {
+      eventId,
+      url: image5,
+    };
+
     dispatch(updateEvent(payload, eventId));
+    dispatch(addImage(payload2));
+    dispatch(addImage(payload3));
+    dispatch(addImage(payload4));
+    dispatch(addImage(payload5));
+    dispatch(addImage(payload6));
     // history.push(`/events/${eventId}/edit`);
     history.push(`/events/${eventId}`);
   };
@@ -169,7 +211,6 @@ const EditEvent = () => {
                           <select
                             value={avgCost}
                             onChange={(e) => setAvgCost(e.target.value)}
-
                           >
                             <option value="$">$</option>
                             <option value="$$">$$</option>
@@ -183,7 +224,6 @@ const EditEvent = () => {
                         <div className="eventLoadField">
                           <label>Street Address</label>
                           <input
-
                             name="address"
                             type="input"
                             maxLength="255"
@@ -196,7 +236,6 @@ const EditEvent = () => {
                         <div className="eventLoadField">
                           <label>City</label>
                           <input
-
                             name="city"
                             type="input"
                             required
@@ -209,7 +248,6 @@ const EditEvent = () => {
                         <div className="eventLoadField">
                           <label>State</label>
                           <input
-
                             name="state"
                             type="input"
                             required
@@ -222,7 +260,6 @@ const EditEvent = () => {
                         <div className="eventLoadField">
                           <label>Zip Code</label>
                           <input
-
                             name="zipCode"
                             type="input"
                             required
@@ -237,7 +274,73 @@ const EditEvent = () => {
                     <div className="formInputSection" id="imageUploadSection">
                       <div className="fieldSection">
                         <h3 className="imagesHeader">Images</h3>
-                        <div className="imageUploadContainer"></div>
+                        <div className="imageUploadContainer">
+                          <div className="formField editUrl">
+                            <input
+                              // id={signUpEmailError}
+                              name="profilePic"
+                              type="text"
+                              required
+                              autoComplete="off"
+                              maxLength="255"
+                              value={image1}
+                              onChange={(e) => setImage1(e.target.value)}
+                            />
+                            <label id="inputTop">Image URL</label>
+                          </div>
+                          <div className="formField editUrl">
+                            <input
+                              // id={signUpEmailError}
+                              name="profilePic"
+                              type="text"
+                              required
+                              autoComplete="off"
+                              maxLength="255"
+                              value={image2}
+                              onChange={(e) => setImage2(e.target.value)}
+                            />
+                            <label id="inputTop">Image URL</label>
+                          </div>
+                          <div className="formField editUrl">
+                            <input
+                              // id={signUpEmailError}
+                              name="profilePic"
+                              type="text"
+                              required
+                              autoComplete="off"
+                              maxLength="255"
+                              value={image3}
+                              onChange={(e) => setImage3(e.target.value)}
+                            />
+                            <label id="inputTop">Image URL</label>
+                          </div>
+                          <div className="formField editUrl">
+                            <input
+                              // id={signUpEmailError}
+                              name="profilePic"
+                              type="text"
+                              required
+                              autoComplete="off"
+                              maxLength="255"
+                              value={image4}
+                              onChange={(e) => setImage4(e.target.value)}
+                            />
+                            <label id="inputTop">Image URL</label>
+                          </div>
+                          <div className="formField editUrl">
+                            <input
+                              // id={signUpEmailError}
+                              name="profilePic"
+                              type="text"
+                              required
+                              autoComplete="off"
+                              maxLength="255"
+                              value={image5}
+                              onChange={(e) => setImage5(e.target.value)}
+                            />
+                            <label id="inputTop">Image URL</label>
+                          </div>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -251,10 +354,7 @@ const EditEvent = () => {
                       Cancel Edit
                     </button>
                   </div>
-                  <div className="addEventError" id={eventErrorId}>
-                    <div>!</div>
-                    <span>{eventErrorMessage}</span>
-                  </div>
+
                 </form>
               </div>
             </div>
@@ -264,6 +364,9 @@ const EditEvent = () => {
                 alt="cooking img"
               />
             </span>
+
+            <div className="accountFormContainer">
+            </div>
           </div>
 
           {showModal && (

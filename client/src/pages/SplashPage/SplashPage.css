@@ -1,8 +1,8 @@
 @import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat&display=swap");
 
 .splash-container {
-  width: 1600px;
-  max-width: 2100px;
+  width: 90vw;
+  max-width: 1600px;
   margin: 0 auto;
   height: fit-content;
   display: grid;
@@ -11,13 +11,15 @@
     "top top top "
     "mid mid mid "
     "bot bot bot";
+
+  /* grid-template-columns: repeat(auto-fill, minmax(500px, 1fr)); */
 }
 
-
-
-
-
-
+@media (max-width: 600px) {
+  .splash-container {
+    max-width: 600px;
+  }
+}
 
 .splash-top {
   grid-area: top;
@@ -29,6 +31,8 @@
   grid-area: mid;
   margin-bottom: 4rem;
 }
+
+
 
 
 .splash-bottom {
@@ -111,6 +115,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  background-position: fit-content;
   color: white;
 
   border-radius: 1rem;
@@ -123,13 +128,36 @@
 
 
 
-/* @media (max-width: 900px) {
+@media (max-width: 950px) {
   .splash-container{
       display: flex;
       flex-direction: column;
+      /* flex-basis: 0; */
+      flex-wrap: wrap;
+
+  }
+  .splash-type-container{
+    display: flex;
+    flex-direction: column;
+    flex-basis: 0;
+    flex-wrap: wrap;
+    /* width: 100vw; */
+  }
+  .splash-info {
+    text-align:justify
+
   }
 
-} */
+  .btn-link {
+    width: 50%
+  }
+  .splash-pic{
+    display: flex;
+    flex-direction: column;
+    /* flex-basis: 0; */
+    flex-wrap: wrap;
+  }
+}
 
 
 /* @media (max-width: 900px) {
@@ -168,4 +196,23 @@
    margin: 10px 0;
   }
 
+} */
+
+
+
+/*
+@media screen and (min-width: 1400px) {
+  .splash-container {
+    width: 1370px;
+  }
+}
+@media screen and (min-width: 1600px) {
+  .splash-container{
+    width: 1570px;
+  }
+}
+@media screen and (min-width: 1900px) {
+  .splash-container{
+    width: 1870px;
+  }
 } */
