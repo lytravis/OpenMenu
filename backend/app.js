@@ -25,6 +25,7 @@ if (!isProduction) {
 app.use(
   helmet({
     contentSecurityPolicy: false,
+    crossOriginResourcePolicy: false,
   })
 );
 
