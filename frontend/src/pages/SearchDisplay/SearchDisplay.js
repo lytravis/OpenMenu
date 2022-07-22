@@ -5,12 +5,14 @@ import { getEvents } from '../../store/event';
 
 const SearchDisplay = () => {
   const dispatch = useDispatch();
+
   const events = useSelector((state) => Object.values(state.event));
 
   console.log('***********Your Events', events);
 
   const [isLoaded, setIsLoaded] = useState(true);
-
+  const [eventList, setEventList] = useState(events);
+  
   useEffect(() => {
     dispatch(getEvents()).then(() => setIsLoaded(true));
     return () => {
@@ -21,6 +23,37 @@ const SearchDisplay = () => {
   useEffect(() => {
     document.title = `Search · OpenMenu`;
   }, []);
+
+  const sortByOnline = async () => {
+    const sortedEvents = events.filter((event) => event.Type.name === 'Online');
+    await setEventList(sortedEvents);
+    setIsLoaded(true);
+  };
+  const sortByFineDining = async () => {
+    const sortedEvents = events.filter(
+      (event) => event.Type.name === 'Fine Dining'
+    );
+    await setEventList(sortedEvents);
+    setIsLoaded(true);
+  };
+  const sortByCookingLessons = async () => {
+    const sortedEvents = events.filter(
+      (event) => event.Type.name === 'Cooking Lesson'
+    );
+
+
+    await setEventList(sortedEvents);
+    setIsLoaded(true);
+  };
+  const sortByFoodTrucks = async () => {
+    const sortedEvents = events.filter(
+      (event) => event.Type.name === 'Food Truck'
+    );
+
+    await setEventList(sortedEvents);
+    setIsLoaded(true);
+  };
+
 
   //Scroll to the top of page
   document.documentElement.scrollTop = 0;
