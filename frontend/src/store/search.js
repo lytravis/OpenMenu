@@ -14,10 +14,10 @@ const searchEvents = (results) => ({
 
 export const searchResultsType = (searchTerm) => async (dispatch) => {
   const response = await csrfFetch(`/api/types/search/${searchTerm}`);
-  // console.log('%%%%%%%%%%%% response ', response);
+  console.log('%%%%%%%%%%%% response ', response);
   if (response.ok) {
     const results = await response.json();
-    // console.log('@@@@@@@@@@@@@@@@@@@ results', results);
+    console.log('@@@@@@@@@@@@@@@@@@@ results', results);
     dispatch(searchType(results));
     return results;
   }

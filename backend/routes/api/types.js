@@ -36,7 +36,7 @@ router.get(
 );
 
 router.get(
-  '/search/:searchTerm',
+  '/search/:searchTerm:Slug(-*)?',
   asyncHandler(async (req, res) => {
     const { searchTerm } = req.params;
     const events = await Type.findAll({

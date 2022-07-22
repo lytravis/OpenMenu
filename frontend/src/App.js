@@ -50,7 +50,7 @@ function App() {
               <Route exact path="/events/:eventId">
                 <SingleListing />
               </Route>
-              <Route exact path="/search">
+              <Route exact path="/search/:searchTerm">
                 <SearchDisplay />
               </Route>
             </Switch>

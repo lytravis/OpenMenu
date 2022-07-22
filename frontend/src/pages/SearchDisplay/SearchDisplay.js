@@ -1,18 +1,25 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { useParams } from 'react-router-dom';
 import ImageSlider from '../../components/ImageSlider/ImageSlider';
 import { getEvents } from '../../store/event';
+import { searchResultsType } from '../../store/search';
 
 const SearchDisplay = () => {
   const dispatch = useDispatch();
+  let { searchTerm } = useParams();
 
   const events = useSelector((state) => Object.values(state.event));
+  const searchResults = useSelector((state) => Object.values(state?.search));
 
-  console.log('***********Your Events', events);
+  console.log('%%%%%%%%%%%%%', searchTerm);
+  // console.log('***********Your Events', events);
 
   const [isLoaded, setIsLoaded] = useState(true);
-  const [eventList, setEventList] = useState(events);
-  
+  const [searchString, setSearchString] = useState(`${searchTerm}`);
+
+  console.log('***********Your searchString', searchString);
+
   useEffect(() => {
     dispatch(getEvents()).then(() => setIsLoaded(true));
     return () => {
@@ -21,39 +28,14 @@ const SearchDisplay = () => {
   }, [dispatch]);
 
   useEffect(() => {
+    if (searchString !== '') {
+      dispatch(searchResultsType(searchTerm));
+    }
+  }, [dispatch, searchString, searchTerm]);
+
+  useEffect(() => {
     document.title = `Search · OpenMenu`;
   }, []);
-
-  const sortByOnline = async () => {
-    const sortedEvents = events.filter((event) => event.Type.name === 'Online');
-    await setEventList(sortedEvents);
-    setIsLoaded(true);
-  };
-  const sortByFineDining = async () => {
-    const sortedEvents = events.filter(
-      (event) => event.Type.name === 'Fine Dining'
-    );
-    await setEventList(sortedEvents);
-    setIsLoaded(true);
-  };
-  const sortByCookingLessons = async () => {
-    const sortedEvents = events.filter(
-      (event) => event.Type.name === 'Cooking Lesson'
-    );
-
-
-    await setEventList(sortedEvents);
-    setIsLoaded(true);
-  };
-  const sortByFoodTrucks = async () => {
-    const sortedEvents = events.filter(
-      (event) => event.Type.name === 'Food Truck'
-    );
-
-    await setEventList(sortedEvents);
-    setIsLoaded(true);
-  };
-
 
   //Scroll to the top of page
   document.documentElement.scrollTop = 0;
