@@ -13,6 +13,7 @@ import Listings from './pages/Listings/Listings';
 import EditEvent from './pages/EditEvent/EditEvent';
 import ProtectedRoute from './components/auth/ProtectedRoute';
 import ManageEvents from './pages/ManageEvents/ManageEvents';
+import SearchDisplay from './pages/SearchDisplay/SearchDisplay';
 
 function App() {
   const dispatch = useDispatch();
@@ -48,6 +49,9 @@ function App() {
               </Route>
               <Route exact path="/events/:eventId">
                 <SingleListing />
+              </Route>
+              <Route exact path="/search">
+                <SearchDisplay />
               </Route>
             </Switch>
           </div>
