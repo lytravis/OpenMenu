@@ -1,10 +1,22 @@
 import React, { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import ImageSlider from '../../components/ImageSlider/ImageSlider';
+import { getEvents } from '../../store/event';
 
 const SearchDisplay = () => {
+  const dispatch = useDispatch();
   const events = useSelector((state) => Object.values(state.event));
 
-  const [isLoaded] = useState(true);
+  console.log('***********Your Events', events);
+
+  const [isLoaded, setIsLoaded] = useState(true);
+
+  useEffect(() => {
+    dispatch(getEvents()).then(() => setIsLoaded(true));
+    return () => {
+      setIsLoaded();
+    };
+  }, [dispatch]);
 
   useEffect(() => {
     document.title = `Search · OpenMenu`;
@@ -30,6 +42,14 @@ const SearchDisplay = () => {
                     <h1>{`Search Results - ${events?.length} events`}</h1>
                   )}
                 </div>
+                {events?.map((event) => (
+                  <div
+                    className="search-eventContainer"
+                    key={`Event_holder_${event?.id}`}
+                  >
+                    <ImageSlider event={event} key={`event_${event?.id}`} />
+                  </div>
+                ))}
               </div>
             </div>
           )}
