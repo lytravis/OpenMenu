@@ -347,7 +347,7 @@ const AccountSettings = () => {
               <div
                 className="userPhoto accountInfo"
                 style={{
-                  backgroundImage: `url(${user.profilePic}), url(https://res.cloudinary.com/dt8q1ngxj/image/upload/v1637102034/Capstone/noProfPic_uxrkv7.png)`,
+                  backgroundImage: `url(${user.profilePic}), url(https://cdn.discordapp.com/attachments/920377762068447282/989335407344889887/912aaf251766976848e09cce8b136e66.jpg)`,
                 }}
               ></div>
             </>
