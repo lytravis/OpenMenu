@@ -38,13 +38,12 @@ router.post(
   '/',
   validateSignup,
   asyncHandler(async (req, res) => {
-    const { firstName, lastName, email, password  } = req.body;
+    const { firstName, lastName, email, password } = req.body;
     const user = await User.signup({
       firstName,
       lastName,
       email,
       password,
-
     });
 
     await setTokenCookie(res, user);
@@ -52,6 +51,65 @@ router.post(
     return res.json({
       user,
     });
+  })
+);
+
+router.get(
+  '/:userId(\\d+)',
+  asyncHandler(async (req, res) => {
+    const user = await User.findByPk(req.params.userId);
+
+    return res.json(user);
+  })
+);
+
+router.put(
+  '/name/:userId(\\d+)',
+  asyncHandler(async (req, res, next) => {
+    const user = await User.findByPk(req.params.userId);
+    if (user) {
+      user.firstName = req.body.firstName;
+      user.lastName = req.body.lastName;
+
+      await user.save();
+      res.json({ user });
+    }
+  })
+);
+router.put(
+  '/email/:userId(\\d+)',
+  asyncHandler(async (req, res, next) => {
+    const user = await User.findByPk(req.params.userId);
+    if (user) {
+      user.email = req.body.email;
+
+      await user.save();
+      res.json({ user });
+    }
+  })
+);
+router.put(
+  '/password/:userId(\\d+)',
+  asyncHandler(async (req, res, next) => {
+    const user = await User.findByPk(req.params.userId);
+    if (user) {
+      user.hashedPassword = req.body.hashedPassword;
+
+      await user.save();
+      res.json({ user });
+    }
+  })
+);
+router.put(
+  '/image/:userId(\\d+)',
+  asyncHandler(async (req, res, next) => {
+    const user = await User.findByPk(req.params.userId);
+    if (user) {
+      user.profilePic = req.body.profilePic;
+
+      await user.save();
+      res.json({ user });
+    }
   })
 );
 
