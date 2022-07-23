@@ -5,6 +5,8 @@ import ImageSlider from '../../components/ImageSlider/ImageSlider';
 import { getEvents } from '../../store/event';
 import { searchResultsType } from '../../store/search';
 
+import './SearchDisplay.css';
+
 const SearchDisplay = () => {
   const dispatch = useDispatch();
   let { searchTerm } = useParams();
@@ -23,7 +25,7 @@ const SearchDisplay = () => {
   const [isLoaded, setIsLoaded] = useState(true);
   const [eventList, setEventList] = useState(events);
 
-  console.log('!!!!!!!!!!!!!!!!!!!!!!!!eventlist', eventList.length);
+  console.log('!!!!!!!!!!!!!!!!!!!!!!!!eventlist', eventList);
 
   const sortByOnline = async () => {
     const sortedEvents = events.filter((event) => event.Type.name === 'Online');
@@ -99,15 +101,15 @@ const SearchDisplay = () => {
         <div className="search-container">
           {eventList?.length > 0 && eventList[0] !== null && (
             <div
-              className="search-dogsInfo-map-container"
+              className="search-Info-map-container"
               id="searchResultHeader"
             >
               <div className="search-EventList">
                 <div className="search-buttons">
                   {eventList?.length === 1 ? (
-                    <h1>{`Search Results - 1 event`}</h1>
+                    <h1>{`Search Results - 1 ${searchTerm} event`}</h1>
                   ) : (
-                    <h1>{`Search Results - ${eventList?.length} events`}</h1>
+                    <h1>{`Search Results - ${eventList?.length} ${searchTerm} events`}</h1>
                   )}
                 </div>
 
@@ -117,6 +119,39 @@ const SearchDisplay = () => {
                     key={`Event_holder_${event?.id}`}
                   >
                     <ImageSlider event={event} key={`Event_${event?.id}`} />
+                    <div className="search-eventInfo">
+                      <div className="search-eventName">{event?.name}</div>
+                      <div className="search-eventDetails searchEventHolder">
+                        <div className="eventCardData">
+                          <div className="eventDataIcon">
+                            <i className="fas fa-info-circle"></i>
+                          </div>
+                          <div className="search-infodesc">
+                            {event?.Type.name}
+                          </div>
+                        </div>
+                        <div className="eventCardData">
+                          <div className="eventDataIcon">
+                            <i className="fas fa-info-circle"></i>
+                          </div>
+                          <div className="search-infodesc">
+                            {event?.description}
+                          </div>
+                        </div>
+                        <div className="eventCardData">
+                          <div className="eventDataIcon">
+                            <i class="fas fa-map-marker-alt"></i>
+                          </div>
+                          <div className="search-infodesc">{`${event?.address}`}</div>
+                        </div>
+                        <div className="eventCardData">
+                          <div className="eventDataIcon">
+                            <i class="fas fa-dot-circle"></i>
+                          </div>
+                          <div className="search-infodesc">{`${event?.city}, ${event?.state}`}</div>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 ))}
 

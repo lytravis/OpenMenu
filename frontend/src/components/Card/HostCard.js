@@ -6,39 +6,29 @@ import './HostCard.css';
 
 import { removeEvent } from '../../store/event';
 
-const HostCard = ({ event, hosted }) => {
+const HostCard = ({ event }) => {
   const dispatch = useDispatch();
-  const [showUpdate, setShowUpdate] = useState(false);
+
   const [showDelete, setShowDelete] = useState(false);
-  const [showError, setShowError] = useState(false);
+
 
   // console.log('***************** eventId', eventId);
 
-  const showChangeDatePopUp = async (e) => {
-    e.preventDefault();
-    // await dispatch(loadWalkDogsWalks(walk.dog.id));
-    setShowUpdate(true);
-  };
+
 
   const showDeleteConfirmation = (e) => {
     e.preventDefault();
     setShowDelete(true);
   };
 
-  const [date, setDate] = useState(null);
 
-  const cleanUpCalendarClose = () => {
-    setDate(null);
-    setShowError(false);
-    setShowUpdate(false);
-  };
 
   const deleteEvent = () => {
     dispatch(removeEvent(event.id));
     setShowDelete(false);
   };
 
-  const updateEvent = async () => {};
+
 
   // console.log('**************event', event?.Images[0]?.url);
   // console.log('**************event IMAGES', event.Images);

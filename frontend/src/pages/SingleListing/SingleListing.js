@@ -32,13 +32,9 @@ const SingleListing = () => {
     };
   }, [dispatch]);
 
-
   const hasReviewed =
     eventReviews.filter((x) => x.userId === userId).length > 0;
   const isHost = userId === event?.userId;
-
-
-
 
   // const toTitleCase = (phrase) => {
   //   return phrase
