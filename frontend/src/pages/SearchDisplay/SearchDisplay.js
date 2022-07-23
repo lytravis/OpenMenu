@@ -12,22 +12,68 @@ const SearchDisplay = () => {
   const events = useSelector((state) => Object.values(state.event));
   const searchResults = useSelector((state) => Object.values(state?.search));
 
-  const searchEvents = searchResults[0]
+  const searchEvents = searchResults[0];
 
-  console.log('!!!!!!!!!!!!!!!!!!!! searchEvents', searchEvents);
+  // console.log('!!!!!!!!!!!!!!!!!!!! searchEvents', searchEvents);
 
-  // const tester = searchEvents.map((event) => console.log(event.name));
-
-  // console.log('!!!!!!!!!!!!!!!!!!!!!!!!TESTER', tester);
-
-  // console.log('%%%%%%%%%%%%% search Term', searchTerm);
+  console.log('%%%%%%%%%%%%% search Term', searchTerm);
   // console.log('%%%%%%%%%%%%% search results', searchResults);
   // console.log('***********Your Events', events);
 
   const [isLoaded, setIsLoaded] = useState(true);
-  // const [searchString, setSearchString] = useState(`${searchTerm}`);
+  const [eventList, setEventList] = useState(events);
 
-  // console.log('***********Your searchString', searchString);
+  console.log('!!!!!!!!!!!!!!!!!!!!!!!!eventlist', eventList.length);
+
+  const sortByOnline = async () => {
+    const sortedEvents = events.filter((event) => event.Type.name === 'Online');
+    await setEventList(sortedEvents);
+    setIsLoaded(true);
+  };
+  const sortByFineDining = async () => {
+    const sortedEvents = events.filter(
+      (event) => event.Type.name === 'Fine Dining'
+    );
+    await setEventList(sortedEvents);
+    setIsLoaded(true);
+  };
+  const sortByCookingLessons = async () => {
+    const sortedEvents = events.filter(
+      (event) => event.Type.name === 'Cooking Lesson'
+    );
+
+    await setEventList(sortedEvents);
+    setIsLoaded(true);
+  };
+  const sortByFoodTrucks = async () => {
+    const sortedEvents = events.filter(
+      (event) => event.Type.name === 'Food Truck'
+    );
+
+    await setEventList(sortedEvents);
+    setIsLoaded(true);
+  };
+
+  console.log('!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! eventList', eventList);
+
+  useEffect(() => {
+    setIsLoaded(false);
+    // resetSortedBy();
+
+    if (searchTerm === 'online') {
+      sortByOnline();
+      // setOnlineEvents('sortSelected');
+    } else if (searchTerm === 'fine-dining') {
+      sortByFineDining();
+      // setFineDining('sortSelected');
+    } else if (searchTerm === 'cooking-lessons') {
+      sortByCookingLessons();
+      // setCookingLessons('sortSelected');
+    } else if (searchTerm === 'food-trucks') {
+      sortByFoodTrucks();
+      // setFoodTrucks('sortSelected');
+    }
+  }, [searchTerm]);
 
   useEffect(() => {
     dispatch(getEvents()).then(() => setIsLoaded(true));
@@ -51,27 +97,40 @@ const SearchDisplay = () => {
     <>
       {isLoaded && (
         <div className="search-container">
-          {searchEvents?.length > 0 && searchEvents[0] !== null && (
+          {eventList?.length > 0 && eventList[0] !== null && (
             <div
               className="search-dogsInfo-map-container"
               id="searchResultHeader"
             >
               <div className="search-EventList">
                 <div className="search-buttons">
-                  {searchEvents?.length === 1 ? (
+                  {eventList?.length === 1 ? (
                     <h1>{`Search Results - 1 event`}</h1>
                   ) : (
-                    <h1>{`Search Results - ${searchEvents?.length} events`}</h1>
+                    <h1>{`Search Results - ${eventList?.length} events`}</h1>
                   )}
                 </div>
-                {searchEvents?.map((event) => (
+
+                {eventList?.map((event) => (
                   <div
                     className="search-eventContainer"
                     key={`Event_holder_${event?.id}`}
                   >
-                    <ImageSlider event={event} key={`event_${event?.id}`} />
+                    <ImageSlider event={event} key={`Event_${event?.id}`} />
                   </div>
                 ))}
+
+                {/* {eventList?.map((event) => ({
+
+<div
+className="search-eventContainer"
+key={`Event_holder_${event?.id}`}
+>
+<ImageSlider event={event} key={`event_${event?.id}`} />
+</div>
+
+
+}))} */}
               </div>
             </div>
           )}
