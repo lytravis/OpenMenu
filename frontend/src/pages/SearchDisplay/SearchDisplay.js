@@ -2,7 +2,13 @@ import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import ImageSlider from '../../components/ImageSlider/ImageSlider';
-import MapContainer from '../../components/Maps';
+// import MapContainer from '../../components/Maps';
+import MapContainer from '../../components/Maps/MapContainer';
+
+
+
+
+
 import { getEvents } from '../../store/event';
 import { searchResultsType } from '../../store/search';
 
@@ -18,6 +24,8 @@ const SearchDisplay = () => {
   const searchEvents = searchResults[0];
 
   // console.log('!!!!!!!!!!!!!!!!!!!! searchEvents', searchEvents);
+
+  const tester = [1,2,3,4,5]
 
   // console.log('%%%%%%%%%%%%% search Term', searchTerm);
   // console.log('%%%%%%%%%%%%% search results', searchResults);
@@ -154,7 +162,7 @@ const SearchDisplay = () => {
                 ))}
               </div>
               <div className="search-map">
-                <MapContainer zoom={5} events={events} />
+                <MapContainer zoom={5}   />
               </div>
             </div>
           )}
