@@ -1,0 +1,78 @@
+.search-Info-map-container {
+  display: flex;
+  justify-content: space-between;
+  font-family: 'Questrial', sans-serif;
+}
+
+
+.search-EventList {
+  width: 630px;
+  padding: 0 10px;
+}
+
+
+.search-buttons{
+  display: flex;
+  align-items: center;
+}
+
+
+.search-eventContainer {
+  display: flex;
+  padding: 15px;
+  border-top: 1px solid rgb(221, 221, 221);
+  max-width: 630px;
+  min-width: 600px;
+}
+
+.search-eventInfo {
+  margin: 0;
+  width: 287px;
+  height: 280px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.search-eventName {
+  font-size: 30px;
+  margin-top: 10px;
+  color: black;
+}
+
+.search-eventDetails {
+  max-height: 200px;
+  overflow: auto;
+  flex-grow: 1;
+  word-wrap: break-word;
+}
+
+.searchEventHolder {
+  max-height: 285px;
+  margin-top: 10px;
+}
+
+
+.eventCardData {
+  display: flex;
+  align-items: center;
+  margin: 16px 0;
+}
+
+.eventCardData .eventDataIcon {
+  font-size: 20px;
+  color: rgb(56, 56, 56);
+  margin-right: 15px;
+}
+
+.search-infodesc {
+  margin-top: 0;
+}
+
+.search-map {
+  width: 50%;
+  flex: 1;
+  height: calc(100vh - 80px);
+  position: sticky;
+  top: 100px;
+}
