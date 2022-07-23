@@ -77,9 +77,12 @@ export const updateUserName =
         lastName,
       }),
     });
-
+    console.log('$$$$$$$$$$$ response name', response);
     if (response.ok) {
+      console.log('$$$$$$$$$$$ response.ok', response.ok);
+
       const data = await response.json();
+      console.log('%%%%%%%%%%%%%%% data', data);
       dispatch(updateUser(data));
       return ['Updated'];
     } else if (response.status < 500) {
@@ -102,8 +105,10 @@ export const updateUserEmail = (userId, email) => async (dispatch) => {
       email,
     }),
   });
+  console.log('!!!!!!! response', response);
   if (response.ok) {
     const data = await response.json();
+    console.log('********8 data', data);
     dispatch(updateUser(data));
     return ['Updated'];
   } else if (response.status < 500) {
@@ -168,14 +173,15 @@ function reducer(state = initialState, action) {
   let newState;
   switch (action.type) {
     case SET_USER:
-      newState = Object.assign({}, state, { user: action.payload });
-      return newState;
+      return { user: action.payload };
     case UPDATE_USER:
-      newState = Object.assign({}, state, { user: action.payload });
+      // return { user: action.payload };
+      newState = { ...state };
+      newState[action.payload] = action.payload ;
       return newState;
+
     case REMOVE_USER:
-      newState = Object.assign({}, state, { user: null });
-      return newState;
+      return { user: null };
     default:
       return state;
   }
