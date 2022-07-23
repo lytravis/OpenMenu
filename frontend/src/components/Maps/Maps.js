@@ -1,9 +1,10 @@
 import React from 'react';
-import { GoogleMap, useJsApiLoader } from '@react-google-maps/api';
+import { GoogleMap, useJsApiLoader, Marker  } from '@react-google-maps/api';
+import { useHistory } from "react-router-dom";
 
 const containerStyle = {
-  width: '400px',
-  height: '400px',
+  width: '100%',
+  height: '100%',
 };
 
 const center = {
@@ -11,7 +12,7 @@ const center = {
   lng: 77.0369,
 };
 
-const Maps = ({ apiKey }) => {
+const Maps = ({ apiKey, zoom, events, latAvg, longAvg }) => {
   const { isLoaded } = useJsApiLoader({
     id: 'google-map-script',
     googleMapsApiKey: apiKey,
