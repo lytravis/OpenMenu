@@ -22,7 +22,7 @@ const SearchDisplay = () => {
   // console.log('%%%%%%%%%%%%% search results', searchResults);
   // console.log('***********Your Events', events);
 
-  const [isLoaded, setIsLoaded] = useState(true);
+  const [isLoaded, setIsLoaded] = useState(false);
   const [eventList, setEventList] = useState(events);
 
   // console.log('!!!!!!!!!!!!!!!!!!!!!!!!eventlist', eventList);
