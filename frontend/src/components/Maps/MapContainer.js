@@ -12,6 +12,9 @@ const MapContainer = (zoom) => {
   const key = useSelector((state) => state.maps.key);
   const events = useSelector((state) => Object.values(state.event));
 
+
+
+
   const dispatch = useDispatch();
 
   const [latAvg, setLatAvg] = useState(0)
@@ -66,6 +69,7 @@ const MapContainer = (zoom) => {
 
   console.log("!!!!!!!!!!!!!!! latAvg", latAvg)
   console.log("!!!!!!!!!!!!!!! longAvg", longAvg)
+  console.log("!!!!!!!!!!!!!!! zoom", zoom)
 
   return (
     <Maps apiKey={key} zoom={zoom} events={events} latAvg={latAvg} longAvg={longAvg}/>

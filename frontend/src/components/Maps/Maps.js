@@ -35,19 +35,19 @@ const Maps = ({ apiKey, zoom, events, latAvg, longAvg }) => {
           <GoogleMap
             mapContainerStyle={containerStyle}
             center={center}
-            zoom={zoom}
+            zoom={5}
           >
             {events?.map((event) => (
               <Marker
                 key={`${event.id}_map_spot`}
-                position={{ lat: event.latitude, lng: event.longitude }}
+                position={{ lat: parseInt(event.latitude), lng: parseInt(event.longitude) }}
                 icon={{
                   url: CustomMarker,
                   labelOrigin: new window.google.maps.Point(14, -10),
                   scaledSize: new window.google.maps.Size(30, 26),
                 }}
                 label={{
-                  text: `${event.name}`,
+                  // text: `${event.name}`,
                   color: '#EA4335',
                   textShadow: '0 0 3px #000',
                   marginBottom: '40px',
