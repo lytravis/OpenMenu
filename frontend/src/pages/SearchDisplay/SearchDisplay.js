@@ -18,14 +18,14 @@ const SearchDisplay = () => {
 
   // console.log('!!!!!!!!!!!!!!!!!!!! searchEvents', searchEvents);
 
-  console.log('%%%%%%%%%%%%% search Term', searchTerm);
+  // console.log('%%%%%%%%%%%%% search Term', searchTerm);
   // console.log('%%%%%%%%%%%%% search results', searchResults);
   // console.log('***********Your Events', events);
 
   const [isLoaded, setIsLoaded] = useState(true);
   const [eventList, setEventList] = useState(events);
 
-  console.log('!!!!!!!!!!!!!!!!!!!!!!!!eventlist', eventList);
+  // console.log('!!!!!!!!!!!!!!!!!!!!!!!!eventlist', eventList);
 
   const sortByOnline = async () => {
     const sortedEvents = events.filter((event) => event.Type.name === 'Online');
@@ -56,7 +56,7 @@ const SearchDisplay = () => {
     setIsLoaded(true);
   };
 
-  console.log('!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! eventList', eventList);
+  // console.log('!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! eventList', eventList);
 
   useEffect(() => {
     setIsLoaded(false);

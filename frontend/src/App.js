@@ -14,6 +14,7 @@ import EditEvent from './pages/EditEvent/EditEvent';
 import ProtectedRoute from './components/auth/ProtectedRoute';
 import ManageEvents from './pages/ManageEvents/ManageEvents';
 import SearchDisplay from './pages/SearchDisplay/SearchDisplay';
+import AccountSettings from './pages/AccountSettings/AccountSettings';
 
 function App() {
   const dispatch = useDispatch();
@@ -37,6 +38,9 @@ function App() {
               </ProtectedRoute>
               <ProtectedRoute exact path="/manage">
                 <ManageEvents />
+              </ProtectedRoute>
+              <ProtectedRoute exact path="/account-settings">
+                <AccountSettings/>
               </ProtectedRoute>
               <Route exact path="/events">
                 <Listings />

@@ -27,7 +27,7 @@ module.exports = (sequelize, DataTypes) => {
     {
       defaultScope: {
         attributes: {
-          exclude: ['hashedPassword', 'email', 'createdAt', 'updatedAt'],
+          exclude: ['hashedPassword', 'createdAt', 'updatedAt'],
         },
       },
       scopes: {
@@ -62,8 +62,8 @@ module.exports = (sequelize, DataTypes) => {
   //! MIGHT HAVE TO DELETE profilePic from below
   User.prototype.toSafeObject = function () {
     // remember, this cannot be an arrow function
-    const { id, email, profilePic } = this; // context will be the User instance
-    return { id, email, profilePic };
+    const { id, email, profilePic, firstName, lastName } = this; // context will be the User instance
+    return { id, email, profilePic, firstName, lastName };
   };
 
   User.prototype.validatePassword = function (password) {

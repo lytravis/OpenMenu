@@ -42,7 +42,7 @@ export const addImage = (image) => async (dispatch) => {
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(image),
   });
-  console.log('----------------->', response);
+  // console.log('----------------->', response);
   if (response.ok) {
     const data = await response.json();
     dispatch(newImage(data));
@@ -70,10 +70,10 @@ export const updateEventImage = (imageId, url) => async (dispatch) => {
     }),
   });
 
-  console.log('this is the response !!!!', response);
+  // console.log('this is the response !!!!', response);
   if (response.ok) {
     const data = await response.json();
-    console.log('this is the data !!!!', data);
+    // console.log('this is the data !!!!', data);
     dispatch(updateImage(data));
   }
 };

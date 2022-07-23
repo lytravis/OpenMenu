@@ -1,4 +1,4 @@
-import {  useState } from 'react';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import HostCard from '../Card/HostCard';
 import ReservationCard from '../Card/ReservationCard';
@@ -65,7 +65,7 @@ const UserEvents = ({ hostedEvents, reservations }) => {
           )}
           {showRsvpEvents && (
             <>
-              {reservations.length === 0 ? (
+              {reservations?.length === 0 ? (
                 <>
                   <p className="eventText">
                     You don’t have any reservations yet—but when you do, you’ll
