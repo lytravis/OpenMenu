@@ -37,9 +37,17 @@ const MapContainer = (zoom) => {
         let lat = 0;
         let long = 0;
         events.forEach(event => {
-          long += event.longitude;
-          lat += event.latitude
+          long += parseInt(event.longitude);
+          lat += parseInt(event.latitude);
+
+
     })
+
+
+    console.log("!!!!!!!!!!!!!!! lat", lat)
+    console.log("!!!!!!!!!!!!!!! long", long)
+
+
     const length = events?.length
     setLatAvg(parseFloat(lat / length))
     setLongAvg(parseFloat(long / length))
@@ -55,6 +63,9 @@ const MapContainer = (zoom) => {
   if (!key) {
     return null;
   }
+
+  console.log("!!!!!!!!!!!!!!! latAvg", latAvg)
+  console.log("!!!!!!!!!!!!!!! longAvg", longAvg)
 
   return (
     <Maps apiKey={key} zoom={zoom} events={events} latAvg={latAvg} longAvg={longAvg}/>
