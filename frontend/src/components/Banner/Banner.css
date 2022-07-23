@@ -1,5 +1,5 @@
 .banner-container{
-  background-color: #e7826b;
+  background-color: rgb(0,132,137);
   color: white;
   padding: 1.1rem;
   display: flex;
@@ -61,7 +61,7 @@
   font-family: 'Jost', sans-serif;
 }
 .btn-link:hover{
-  background-color: #FFAD9B;
+  background-color: rgb(0,132,137);
   color: #FFFF;
 }
 
