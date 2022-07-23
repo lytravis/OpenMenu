@@ -100,10 +100,7 @@ const SearchDisplay = () => {
       {isLoaded && (
         <div className="search-container">
           {eventList?.length > 0 && eventList[0] !== null && (
-            <div
-              className="search-Info-map-container"
-              id="searchResultHeader"
-            >
+            <div className="search-Info-map-container" id="searchResultHeader">
               <div className="search-EventList">
                 <div className="search-buttons">
                   {eventList?.length === 1 ? (
@@ -124,10 +121,10 @@ const SearchDisplay = () => {
                       <div className="search-eventDetails searchEventHolder">
                         <div className="eventCardData">
                           <div className="eventDataIcon">
-                            <i className="fas fa-info-circle"></i>
+                            <i class="fas fa-dollar-sign"></i>
                           </div>
                           <div className="search-infodesc">
-                            {event?.Type.name}
+                            {`Average Cost: ${event?.avgCost}`}
                           </div>
                         </div>
                         <div className="eventCardData">
@@ -154,18 +151,9 @@ const SearchDisplay = () => {
                     </div>
                   </div>
                 ))}
-
-                {/* {eventList?.map((event) => ({
-
-<div
-className="search-eventContainer"
-key={`Event_holder_${event?.id}`}
->
-<ImageSlider event={event} key={`event_${event?.id}`} />
-</div>
-
-
-}))} */}
+              </div>
+              <div className="search-map">
+                {/* <MapContainer zoom={5} events={events} /> */}
               </div>
             </div>
           )}
