@@ -152,9 +152,7 @@ const SearchDisplay = () => {
                   </div>
                 ))}
               </div>
-              <div className="search-map">
-                {/* <MapContainer zoom={5} events={events} /> */}
-              </div>
+              <div className="search-map"></div>
             </div>
           )}
         </div>
