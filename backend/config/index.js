@@ -1,5 +1,6 @@
 module.exports = {
   environment: process.env.NODE_ENV || 'development',
+  googleMapsAPIKey: process.env.MAPS_API_KEY,
   port: process.env.PORT || 5000,
   db: {
     username: process.env.DB_USERNAME,
@@ -11,5 +12,4 @@ module.exports = {
     secret: process.env.JWT_SECRET,
     expiresIn: process.env.JWT_EXPIRES_IN,
   },
-  googleMapsAPIKey: process.env.MAPS_API_KEY,
 };
