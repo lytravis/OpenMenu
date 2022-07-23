@@ -77,12 +77,12 @@ export const updateUserName =
         lastName,
       }),
     });
-    console.log('$$$$$$$$$$$ response name', response);
+    // console.log('$$$$$$$$$$$ response name', response);
     if (response.ok) {
-      console.log('$$$$$$$$$$$ response.ok', response.ok);
+      // console.log('$$$$$$$$$$$ response.ok', response.ok);
 
       const data = await response.json();
-      console.log('%%%%%%%%%%%%%%% data', data);
+      // console.log('%%%%%%%%%%%%%%% data', data);
       dispatch(updateUser(data));
       return ['Updated'];
     } else if (response.status < 500) {
@@ -105,10 +105,10 @@ export const updateUserEmail = (userId, email) => async (dispatch) => {
       email,
     }),
   });
-  console.log('!!!!!!! response', response);
+  // console.log('!!!!!!! response', response);
   if (response.ok) {
     const data = await response.json();
-    console.log('********8 data', data);
+    // console.log('********8 data', data);
     dispatch(updateUser(data));
     return ['Updated'];
   } else if (response.status < 500) {

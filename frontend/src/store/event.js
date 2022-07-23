@@ -88,10 +88,10 @@ export const removeEvent = (eventId) => async (dispatch) => {
     method: 'DELETE',
   });
 
-  console.log('$$$$$$$$$$$', response);
+  // console.log('$$$$$$$$$$$', response);
   if (response.ok) {
     dispatch(deleteEvent(eventId));
-    console.log('$$$$$$$$$$$ response is ok', response);
+    // console.log('$$$$$$$$$$$ response is ok', response);
   }
 };
 

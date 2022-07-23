@@ -17,7 +17,7 @@ module.exports = {
 
     // randomDate(new Date(2022, 0, 1), new Date())
 
-    console.log('!!!!!!!!! randomDate ', randomDate);
+    // console.log('!!!!!!!!! randomDate ', randomDate);
 
     return queryInterface.bulkInsert(
       'Reviews',

@@ -15,7 +15,7 @@ const AccountSettings = () => {
 
   const user = useSelector((state) => state.session.user);
 
-  console.log('USERSADSADASDASDASD', user.firstName);
+  // console.log('USERSADSADASDASDASD', user.firstName);
 
   const [showNameForm, setShowNameForm] = useState(false);
   const [firstName, setFirstName] = useState('');
