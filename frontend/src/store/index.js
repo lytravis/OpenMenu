@@ -7,6 +7,7 @@ import review from './review';
 import type from './type';
 import reservation from './reservation';
 import search from './search';
+import mapsReducer from './maps';
 
 const rootReducer = combineReducers({
   session,
@@ -16,6 +17,7 @@ const rootReducer = combineReducers({
   type,
   reservation,
   search,
+  maps: mapsReducer
 });
 
 let enhancer;

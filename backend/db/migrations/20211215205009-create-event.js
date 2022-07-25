@@ -36,14 +36,14 @@ module.exports = {
         allowNull: false,
         type: Sequelize.STRING(5),
       },
-      // latitude: {
-      //   allowNull: true,
-      //   type: Sequelize.DECIMAL,
-      // },
-      // longitude: {
-      //   allowNull: true,
-      //   type: Sequelize.DECIMAL,
-      // },
+      latitude: {
+        allowNull: true,
+        type: Sequelize.DECIMAL,
+      },
+      longitude: {
+        allowNull: true,
+        type: Sequelize.DECIMAL,
+      },
       userId: {
         allowNull: false,
         references: { model: 'Users' },
