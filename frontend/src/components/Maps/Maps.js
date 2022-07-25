@@ -26,7 +26,7 @@ const Maps = ({ apiKey, zoom, events, latAvg, longAvg }) => {
     lng: longAvg,
   };
 
-  // console.log('@@@@@@@@@@@@@ events', events);
+
 
   return (
     <>
