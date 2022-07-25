@@ -21,7 +21,7 @@ const MapContainer = (zoom) => {
   const [longAvg, setLongAvg] = useState(0)
 
 
-  console.log('!!!!!!!!!!!!!!!!!! MapContainer events', events);
+  // console.log('!!!!!!!!!!!!!!!!!! MapContainer events', events);
 
 
 
@@ -47,8 +47,8 @@ const MapContainer = (zoom) => {
     })
 
 
-    console.log("!!!!!!!!!!!!!!! lat", lat)
-    console.log("!!!!!!!!!!!!!!! long", long)
+    // console.log("!!!!!!!!!!!!!!! lat", lat)
+    // console.log("!!!!!!!!!!!!!!! long", long)
 
 
     const length = events?.length
